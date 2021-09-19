@@ -1,2 +1,2 @@
 # autoStudent-Dark
-No Comment
+Phần mềm này rất dảk
