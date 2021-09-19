@@ -1,5 +1,5 @@
-# # IT008.M11 - Lập trình trực quan
-## 1. Danh sách thành viên
+# # IT008.M11 - Lập trình trực quan.
+## 1. Danh sách thành viên:
 | No. | Student ID | Full name | Class | Role |
 | --- | --- | --- | --- | --- |
 | 1 | 20521008 | Phan Xuân Quang | KTPM2020 | Leader |
