@@ -57,40 +57,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Tab\homeTab.cs">
+    <Compile Include="UI - Tab\homeTab.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Tab\homeTab.Designer.cs">
+    <Compile Include="UI - Tab\homeTab.Designer.cs">
       <DependentUpon>homeTab.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tab\ITTab.cs">
+    <Compile Include="UI - Tab\ITTab.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Tab\ITTab.Designer.cs">
+    <Compile Include="UI - Tab\ITTab.Designer.cs">
       <DependentUpon>ITTab.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tab\GraphicTab.cs">
+    <Compile Include="UI - Tab\GraphicTab.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Tab\GraphicTab.Designer.cs">
+    <Compile Include="UI - Tab\GraphicTab.Designer.cs">
       <DependentUpon>GraphicTab.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main.cs">
+    <Compile Include="UI - Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main.Designer.cs">
-      <DependentUpon>Main.cs</DependentUpon>
+    <Compile Include="UI - Main.Designer.cs">
+      <DependentUpon>UI - Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tab\EngineeringTab.cs">
+    <Compile Include="UI - Tab\EngineeringTab.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Tab\EngineeringTab.Designer.cs">
+    <Compile Include="UI - Tab\EngineeringTab.Designer.cs">
       <DependentUpon>EngineeringTab.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Main.resx">
-      <DependentUpon>Main.cs</DependentUpon>
+    <EmbeddedResource Include="UI - Main.resx">
+      <DependentUpon>UI - Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -101,16 +101,16 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Tab\homeTab.resx">
+    <EmbeddedResource Include="UI - Tab\homeTab.resx">
       <DependentUpon>homeTab.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tab\ITTab.resx">
+    <EmbeddedResource Include="UI - Tab\ITTab.resx">
       <DependentUpon>ITTab.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tab\GraphicTab.resx">
+    <EmbeddedResource Include="UI - Tab\GraphicTab.resx">
       <DependentUpon>GraphicTab.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tab\EngineeringTab.resx">
+    <EmbeddedResource Include="UI - Tab\EngineeringTab.resx">
       <DependentUpon>EngineeringTab.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
