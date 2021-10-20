@@ -11,6 +11,7 @@ using App.View;
 using App.ViewModels;
 using App.Interface;
 using App.DataServices;
+using System.Threading;
 
 namespace App
 {
@@ -23,7 +24,9 @@ namespace App
         public MainWindow()
         {
             data = new SqlDataAccess("connect");
+            
             InitializeComponent();
+            contentPanel.Hide();
         }
 
         private void SwapView(BaseView view = null)
@@ -61,24 +64,64 @@ namespace App
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void changeButtonColorAndShowTab(dynamic button, dynamic buttonA, dynamic buttonB)
         {
-            SwapView(new TechnologySectorView());
+            if (button.Normalcolor != button.Activecolor)
+            {
+                menuPanel.Width = 350;
+                menuButton.Enabled = false;
+                button.Normalcolor = button.Activecolor;
+                buttonA.Normalcolor = Color.Transparent;
+                buttonB.Normalcolor = Color.Transparent;
+                contentPanel.Show();
+            }
+            else
+            {
+                menuButton.Enabled = true;
+                button.Normalcolor = Color.Transparent;
+                contentPanel.Hide();
+            }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void menuButton_Click(object sender, EventArgs e)
         {
+            if (menuPanel.Width == 135)
+                menuPanel.Width = 350;
+            else menuPanel.Width = 135;
+        }
+        private void ITTab_Click(object sender, EventArgs e)
+        {
+            changeButtonColorAndShowTab(sender, TechnicalityTab, MultimediaTab);
             SwapView(new ITSectorView());
         }
-
-        private void button3_Click(object sender, EventArgs e)
+        private void TechnicalityTab_Click(object sender, EventArgs e)
         {
+            changeButtonColorAndShowTab(sender, ITTab, MultimediaTab);
+            SwapView(new TechnologySectorView());
+        }
+        private void MultimediaTab_Click(object sender, EventArgs e)
+        {
+            changeButtonColorAndShowTab(sender, ITTab, TechnicalityTab);
             SwapView(new DesignSectorView());
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void FadeOut(Form o, int time = 300)
         {
-            SwapView(new HomeView());
+            while (o.Opacity > 0.0)
+            {
+                Thread.Sleep(time / 100);
+                o.Opacity -= 0.05;
+            }
+            o.Opacity = 0;
+        }
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            FadeOut(this, 300);
+            Application.Exit();
+        }
+        private void minimizeButton_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }
