@@ -41,7 +41,6 @@ namespace App
             this.menuButton = new Bunifu.Framework.UI.BunifuImageButton();
             this.minimizeButton = new Bunifu.Framework.UI.BunifuImageButton();
             this.exitButton = new Bunifu.Framework.UI.BunifuImageButton();
-            this.contentPanel = new System.Windows.Forms.Panel();
             this.menuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.menuButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.minimizeButton)).BeginInit();
@@ -106,7 +105,7 @@ namespace App
             this.bunifuFlatButton4.Text = "Github";
             this.bunifuFlatButton4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton4.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(29)))), ((int)(((byte)(67)))));
-            this.bunifuFlatButton4.TextFont = new System.Drawing.Font("UTM Daxline", 15F, System.Drawing.FontStyle.Bold);
+            this.bunifuFlatButton4.TextFont = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // MultimediaTab
             // 
@@ -143,7 +142,7 @@ namespace App
             this.MultimediaTab.Text = "  ĐỒ HỌA";
             this.MultimediaTab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.MultimediaTab.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(251)))), ((int)(((byte)(217)))));
-            this.MultimediaTab.TextFont = new System.Drawing.Font("UTM Daxline", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MultimediaTab.TextFont = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.MultimediaTab.Click += new System.EventHandler(this.MultimediaTab_Click);
             // 
             // TechnicalityTab
@@ -181,7 +180,7 @@ namespace App
             this.TechnicalityTab.Text = "  KỸ THUẬT";
             this.TechnicalityTab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.TechnicalityTab.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(251)))), ((int)(((byte)(217)))));
-            this.TechnicalityTab.TextFont = new System.Drawing.Font("UTM Daxline", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TechnicalityTab.TextFont = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.TechnicalityTab.Click += new System.EventHandler(this.TechnicalityTab_Click);
             // 
             // ITTab
@@ -219,7 +218,7 @@ namespace App
             this.ITTab.Text = "  CÔNG NGHỆ THÔNG TIN";
             this.ITTab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.ITTab.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(251)))), ((int)(((byte)(217)))));
-            this.ITTab.TextFont = new System.Drawing.Font("UTM Daxline", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ITTab.TextFont = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.ITTab.Click += new System.EventHandler(this.ITTab_Click);
             // 
             // menuButton
@@ -268,25 +267,12 @@ namespace App
             this.exitButton.Zoom = 10;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
-            // contentPanel
-            // 
-            this.contentPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.contentPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(62)))), ((int)(((byte)(143)))));
-            this.contentPanel.Location = new System.Drawing.Point(350, 47);
-            this.contentPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.contentPanel.Name = "contentPanel";
-            this.contentPanel.Size = new System.Drawing.Size(629, 498);
-            this.contentPanel.TabIndex = 7;
-            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(15)))), ((int)(((byte)(46)))));
             this.ClientSize = new System.Drawing.Size(980, 590);
-            this.Controls.Add(this.contentPanel);
             this.Controls.Add(this.minimizeButton);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.menuPanel);
@@ -313,7 +299,6 @@ namespace App
         private Bunifu.Framework.UI.BunifuImageButton menuButton;
         private Bunifu.Framework.UI.BunifuImageButton minimizeButton;
         private Bunifu.Framework.UI.BunifuImageButton exitButton;
-        private System.Windows.Forms.Panel contentPanel;
     }
 }
 
