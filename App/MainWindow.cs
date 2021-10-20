@@ -26,7 +26,6 @@ namespace App
             data = new SqlDataAccess("connect");
             
             InitializeComponent();
-            contentPanel.Hide();
         }
 
         private void SwapView(BaseView view = null)
@@ -68,18 +67,17 @@ namespace App
         {
             if (button.Normalcolor != button.Activecolor)
             {
-                menuPanel.Width = 350;
                 menuButton.Enabled = false;
+                menuPanel.Width = 350;
                 button.Normalcolor = button.Activecolor;
                 buttonA.Normalcolor = Color.Transparent;
                 buttonB.Normalcolor = Color.Transparent;
-                contentPanel.Show();
             }
             else
             {
+                menuPanel.Width = 135;
                 menuButton.Enabled = true;
                 button.Normalcolor = Color.Transparent;
-                contentPanel.Hide();
             }
         }
 
