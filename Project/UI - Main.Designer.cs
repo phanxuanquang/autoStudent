@@ -52,13 +52,13 @@
             Banner.Controls.Add(this.minimalizeButton);
             Banner.Controls.Add(this.exitButton);
             Banner.Controls.Add(this.autoStudent);
-            Banner.Dock = System.Windows.Forms.DockStyle.Top;
+            Banner.Dock = System.Windows.Forms.DockStyle.Left;
             Banner.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(153)))), ((int)(((byte)(255)))));
             Banner.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(179)))), ((int)(((byte)(255)))));
             Banner.Location = new System.Drawing.Point(0, 0);
             Banner.Name = "Banner";
             Banner.ShadowDecoration.Parent = Banner;
-            Banner.Size = new System.Drawing.Size(930, 43);
+            Banner.Size = new System.Drawing.Size(130, 690);
             Banner.TabIndex = 0;
             Banner.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             Banner.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
@@ -77,7 +77,7 @@
             this.minimalizeButton.HoverState.ForeColor = System.Drawing.Color.Transparent;
             this.minimalizeButton.HoverState.Parent = this.minimalizeButton;
             this.minimalizeButton.Image = ((System.Drawing.Image)(resources.GetObject("minimalizeButton.Image")));
-            this.minimalizeButton.Location = new System.Drawing.Point(840, 1);
+            this.minimalizeButton.Location = new System.Drawing.Point(40, 1);
             this.minimalizeButton.Name = "minimalizeButton";
             this.minimalizeButton.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.minimalizeButton.ShadowDecoration.Parent = this.minimalizeButton;
@@ -98,7 +98,7 @@
             this.exitButton.HoverState.ForeColor = System.Drawing.Color.Transparent;
             this.exitButton.HoverState.Parent = this.exitButton;
             this.exitButton.Image = ((System.Drawing.Image)(resources.GetObject("exitButton.Image")));
-            this.exitButton.Location = new System.Drawing.Point(888, 0);
+            this.exitButton.Location = new System.Drawing.Point(88, 0);
             this.exitButton.Name = "exitButton";
             this.exitButton.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.exitButton.ShadowDecoration.Parent = this.exitButton;
@@ -113,10 +113,10 @@
             this.autoStudent.BackColor = System.Drawing.Color.Transparent;
             this.autoStudent.Font = new System.Drawing.Font("UTM Daxline", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoStudent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.autoStudent.Location = new System.Drawing.Point(0, -2);
+            this.autoStudent.Location = new System.Drawing.Point(1, 5);
             this.autoStudent.Name = "autoStudent";
             this.autoStudent.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.autoStudent.Size = new System.Drawing.Size(432, 45);
+            this.autoStudent.Size = new System.Drawing.Size(339, 28);
             this.autoStudent.TabIndex = 0;
             this.autoStudent.Text = "   autoStudent - for Vietnamese students";
             this.autoStudent.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
