@@ -24,7 +24,7 @@ namespace App.View
             List<Software> softwares = _model.ListSoftware();
             foreach (var software in softwares)
             {
-                checkedListBox1.Items.Add(software.Name);
+                
             }
         }
     }
