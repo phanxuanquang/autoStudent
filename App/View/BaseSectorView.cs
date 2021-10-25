@@ -18,14 +18,12 @@ namespace App.View
         public BaseSectorView()
         {
             InitializeComponent();
+            this.Load += delegate { ShowList(); };
         }
         public void ShowList()
         {
             List<Software> softwares = _model.ListSoftware();
-            foreach (var software in softwares)
-            {
-                
-            }
+            softList.DataSource = softwares;
         }
     }
 }
