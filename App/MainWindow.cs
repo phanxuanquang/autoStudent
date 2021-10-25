@@ -78,7 +78,7 @@ namespace App
             {
                 menuPanel.Width = 135;
                 menuButton.Enabled = true;
-                contentPanel.Hide();
+                contentPanel.Hide(); 
                 softName.Show();
                 button.Normalcolor = Color.Transparent;
             }
