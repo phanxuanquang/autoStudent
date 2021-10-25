@@ -35,6 +35,7 @@ namespace App.View
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Location = new System.Drawing.Point(350, 46);
             this.Name = "BaseView";
             this.Size = new System.Drawing.Size(664, 434);
             this.ResumeLayout(false);
