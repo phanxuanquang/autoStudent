@@ -59,7 +59,7 @@ namespace App
                     _view = new HomeView();
                 }
             }
-            this.Controls.Add(_view);
+            contentPanel.Controls.Add(_view);
 
         }
 
@@ -67,8 +67,10 @@ namespace App
         {
             if (button.Normalcolor != button.Activecolor)
             {
-                menuButton.Enabled = false;
                 menuPanel.Width = 350;
+                menuButton.Enabled = false;
+                contentPanel.Show();
+                softName.Hide();
                 button.Normalcolor = button.Activecolor;
                 buttonA.Normalcolor = Color.Transparent;
                 buttonB.Normalcolor = Color.Transparent;
@@ -77,6 +79,8 @@ namespace App
             {
                 menuPanel.Width = 135;
                 menuButton.Enabled = true;
+                contentPanel.Hide();
+                softName.Show();
                 button.Normalcolor = Color.Transparent;
             }
         }
@@ -84,8 +88,15 @@ namespace App
         private void menuButton_Click(object sender, EventArgs e)
         {
             if (menuPanel.Width == 135)
+            {
+                softName.Hide();
                 menuPanel.Width = 350;
-            else menuPanel.Width = 135;
+            }
+            else
+            {
+                softName.Show();
+                menuPanel.Width = 135;
+            }
         }
         private void ITTab_Click(object sender, EventArgs e)
         {

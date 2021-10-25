@@ -29,34 +29,34 @@ namespace App.View
         /// </summary>
         private void InitializeComponent()
         {
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.softList = new System.Windows.Forms.CheckedListBox();
             this.ITTab = new Bunifu.Framework.UI.BunifuFlatButton();
             this.SuspendLayout();
             // 
-            // checkedListBox1
+            // softList
             // 
-            this.checkedListBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(62)))), ((int)(((byte)(143)))));
-            this.checkedListBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.checkedListBox1.CheckOnClick = true;
-            this.checkedListBox1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.checkedListBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(251)))), ((int)(((byte)(217)))));
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Items.AddRange(new object[] {
+            this.softList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(62)))), ((int)(((byte)(143)))));
+            this.softList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.softList.CheckOnClick = true;
+            this.softList.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.softList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(251)))), ((int)(((byte)(217)))));
+            this.softList.FormattingEnabled = true;
+            this.softList.Items.AddRange(new object[] {
             "Microsoft Visual Studio Code",
             "Microsoft Visual Studio Community",
             "SQL Server Management Studio",
             "Oracle VM VirtualBox",
             "Wireshark",
             "Android Studio"});
-            this.checkedListBox1.Location = new System.Drawing.Point(69, 69);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.checkedListBox1.Size = new System.Drawing.Size(490, 317);
-            this.checkedListBox1.TabIndex = 4;
+            this.softList.Location = new System.Drawing.Point(69, 69);
+            this.softList.Name = "softList";
+            this.softList.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.softList.Size = new System.Drawing.Size(490, 317);
+            this.softList.TabIndex = 4;
             // 
             // ITTab
             // 
-            this.ITTab.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(62)))), ((int)(((byte)(143)))));
+            this.ITTab.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(78)))), ((int)(((byte)(181)))));
             this.ITTab.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ITTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(15)))), ((int)(((byte)(46)))));
@@ -97,8 +97,8 @@ namespace App.View
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(62)))), ((int)(((byte)(143)))));
             this.Controls.Add(this.ITTab);
-            this.Controls.Add(this.checkedListBox1);
-            this.Location = new System.Drawing.Point(0, 0);
+            this.Controls.Add(this.softList);
+            this.Location = new System.Drawing.Point(350, 100);
             this.Name = "BaseSectorView";
             this.Size = new System.Drawing.Size(629, 498);
             this.ResumeLayout(false);
@@ -106,7 +106,7 @@ namespace App.View
         }
 
         #endregion
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.CheckedListBox softList;
         private Bunifu.Framework.UI.BunifuFlatButton ITTab;
     }
 }
