@@ -31,13 +31,15 @@ namespace App
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.menuPanel = new System.Windows.Forms.Panel();
+            this.MultimediaTab = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuFlatButton4 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.TechnicalityTab = new Bunifu.Framework.UI.BunifuFlatButton();
             this.ITTab = new Bunifu.Framework.UI.BunifuFlatButton();
             this.menuButton = new Bunifu.Framework.UI.BunifuImageButton();
             this.minimizeButton = new Bunifu.Framework.UI.BunifuImageButton();
             this.exitButton = new Bunifu.Framework.UI.BunifuImageButton();
-            this.MultimediaTab = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.contentPanel = new System.Windows.Forms.Panel();
+            this.softName = new System.Windows.Forms.Label();
             this.menuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.menuButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.minimizeButton)).BeginInit();
@@ -56,8 +58,46 @@ namespace App
             this.menuPanel.Controls.Add(this.menuButton);
             this.menuPanel.Location = new System.Drawing.Point(0, 0);
             this.menuPanel.Name = "menuPanel";
-            this.menuPanel.Size = new System.Drawing.Size(350, 590);
+            this.menuPanel.Size = new System.Drawing.Size(135, 590);
             this.menuPanel.TabIndex = 4;
+            // 
+            // MultimediaTab
+            // 
+            this.MultimediaTab.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(62)))), ((int)(((byte)(143)))));
+            this.MultimediaTab.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MultimediaTab.BackColor = System.Drawing.Color.Transparent;
+            this.MultimediaTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.MultimediaTab.BorderRadius = 0;
+            this.MultimediaTab.ButtonText = "  ĐỒ HỌA KỸ THUẬT SỐ";
+            this.MultimediaTab.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.MultimediaTab.DisabledColor = System.Drawing.Color.Gray;
+            this.MultimediaTab.Iconcolor = System.Drawing.Color.Transparent;
+            this.MultimediaTab.Iconimage = ((System.Drawing.Image)(resources.GetObject("MultimediaTab.Iconimage")));
+            this.MultimediaTab.Iconimage_right = null;
+            this.MultimediaTab.Iconimage_right_Selected = null;
+            this.MultimediaTab.Iconimage_Selected = null;
+            this.MultimediaTab.IconMarginLeft = 0;
+            this.MultimediaTab.IconMarginRight = 0;
+            this.MultimediaTab.IconRightVisible = true;
+            this.MultimediaTab.IconRightZoom = 0D;
+            this.MultimediaTab.IconVisible = true;
+            this.MultimediaTab.IconZoom = 90D;
+            this.MultimediaTab.IsTab = false;
+            this.MultimediaTab.Location = new System.Drawing.Point(0, 359);
+            this.MultimediaTab.Margin = new System.Windows.Forms.Padding(0);
+            this.MultimediaTab.Name = "MultimediaTab";
+            this.MultimediaTab.Normalcolor = System.Drawing.Color.Transparent;
+            this.MultimediaTab.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(78)))), ((int)(((byte)(181)))));
+            this.MultimediaTab.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(251)))), ((int)(((byte)(217)))));
+            this.MultimediaTab.selected = false;
+            this.MultimediaTab.Size = new System.Drawing.Size(135, 128);
+            this.MultimediaTab.TabIndex = 8;
+            this.MultimediaTab.Text = "  ĐỒ HỌA KỸ THUẬT SỐ";
+            this.MultimediaTab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.MultimediaTab.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(251)))), ((int)(((byte)(217)))));
+            this.MultimediaTab.TextFont = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.MultimediaTab.Click += new System.EventHandler(this.MultimediaTab_Click);
             // 
             // bunifuFlatButton4
             // 
@@ -88,7 +128,7 @@ namespace App
             this.bunifuFlatButton4.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(199)))), ((int)(((byte)(172)))));
             this.bunifuFlatButton4.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(29)))), ((int)(((byte)(67)))));
             this.bunifuFlatButton4.selected = false;
-            this.bunifuFlatButton4.Size = new System.Drawing.Size(350, 44);
+            this.bunifuFlatButton4.Size = new System.Drawing.Size(135, 44);
             this.bunifuFlatButton4.TabIndex = 7;
             this.bunifuFlatButton4.Text = "Github";
             this.bunifuFlatButton4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -125,7 +165,7 @@ namespace App
             this.TechnicalityTab.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(78)))), ((int)(((byte)(181)))));
             this.TechnicalityTab.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(251)))), ((int)(((byte)(217)))));
             this.TechnicalityTab.selected = false;
-            this.TechnicalityTab.Size = new System.Drawing.Size(350, 128);
+            this.TechnicalityTab.Size = new System.Drawing.Size(135, 128);
             this.TechnicalityTab.TabIndex = 5;
             this.TechnicalityTab.Text = "  KỸ THUẬT";
             this.TechnicalityTab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -163,7 +203,7 @@ namespace App
             this.ITTab.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(78)))), ((int)(((byte)(181)))));
             this.ITTab.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(251)))), ((int)(((byte)(217)))));
             this.ITTab.selected = false;
-            this.ITTab.Size = new System.Drawing.Size(350, 128);
+            this.ITTab.Size = new System.Drawing.Size(135, 128);
             this.ITTab.TabIndex = 4;
             this.ITTab.Text = "  CÔNG NGHỆ THÔNG TIN";
             this.ITTab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -180,7 +220,7 @@ namespace App
             this.menuButton.ImageActive = null;
             this.menuButton.Location = new System.Drawing.Point(0, 12);
             this.menuButton.Name = "menuButton";
-            this.menuButton.Size = new System.Drawing.Size(350, 40);
+            this.menuButton.Size = new System.Drawing.Size(135, 40);
             this.menuButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.menuButton.TabIndex = 3;
             this.menuButton.TabStop = false;
@@ -217,43 +257,24 @@ namespace App
             this.exitButton.Zoom = 10;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
-            // MultimediaTab
+            // contentPanel
             // 
-            this.MultimediaTab.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(62)))), ((int)(((byte)(143)))));
-            this.MultimediaTab.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.MultimediaTab.BackColor = System.Drawing.Color.Transparent;
-            this.MultimediaTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.MultimediaTab.BorderRadius = 0;
-            this.MultimediaTab.ButtonText = "  ĐỒ HỌA KỸ THUẬT SỐ";
-            this.MultimediaTab.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.MultimediaTab.DisabledColor = System.Drawing.Color.Gray;
-            this.MultimediaTab.Iconcolor = System.Drawing.Color.Transparent;
-            this.MultimediaTab.Iconimage = ((System.Drawing.Image)(resources.GetObject("MultimediaTab.Iconimage")));
-            this.MultimediaTab.Iconimage_right = null;
-            this.MultimediaTab.Iconimage_right_Selected = null;
-            this.MultimediaTab.Iconimage_Selected = null;
-            this.MultimediaTab.IconMarginLeft = 0;
-            this.MultimediaTab.IconMarginRight = 0;
-            this.MultimediaTab.IconRightVisible = true;
-            this.MultimediaTab.IconRightZoom = 0D;
-            this.MultimediaTab.IconVisible = true;
-            this.MultimediaTab.IconZoom = 90D;
-            this.MultimediaTab.IsTab = false;
-            this.MultimediaTab.Location = new System.Drawing.Point(0, 359);
-            this.MultimediaTab.Margin = new System.Windows.Forms.Padding(0);
-            this.MultimediaTab.Name = "MultimediaTab";
-            this.MultimediaTab.Normalcolor = System.Drawing.Color.Transparent;
-            this.MultimediaTab.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(78)))), ((int)(((byte)(181)))));
-            this.MultimediaTab.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(251)))), ((int)(((byte)(217)))));
-            this.MultimediaTab.selected = false;
-            this.MultimediaTab.Size = new System.Drawing.Size(350, 128);
-            this.MultimediaTab.TabIndex = 8;
-            this.MultimediaTab.Text = "  ĐỒ HỌA KỸ THUẬT SỐ";
-            this.MultimediaTab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.MultimediaTab.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(251)))), ((int)(((byte)(217)))));
-            this.MultimediaTab.TextFont = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.MultimediaTab.Click += new System.EventHandler(this.MultimediaTab_Click);
+            this.contentPanel.Location = new System.Drawing.Point(350, 46);
+            this.contentPanel.Name = "contentPanel";
+            this.contentPanel.Size = new System.Drawing.Size(629, 498);
+            this.contentPanel.TabIndex = 7;
+            // 
+            // softName
+            // 
+            this.softName.AutoSize = true;
+            this.softName.BackColor = System.Drawing.Color.Transparent;
+            this.softName.Font = new System.Drawing.Font("Arial", 60F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.softName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(251)))), ((int)(((byte)(217)))));
+            this.softName.Location = new System.Drawing.Point(303, 249);
+            this.softName.Name = "softName";
+            this.softName.Size = new System.Drawing.Size(507, 93);
+            this.softName.TabIndex = 8;
+            this.softName.Text = "autoStudent";
             // 
             // MainWindow
             // 
@@ -261,6 +282,8 @@ namespace App
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(15)))), ((int)(((byte)(46)))));
             this.ClientSize = new System.Drawing.Size(980, 590);
+            this.Controls.Add(this.softName);
+            this.Controls.Add(this.contentPanel);
             this.Controls.Add(this.minimizeButton);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.menuPanel);
@@ -273,6 +296,7 @@ namespace App
             ((System.ComponentModel.ISupportInitialize)(this.minimizeButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.exitButton)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -285,6 +309,8 @@ namespace App
         private Bunifu.Framework.UI.BunifuImageButton minimizeButton;
         private Bunifu.Framework.UI.BunifuImageButton exitButton;
         private Bunifu.Framework.UI.BunifuFlatButton MultimediaTab;
+        private System.Windows.Forms.Panel contentPanel;
+        private System.Windows.Forms.Label softName;
     }
 }
 
