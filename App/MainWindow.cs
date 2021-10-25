@@ -68,7 +68,6 @@ namespace App
             if (button.Normalcolor != button.Activecolor)
             {
                 menuPanel.Width = 350;
-                menuButton.Enabled = false;
                 contentPanel.Show();
                 softName.Hide();
                 button.Normalcolor = button.Activecolor;
@@ -85,15 +84,17 @@ namespace App
             }
         }
 
-        private void menuButton_Click(object sender, EventArgs e)
+        private void menuButton_Click(dynamic sender, EventArgs e)
         {
             if (menuPanel.Width == 135)
             {
+                contentPanel.Show();
                 softName.Hide();
                 menuPanel.Width = 350;
             }
             else
             {
+                contentPanel.Hide();
                 softName.Show();
                 menuPanel.Width = 135;
             }
