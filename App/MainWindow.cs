@@ -88,7 +88,6 @@ namespace App
         {
             if (menuPanel.Width == 135)
             {
-                contentPanel.Show();
                 softName.Hide();
                 menuPanel.Width = 350;
             }
