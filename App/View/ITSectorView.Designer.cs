@@ -45,6 +45,7 @@ namespace App.View
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.textBox1);
+            this.Location = new System.Drawing.Point(0, 0);
             this.Name = "ITSectorView";
             this.Controls.SetChildIndex(this.textBox1, 0);
             this.ResumeLayout(false);
