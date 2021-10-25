@@ -32,7 +32,7 @@ namespace App
         {
             if (view != null)
             {
-                this.Controls.Remove(_view);
+                contentPanel.Controls.Remove(_view);
 
                 if (view is DesignSectorView)
                 {

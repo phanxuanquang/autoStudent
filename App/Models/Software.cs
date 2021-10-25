@@ -12,6 +12,14 @@ namespace App.Models
         exe,
         zip,
     }
+
+    public enum TypeOfSoftware
+    {
+        IT,
+        Tech,
+        Design,
+    }
+        
     public class Software
     {
         public int Id { get; set; }

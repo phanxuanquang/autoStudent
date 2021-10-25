@@ -28,5 +28,16 @@ namespace App.DataServices
             };
         }
 
+        public List<Software> GetAllByTypeOfSoftware(TypeOfSoftware type)
+        {
+            return new List<Software>
+            {
+                new Software {Id = 1, Name = "K"},
+                new Software {Id = 2, Name = "T"},
+                new Software {Id = 2, Name = "H"},
+                new Software {Id = 2, Name = "U"},
+            };
+        }
+
     }
 }
