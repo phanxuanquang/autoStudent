@@ -10,5 +10,6 @@ namespace App.Interface
     public interface ISoftwareRepository
     {
         List<Software> GetAll();
+        List<Software> GetAllByTypeOfSoftware(TypeOfSoftware type);
     }
 }

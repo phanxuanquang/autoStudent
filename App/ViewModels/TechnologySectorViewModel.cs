@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using App.DataServices;
+using App.Models;
 
 namespace App.ViewModels
 {
@@ -15,5 +16,10 @@ namespace App.ViewModels
         }
 
         public TechnologySectorViewModel(IDataAccess context) : base(context) { }
+
+        public override List<Software> ListSoftware()
+        {
+            return _repository.GetAllByTypeOfSoftware(TypeOfSoftware.Tech);
+        }
     }
 }
