@@ -23,7 +23,7 @@ namespace App
 
         public MainWindow()
         {
-            data = new SqlDataAccess("./sqlite.db");
+            data = new SqlDataAccess("../../../sqlite.db");
             
             InitializeComponent();
         }
