@@ -15,16 +15,30 @@ namespace App.View
     public partial class BaseSectorView : BaseView
     {
         protected BaseSectorViewModel _model;
+        protected List<Software> softwares;
         public BaseSectorView()
         {
             InitializeComponent();
+            this.Load += delegate { ShowList(); };
         }
         public void ShowList()
         {
-            List<Software> softwares = _model.ListSoftware();
-            foreach (var software in softwares)
+            if (_model != null)
             {
-                
+                softwares = _model.ListSoftware();
+                for (int index = 0; index < softwares.Count; index++)
+                {
+                    softList.Items.Add(softwares[index].Name);
+                }
+            }
+        }
+
+        private void ConfirmButton_Click(object sender, EventArgs e)
+        {
+            CheckedListBox.CheckedIndexCollection selected = softList.CheckedIndices;
+            for(int index = 0; index < selected.Count; index++)
+            {
+                MessageBox.Show(softwares[selected[index]].Name);
             }
         }
     }

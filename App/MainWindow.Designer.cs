@@ -63,13 +63,14 @@ namespace App
             // 
             // MultimediaTab
             // 
+            this.MultimediaTab.Active = false;
             this.MultimediaTab.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(62)))), ((int)(((byte)(143)))));
             this.MultimediaTab.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MultimediaTab.BackColor = System.Drawing.Color.Transparent;
             this.MultimediaTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.MultimediaTab.BorderRadius = 0;
-            this.MultimediaTab.ButtonText = "  ĐỒ HỌA KỸ THUẬT SỐ";
+            this.MultimediaTab.ButtonText = "";
             this.MultimediaTab.Cursor = System.Windows.Forms.Cursors.Hand;
             this.MultimediaTab.DisabledColor = System.Drawing.Color.Gray;
             this.MultimediaTab.Iconcolor = System.Drawing.Color.Transparent;
@@ -93,7 +94,6 @@ namespace App
             this.MultimediaTab.selected = false;
             this.MultimediaTab.Size = new System.Drawing.Size(135, 128);
             this.MultimediaTab.TabIndex = 8;
-            this.MultimediaTab.Text = "  ĐỒ HỌA KỸ THUẬT SỐ";
             this.MultimediaTab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.MultimediaTab.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(251)))), ((int)(((byte)(217)))));
             this.MultimediaTab.TextFont = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
@@ -101,6 +101,7 @@ namespace App
             // 
             // bunifuFlatButton4
             // 
+            this.bunifuFlatButton4.Active = false;
             this.bunifuFlatButton4.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(251)))), ((int)(((byte)(217)))));
             this.bunifuFlatButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(251)))), ((int)(((byte)(217)))));
             this.bunifuFlatButton4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -137,13 +138,14 @@ namespace App
             // 
             // TechnicalityTab
             // 
+            this.TechnicalityTab.Active = false;
             this.TechnicalityTab.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(62)))), ((int)(((byte)(143)))));
             this.TechnicalityTab.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TechnicalityTab.BackColor = System.Drawing.Color.Transparent;
             this.TechnicalityTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.TechnicalityTab.BorderRadius = 0;
-            this.TechnicalityTab.ButtonText = "  KỸ THUẬT";
+            this.TechnicalityTab.ButtonText = "";
             this.TechnicalityTab.Cursor = System.Windows.Forms.Cursors.Hand;
             this.TechnicalityTab.DisabledColor = System.Drawing.Color.Gray;
             this.TechnicalityTab.Iconcolor = System.Drawing.Color.Transparent;
@@ -167,7 +169,6 @@ namespace App
             this.TechnicalityTab.selected = false;
             this.TechnicalityTab.Size = new System.Drawing.Size(135, 128);
             this.TechnicalityTab.TabIndex = 5;
-            this.TechnicalityTab.Text = "  KỸ THUẬT";
             this.TechnicalityTab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.TechnicalityTab.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(251)))), ((int)(((byte)(217)))));
             this.TechnicalityTab.TextFont = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
@@ -175,13 +176,14 @@ namespace App
             // 
             // ITTab
             // 
+            this.ITTab.Active = false;
             this.ITTab.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(62)))), ((int)(((byte)(143)))));
             this.ITTab.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ITTab.BackColor = System.Drawing.Color.Transparent;
             this.ITTab.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ITTab.BorderRadius = 0;
-            this.ITTab.ButtonText = "  CÔNG NGHỆ THÔNG TIN";
+            this.ITTab.ButtonText = "";
             this.ITTab.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ITTab.DisabledColor = System.Drawing.Color.Gray;
             this.ITTab.Iconcolor = System.Drawing.Color.Transparent;
@@ -205,7 +207,6 @@ namespace App
             this.ITTab.selected = false;
             this.ITTab.Size = new System.Drawing.Size(135, 128);
             this.ITTab.TabIndex = 4;
-            this.ITTab.Text = "  CÔNG NGHỆ THÔNG TIN";
             this.ITTab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.ITTab.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(251)))), ((int)(((byte)(217)))));
             this.ITTab.TextFont = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));

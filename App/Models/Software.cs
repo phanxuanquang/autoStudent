@@ -12,6 +12,15 @@ namespace App.Models
         exe,
         zip,
     }
+
+    public enum TypeOfSoftware
+    {
+        IT,
+        Tech,
+        Design,
+        None
+    }
+        
     public class Software
     {
         public int Id { get; set; }
@@ -20,7 +29,6 @@ namespace App.Models
 
         public List<InstallControlHander> InstallControlHanders { get; set; }
 
-        public TypeOfFileInstall Type {get; set;}
-
+        public TypeOfFileInstall Types {get; set;}
     }
 }

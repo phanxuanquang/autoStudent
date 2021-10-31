@@ -19,8 +19,7 @@ namespace App.ViewModels
         {
             _repository = new SoftwareReponsitory(context);
         }
-
-        public List<Software> ListSoftware()
+        public virtual List<Software> ListSoftware()
         {
             return _repository.GetAll();
         }

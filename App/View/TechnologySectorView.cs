@@ -17,6 +17,7 @@ namespace App.View
         {
             _model = model ?? new TechnologySectorViewModel();
             InitializeComponent();
+            //this.Load += delegate { ShowList(); };
         }
     }
 }
