@@ -8,6 +8,6 @@ namespace App.Interface
 {
     public interface IDataAccess
     {
-        void Load();
+        string GetConnectionString();
     }
 }
