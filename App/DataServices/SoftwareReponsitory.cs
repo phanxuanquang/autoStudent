@@ -61,7 +61,7 @@ namespace App.DataServices
                             Enum.TryParse<TypeOfFileInstall>(reader["Type"].ToString(), out var types);
                             result.Add(new Software()
                             {
-                                Id = int.Parse(reader["Id_Software"].ToString()),
+                                Id = int.Parse(reader["Id_Software"].ToString()), 
                                 Name = reader["Name"].ToString(),
                                 LinkDownload = reader["Link"].ToString(),
                                 Types = types,
