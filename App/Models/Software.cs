@@ -18,6 +18,7 @@ namespace App.Models
         IT,
         Tech,
         Design,
+        None
     }
         
     public class Software
@@ -28,7 +29,6 @@ namespace App.Models
 
         public List<InstallControlHander> InstallControlHanders { get; set; }
 
-        public TypeOfFileInstall Type {get; set;}
-
+        public TypeOfFileInstall Types {get; set;}
     }
 }
