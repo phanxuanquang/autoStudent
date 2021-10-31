@@ -23,63 +23,55 @@ namespace App
 
         public MainWindow()
         {
-            data = new SqlDataAccess("connect");
+            data = new SqlDataAccess("./sqlite.db");
             
             InitializeComponent();
         }
-
-        private void SwapView(BaseView view = null)
+        private void SwapView(Models.TypeOfSoftware view=Models.TypeOfSoftware.None)
         {
-            if (view != null)
+            if (view != Models.TypeOfSoftware.None)
             {
                 contentPanel.Controls.Remove(_view);
-
-                if (view is DesignSectorView)
-                {
-                    _model = new DesignSectorViewModel(data);
-                    _view = new DesignSectorView(_model as DesignSectorViewModel);
-                }
-
-                // If the View an OtherView
-                if (view is ITSectorView)
-                {
-                    _model = new ITSectorViewModel(data);
-                    _view = new ITSectorView(_model as ITSectorViewModel);
-                }
-
-                if (view is TechnologySectorView)
-                {
-                    _model = new TechnologySectorViewModel(data);
-                    _view = new TechnologySectorView(_model as TechnologySectorViewModel);
-                }
-
-                if (view is HomeView)
-                {
-                    _model = null;
-                    _view = new HomeView();
+                switch (view){
+                    case Models.TypeOfSoftware.Design:
+                        _model = new DesignSectorViewModel(data);
+                        _view = new DesignSectorView(_model as DesignSectorViewModel);
+                        break;
+                    case Models.TypeOfSoftware.IT:
+                        _model = new ITSectorViewModel(data);
+                        _view = new ITSectorView(_model as ITSectorViewModel);
+                        break;
+                    case Models.TypeOfSoftware.Tech:
+                        _model = new TechnologySectorViewModel(data);
+                        _view = new TechnologySectorView(_model as TechnologySectorViewModel);
+                        break;
+                    default:
+                        _model = null;
+                        _view = new HomeView();
+                        break;
                 }
             }
             contentPanel.Controls.Add(_view);
-
         }
 
         private void changeButtonColorAndShowTab(dynamic button, dynamic buttonA, dynamic buttonB)
         {
+            menuPanel.Width = 135;
+            ITTab.ButtonText = "";
+            MultimediaTab.ButtonText = "";
+            TechnicalityTab.ButtonText = "";
             if (button.Normalcolor != button.Activecolor)
             {
-                menuPanel.Width = 350;
-                contentPanel.Show();
                 softName.Hide();
+                contentPanel.Show();
                 button.Normalcolor = button.Activecolor;
                 buttonA.Normalcolor = Color.Transparent;
                 buttonB.Normalcolor = Color.Transparent;
             }
             else
             {
-                menuPanel.Width = 135;
-                menuButton.Enabled = true;
-                contentPanel.Hide(); 
                 softName.Show();
+                contentPanel.Hide();
                 button.Normalcolor = Color.Transparent;
             }
         }
@@ -88,30 +80,34 @@ namespace App
         {
             if (menuPanel.Width == 135)
             {
-                softName.Hide();
                 menuPanel.Width = 350;
+                ITTab.ButtonText = "  CÔNG NGHỆ THÔNG TIN";
+                MultimediaTab.ButtonText = "  ĐỒ HỌA KỸ THUẬT SỐ";
+                TechnicalityTab.ButtonText = "  KỸ THUẬT";
+                menuPanel.BringToFront();
             }
             else
             {
-                contentPanel.Hide();
-                softName.Show();
                 menuPanel.Width = 135;
+                ITTab.ButtonText = "";
+                MultimediaTab.ButtonText = "";
+                TechnicalityTab.ButtonText = "";
             }
         }
         private void ITTab_Click(object sender, EventArgs e)
         {
             changeButtonColorAndShowTab(sender, TechnicalityTab, MultimediaTab);
-            SwapView(new ITSectorView());
+            SwapView(Models.TypeOfSoftware.IT);
         }
         private void TechnicalityTab_Click(object sender, EventArgs e)
         {
             changeButtonColorAndShowTab(sender, ITTab, MultimediaTab);
-            SwapView(new TechnologySectorView());
+            SwapView(Models.TypeOfSoftware.Tech);
         }
         private void MultimediaTab_Click(object sender, EventArgs e)
         {
             changeButtonColorAndShowTab(sender, ITTab, TechnicalityTab);
-            SwapView(new DesignSectorView());
+            SwapView(Models.TypeOfSoftware.Design);
         }
 
         private void FadeOut(Form o, int time = 300)

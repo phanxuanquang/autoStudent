@@ -17,7 +17,7 @@ namespace App.View
         {
             _model = model ?? new ITSectorViewModel();
             InitializeComponent();
-            this.Load += delegate { ShowList(); };
+            //this.Load += delegate { ShowList(); };
         }
     }
 }
