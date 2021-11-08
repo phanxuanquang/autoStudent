@@ -32,14 +32,5 @@ namespace App.View
                 }
             }
         }
-
-        private void ConfirmButton_Click(object sender, EventArgs e)
-        {
-            CheckedListBox.CheckedIndexCollection selected = softList.CheckedIndices;
-            for(int index = 0; index < selected.Count; index++)
-            {
-                MessageBox.Show(softwares[selected[index]].Name);
-            }
-        }
     }
 }
