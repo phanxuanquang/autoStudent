@@ -186,6 +186,7 @@
     <Compile Include="ViewModels\BaseSectorViewModel.cs" />
     <Compile Include="ViewModels\DesignSectorViewModel.cs" />
     <Compile Include="ViewModels\ITSectorViewModel.cs" />
+    <Compile Include="ViewModels\OptionalSectorViewModel.cs" />
     <Compile Include="ViewModels\TechnologySectorViewModel.cs" />
     <Compile Include="View\BaseSectorView.cs">
       <SubType>UserControl</SubType>
