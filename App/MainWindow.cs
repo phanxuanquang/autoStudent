@@ -29,7 +29,6 @@ namespace App
             InitializeComponent();
             softName.BringToFront();
             ConfirmButton.Hide();
-            beginClock.Start();
         }
         // Anti Flickering
         protected override CreateParams CreateParams
@@ -113,7 +112,7 @@ namespace App
             else
             {
                 contentPanel.Hide();
-                menuPanel.Width = 155;
+                menuPanel.Width = 150;
                 clock.Start();
                 ITTab.ButtonText = "";
                 MultimediaTab.ButtonText = "";
@@ -125,7 +124,7 @@ namespace App
         // Tab Button
         private void menuButton_Click(dynamic sender, EventArgs e)
         {
-            if (menuPanel.Width == 135)
+            if (menuPanel.Width == 130)
             {
                 //menuPanel.Width = 350;
                 menuPanel.Width = 330;
@@ -138,7 +137,7 @@ namespace App
             }
             else
             {
-                menuPanel.Width = 155;
+                menuPanel.Width = 150;
                 clock.Start();
                 contentPanel.Left = 236;
                 ITTab.ButtonText = "";
@@ -186,21 +185,11 @@ namespace App
                 if (menuPanel.Width >= 350)
                     clock.Stop();
             }
-            if (menuPanel.Width <= 155)
+            if (menuPanel.Width <= 150)
             {
                 menuPanel.Width -= 2;
-                if (menuPanel.Width <= 135)
+                if (menuPanel.Width <= 130)
                     clock.Stop();
-            }
-        }
-
-        private void beginClock_Tick(object sender, EventArgs e)
-        {
-            if (menuPanel.Width >= 125)
-            {
-                menuPanel.Width += 2;
-                if (menuPanel.Width >= 135)
-                    beginClock.Stop();
             }
         }
     }
