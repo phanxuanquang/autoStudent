@@ -30,14 +30,15 @@ namespace App
         }
         private void exitButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn hủy tiến trình cài đặt?", "XÁC NHẬN HỦY CÀI ĐẶT", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+                this.Close();
         }
 
         private void clock_Tick(object sender, EventArgs e)
         {
             ProgressBar.Increment(1);
         }
-
         private void softwareNameClock_Tick(object sender, EventArgs e)
         {
             if (ProgressBar.ForeColor == Color.Cyan)
