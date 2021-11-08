@@ -88,7 +88,7 @@
             this.testButton.TabIndex = 10;
             this.testButton.Text = "TEST";
             this.testButton.UseVisualStyleBackColor = true;
-            this.testButton.Click += new System.EventHandler(this.button1_Click);
+            this.testButton.Click += new System.EventHandler(this.TestButton_Click);
             // 
             // ProgressBar
             // 

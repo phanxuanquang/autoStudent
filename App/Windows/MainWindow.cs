@@ -40,16 +40,6 @@ namespace App
                 return handleParam;
             }
         }
-        // Fade Out
-        private void FadeOut(Form o, int time = 300)
-        {
-            while (o.Opacity > 0.0)
-            {
-                Thread.Sleep(time / 100);
-                o.Opacity -= 0.05;
-            }
-            o.Opacity = 0;
-        }
         // Windows State
         private void minimizeButton_Click(object sender, EventArgs e)
         {
@@ -60,11 +50,17 @@ namespace App
             DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn thoát chương trình?", "THOÁT CHƯƠNG TRÌNH", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                FadeOut(this, 300);
-                this.Close();
-            }
-
-            
+                if (dialogResult == DialogResult.Yes)
+                {
+                    while (this.Opacity > 0.0)
+                    {
+                        Thread.Sleep(3);
+                        this.Opacity -= 0.05;
+                    }
+                    this.Opacity = 0;
+                    this.Close();
+                }
+            } 
         }
         // GitHub Button
         private void GitHub_Button_Click(object sender, EventArgs e)
@@ -197,6 +193,5 @@ namespace App
                 this.Show();
             }
         }
-
     }
 }
