@@ -120,6 +120,21 @@ namespace App
                 button.Normalcolor = Color.Transparent;
             }
         }
+        private void clock_Tick(object sender, EventArgs e)
+        {
+            if (menuPanel.Width >= 330)
+            {
+                menuPanel.Width += 2;
+                if (menuPanel.Width >= 350)
+                    clock.Stop();
+            }
+            if (menuPanel.Width <= 150)
+            {
+                menuPanel.Width -= 2;
+                if (menuPanel.Width <= 130)
+                    clock.Stop();
+            }
+        }
 
         // Tab Button
         private void menuButton_Click(dynamic sender, EventArgs e)
@@ -174,22 +189,6 @@ namespace App
                 // checking software installing status function
                 
                 this.Show();
-            }
-        }
-
-        private void clock_Tick(object sender, EventArgs e)
-        {
-            if(menuPanel.Width >= 330)
-            {
-                menuPanel.Width += 2;
-                if (menuPanel.Width >= 350)
-                    clock.Stop();
-            }
-            if (menuPanel.Width <= 150)
-            {
-                menuPanel.Width -= 2;
-                if (menuPanel.Width <= 130)
-                    clock.Stop();
             }
         }
     }
