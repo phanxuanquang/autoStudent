@@ -29,6 +29,7 @@ namespace App
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.menuPanel = new System.Windows.Forms.Panel();
             this.MultimediaTab = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -41,6 +42,8 @@ namespace App
             this.softName = new System.Windows.Forms.Label();
             this.contentPanel = new System.Windows.Forms.Panel();
             this.ConfirmButton = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.clock = new System.Windows.Forms.Timer(this.components);
+            this.beginClock = new System.Windows.Forms.Timer(this.components);
             this.menuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.menuButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.minimizeButton)).BeginInit();
@@ -61,7 +64,7 @@ namespace App
             this.menuPanel.Location = new System.Drawing.Point(0, 0);
             this.menuPanel.Margin = new System.Windows.Forms.Padding(0);
             this.menuPanel.Name = "menuPanel";
-            this.menuPanel.Size = new System.Drawing.Size(135, 590);
+            this.menuPanel.Size = new System.Drawing.Size(125, 590);
             this.menuPanel.TabIndex = 4;
             // 
             // MultimediaTab
@@ -95,7 +98,7 @@ namespace App
             this.MultimediaTab.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(78)))), ((int)(((byte)(181)))));
             this.MultimediaTab.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(251)))), ((int)(((byte)(217)))));
             this.MultimediaTab.selected = false;
-            this.MultimediaTab.Size = new System.Drawing.Size(135, 128);
+            this.MultimediaTab.Size = new System.Drawing.Size(125, 128);
             this.MultimediaTab.TabIndex = 8;
             this.MultimediaTab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.MultimediaTab.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(251)))), ((int)(((byte)(217)))));
@@ -132,7 +135,7 @@ namespace App
             this.GitHub_Button.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(199)))), ((int)(((byte)(172)))));
             this.GitHub_Button.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(29)))), ((int)(((byte)(67)))));
             this.GitHub_Button.selected = false;
-            this.GitHub_Button.Size = new System.Drawing.Size(135, 44);
+            this.GitHub_Button.Size = new System.Drawing.Size(125, 44);
             this.GitHub_Button.TabIndex = 7;
             this.GitHub_Button.Text = "Github";
             this.GitHub_Button.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -171,7 +174,7 @@ namespace App
             this.TechnicalityTab.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(78)))), ((int)(((byte)(181)))));
             this.TechnicalityTab.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(251)))), ((int)(((byte)(217)))));
             this.TechnicalityTab.selected = false;
-            this.TechnicalityTab.Size = new System.Drawing.Size(135, 128);
+            this.TechnicalityTab.Size = new System.Drawing.Size(125, 128);
             this.TechnicalityTab.TabIndex = 5;
             this.TechnicalityTab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.TechnicalityTab.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(251)))), ((int)(((byte)(217)))));
@@ -209,7 +212,7 @@ namespace App
             this.ITTab.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(78)))), ((int)(((byte)(181)))));
             this.ITTab.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(251)))), ((int)(((byte)(217)))));
             this.ITTab.selected = false;
-            this.ITTab.Size = new System.Drawing.Size(135, 128);
+            this.ITTab.Size = new System.Drawing.Size(125, 128);
             this.ITTab.TabIndex = 4;
             this.ITTab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.ITTab.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(251)))), ((int)(((byte)(217)))));
@@ -226,7 +229,7 @@ namespace App
             this.menuButton.Location = new System.Drawing.Point(0, 12);
             this.menuButton.Margin = new System.Windows.Forms.Padding(0);
             this.menuButton.Name = "menuButton";
-            this.menuButton.Size = new System.Drawing.Size(135, 40);
+            this.menuButton.Size = new System.Drawing.Size(125, 40);
             this.menuButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.menuButton.TabIndex = 3;
             this.menuButton.TabStop = false;
@@ -296,9 +299,10 @@ namespace App
             this.ConfirmButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(15)))), ((int)(((byte)(46)))));
             this.ConfirmButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ConfirmButton.BorderRadius = 7;
-            this.ConfirmButton.ButtonText = "XÁC NHẬN VÀ CÀI ĐẶT";
+            this.ConfirmButton.ButtonText = "CÀI ĐẶT";
             this.ConfirmButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ConfirmButton.DisabledColor = System.Drawing.Color.Gray;
+            this.ConfirmButton.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.ConfirmButton.Iconcolor = System.Drawing.Color.Transparent;
             this.ConfirmButton.Iconimage = null;
             this.ConfirmButton.Iconimage_right = null;
@@ -311,20 +315,30 @@ namespace App
             this.ConfirmButton.IconVisible = true;
             this.ConfirmButton.IconZoom = 90D;
             this.ConfirmButton.IsTab = false;
-            this.ConfirmButton.Location = new System.Drawing.Point(386, 418);
+            this.ConfirmButton.Location = new System.Drawing.Point(409, 424);
             this.ConfirmButton.Margin = new System.Windows.Forms.Padding(0);
             this.ConfirmButton.Name = "ConfirmButton";
             this.ConfirmButton.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(15)))), ((int)(((byte)(46)))));
             this.ConfirmButton.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(78)))), ((int)(((byte)(181)))));
             this.ConfirmButton.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(251)))), ((int)(((byte)(217)))));
             this.ConfirmButton.selected = false;
-            this.ConfirmButton.Size = new System.Drawing.Size(225, 54);
+            this.ConfirmButton.Size = new System.Drawing.Size(198, 55);
             this.ConfirmButton.TabIndex = 11;
-            this.ConfirmButton.Text = "XÁC NHẬN VÀ CÀI ĐẶT";
+            this.ConfirmButton.Text = "CÀI ĐẶT";
             this.ConfirmButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ConfirmButton.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(251)))), ((int)(((byte)(217)))));
             this.ConfirmButton.TextFont = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.ConfirmButton.Click += new System.EventHandler(this.ConfirmButton_Click);
+            // 
+            // clock
+            // 
+            this.clock.Interval = 10;
+            this.clock.Tick += new System.EventHandler(this.clock_Tick);
+            // 
+            // beginClock
+            // 
+            this.beginClock.Interval = 10;
+            this.beginClock.Tick += new System.EventHandler(this.beginClock_Tick);
             // 
             // MainWindow
             // 
@@ -363,6 +377,8 @@ namespace App
         private System.Windows.Forms.Label softName;
         private System.Windows.Forms.Panel contentPanel;
         private Bunifu.Framework.UI.BunifuFlatButton ConfirmButton;
+        private System.Windows.Forms.Timer clock;
+        private System.Windows.Forms.Timer beginClock;
     }
 }
 
