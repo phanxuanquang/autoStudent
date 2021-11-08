@@ -155,6 +155,12 @@
     <Reference Include="Bunifu.UI.WinForms.Deprecated, Version=5.3.0.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
       <HintPath>..\packages\Bunifu.UI.WinForms.5.3.0\lib\net40\Bunifu.UI.WinForms.Deprecated.dll</HintPath>
     </Reference>
+    <Reference Include="Guna.UI">
+      <HintPath>C:\Users\tuyen\Downloads\Compressed\Bunifu and Guna\Guna UI 2.0.0.1\Guna UI Framework Ultimate v2.0.0.1 Lib-Master\Guna.UI WinForms\.net 4.0\Guna.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Guna.UI2">
+      <HintPath>C:\Users\tuyen\Downloads\Compressed\Bunifu and Guna\Guna UI 2.0.0.1\Guna UI Framework Ultimate v2.0.0.1 Lib-Master\Guna.UI2 WinForms\.net 4.0\Guna.UI2.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -174,6 +180,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataServices\SoftwareReponsitory.cs" />
+    <Compile Include="InstallWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InstallWindow.Designer.cs">
+      <DependentUpon>InstallWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interface\IDataAccess.cs" />
     <Compile Include="Interface\IdataSectorView.cs" />
     <Compile Include="Interface\ISoftwareRepository.cs" />
@@ -230,6 +242,9 @@
     <Compile Include="View\TechnologySectorView.Designer.cs">
       <DependentUpon>TechnologySectorView.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="InstallWindow.resx">
+      <DependentUpon>InstallWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>

@@ -12,6 +12,7 @@ using App.ViewModels;
 using App.Interface;
 using App.DataServices;
 using System.Threading;
+using System.Drawing.Text;
 
 namespace App
 {
@@ -27,8 +28,9 @@ namespace App
             
             InitializeComponent();
             softName.BringToFront();
+            ConfirmButton.Hide();
         }
-        // Anti flickering
+        // Anti Flickering
         protected override CreateParams CreateParams
         {
             get
@@ -38,10 +40,38 @@ namespace App
                 return handleParam;
             }
         }
+        // Fade Out
+        private void FadeOut(Form o, int time = 300)
+        {
+            while (o.Opacity > 0.0)
+            {
+                Thread.Sleep(time / 100);
+                o.Opacity -= 0.05;
+            }
+            o.Opacity = 0;
+        }
+        // Windows State
+        private void minimizeButton_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            FadeOut(this, 300);
+            this.Close();
+        }
+        // GitHub Button
+        private void GitHub_Button_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/phanxuanquang/autoStudent");
+        }
+
+        // Supporting Functions
         private void SwapView(Models.TypeOfSoftware view=Models.TypeOfSoftware.None)
         {
             if (view != Models.TypeOfSoftware.None)
             {
+                ConfirmButton.Show();
                 contentPanel.Controls.Remove(_view);
                 switch (view){
                     case Models.TypeOfSoftware.Design:
@@ -64,7 +94,6 @@ namespace App
             }
             contentPanel.Controls.Add(_view);
         }
-
         private void changeButtonColorAndShowTab(dynamic button, dynamic buttonA, dynamic buttonB)
         {
             if (button.Normalcolor != button.Activecolor)
@@ -91,6 +120,7 @@ namespace App
             }
         }
 
+        // Tab Button
         private void menuButton_Click(dynamic sender, EventArgs e)
         {
             if (menuPanel.Width == 135)
@@ -126,28 +156,14 @@ namespace App
             SwapView(Models.TypeOfSoftware.Design);
         }
 
-        private void FadeOut(Form o, int time = 300)
+        //Main Function
+        private void ConfirmButton_Click(object sender, EventArgs e)
         {
-            while (o.Opacity > 0.0)
-            {
-                Thread.Sleep(time / 100);
-                o.Opacity -= 0.05;
-            }
-            o.Opacity = 0;
-        }
-        private void exitButton_Click(object sender, EventArgs e)
-        {
-            FadeOut(this, 300);
-            Application.Exit();
-        }
-        private void minimizeButton_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
-        private void GitHub_Button_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://github.com/phanxuanquang/autoStudent");
+            this.Hide();
+            InstallWindow installProgressWindow = new InstallWindow();
+            installProgressWindow.ShowDialog();
+            // checking software installing status function
+            this.Show();
         }
     }
 }
