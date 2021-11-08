@@ -20,6 +20,7 @@ namespace App
         private void button1_Click(object sender, EventArgs e)
         {
             ProgressBar.Value = 0;
+            softwareNameClock.Start();
             clock.Start();
         }
 
@@ -29,18 +30,20 @@ namespace App
         }
         private void exitButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn hủy tiến trình cài đặt?", "XÁC NHẬN HỦY CÀI ĐẶT", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+                this.Close();
         }
 
-        int r = 0;
         private void clock_Tick(object sender, EventArgs e)
         {
             ProgressBar.Increment(1);
-            softwareName.ForeColor = Color.FromArgb(r, 255, 255);
-            if (r <= 0)
-                r += 25;
-            if (r >= 224)
-                r -= 25;
+        }
+        private void softwareNameClock_Tick(object sender, EventArgs e)
+        {
+            if (ProgressBar.ForeColor == Color.Cyan)
+                ProgressBar.ForeColor = Color.White;
+            else ProgressBar.ForeColor = Color.Cyan;
         }
     }
 }

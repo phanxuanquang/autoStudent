@@ -112,7 +112,8 @@ namespace App
             else
             {
                 contentPanel.Hide();
-                menuPanel.Width = 135;
+                menuPanel.Width = 150;
+                clock.Start();
                 ITTab.ButtonText = "";
                 MultimediaTab.ButtonText = "";
                 TechnicalityTab.ButtonText = "";
@@ -123,18 +124,22 @@ namespace App
         // Tab Button
         private void menuButton_Click(dynamic sender, EventArgs e)
         {
-            if (menuPanel.Width == 135)
+            if (menuPanel.Width == 130)
             {
-                menuPanel.Width = 350;
+                //menuPanel.Width = 350;
+                menuPanel.Width = 330;
+                clock.Start();
                 contentPanel.Left = 350;
                 ITTab.ButtonText = "  CÔNG NGHỆ THÔNG TIN";
                 MultimediaTab.ButtonText = "  ĐỒ HỌA KỸ THUẬT SỐ";
                 TechnicalityTab.ButtonText = "  KỸ THUẬT";
+                menuPanel.BringToFront();
             }
             else
             {
+                menuPanel.Width = 150;
+                clock.Start();
                 contentPanel.Left = 236;
-                menuPanel.Width = 135;
                 ITTab.ButtonText = "";
                 MultimediaTab.ButtonText = "";
                 TechnicalityTab.ButtonText = "";
@@ -159,11 +164,33 @@ namespace App
         //Main Function
         private void ConfirmButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            InstallWindow installProgressWindow = new InstallWindow();
-            installProgressWindow.ShowDialog();
-            // checking software installing status function
-            this.Show();
+            ConfirmButton.Active = false;
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn cài đặt những phần mềm này?", "XÁC NHẬN CÀI ĐẶT", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                this.Hide();
+                InstallWindow installProgressWindow = new InstallWindow();
+                installProgressWindow.ShowDialog();
+                // checking software installing status function
+                
+                this.Show();
+            }
+        }
+
+        private void clock_Tick(object sender, EventArgs e)
+        {
+            if(menuPanel.Width >= 330)
+            {
+                menuPanel.Width += 2;
+                if (menuPanel.Width >= 350)
+                    clock.Stop();
+            }
+            if (menuPanel.Width <= 150)
+            {
+                menuPanel.Width -= 2;
+                if (menuPanel.Width <= 130)
+                    clock.Stop();
+            }
         }
     }
 }
