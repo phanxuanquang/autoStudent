@@ -149,6 +149,9 @@
     <Reference Include="Bunifu.UI.WinForms.Deprecated">
       <HintPath>..\Bunifu\Bunifu.UI.WinForms.Deprecated.dll</HintPath>
     </Reference>
+    <Reference Include="Bunifu_UI_v1.5.3">
+      <HintPath>C:\Users\tuyen\Downloads\Compressed\Bunifu and Guna\Bunifu UI 1.5.3\Bunifu_UI_v1.5.3.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
