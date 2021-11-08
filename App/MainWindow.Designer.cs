@@ -38,8 +38,8 @@ namespace App
             this.menuButton = new Bunifu.Framework.UI.BunifuImageButton();
             this.minimizeButton = new Bunifu.Framework.UI.BunifuImageButton();
             this.exitButton = new Bunifu.Framework.UI.BunifuImageButton();
-            this.contentPanel = new System.Windows.Forms.Panel();
             this.softName = new System.Windows.Forms.Label();
+            this.contentPanel = new System.Windows.Forms.Panel();
             this.menuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.menuButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.minimizeButton)).BeginInit();
@@ -57,6 +57,7 @@ namespace App
             this.menuPanel.Controls.Add(this.ITTab);
             this.menuPanel.Controls.Add(this.menuButton);
             this.menuPanel.Location = new System.Drawing.Point(0, 0);
+            this.menuPanel.Margin = new System.Windows.Forms.Padding(0);
             this.menuPanel.Name = "menuPanel";
             this.menuPanel.Size = new System.Drawing.Size(135, 590);
             this.menuPanel.TabIndex = 4;
@@ -220,6 +221,7 @@ namespace App
             this.menuButton.Image = ((System.Drawing.Image)(resources.GetObject("menuButton.Image")));
             this.menuButton.ImageActive = null;
             this.menuButton.Location = new System.Drawing.Point(0, 12);
+            this.menuButton.Margin = new System.Windows.Forms.Padding(0);
             this.menuButton.Name = "menuButton";
             this.menuButton.Size = new System.Drawing.Size(135, 40);
             this.menuButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -235,6 +237,7 @@ namespace App
             this.minimizeButton.Image = ((System.Drawing.Image)(resources.GetObject("minimizeButton.Image")));
             this.minimizeButton.ImageActive = null;
             this.minimizeButton.Location = new System.Drawing.Point(916, 12);
+            this.minimizeButton.Margin = new System.Windows.Forms.Padding(0);
             this.minimizeButton.Name = "minimizeButton";
             this.minimizeButton.Size = new System.Drawing.Size(21, 23);
             this.minimizeButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -250,6 +253,7 @@ namespace App
             this.exitButton.Image = ((System.Drawing.Image)(resources.GetObject("exitButton.Image")));
             this.exitButton.ImageActive = null;
             this.exitButton.Location = new System.Drawing.Point(947, 12);
+            this.exitButton.Margin = new System.Windows.Forms.Padding(0);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(21, 23);
             this.exitButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -258,24 +262,26 @@ namespace App
             this.exitButton.Zoom = 10;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
-            // contentPanel
-            // 
-            this.contentPanel.Location = new System.Drawing.Point(350, 46);
-            this.contentPanel.Name = "contentPanel";
-            this.contentPanel.Size = new System.Drawing.Size(629, 498);
-            this.contentPanel.TabIndex = 7;
-            // 
             // softName
             // 
             this.softName.AutoSize = true;
             this.softName.BackColor = System.Drawing.Color.Transparent;
             this.softName.Font = new System.Drawing.Font("Arial", 60F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.softName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(251)))), ((int)(((byte)(217)))));
-            this.softName.Location = new System.Drawing.Point(303, 249);
+            this.softName.Location = new System.Drawing.Point(298, 249);
+            this.softName.Margin = new System.Windows.Forms.Padding(0);
             this.softName.Name = "softName";
             this.softName.Size = new System.Drawing.Size(507, 93);
-            this.softName.TabIndex = 8;
+            this.softName.TabIndex = 9;
             this.softName.Text = "autoStudent";
+            // 
+            // contentPanel
+            // 
+            this.contentPanel.Location = new System.Drawing.Point(236, 42);
+            this.contentPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.contentPanel.Name = "contentPanel";
+            this.contentPanel.Size = new System.Drawing.Size(630, 498);
+            this.contentPanel.TabIndex = 10;
             // 
             // MainWindow
             // 
@@ -283,8 +289,8 @@ namespace App
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(15)))), ((int)(((byte)(46)))));
             this.ClientSize = new System.Drawing.Size(980, 590);
-            this.Controls.Add(this.softName);
             this.Controls.Add(this.contentPanel);
+            this.Controls.Add(this.softName);
             this.Controls.Add(this.minimizeButton);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.menuPanel);
@@ -310,8 +316,8 @@ namespace App
         private Bunifu.Framework.UI.BunifuImageButton minimizeButton;
         private Bunifu.Framework.UI.BunifuImageButton exitButton;
         private Bunifu.Framework.UI.BunifuFlatButton MultimediaTab;
-        private System.Windows.Forms.Panel contentPanel;
         private System.Windows.Forms.Label softName;
+        private System.Windows.Forms.Panel contentPanel;
     }
 }
 
