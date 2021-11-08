@@ -37,6 +37,7 @@
             this.ProgressBar = new Guna.UI.WinForms.GunaCircleProgressBar();
             this.label1 = new System.Windows.Forms.Label();
             this.softwareName = new System.Windows.Forms.Label();
+            this.softwareNameClock = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.minimizeButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.exitButton)).BeginInit();
             this.SuspendLayout();
@@ -136,6 +137,11 @@
             this.softwareName.TabIndex = 13;
             this.softwareName.Text = "Adobe After Effect CC 2021";
             // 
+            // softwareNameClock
+            // 
+            this.softwareNameClock.Interval = 1000;
+            this.softwareNameClock.Tick += new System.EventHandler(this.softwareNameClock_Tick);
+            // 
             // InstallWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -168,5 +174,6 @@
         private Guna.UI.WinForms.GunaCircleProgressBar ProgressBar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label softwareName;
+        private System.Windows.Forms.Timer softwareNameClock;
     }
 }
