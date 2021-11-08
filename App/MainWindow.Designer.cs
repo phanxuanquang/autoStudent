@@ -40,10 +40,12 @@ namespace App
             this.exitButton = new Bunifu.Framework.UI.BunifuImageButton();
             this.softName = new System.Windows.Forms.Label();
             this.contentPanel = new System.Windows.Forms.Panel();
+            this.ConfirmButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.menuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.menuButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.minimizeButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.exitButton)).BeginInit();
+            this.contentPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuPanel
@@ -278,11 +280,51 @@ namespace App
             // 
             // contentPanel
             // 
+            this.contentPanel.Controls.Add(this.ConfirmButton);
             this.contentPanel.Location = new System.Drawing.Point(236, 42);
             this.contentPanel.Margin = new System.Windows.Forms.Padding(0);
             this.contentPanel.Name = "contentPanel";
             this.contentPanel.Size = new System.Drawing.Size(630, 498);
             this.contentPanel.TabIndex = 10;
+            // 
+            // ConfirmButton
+            // 
+            this.ConfirmButton.Active = false;
+            this.ConfirmButton.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(78)))), ((int)(((byte)(181)))));
+            this.ConfirmButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ConfirmButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(15)))), ((int)(((byte)(46)))));
+            this.ConfirmButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ConfirmButton.BorderRadius = 7;
+            this.ConfirmButton.ButtonText = "XÁC NHẬN VÀ CÀI ĐẶT";
+            this.ConfirmButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ConfirmButton.DisabledColor = System.Drawing.Color.Gray;
+            this.ConfirmButton.Iconcolor = System.Drawing.Color.Transparent;
+            this.ConfirmButton.Iconimage = null;
+            this.ConfirmButton.Iconimage_right = null;
+            this.ConfirmButton.Iconimage_right_Selected = null;
+            this.ConfirmButton.Iconimage_Selected = null;
+            this.ConfirmButton.IconMarginLeft = 0;
+            this.ConfirmButton.IconMarginRight = 0;
+            this.ConfirmButton.IconRightVisible = true;
+            this.ConfirmButton.IconRightZoom = 0D;
+            this.ConfirmButton.IconVisible = true;
+            this.ConfirmButton.IconZoom = 90D;
+            this.ConfirmButton.IsTab = false;
+            this.ConfirmButton.Location = new System.Drawing.Point(386, 418);
+            this.ConfirmButton.Margin = new System.Windows.Forms.Padding(0);
+            this.ConfirmButton.Name = "ConfirmButton";
+            this.ConfirmButton.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(15)))), ((int)(((byte)(46)))));
+            this.ConfirmButton.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(78)))), ((int)(((byte)(181)))));
+            this.ConfirmButton.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(251)))), ((int)(((byte)(217)))));
+            this.ConfirmButton.selected = false;
+            this.ConfirmButton.Size = new System.Drawing.Size(225, 54);
+            this.ConfirmButton.TabIndex = 11;
+            this.ConfirmButton.Text = "XÁC NHẬN VÀ CÀI ĐẶT";
+            this.ConfirmButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ConfirmButton.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(251)))), ((int)(((byte)(217)))));
+            this.ConfirmButton.TextFont = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.ConfirmButton.Click += new System.EventHandler(this.ConfirmButton_Click);
             // 
             // MainWindow
             // 
@@ -298,11 +340,12 @@ namespace App
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "autoStudent";
             this.menuPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.menuButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.minimizeButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.exitButton)).EndInit();
+            this.contentPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -319,6 +362,7 @@ namespace App
         private Bunifu.Framework.UI.BunifuFlatButton MultimediaTab;
         private System.Windows.Forms.Label softName;
         private System.Windows.Forms.Panel contentPanel;
+        private Bunifu.Framework.UI.BunifuFlatButton ConfirmButton;
     }
 }
 
