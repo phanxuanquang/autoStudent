@@ -29,6 +29,7 @@ namespace App
             InitializeComponent();
             softName.BringToFront();
             ConfirmButton.Hide();
+            beginClock.Start();
         }
         // Anti Flickering
         protected override CreateParams CreateParams
@@ -112,7 +113,8 @@ namespace App
             else
             {
                 contentPanel.Hide();
-                menuPanel.Width = 135;
+                menuPanel.Width = 155;
+                clock.Start();
                 ITTab.ButtonText = "";
                 MultimediaTab.ButtonText = "";
                 TechnicalityTab.ButtonText = "";
@@ -125,16 +127,20 @@ namespace App
         {
             if (menuPanel.Width == 135)
             {
-                menuPanel.Width = 350;
+                //menuPanel.Width = 350;
+                menuPanel.Width = 330;
+                clock.Start();
                 contentPanel.Left = 350;
                 ITTab.ButtonText = "  CÔNG NGHỆ THÔNG TIN";
                 MultimediaTab.ButtonText = "  ĐỒ HỌA KỸ THUẬT SỐ";
                 TechnicalityTab.ButtonText = "  KỸ THUẬT";
+                menuPanel.BringToFront();
             }
             else
             {
+                menuPanel.Width = 155;
+                clock.Start();
                 contentPanel.Left = 236;
-                menuPanel.Width = 135;
                 ITTab.ButtonText = "";
                 MultimediaTab.ButtonText = "";
                 TechnicalityTab.ButtonText = "";
@@ -159,11 +165,43 @@ namespace App
         //Main Function
         private void ConfirmButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            InstallWindow installProgressWindow = new InstallWindow();
-            installProgressWindow.ShowDialog();
-            // checking software installing status function
-            this.Show();
+            ConfirmButton.Active = false;
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn cài đặt những phần mềm này?", "XÁC NHẬN CÀI ĐẶT", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                this.Hide();
+                InstallWindow installProgressWindow = new InstallWindow();
+                installProgressWindow.ShowDialog();
+                // checking software installing status function
+                
+                this.Show();
+            }
+        }
+
+        private void clock_Tick(object sender, EventArgs e)
+        {
+            if(menuPanel.Width >= 330)
+            {
+                menuPanel.Width += 2;
+                if (menuPanel.Width >= 350)
+                    clock.Stop();
+            }
+            if (menuPanel.Width <= 155)
+            {
+                menuPanel.Width -= 2;
+                if (menuPanel.Width <= 135)
+                    clock.Stop();
+            }
+        }
+
+        private void beginClock_Tick(object sender, EventArgs e)
+        {
+            if (menuPanel.Width >= 125)
+            {
+                menuPanel.Width += 2;
+                if (menuPanel.Width >= 135)
+                    beginClock.Stop();
+            }
         }
     }
 }
