@@ -26,6 +26,17 @@ namespace App
             data = new SqlDataAccess("../../../sqlite.db");
             
             InitializeComponent();
+            softName.BringToFront();
+        }
+        // Anti flickering
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams handleParam = base.CreateParams;
+                handleParam.ExStyle |= 0x02000000;
+                return handleParam;
+            }
         }
         private void SwapView(Models.TypeOfSoftware view=Models.TypeOfSoftware.None)
         {
@@ -56,22 +67,26 @@ namespace App
 
         private void changeButtonColorAndShowTab(dynamic button, dynamic buttonA, dynamic buttonB)
         {
-            menuPanel.Width = 135;
-            ITTab.ButtonText = "";
-            MultimediaTab.ButtonText = "";
-            TechnicalityTab.ButtonText = "";
             if (button.Normalcolor != button.Activecolor)
             {
-                softName.Hide();
                 contentPanel.Show();
+                contentPanel.BringToFront();
+                menuPanel.Width = 350;
+                contentPanel.Left = 350;
+                ITTab.ButtonText = "  CÔNG NGHỆ THÔNG TIN";
+                MultimediaTab.ButtonText = "  ĐỒ HỌA KỸ THUẬT SỐ";
+                TechnicalityTab.ButtonText = "  KỸ THUẬT";
+                menuPanel.BringToFront();
                 button.Normalcolor = button.Activecolor;
-                buttonA.Normalcolor = Color.Transparent;
-                buttonB.Normalcolor = Color.Transparent;
+                buttonA.Normalcolor = buttonB.Normalcolor = Color.Transparent;
             }
             else
             {
-                softName.Show();
                 contentPanel.Hide();
+                menuPanel.Width = 135;
+                ITTab.ButtonText = "";
+                MultimediaTab.ButtonText = "";
+                TechnicalityTab.ButtonText = "";
                 button.Normalcolor = Color.Transparent;
             }
         }
@@ -81,13 +96,14 @@ namespace App
             if (menuPanel.Width == 135)
             {
                 menuPanel.Width = 350;
+                contentPanel.Left = 350;
                 ITTab.ButtonText = "  CÔNG NGHỆ THÔNG TIN";
                 MultimediaTab.ButtonText = "  ĐỒ HỌA KỸ THUẬT SỐ";
                 TechnicalityTab.ButtonText = "  KỸ THUẬT";
-                menuPanel.BringToFront();
             }
             else
             {
+                contentPanel.Left = 236;
                 menuPanel.Width = 135;
                 ITTab.ButtonText = "";
                 MultimediaTab.ButtonText = "";
