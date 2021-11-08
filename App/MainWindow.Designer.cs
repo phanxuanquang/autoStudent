@@ -40,9 +40,9 @@ namespace App
             this.minimizeButton = new Bunifu.Framework.UI.BunifuImageButton();
             this.exitButton = new Bunifu.Framework.UI.BunifuImageButton();
             this.softName = new System.Windows.Forms.Label();
-            this.contentPanel = new System.Windows.Forms.Panel();
-            this.ConfirmButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.clock = new System.Windows.Forms.Timer(this.components);
+            this.ConfirmButton = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.contentPanel = new System.Windows.Forms.Panel();
             this.menuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.menuButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.minimizeButton)).BeginInit();
@@ -280,14 +280,10 @@ namespace App
             this.softName.TabIndex = 9;
             this.softName.Text = "autoStudent";
             // 
-            // contentPanel
+            // clock
             // 
-            this.contentPanel.Controls.Add(this.ConfirmButton);
-            this.contentPanel.Location = new System.Drawing.Point(236, 42);
-            this.contentPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.contentPanel.Name = "contentPanel";
-            this.contentPanel.Size = new System.Drawing.Size(630, 498);
-            this.contentPanel.TabIndex = 10;
+            this.clock.Interval = 10;
+            this.clock.Tick += new System.EventHandler(this.clock_Tick);
             // 
             // ConfirmButton
             // 
@@ -329,10 +325,14 @@ namespace App
             this.ConfirmButton.TextFont = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.ConfirmButton.Click += new System.EventHandler(this.ConfirmButton_Click);
             // 
-            // clock
+            // contentPanel
             // 
-            this.clock.Interval = 10;
-            this.clock.Tick += new System.EventHandler(this.clock_Tick);
+            this.contentPanel.Controls.Add(this.ConfirmButton);
+            this.contentPanel.Location = new System.Drawing.Point(236, 42);
+            this.contentPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.contentPanel.Name = "contentPanel";
+            this.contentPanel.Size = new System.Drawing.Size(630, 498);
+            this.contentPanel.TabIndex = 10;
             // 
             // MainWindow
             // 
@@ -369,9 +369,9 @@ namespace App
         private Bunifu.Framework.UI.BunifuImageButton exitButton;
         private Bunifu.Framework.UI.BunifuFlatButton MultimediaTab;
         private System.Windows.Forms.Label softName;
-        private System.Windows.Forms.Panel contentPanel;
-        private Bunifu.Framework.UI.BunifuFlatButton ConfirmButton;
         private System.Windows.Forms.Timer clock;
+        private Bunifu.Framework.UI.BunifuFlatButton ConfirmButton;
+        private System.Windows.Forms.Panel contentPanel;
     }
 }
 

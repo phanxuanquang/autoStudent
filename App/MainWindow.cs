@@ -57,8 +57,14 @@ namespace App
         }
         private void exitButton_Click(object sender, EventArgs e)
         {
-            FadeOut(this, 300);
-            this.Close();
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn thoát chương trình?", "THOÁT CHƯƠNG TRÌNH", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                FadeOut(this, 300);
+                this.Close();
+            }
+
+            
         }
         // GitHub Button
         private void GitHub_Button_Click(object sender, EventArgs e)
@@ -191,5 +197,6 @@ namespace App
                 this.Show();
             }
         }
+
     }
 }
