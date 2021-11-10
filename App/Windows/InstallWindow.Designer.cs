@@ -93,6 +93,7 @@
             // ProgressBar
             // 
             this.ProgressBar.AnimationSpeed = 0.6F;
+            this.ProgressBar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ProgressBar.BaseColor = System.Drawing.Color.Transparent;
             this.ProgressBar.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.ProgressBar.ForeColor = System.Drawing.Color.Cyan;
@@ -120,7 +121,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label1.ForeColor = System.Drawing.Color.Cyan;
-            this.label1.Location = new System.Drawing.Point(145, 348);
+            this.label1.Location = new System.Drawing.Point(145, 358);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(215, 19);
             this.label1.TabIndex = 12;
@@ -131,7 +132,7 @@
             this.softwareName.AutoSize = true;
             this.softwareName.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.softwareName.ForeColor = System.Drawing.Color.Cyan;
-            this.softwareName.Location = new System.Drawing.Point(89, 376);
+            this.softwareName.Location = new System.Drawing.Point(89, 386);
             this.softwareName.Name = "softwareName";
             this.softwareName.Size = new System.Drawing.Size(322, 29);
             this.softwareName.TabIndex = 13;
