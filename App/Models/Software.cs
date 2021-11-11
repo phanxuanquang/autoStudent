@@ -26,6 +26,8 @@ namespace App.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string LinkDownload { get; set; }
+        public string NameFileDownload { get; set; }
+        public string WindowsName { get; set; }
 
         public List<InstallControlHander> InstallControlHanders { get; set; }
 
