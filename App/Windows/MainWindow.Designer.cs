@@ -328,7 +328,7 @@ namespace App
             // contentPanel
             // 
             this.contentPanel.Controls.Add(this.ConfirmButton);
-            this.contentPanel.Location = new System.Drawing.Point(236, 42);
+            this.contentPanel.Location = new System.Drawing.Point(236, 46);
             this.contentPanel.Margin = new System.Windows.Forms.Padding(0);
             this.contentPanel.Name = "contentPanel";
             this.contentPanel.Size = new System.Drawing.Size(630, 498);

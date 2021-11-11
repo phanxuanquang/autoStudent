@@ -54,7 +54,7 @@ namespace App
         private void softwareNameClock_Tick(object sender, EventArgs e)
         {
             if (ProgressBar.ForeColor == Color.Cyan)
-                ProgressBar.ForeColor = Color.White;
+                ForeColor = Color.White;
             else ProgressBar.ForeColor = Color.Cyan;
         }
     }
