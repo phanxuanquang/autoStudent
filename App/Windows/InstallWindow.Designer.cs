@@ -32,8 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InstallWindow));
             this.minimizeButton = new Bunifu.Framework.UI.BunifuImageButton();
             this.exitButton = new Bunifu.Framework.UI.BunifuImageButton();
-            this.clock = new System.Windows.Forms.Timer(this.components);
-            this.testButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.softwareName = new System.Windows.Forms.Label();
             this.softwareNameClock = new System.Windows.Forms.Timer(this.components);
@@ -73,22 +71,6 @@
             this.exitButton.TabStop = false;
             this.exitButton.Zoom = 10;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
-            // 
-            // clock
-            // 
-            this.clock.Interval = 20;
-            this.clock.Tick += new System.EventHandler(this.clock_Tick);
-            // 
-            // testButton
-            // 
-            this.testButton.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.testButton.Location = new System.Drawing.Point(12, 9);
-            this.testButton.Name = "testButton";
-            this.testButton.Size = new System.Drawing.Size(122, 40);
-            this.testButton.TabIndex = 10;
-            this.testButton.Text = "TEST";
-            this.testButton.UseVisualStyleBackColor = true;
-            this.testButton.Click += new System.EventHandler(this.TestButton_Click);
             // 
             // label1
             // 
@@ -135,7 +117,6 @@
             this.Controls.Add(this.ProgressBar);
             this.Controls.Add(this.softwareName);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.testButton);
             this.Controls.Add(this.minimizeButton);
             this.Controls.Add(this.exitButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -153,8 +134,6 @@
 
         private Bunifu.Framework.UI.BunifuImageButton minimizeButton;
         private Bunifu.Framework.UI.BunifuImageButton exitButton;
-        private System.Windows.Forms.Timer clock;
-        private System.Windows.Forms.Button testButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label softwareName;
         private System.Windows.Forms.Timer softwareNameClock;
