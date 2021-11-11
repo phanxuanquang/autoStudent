@@ -45,7 +45,7 @@ namespace App
                 this.Close();
             }
         }
-
+        
         // Animation
         private void clock_Tick(object sender, EventArgs e)
         {

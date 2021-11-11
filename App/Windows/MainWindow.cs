@@ -28,7 +28,7 @@ namespace App
             
             InitializeComponent();
             softName.BringToFront();
-            ConfirmButton.Hide();
+            Program.mainForm = this;
         }
         // Anti Flickering
         protected override CreateParams CreateParams
@@ -73,7 +73,6 @@ namespace App
         {
             if (view != Models.TypeOfSoftware.None)
             {
-                ConfirmButton.Show();
                 contentPanel.Controls.Remove(_view);
                 switch (view){
                     case Models.TypeOfSoftware.Design:
@@ -178,20 +177,5 @@ namespace App
             SwapView(Models.TypeOfSoftware.Design);
         }
 
-        //Main Function
-        private void ConfirmButton_Click(object sender, EventArgs e)
-        {
-            ConfirmButton.Active = false;
-            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn cài đặt những phần mềm này?", "XÁC NHẬN CÀI ĐẶT", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                this.Hide();
-                InstallWindow installProgressWindow = new InstallWindow();
-                installProgressWindow.ShowDialog();
-                // checking software installing status function
-                
-                this.Show();
-            }
-        }
     }
 }

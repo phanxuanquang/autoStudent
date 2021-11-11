@@ -125,7 +125,6 @@
             this.ProgressBar.Size = new System.Drawing.Size(417, 46);
             this.ProgressBar.Step = 1;
             this.ProgressBar.TabIndex = 14;
-            this.ProgressBar.Value = 50;
             // 
             // InstallWindow
             // 
