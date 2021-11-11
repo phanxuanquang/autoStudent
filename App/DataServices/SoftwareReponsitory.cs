@@ -19,7 +19,7 @@ namespace App.DataServices
         public List<Software> GetAll()
         {
             List<Software> result = new List<Software>();
-            string query = "SELECT [Id_Software], [Name], [Link], [Type] FROM Application";
+            string query = "SELECT [Id_Software], [Name], [Link], [Extension] FROM Application";
             using(var connection=new SQLiteConnection())
             {
                 connection.ConnectionString = _context.GetConnectionString();
@@ -50,7 +50,7 @@ namespace App.DataServices
             {
                 connection.ConnectionString = _context.GetConnectionString();
                 connection.Open();
-                string queryApplication = "SELECT [Id_Software], [Name], [Link], Application.[Type] FROM Application, Type WHERE Application.Id_Type=Type.Id_Type AND Type.Type=@select";
+                string queryApplication = "SELECT [Id_Software], [Name], [Link], [WindowsName], [Extension] FROM Application, Type WHERE Application.Id_Type=Type.Id_Type AND Type.Type=@select";
                 using (var command = new SQLiteCommand(queryApplication, connection))
                 {
                     command.Parameters.AddWithValue("@select", type.ToString());
@@ -58,13 +58,15 @@ namespace App.DataServices
                     {
                         while (reader.Read())
                         {
-                            Enum.TryParse<TypeOfFileInstall>(reader["Type"].ToString(), out var types);
+                            Enum.TryParse<TypeOfFileInstall>(reader["Extension"].ToString(), out var types);
                             result.Add(new Software()
                             {
-                                Id = int.Parse(reader["Id_Software"].ToString()), 
+                                Id = int.Parse(reader["Id_Software"].ToString()),
                                 Name = reader["Name"].ToString(),
                                 LinkDownload = reader["Link"].ToString(),
                                 Types = types,
+                                WindowsName = reader["WindowsName"].ToString(),
+                                NameFileDownload = reader["Name"].ToString() + "." + reader["Extension"].ToString(),
                                 InstallControlHanders = null
                             });
                         }
@@ -73,14 +75,14 @@ namespace App.DataServices
                 for(int index = 0; index < result.Count; index++)
                 {
                     List<InstallControlHander> installControlHanders = new List<InstallControlHander>();
-                    string queryInstall = "SELECT [Control_Class], [Control_Text], [Control_ID], [Mouse_Position], [Thread_Sleep] FROM Install WHERE [Id_Software] = " + result[index].Id + " ORDER BY [Id] ASC";
+                    string queryInstall = "SELECT [KeyPress], [Thread_Sleep] FROM Install WHERE [Id_Software] = " + result[index].Id + " ORDER BY [Id] ASC";
                     using (var command = new SQLiteCommand(queryInstall, connection))
                     {
                         using (var reader = command.ExecuteReader())
                         {
                             while (reader.Read())
                             {
-                                installControlHanders.Add(new InstallControlHander(reader["Control_Class"].ToString(), reader["Control_Text"].ToString(), reader["Control_ID"].ToString(), reader["Mouse_Position"].ToString(), reader["Thread_Sleep"].ToString()));
+                                installControlHanders.Add(new InstallControlHander(reader["KeyPress"].ToString(), reader["Thread_Sleep"].ToString()));
                             }
                         }
                     }
