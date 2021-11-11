@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,8 +14,13 @@ namespace App
 {
     public partial class InstallWindow : Form
     {
-        public InstallWindow()
+        private List<Software> _selectedInstall;
+        public InstallWindow(List<Software> selectedInstall)
         {
+            if (selectedInstall != null)
+            {
+                _selectedInstall = selectedInstall;
+            }
             InitializeComponent();
         }
 
