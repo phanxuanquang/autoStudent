@@ -40,13 +40,15 @@ namespace App.View
             {
                 Program.mainForm.Hide();
                 List<Software> selectedInstall = new List<Software>();
+                
                 CheckedListBox.CheckedIndexCollection selected = softList.CheckedIndices;
                 for (int index = 0; index < selected.Count; index++)
                 {
                     selectedInstall.Add(softwares[selected[index]]);
                 }
                 InstallWindow installProgressWindow = new InstallWindow(selectedInstall);
-                installProgressWindow.ShowDialog();
+                installProgressWindow.InstallAll();
+                //installProgressWindow.ShowDialog();
                 Program.mainForm.Show();
             }
         }
