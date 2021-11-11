@@ -180,10 +180,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataServices\SoftwareReponsitory.cs" />
-    <Compile Include="InstallWindow.cs">
+    <Compile Include="Windows\InstallWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InstallWindow.Designer.cs">
+    <Compile Include="Windows\InstallWindow.Designer.cs">
       <DependentUpon>InstallWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Interface\IDataAccess.cs" />
@@ -191,10 +191,10 @@
     <Compile Include="Interface\ISoftwareRepository.cs" />
     <Compile Include="DataServices\SqlDataAccess.cs" />
     <Compile Include="Frameworks\Install.cs" />
-    <Compile Include="MainWindow.cs">
+    <Compile Include="Windows\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainWindow.Designer.cs">
+    <Compile Include="Windows\MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\InstallControlHander.cs" />
@@ -242,10 +242,10 @@
     <Compile Include="View\TechnologySectorView.Designer.cs">
       <DependentUpon>TechnologySectorView.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="InstallWindow.resx">
+    <EmbeddedResource Include="Windows\InstallWindow.resx">
       <DependentUpon>InstallWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainWindow.resx">
+    <EmbeddedResource Include="Windows\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

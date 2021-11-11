@@ -40,16 +40,6 @@ namespace App
                 return handleParam;
             }
         }
-        // Fade Out
-        private void FadeOut(Form o, int time = 300)
-        {
-            while (o.Opacity > 0.0)
-            {
-                Thread.Sleep(time / 100);
-                o.Opacity -= 0.05;
-            }
-            o.Opacity = 0;
-        }
         // Windows State
         private void minimizeButton_Click(object sender, EventArgs e)
         {
@@ -57,8 +47,20 @@ namespace App
         }
         private void exitButton_Click(object sender, EventArgs e)
         {
-            FadeOut(this, 300);
-            this.Close();
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn thoát chương trình?", "THOÁT CHƯƠNG TRÌNH", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                if (dialogResult == DialogResult.Yes)
+                {
+                    while (this.Opacity > 0.0)
+                    {
+                        Thread.Sleep(3);
+                        this.Opacity -= 0.05;
+                    }
+                    this.Opacity = 0;
+                    this.Close();
+                }
+            } 
         }
         // GitHub Button
         private void GitHub_Button_Click(object sender, EventArgs e)
@@ -120,6 +122,21 @@ namespace App
                 button.Normalcolor = Color.Transparent;
             }
         }
+        private void clock_Tick(object sender, EventArgs e)
+        {
+            if (menuPanel.Width >= 330)
+            {
+                menuPanel.Width += 2;
+                if (menuPanel.Width >= 350)
+                    clock.Stop();
+            }
+            if (menuPanel.Width <= 150)
+            {
+                menuPanel.Width -= 2;
+                if (menuPanel.Width <= 130)
+                    clock.Stop();
+            }
+        }
 
         // Tab Button
         private void menuButton_Click(dynamic sender, EventArgs e)
@@ -174,22 +191,6 @@ namespace App
                 // checking software installing status function
                 
                 this.Show();
-            }
-        }
-
-        private void clock_Tick(object sender, EventArgs e)
-        {
-            if(menuPanel.Width >= 330)
-            {
-                menuPanel.Width += 2;
-                if (menuPanel.Width >= 350)
-                    clock.Stop();
-            }
-            if (menuPanel.Width <= 150)
-            {
-                menuPanel.Width -= 2;
-                if (menuPanel.Width <= 130)
-                    clock.Stop();
             }
         }
     }
