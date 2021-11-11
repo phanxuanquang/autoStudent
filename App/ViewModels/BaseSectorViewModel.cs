@@ -26,7 +26,8 @@ namespace App.ViewModels
 
         public void InstallAll()
         {
-
+            
+            
         }
     }
 }
