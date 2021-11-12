@@ -25,7 +25,7 @@ INSERT INTO Type VALUES (1, 'Tech')
 INSERT INTO Type VALUES (2, 'IT')
 INSERT INTO Type VALUES (3, 'Design')
 
-INSERT INTO Application VALUES (1,'VSCode','https://windows','Setup - Visual Code','x64','exe',2)
+INSERT INTO Application VALUES (1,'VSCode','https://az764295.vo.msecnd.net/stable/b3318bc0524af3d74034b8bb8a64df0ccf35549a/VSCodeSetup-x64-1.62.0.exe','Setup - Visual Code','x64','exe',2)
 
 INSERT INTO Install VALUES (1,1,'TAB', 50)
 INSERT INTO Install VALUES (2,1,'UP', 50)
@@ -38,3 +38,9 @@ INSERT INTO Install VALUES (8,1,'TAB', 16000)
 INSERT INTO Install VALUES (9,1,'TAB', 50)
 INSERT INTO Install VALUES (10,1,'SPACE', 50)
 INSERT INTO Install VALUES (11,1,'ENTER', 50)
+
+INSERT INTO Application VALUES (8,'SketchUp','https://www.sketchup.com/sketchup/SketchUpPro-full-exe','Setup - SketchUp','x64','exe',1)
+INSERT INTO Install VALUES (1,8,'TAB', 20000)
+INSERT INTO Install VALUES (2,8,'TAB', 50)
+INSERT INTO Install VALUES (3,8,'ENTER', 50)
+INSERT INTO Install VALUES (4,8,'ENTER', 20000)
