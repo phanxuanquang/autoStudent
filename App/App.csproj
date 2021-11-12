@@ -49,6 +49,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bunifu.Dataviz.WinForms, Version=2.2.0.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
       <HintPath>..\packages\Bunifu.Dataviz.WinForms.2.2.0\lib\Bunifu.Dataviz.WinForms.dll</HintPath>
@@ -272,6 +275,7 @@
     <EmbeddedResource Include="View\TechnologySectorView.resx">
       <DependentUpon>TechnologySectorView.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app.manifest" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
