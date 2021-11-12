@@ -12,6 +12,7 @@ using KAutoHelper;
 using System.ComponentModel;
 using App.Models;
 using System.Drawing;
+using System.Net.Http;
 
 namespace App
 {
@@ -19,8 +20,8 @@ namespace App
     {
         protected List<Software> softwares;
         protected WebClient webClient = new WebClient();
-        int count = 0;
-        int countInstall = 0;
+        int count = 0, countInstall = 0;
+
         public InstallWindow(List<Software> selectedInstall)
         {
             InitializeComponent();
@@ -31,61 +32,20 @@ namespace App
             DownloadFile();
         }
 
-        // Test Function
-       
-        // Windows State
-        private void minimizeButton_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-        private void exitButton_Click(object sender, EventArgs e)
-        {
-            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn hủy tiến trình cài đặt?", "XÁC NHẬN HỦY CÀI ĐẶT", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                while (this.Opacity > 0.0)
-                {
-                    Thread.Sleep(3);
-                    this.Opacity -= 0.05;
-                }
-                this.Opacity = 0;
-                this.Close();
-            }
-        }
-        // Animation
-       
-        private void softwareNameClock_Tick(object sender, EventArgs e)
-        {
-            if (ProgressBar.ForeColor == Color.Cyan)
-                ForeColor = Color.White;
-            else ProgressBar.ForeColor = Color.Cyan;
-        }
-        public void InstallAll()
-        {
-            if (countInstall < softwares.Count)
-            {
-                Thread installAll = new Thread(
-                  () => InstallApp(softwares[countInstall])
-                  );
-                installAll.IsBackground = true;
-                installAll.Start();
-                return;
-            }
-            MessageBox.Show("Đã cài đặt xong");
-        }
+        // Download
         public void DownloadFile()
         {
-            if (count < softwares.Count  && !System.IO.File.Exists(@"D:\" + softwares[count].NameFileDownload))
+            if (count < softwares.Count && !System.IO.File.Exists(@"D:\" + softwares[count].NameFileDownload))
             {
                 WebClient client = new WebClient();
-                client.Proxy = null;
+                client.Proxy = WebRequest.DefaultWebProxy;
                 client.DownloadProgressChanged += client_DownloadProgressChanged;
                 client.DownloadFileCompleted += client_DownloadFileCompleted;
                 client.DownloadFileAsync(new Uri(softwares[count].LinkDownload), @"D:\" + softwares[count].NameFileDownload);
                 return;
             }
             // End of the download 
-            
+
             InstallAll();
         }
         public void client_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
@@ -108,6 +68,58 @@ namespace App
             double totalBytes = double.Parse(e.TotalBytesToReceive.ToString());
             double percentage = bytesIn / totalBytes * 100;
             ProgressBar.Value = int.Parse(Math.Truncate(percentage).ToString());
+        }
+
+        // Process Handling
+        public bool OpenProcess(App.Models.Software software, ref int id)
+        {
+            Process p = new Process();
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.FileName = @"D:\" + software.NameFileDownload;
+            startInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            startInfo.CreateNoWindow = true;
+            startInfo.RedirectStandardOutput = true;
+            startInfo.UseShellExecute = false;
+            p.StartInfo = startInfo;
+            p.StartInfo.Verb = "runas";
+            try
+            {
+                p.Start();
+            }
+            catch
+            {
+                MessageBox.Show("Lỗi khi mở file " + software.NameFileDownload);
+                return false;
+            }
+            id = p.Id;
+            return true;
+        }
+        public List<Process> GetChildProcesses(int parentId)
+        {
+            var query = "Select * From Win32_Process Where ParentProcessId = "
+                    + parentId;
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher(query);
+            ManagementObjectCollection processList = searcher.Get();
+
+            var result = processList.Cast<ManagementObject>().Select(p =>
+              Process.GetProcessById(Convert.ToInt32(p.GetPropertyValue("ProcessId")))).ToList();
+
+            return result;
+        }
+
+        // Install
+        public void InstallAll()
+        {
+            if (countInstall < softwares.Count)
+            {
+                Thread installAll = new Thread(
+                  () => InstallApp(softwares[countInstall])
+                  );
+                installAll.IsBackground = true;
+                installAll.Start();
+                return;
+            }
+            MessageBox.Show("Đã cài đặt xong");
         }
         public void InstallApp(App.Models.Software software)
         {
@@ -222,40 +234,33 @@ namespace App
             countInstall++;
             InstallAll();
         }
-        public bool OpenProcess(App.Models.Software software, ref int id)
+
+        // Windows State
+        private void minimizeButton_Click(object sender, EventArgs e)
         {
-            Process p = new Process();
-            ProcessStartInfo startInfo = new ProcessStartInfo();
-            startInfo.FileName = @"D:\" + software.NameFileDownload;
-            startInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            startInfo.CreateNoWindow = true;
-            startInfo.RedirectStandardOutput = true;
-            startInfo.UseShellExecute = false;
-            p.StartInfo = startInfo;
-            try
-            {
-                p.Start();
-            }
-            catch
-            {
-                MessageBox.Show("Lỗi khi mở file " + software.NameFileDownload);
-                return false;
-            }
-            id = p.Id;
-            return true;
+            this.WindowState = FormWindowState.Minimized;
         }
-        public List<Process> GetChildProcesses(int parentId)
+        private void exitButton_Click(object sender, EventArgs e)
         {
-            var query = "Select * From Win32_Process Where ParentProcessId = "
-                    + parentId;
-            ManagementObjectSearcher searcher = new ManagementObjectSearcher(query);
-            ManagementObjectCollection processList = searcher.Get();
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn hủy tiến trình cài đặt?", "XÁC NHẬN HỦY CÀI ĐẶT", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                while (this.Opacity > 0.0)
+                {
+                    Thread.Sleep(3);
+                    this.Opacity -= 0.05;
+                }
+                this.Opacity = 0;
+                this.Close();
+            }
+        }
 
-            var result = processList.Cast<ManagementObject>().Select(p =>
-              Process.GetProcessById(Convert.ToInt32(p.GetPropertyValue("ProcessId")))).ToList();
-
-            return result;
+        // Animation
+        private void softwareNameClock_Tick(object sender, EventArgs e)
+        {
+            if (ProgressBar.ForeColor == Color.Cyan)
+                ForeColor = Color.White;
+            else ProgressBar.ForeColor = Color.Cyan;
         }
     }
-    
 }
