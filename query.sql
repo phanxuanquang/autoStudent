@@ -44,3 +44,12 @@ INSERT INTO Install VALUES (1,8,'TAB', 20000)
 INSERT INTO Install VALUES (2,8,'TAB', 50)
 INSERT INTO Install VALUES (3,8,'ENTER', 50)
 INSERT INTO Install VALUES (4,8,'ENTER', 20000)
+
+INSERT INTO Application VALUES (9,'Blender','https://mirror.clarkson.edu/blender/release/Blender2.93/blender-2.93.5-windows-x64.msi','Setup - Blender','x64','msi',1)
+INSERT INTO Install VALUES (1,9,'ENTER', 50)
+INSERT INTO Install VALUES (2,9,'SPACE', 50)
+INSERT INTO Install VALUES (3,9,'ENTER', 50)
+INSERT INTO Install VALUES (4,9,'ENTER', 50)
+INSERT INTO Install VALUES (5,9,'ENTER', 50)
+INSERT INTO Install VALUES (6,9,'ENTER', 20000)
+
