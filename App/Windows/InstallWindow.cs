@@ -17,12 +17,13 @@ namespace App
 {
     public partial class InstallWindow : Form
     {
-        protected List<App.Models.Software> softwares;
+        protected List<Software> softwares;
         protected WebClient webClient = new WebClient();
         int count = 0;
         int countInstall = 0;
         public InstallWindow(List<Software> selectedInstall)
         {
+            InitializeComponent();
             if (selectedInstall != null)
             {
                 softwares = selectedInstall;
@@ -74,12 +75,7 @@ namespace App
         }
         public void DownloadFile()
         {
-            for(int i = 0; i< softwares.Count; i++)
-            {
-                if (System.IO.Directory.Exists(@"D:\" + softwares[i].NameFileDownload))
-                    softwares.Remove(softwares[i]);
-            }
-            if (count < softwares.Count)
+            if (count < softwares.Count  && !System.IO.File.Exists(@"D:\" + softwares[count].NameFileDownload))
             {
                 WebClient client = new WebClient();
                 client.Proxy = null;
