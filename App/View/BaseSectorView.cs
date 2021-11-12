@@ -35,21 +35,24 @@ namespace App.View
 
         private void ConfirmButton_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn cài đặt những phần mềm này?", "XÁC NHẬN CÀI ĐẶT", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            if (softList.CheckedIndices.Count == 0)
+                MessageBox.Show("Bạn chưa chọn phần mềm");
+            else
             {
-                Program.mainForm.Hide();
-                List<Software> selectedInstall = new List<Software>();
-                
-                CheckedListBox.CheckedIndexCollection selected = softList.CheckedIndices;
-                for (int index = 0; index < selected.Count; index++)
+                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn cài đặt những phần mềm này?", "XÁC NHẬN CÀI ĐẶT", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    selectedInstall.Add(softwares[selected[index]]);
+                    Program.mainForm.Hide();
+                    List<Software> selectedInstall = new List<Software>();
+                    CheckedListBox.CheckedIndexCollection selected = softList.CheckedIndices;
+                    for (int index = 0; index < selected.Count; index++)
+                    {
+                        selectedInstall.Add(softwares[selected[index]]);
+                    }
+                    InstallWindow installProgressWindow = new InstallWindow(selectedInstall);
+                    installProgressWindow.ShowDialog();
+                    Program.mainForm.Show();
                 }
-                InstallWindow installProgressWindow = new InstallWindow(selectedInstall);
-                installProgressWindow.InstallAll();
-                //installProgressWindow.ShowDialog();
-                Program.mainForm.Show();
             }
         }
     }

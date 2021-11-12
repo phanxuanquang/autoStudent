@@ -27,7 +27,7 @@ namespace App
             {
                 softwares = selectedInstall;
             }
-            InitializeComponent();
+            DownloadFile();
         }
 
         // Test Function
@@ -61,7 +61,6 @@ namespace App
         }
         public void InstallAll()
         {
-            this.Show();
             if (countInstall < softwares.Count)
             {
                 Thread installAll = new Thread(
@@ -75,16 +74,22 @@ namespace App
         }
         public void DownloadFile()
         {
+            for(int i = 0; i< softwares.Count; i++)
+            {
+                if (System.IO.Directory.Exists(@"D:\" + softwares[i].NameFileDownload))
+                    softwares.Remove(softwares[i]);
+            }
             if (count < softwares.Count)
             {
                 WebClient client = new WebClient();
+                client.Proxy = null;
                 client.DownloadProgressChanged += client_DownloadProgressChanged;
                 client.DownloadFileCompleted += client_DownloadFileCompleted;
                 client.DownloadFileAsync(new Uri(softwares[count].LinkDownload), @"D:\" + softwares[count].NameFileDownload);
                 return;
             }
-
-            // End of the download
+            // End of the download 
+            
             InstallAll();
         }
         public void client_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
