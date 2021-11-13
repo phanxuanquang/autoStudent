@@ -13,6 +13,7 @@ using System.ComponentModel;
 using App.Models;
 using System.Drawing;
 using System.Net.Http;
+using System.IO;
 
 namespace App
 {
@@ -21,6 +22,7 @@ namespace App
         protected List<Software> softwares;
         protected WebClient webClient = new WebClient();
         int count = 0, countInstall = 0;
+        public bool isComplete = false;
 
         public InstallWindow(List<Software> selectedInstall)
         {
@@ -44,8 +46,7 @@ namespace App
                 client.DownloadFileAsync(new Uri(softwares[count].LinkDownload), @"D:\" + softwares[count].NameFileDownload);
                 return;
             }
-            // End of the download 
-
+            //End of the download
             InstallAll();
         }
         public void client_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
@@ -119,7 +120,7 @@ namespace App
                 installAll.Start();
                 return;
             }
-            MessageBox.Show("Đã cài đặt xong");
+            MessageBox.Show("Cài đặt hoàn tất");
         }
         public void InstallApp(App.Models.Software software)
         {
@@ -242,7 +243,7 @@ namespace App
         }
         private void exitButton_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn hủy tiến trình cài đặt?", "XÁC NHẬN HỦY CÀI ĐẶT", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn thoát?", "XÁC NHẬN HỦY CÀI ĐẶT", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 while (this.Opacity > 0.0)
@@ -255,12 +256,41 @@ namespace App
             }
         }
 
+        private bool dragging = false;
+        private Point dragCursorPoint;
+        private Point dragFormPoint;
+
+        private void InstallWindow_MouseUp(object sender, MouseEventArgs e)
+        {
+            dragging = false;
+        }
+
+        private void InstallWindow_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (dragging)
+            {
+                Point dif = Point.Subtract(Cursor.Position, new Size(dragCursorPoint));
+                this.Location = Point.Add(dragFormPoint, new Size(dif));
+            }
+        }
+
+        private void InstallWindow_MouseDown(object sender, MouseEventArgs e)
+        {
+            dragging = true;
+            dragCursorPoint = Cursor.Position;
+            dragFormPoint = this.Location;
+        }
+
         // Animation
         private void softwareNameClock_Tick(object sender, EventArgs e)
         {
-            if (ProgressBar.ForeColor == Color.Cyan)
-                ForeColor = Color.White;
-            else ProgressBar.ForeColor = Color.Cyan;
+            if (processLabel.ForeColor == Color.Cyan)
+                processLabel.ForeColor = Color.White;
+            else processLabel.ForeColor = Color.Cyan;
+            if (ProgressBar.Value >= ProgressBar.Minimum)
+                ProgressBar.Value += 5;
+            if (ProgressBar.Value >= ProgressBar.Maximum)
+                softwareNameClock.Stop();
         }
     }
 }
