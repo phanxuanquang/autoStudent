@@ -48,6 +48,7 @@ namespace App.View
             // 
             // ConfirmButton
             // 
+            this.ConfirmButton.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.ConfirmButton.Active = false;
             this.ConfirmButton.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(78)))), ((int)(((byte)(181)))));
             this.ConfirmButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
