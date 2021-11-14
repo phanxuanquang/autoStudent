@@ -39,7 +39,7 @@ namespace App
         {
             if (count < softwares.Count && !System.IO.File.Exists(@"C:\" + softwares[count].NameFileDownload))
             {
-                processLabel.Text += softwares[count].NameFileDownload;
+                processLabel.Text += softwares[count].Name;
                 client = new WebClient();
                 client.Proxy = WebRequest.DefaultWebProxy;
                 client.DownloadProgressChanged += client_DownloadProgressChanged;
@@ -48,6 +48,7 @@ namespace App
                 return;
             }
             //End of the download
+            processLabel.Text = "ĐANG CÀI";
             InstallAll();
         }
         public void client_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
@@ -129,7 +130,6 @@ namespace App
                 }
                 return;
             }
-            MessageBox.Show("Cài đặt hoàn tất");
             this.Close();
         }
         public void InstallEXE(App.Models.Software software)
@@ -168,6 +168,7 @@ namespace App
                     if (software.InstallControlHanders[i].threadSleep == 50)
                     {
                         Thread.Sleep(software.InstallControlHanders[i].threadSleep);
+                        AutoControl.BringToFront(mainP);
                         switch (software.InstallControlHanders[i].keyPress)
                         {
                             case "ENTER":
@@ -212,8 +213,9 @@ namespace App
                         }
                         catch
                         {
-                            MessageBox.Show("lỗi foreach");
+                            MessageBox.Show("Quá trình cài phần mềm " + softwares[countInstall].Name + " đã hủy");
                         }
+                        //AutoControl.BringToFront(mainP);
                         switch (software.InstallControlHanders[i].keyPress)
                         {
                             case "ENTER":
