@@ -25,7 +25,7 @@ INSERT INTO Type VALUES (1, 'Tech')
 INSERT INTO Type VALUES (2, 'IT')
 INSERT INTO Type VALUES (3, 'Design')
 
-INSERT INTO Application VALUES (1,'VSCode','https://az764295.vo.msecnd.net/stable/b3318bc0524af3d74034b8bb8a64df0ccf35549a/VSCodeSetup-x64-1.62.0.exe','Setup - Visual Code','x64','exe',2)
+INSERT INTO Application VALUES (1,'VSCode','https://az764295.vo.msecnd.net/stable/b3318bc0524af3d74034b8bb8a64df0ccf35549a/VSCodeSetup-x64-1.62.0.exe','Setup - Microsoft Visual Studio Code','x64','exe',2)
 
 INSERT INTO Install VALUES (1,1,'TAB', 50)
 INSERT INTO Install VALUES (2,1,'UP', 50)
@@ -52,4 +52,19 @@ INSERT INTO Install VALUES (3,9,'ENTER', 50)
 INSERT INTO Install VALUES (4,9,'ENTER', 50)
 INSERT INTO Install VALUES (5,9,'ENTER', 50)
 INSERT INTO Install VALUES (6,9,'ENTER', 20000)
+
+INSERT INTO Application VALUES (2,'SQLManagement','https://download.microsoft.com/download/a/2/e/a2ef0390-62b6-4189-af6d-1762e0aa90aa/SSMS-Setup-ENU.exe','Microsoft SQL Server Management Studio with Azure Data Studio','x64','exe',2)
+INSERT INTO Install VALUES (1,2,'TAB', 50)
+INSERT INTO Install VALUES (2,2,'ENTER', 50)
+INSERT INTO Install VALUES (3,2,'TAB', 130000)
+INSERT INTO Install VALUES (4,2,'ENTER', 50)
+
+INSERT INTO Application VALUES (3,'AndroidStudio','https://redirector.gvt1.com/edgedl/android/studio/install/2020.3.1.24/android-studio-2020.3.1.24-windows.exe','Android Studio Setup','x64','exe',2)
+INSERT INTO Install VALUES (1,3,'ENTER', 50)
+INSERT INTO Install VALUES (2,3,'ENTER', 50)
+INSERT INTO Install VALUES (3,3,'ENTER', 50)
+INSERT INTO Install VALUES (4,3,'ENTER', 50)
+INSERT INTO Install VALUES (5,3,'ENTER', 16000)
+INSERT INTO Install VALUES (6,3,'SPACE', 50)
+INSERT INTO Install VALUES (7,3,'ENTER', 50)
 
