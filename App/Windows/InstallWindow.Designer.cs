@@ -73,14 +73,17 @@
             // 
             // processLabel
             // 
+            this.processLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.processLabel.AutoSize = true;
             this.processLabel.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.processLabel.ForeColor = System.Drawing.Color.Cyan;
-            this.processLabel.Location = new System.Drawing.Point(69, 127);
+            this.processLabel.Location = new System.Drawing.Point(166, 129);
             this.processLabel.Name = "processLabel";
-            this.processLabel.Size = new System.Drawing.Size(362, 32);
+            this.processLabel.Size = new System.Drawing.Size(156, 32);
             this.processLabel.TabIndex = 12;
-            this.processLabel.Text = "ĐANG TẢI TRÌNH CÀI ĐẶT";
+            this.processLabel.Text = "ĐANG TẢI ";
             // 
             // softwareNameClock
             // 

@@ -20,7 +20,7 @@ namespace App
     public partial class InstallWindow : Form
     {
         protected List<Software> softwares;
-        protected WebClient webClient = new WebClient();
+        protected WebClient client;
         int count = 0, countInstall = 0;
         public bool isComplete = false;
 
@@ -37,13 +37,14 @@ namespace App
         // Download
         public void DownloadFile()
         {
-            if (count < softwares.Count && !System.IO.File.Exists(@"D:\" + softwares[count].NameFileDownload))
+            if (count < softwares.Count && !System.IO.File.Exists(@"C:\" + softwares[count].NameFileDownload))
             {
-                WebClient client = new WebClient();
+                processLabel.Text += softwares[count].NameFileDownload;
+                client = new WebClient();
                 client.Proxy = WebRequest.DefaultWebProxy;
                 client.DownloadProgressChanged += client_DownloadProgressChanged;
                 client.DownloadFileCompleted += client_DownloadFileCompleted;
-                client.DownloadFileAsync(new Uri(softwares[count].LinkDownload), @"D:\" + softwares[count].NameFileDownload);
+                client.DownloadFileAsync(new Uri(softwares[count].LinkDownload), @"C:\" + softwares[count].NameFileDownload);
                 return;
             }
             //End of the download
@@ -51,14 +52,9 @@ namespace App
         }
         public void client_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
         {
-            if (e.Error != null)
-            {
-                // handle error scenario
-                throw e.Error;
-            }
             if (e.Cancelled)
             {
-                // handle cancelled scenario
+                return;
             }
             count++;
             DownloadFile();
@@ -76,7 +72,7 @@ namespace App
         {
             Process p = new Process();
             ProcessStartInfo startInfo = new ProcessStartInfo();
-            startInfo.FileName = @"D:\" + software.NameFileDownload;
+            startInfo.FileName = @"C:\" + software.NameFileDownload;
             startInfo.WindowStyle = ProcessWindowStyle.Hidden;
             startInfo.CreateNoWindow = true;
             startInfo.RedirectStandardOutput = true;
@@ -113,16 +109,30 @@ namespace App
         {
             if (countInstall < softwares.Count)
             {
-                Thread installAll = new Thread(
-                  () => InstallApp(softwares[countInstall])
-                  );
-                installAll.IsBackground = true;
-                installAll.Start();
+                if (softwares[countInstall].Types == TypeOfFileInstall.exe)
+                {
+                    Thread installAll = new Thread
+                    (
+                        () => InstallEXE(softwares[countInstall])
+                    );
+                    installAll.IsBackground = true;
+                    installAll.Start();
+                }
+                else if (softwares[countInstall].Types == TypeOfFileInstall.msi)
+                {
+                    Thread installAll = new Thread
+                    (
+                        () => InstallMSI(softwares[countInstall])
+                    );
+                    installAll.IsBackground = true;
+                    installAll.Start();
+                }
                 return;
             }
             MessageBox.Show("Cài đặt hoàn tất");
+            this.Close();
         }
-        public void InstallApp(App.Models.Software software)
+        public void InstallEXE(App.Models.Software software)
         {
             int id = 0;
             if (!OpenProcess(software, ref id))
@@ -237,6 +247,39 @@ namespace App
         }
 
         // Windows State
+
+        public void InstallMSI(Software software)
+        {
+            Process p = new Process();
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.FileName = "msiexec.exe";
+            startInfo.Arguments = @"/i " + @"C:\" + software.NameFileDownload + " /quiet";
+            p.StartInfo = startInfo;
+            p.Start();
+            int id = p.Id;
+            while (true)
+            {
+                try
+                {
+                    ManagementObjectSearcher searcher = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_PerfFormattedData_PerfProc_Process WHERE IDProcess = " + id);
+                    ManagementObjectCollection collection = searcher.Get();
+                    ManagementObject queryObj = collection.Cast<ManagementObject>().First();
+                    if (Convert.ToDouble(queryObj["PercentProcessorTime"]) / Environment.ProcessorCount == 0)
+                    {
+                        break;
+                    }
+                    Thread.Sleep(1000);
+                }
+                catch
+                {
+                    break;
+                }
+            }
+            Thread.Sleep(10);
+            countInstall++;
+            InstallAll();
+        }
+
         private void minimizeButton_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
@@ -252,6 +295,8 @@ namespace App
                     this.Opacity -= 0.05;
                 }
                 this.Opacity = 0;
+                if (client != null)
+                    client.CancelAsync();
                 this.Close();
             }
         }
