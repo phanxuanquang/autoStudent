@@ -159,7 +159,7 @@
       <HintPath>..\packages\Bunifu.UI.WinForms.5.3.0\lib\net40\Bunifu.UI.WinForms.Deprecated.dll</HintPath>
     </Reference>
     <Reference Include="KAutoHelper">
-      <HintPath>..\packages\KAutoHelper\KAutoHelper.dll</HintPath>
+      <HintPath>..\packages\KAutoHelper.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
