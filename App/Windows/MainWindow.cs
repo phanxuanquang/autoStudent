@@ -28,7 +28,7 @@ namespace App
             
             InitializeComponent();
             softName.BringToFront();
-            ConfirmButton.Hide();
+            Program.mainForm = this;
         }
         // Anti Flickering
         protected override CreateParams CreateParams
@@ -73,7 +73,6 @@ namespace App
         {
             if (view != Models.TypeOfSoftware.None)
             {
-                ConfirmButton.Show();
                 contentPanel.Controls.Remove(_view);
                 switch (view){
                     case Models.TypeOfSoftware.Design:
@@ -178,19 +177,28 @@ namespace App
             SwapView(Models.TypeOfSoftware.Design);
         }
 
-        //Main Function
-        private void ConfirmButton_Click(object sender, EventArgs e)
+        private bool dragging = false;
+        private Point dragCursorPoint;
+        private Point dragFormPoint;
+
+        private void MainWindow_MouseDown(object sender, MouseEventArgs e)
         {
-            ConfirmButton.Active = false;
-            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn cài đặt những phần mềm này?", "XÁC NHẬN CÀI ĐẶT", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            dragging = true;
+            dragCursorPoint = Cursor.Position;
+            dragFormPoint = this.Location;
+        }
+
+        private void MainWindow_MouseUp(object sender, MouseEventArgs e)
+        {
+            dragging = false;
+        }
+
+        private void MainWindow_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (dragging)
             {
-                this.Hide();
-                InstallWindow installProgressWindow = new InstallWindow();
-                installProgressWindow.ShowDialog();
-                // checking software installing status function
-                
-                this.Show();
+                Point dif = Point.Subtract(Cursor.Position, new Size(dragCursorPoint));
+                this.Location = Point.Add(dragFormPoint, new Size(dif));
             }
         }
     }
