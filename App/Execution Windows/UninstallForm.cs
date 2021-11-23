@@ -12,7 +12,6 @@ namespace App
 {
     public partial class UninstallForm : BaseForm
     {
-        
         public UninstallForm()
         {
             InitializeComponent();
