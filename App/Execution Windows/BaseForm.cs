@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,9 +15,17 @@ namespace App
     {
         protected List<Software> softwareList = new List<Software>();
         protected List<Software> selectedSoftwareList = new List<Software>();
+        List<string> keys = new List<string>() {
+             @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall",
+             @"SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall"
+        };
         public BaseForm()
         {
             InitializeComponent();
+            findInstalledSofware(RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, Environment.Is64BitOperatingSystem ? RegistryView.Registry64 : RegistryView.Registry32), keys, softwareList);
+            findInstalledSofware(RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, Environment.Is64BitOperatingSystem ? RegistryView.Registry64 : RegistryView.Registry32), keys, softwareList);
+            softwareList = softwareList.Where(s => !string.IsNullOrWhiteSpace(s.name)).Distinct().ToList();
+            // The list of ALL installed applications
             loadSoftwareToGridView(softwareList);
         }
         // Anti Flickering
@@ -32,7 +41,7 @@ namespace App
 
         protected void loadSoftwareToGridView(List<Software> softwareList)
         {
-            for(int i = 0; i < softwareList.Count; i++)
+            for (int i = 0; i < softwareList.Count; i++)
             {
                 softwareGridView.Rows.Add(softwareList[i].name, softwareList[i].version);
             }
@@ -91,6 +100,42 @@ namespace App
                 }
             }
             else this.Close();
+        }
+        private void findInstalledSofware(RegistryKey regKey, List<string> keys, List<Software> installed)
+        {
+            foreach (string key in keys)
+            {
+                try
+                {
+                    using (RegistryKey rk = regKey.OpenSubKey(key))
+                    {
+                        if (rk == null)
+                        {
+                            continue;
+                        }
+                        foreach (string skName in rk.GetSubKeyNames())
+                        {
+                            using (RegistryKey sk = rk.OpenSubKey(skName))
+                            {
+                                try
+                                {
+                                    installed.Add(new Software()
+                                    {
+                                        name = Convert.ToString(sk.GetValue("DisplayName")),
+                                        version = Convert.ToString(sk.GetValue("DisplayVersion"))
+                                    });
+                                }
+                                catch (Exception ex)
+                                { }
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex2)
+                {
+
+                }
+            }
         }
     }
 }
