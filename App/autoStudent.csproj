@@ -100,6 +100,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RunBackground.cs" />
     <Compile Include="Software.cs" />
     <Compile Include="Uninstall.cs" />
     <Compile Include="Execution Windows\UninstallForm.cs">
