@@ -9,13 +9,16 @@ namespace App
     public class Software
     {
         public string name, version;
+
         public Software()
         {
 
         }
-        public Software(string name)
+
+        public Software(string name, string version)
         {
             this.name = name;
+            this.version = version;
         }
     }
 }
