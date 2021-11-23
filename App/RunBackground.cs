@@ -112,11 +112,6 @@ namespace App
             }
         }
 
-        private void NotifyIcon_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
         private void notifyIcon_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
