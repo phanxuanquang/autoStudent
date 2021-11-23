@@ -17,8 +17,9 @@ namespace App
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainWindow());
+            Application.Run(new LoadindWindow());
         }
-        public static Form mainForm;
+        static public List<Software> software_Database;
+        static public List<Software> software_System;
     }
 }
