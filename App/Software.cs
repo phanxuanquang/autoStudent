@@ -112,9 +112,23 @@ namespace App
         public string Filename { get; set; }
     }
 
-    public enum Kind { Advancedinstaller, Appx, AsIs, Copy, Custom, Innosetup, Msi, Nsis, Squirrel, Zip };
+    public enum Kind { 
+        Advancedinstaller, 
+        Appx, 
+        AsIs, 
+        Copy, 
+        Custom, 
+        Innosetup, 
+        Msi, 
+        Nsis, 
+        Squirrel, 
+        Zip 
+    };
 
-    public enum Extension { Exe, Msi };
+    public enum Extension { 
+        Exe, 
+        Msi 
+    };
 
     public partial class Root
     {
@@ -263,7 +277,14 @@ namespace App
 
         public static readonly ExtensionConverter Singleton = new ExtensionConverter();
     }
-    public enum Role { Graphic, It, None, Tech };
+
+    public enum Role { 
+        Graphic, 
+        It, 
+        None, 
+        Tech 
+    };
+
     internal class RoleConverter : JsonConverter
     {
         public override bool CanConvert(Type t) => t == typeof(Role) || t == typeof(Role?);

@@ -82,15 +82,15 @@
     <Compile Include="Execution Windows\BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Install - Uninstall\Download.cs" />
-    <Compile Include="Install - Uninstall\Install.cs" />
+    <Compile Include="InstallUninstall\Download.cs" />
+    <Compile Include="InstallUninstall\Install.cs" />
     <Compile Include="Execution Windows\InstallForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Execution Windows\InstallForm.Designer.cs">
       <DependentUpon>InstallForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Install - Uninstall\TrackingProcess.cs" />
+    <Compile Include="InstallUninstall\TrackingProcess.cs" />
     <Compile Include="Main Windows\Loading Window.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,7 +107,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RunBackground.cs" />
     <Compile Include="Software.cs" />
-    <Compile Include="Install - Uninstall\Uninstall.cs" />
+    <Compile Include="InstallUninstall\Uninstall.cs" />
     <Compile Include="Execution Windows\UninstallForm.cs">
       <SubType>Form</SubType>
     </Compile>

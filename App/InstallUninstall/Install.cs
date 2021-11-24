@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Install___Uninstall
+namespace App.InstallUninstall
 {
-    class TrackingProcess
+    class Install
     {
     }
 }
