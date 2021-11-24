@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace App
 {
-    public partial class InstallForm : BaseForm
+    public partial class InstallForm : BaseExecutionForm
     {
         public InstallForm()
         {
             InitializeComponent();
-            softwareList = Program.software_System;
+            softwareList = Program.software_Database;
             loadSoftwareToGridView(softwareList);
         }
     }

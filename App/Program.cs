@@ -20,6 +20,6 @@ namespace App
             Application.Run(new LoadindWindow());
         }
         static public List<Package> software_Database;
-        static public List<Package> software_System;
+        static public List<SystemSoftware> software_System;
     }
 }

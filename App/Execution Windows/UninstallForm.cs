@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace App
 {
-    public partial class UninstallForm : BaseForm
+    public partial class UninstallForm : BaseExecutionForm
     {
         public UninstallForm()
         {
             InitializeComponent();
-            loadSoftwareToGridView(Program.software_Database);
+            loadSoftwareToGridViewUninstall(Program.software_System);
         }
     }
 }

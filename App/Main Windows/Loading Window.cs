@@ -20,6 +20,7 @@ namespace App
              @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall",
              @"SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall"
         };
+
         public LoadindWindow()
         {
             InitializeComponent();
@@ -31,6 +32,8 @@ namespace App
 
             loadFrom_Database();
             loadFrom_System();
+
+            //modifySystemSoftware_byDatabaseSoftware();
         }
 
         // Progress Bar
@@ -53,6 +56,7 @@ namespace App
             // Nạp vào Program.software_Database
             isLoaded_Database = true;
         }
+
         private void loadFrom_System()
         {
             findInstalledSofware(RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, Environment.Is64BitOperatingSystem ? RegistryView.Registry64 : RegistryView.Registry32), keys, Program.software_System);
@@ -60,7 +64,6 @@ namespace App
             Program.software_System = Program.software_System.Where(s => !string.IsNullOrWhiteSpace(s.Displayname)).Distinct().ToList();
             isLoaded_System = true;
         }
-
         private void findInstalledSofware(RegistryKey regKey, List<string> keys, List<Package> installed)
         {
             foreach (string key in keys)
@@ -96,6 +99,16 @@ namespace App
 
                 }
             }
+        }
+
+        private void modifySystemSoftware_byDatabaseSoftware()
+        {
+            List<Package> temp = new List<Package>();
+            for (int i = 0; i < Program.software_System.Count; i++)
+                for (int j = 0; j < Program.software_Database.Count; j++)
+                    if (Program.software_System[i] == Program.software_Database[j])
+                        temp.Add(Program.software_Database[j]);
+            Program.software_System = temp;
         }
     }
 }
