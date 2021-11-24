@@ -13,20 +13,11 @@ namespace App
 {
     public partial class BaseForm : Form
     {
-        protected List<Software> softwareList = new List<Software>();
-        protected List<Software> selectedSoftwareList = new List<Software>();
-        List<string> keys = new List<string>() {
-             @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall",
-             @"SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall"
-        };
+        protected List<Package> softwareList = new List<Package>();
+        protected List<Package> selectedSoftwareList = new List<Package>();
         public BaseForm()
         {
             InitializeComponent();
-            findInstalledSofware(RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, Environment.Is64BitOperatingSystem ? RegistryView.Registry64 : RegistryView.Registry32), keys, softwareList);
-            findInstalledSofware(RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, Environment.Is64BitOperatingSystem ? RegistryView.Registry64 : RegistryView.Registry32), keys, softwareList);
-            softwareList = softwareList.Where(s => !string.IsNullOrWhiteSpace(s.name)).Distinct().ToList();
-            // The list of ALL installed applications
-            loadSoftwareToGridView(softwareList);
         }
         // Anti Flickering
         protected override CreateParams CreateParams
@@ -39,11 +30,12 @@ namespace App
             }
         }
 
-        protected void loadSoftwareToGridView(List<Software> softwareList)
+        protected void loadSoftwareToGridView(List<Package> softwareList)
         {
+            softwareGridView.Rows.Clear();
             for (int i = 0; i < softwareList.Count; i++)
             {
-                softwareGridView.Rows.Add(softwareList[i].name, softwareList[i].version);
+                softwareGridView.Rows.Add(softwareList[i].Displayname, softwareList[i].Version);
             }
         }
 
@@ -59,35 +51,21 @@ namespace App
 
         private void selectedSoftwareView_Button_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < softwareGridView.Rows.Count; i++)
-            {
-                if (!softwareGridView.Rows[i].Selected)
-                    softwareGridView.Rows[i].Visible = false;
-            }
+            loadSoftwareToGridView(selectedSoftwareList);
         }
         private void allSoftwareView_Button_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < softwareGridView.Rows.Count; i++)
-            {
-                softwareGridView.Rows[i].Visible = true;
-            }
+            loadSoftwareToGridView(softwareList);
         }
+
         private void softwareGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (softwareGridView.CurrentCell.Selected == true)
+            selectedSoftwareList.Add(new Package()
             {
-                softwareGridView.CurrentCell.Selected = false;
-                for (int i = 0; i < softwareList.Count; i++)
-                {
-                    if (softwareGridView.CurrentCell.Value.ToString() == softwareList[i].name || softwareGridView.CurrentCell.Value.ToString() == softwareList[i].version)
-                        softwareList.RemoveAt(i);
-                }
-            }
-            else
-            {
-                selectedSoftwareList.Add(new Software(softwareGridView.CurrentCell.Value.ToString()));
-            }
-        }
+                Displayname = softwareGridView.Rows[e.RowIndex].Cells[0].Value.ToString(),
+                Version = softwareGridView.Rows[e.RowIndex].Cells[1].Value.ToString()
+            });
+        } 
 
         private void exitButton_Click(object sender, EventArgs e)
         {
@@ -101,41 +79,10 @@ namespace App
             }
             else this.Close();
         }
-        private void findInstalledSofware(RegistryKey regKey, List<string> keys, List<Software> installed)
-        {
-            foreach (string key in keys)
-            {
-                try
-                {
-                    using (RegistryKey rk = regKey.OpenSubKey(key))
-                    {
-                        if (rk == null)
-                        {
-                            continue;
-                        }
-                        foreach (string skName in rk.GetSubKeyNames())
-                        {
-                            using (RegistryKey sk = rk.OpenSubKey(skName))
-                            {
-                                try
-                                {
-                                    installed.Add(new Software()
-                                    {
-                                        name = Convert.ToString(sk.GetValue("DisplayName")),
-                                        version = Convert.ToString(sk.GetValue("DisplayVersion"))
-                                    });
-                                }
-                                catch (Exception ex)
-                                { }
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex2)
-                {
 
-                }
-            }
+        private void unlectedSoftware_Button_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

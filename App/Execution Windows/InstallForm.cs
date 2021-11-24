@@ -15,6 +15,8 @@ namespace App
         public InstallForm()
         {
             InitializeComponent();
+            softwareList = Program.software_System;
+            loadSoftwareToGridView(softwareList);
         }
     }
 }

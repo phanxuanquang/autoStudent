@@ -54,12 +54,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Guna.UI">
-      <HintPath>..\packages\Guna.UI.dll</HintPath>
+      <HintPath>C:\Users\tuyen\Downloads\Compressed\Bunifu and Guna\Guna UI 2.0.0.1\Guna UI Framework Ultimate v2.0.0.1 Lib-Master\Guna.UI WinForms\.net 4.0\Guna.UI.dll</HintPath>
     </Reference>
     <Reference Include="Guna.UI2">
-      <HintPath>..\packages\Guna.UI2.dll</HintPath>
+      <HintPath>C:\Users\tuyen\Downloads\Compressed\Bunifu and Guna\Guna UI 2.0.0.1\Guna UI Framework Ultimate v2.0.0.1 Lib-Master\Guna.UI2 WinForms\.net 4.0\Guna.UI2.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Management" />
@@ -73,19 +76,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess.cs" />
     <Compile Include="Execution Windows\BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Execution Windows\BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Install.cs" />
+    <Compile Include="InstallUninstall\Download.cs" />
+    <Compile Include="InstallUninstall\Install.cs" />
     <Compile Include="Execution Windows\InstallForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Execution Windows\InstallForm.Designer.cs">
       <DependentUpon>InstallForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="InstallUninstall\TrackingProcess.cs" />
     <Compile Include="Main Windows\Loading Window.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,13 +108,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RunBackground.cs" />
     <Compile Include="Software.cs" />
-    <Compile Include="Uninstall.cs" />
+    <Compile Include="InstallUninstall\Uninstall.cs" />
     <Compile Include="Execution Windows\UninstallForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Execution Windows\UninstallForm.Designer.cs">
       <DependentUpon>UninstallForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Startup.cs" />
     <EmbeddedResource Include="Execution Windows\BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -134,6 +141,7 @@
       <DependentUpon>UninstallForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
