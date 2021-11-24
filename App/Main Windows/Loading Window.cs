@@ -62,6 +62,7 @@ namespace App
             SystemSoftware.GetInstalledSofware(RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, Environment.Is64BitOperatingSystem ? RegistryView.Registry64 : RegistryView.Registry32), SystemSoftware.keys, Program.software_System);
             SystemSoftware.GetInstalledSofware(RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, Environment.Is64BitOperatingSystem ? RegistryView.Registry64 : RegistryView.Registry32), SystemSoftware.keys, Program.software_System);
             Program.software_System = Program.software_System.Where(s => !string.IsNullOrWhiteSpace(s.DisplayName)).Distinct().ToList();
+            Program.software_System = SystemSoftware.GetSupportedSoftwares(Program.software_Database, Program.software_System);
             isLoaded_System = true;
         }
         private void findInstalledSofware(RegistryKey regKey, List<string> keys, List<Package> installed)
