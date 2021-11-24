@@ -38,7 +38,14 @@ namespace App
                 softwareGridView.Rows.Add(softwareList[i].Displayname, softwareList[i].Version);
             }
         }
-
+        protected void loadSoftwareToGridViewUninstall(List<SystemSoftware> softwareList)
+        {
+            softwareGridView.Rows.Clear();
+            for (int i = 0; i < softwareList.Count; i++)
+            {
+                softwareGridView.Rows.Add(softwareList[i].DisplayName, softwareList[i].Version);
+            }
+        }
         private void searchBox_TextChanged(object sender, EventArgs e)
         {
             for (int i = 0; i < softwareGridView.RowCount; i++)
