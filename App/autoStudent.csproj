@@ -116,6 +116,7 @@
       <DependentUpon>UninstallForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="SystemSoftware.cs" />
     <EmbeddedResource Include="Execution Windows\BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </EmbeddedResource>
