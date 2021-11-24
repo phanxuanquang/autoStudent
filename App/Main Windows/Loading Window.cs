@@ -24,8 +24,8 @@ namespace App
         {
             InitializeComponent();
 
-            Program.software_Database = new List<Software>();
-            Program.software_System = new List<Software>();
+            Program.software_Database = new List<Package>();
+            Program.software_System = new List<Package>();
 
             dataLoading_clock.Start();
 
@@ -57,11 +57,11 @@ namespace App
         {
             findInstalledSofware(RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, Environment.Is64BitOperatingSystem ? RegistryView.Registry64 : RegistryView.Registry32), keys, Program.software_System);
             findInstalledSofware(RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, Environment.Is64BitOperatingSystem ? RegistryView.Registry64 : RegistryView.Registry32), keys, Program.software_System);
-            Program.software_System = Program.software_System.Where(s => !string.IsNullOrWhiteSpace(s.name)).Distinct().ToList();
+            Program.software_System = Program.software_System.Where(s => !string.IsNullOrWhiteSpace(s.Displayname)).Distinct().ToList();
             isLoaded_System = true;
         }
 
-        private void findInstalledSofware(RegistryKey regKey, List<string> keys, List<Software> installed)
+        private void findInstalledSofware(RegistryKey regKey, List<string> keys, List<Package> installed)
         {
             foreach (string key in keys)
             {
@@ -79,10 +79,10 @@ namespace App
                             {
                                 try
                                 {
-                                    installed.Add(new Software()
+                                    installed.Add(new Package()
                                     {
-                                        name = Convert.ToString(sk.GetValue("DisplayName")),
-                                        version = Convert.ToString(sk.GetValue("DisplayVersion"))
+                                        Displayname = Convert.ToString(sk.GetValue("DisplayName")),
+                                        Version = Convert.ToString(sk.GetValue("DisplayVersion"))
                                     });
                                 }
                                 catch (Exception)

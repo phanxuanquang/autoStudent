@@ -13,7 +13,7 @@ namespace App
     {
         public readonly static string saveHistory = Application.StartupPath + @"\schedule.csv";
 
-        public static void WriteSchedule(List<Software> softwares)
+        public static void WriteSchedule(List<Package> softwares)
         {
             if (HasScheduled())
             {
@@ -26,12 +26,12 @@ namespace App
             SetStartupEnviroment();
         }
 
-        public static List<Software> ReadSchedule()
+        public static List<Package> ReadSchedule()
         {
             if (HasScheduled())
             {
-                List<Software> extractFile = new List<Software>();
-                Software temp = new Software();
+                List<Package> extractFile = new List<Package>();
+                Package temp = new Package();
                 string[] listSoftware = File.ReadAllLines(saveHistory);
                 for (int index = 0; index < listSoftware.Count(); index++)
                 {

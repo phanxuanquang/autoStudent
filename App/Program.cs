@@ -19,7 +19,7 @@ namespace App
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoadindWindow());
         }
-        static public List<Software> software_Database;
-        static public List<Software> software_System;
+        static public List<Package> software_Database;
+        static public List<Package> software_System;
     }
 }

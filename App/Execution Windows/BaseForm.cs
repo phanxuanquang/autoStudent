@@ -13,8 +13,8 @@ namespace App
 {
     public partial class BaseForm : Form
     {
-        protected List<Software> softwareList = new List<Software>();
-        protected List<Software> selectedSoftwareList = new List<Software>();
+        protected List<Package> softwareList = new List<Package>();
+        protected List<Package> selectedSoftwareList = new List<Package>();
         public BaseForm()
         {
             InitializeComponent();
@@ -30,12 +30,12 @@ namespace App
             }
         }
 
-        protected void loadSoftwareToGridView(List<Software> softwareList)
+        protected void loadSoftwareToGridView(List<Package> softwareList)
         {
             softwareGridView.Rows.Clear();
             for (int i = 0; i < softwareList.Count; i++)
             {
-                softwareGridView.Rows.Add(softwareList[i].name, softwareList[i].version);
+                softwareGridView.Rows.Add(softwareList[i].Displayname, softwareList[i].Version);
             }
         }
 
@@ -60,7 +60,11 @@ namespace App
 
         private void softwareGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            selectedSoftwareList.Add(new Software(softwareGridView.Rows[e.RowIndex].Cells[0].Value.ToString(), softwareGridView.Rows[e.RowIndex].Cells[1].Value.ToString()));
+            selectedSoftwareList.Add(new Package()
+            {
+                Displayname = softwareGridView.Rows[e.RowIndex].Cells[0].Value.ToString(),
+                Version = softwareGridView.Rows[e.RowIndex].Cells[1].Value.ToString()
+            });
         } 
 
         private void exitButton_Click(object sender, EventArgs e)
