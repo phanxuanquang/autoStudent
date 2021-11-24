@@ -62,12 +62,12 @@ namespace App
                                         string displayName = (string)sk.GetValue("DisplayName");
                                         if (displayName != null)
                                         {
-                                            installed.Add(new SystemSoftware() 
-                                            { 
+                                            installed.Add(new SystemSoftware()
+                                            {
                                                 DisplayName = displayName,
                                                 Version = Convert.ToString(sk.GetValue("DisplayVersion")),
-                                                UninstallString = Convert.ToString(sk.GetValue("UninstallString"))
-                                        });
+                                                UninstallString = CheckUninstallString(Convert.ToString(sk.GetValue("UninstallString")))
+                                            }) ;
                                         }
                                     }
                                 }
@@ -82,6 +82,25 @@ namespace App
 
                 }
             }
+        }
+        public static string CheckUninstallString(string tmp)
+        {
+            if (tmp != null)
+            {
+                if (tmp.Contains("MsiExec"))
+                {
+                    if (tmp.Contains("/I"))
+                    {
+                        string newString = tmp.Replace("/I", "/x");
+                        return newString;
+                    }
+                }
+                else if (!tmp.Contains("\""))
+                {
+                    tmp = "\"" + tmp + "\"";
+                }
+            }
+            return tmp;
         }
     }
 }
