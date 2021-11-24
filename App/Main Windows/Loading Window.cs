@@ -50,6 +50,10 @@ namespace App
         {
             // loading function
             // Nạp vào Program.software_Database
+            if (Environment.Is64BitOperatingSystem)
+                Program.software_Database = DataAccess.Instance.GetX64();
+            else
+                Program.software_Database = DataAccess.Instance.GetX86();
             isLoaded_Database = true;
         }
 
