@@ -29,8 +29,17 @@ namespace App
         private void wizardButton_Click(object sender, EventArgs e)
         {
             if (MainPanel.Left >= 0)
+            {
+                exitButton_Above.Hide();
+                minimizeButton_Above.Hide();
                 MainPanel.Left -= 831;
-            else MainPanel.Left += 831;
+            }
+            else
+            {
+                exitButton_Above.Show();
+                minimizeButton_Above.Show();
+                MainPanel.Left += 831;
+            }
         }
 
         private void installButton_Click(object sender, EventArgs e)
@@ -47,6 +56,16 @@ namespace App
             this.Hide();
             unInstallForm.ShowDialog();
             this.Show();
+        }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void minimizeButton_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

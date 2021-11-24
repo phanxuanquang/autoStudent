@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace App
 {
-    public partial class InstallForm : BaseForm
+    public partial class InstallForm : BaseExecutionForm
     {
         public InstallForm()
         {

@@ -1,5 +1,4 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,11 +10,11 @@ using System.Windows.Forms;
 
 namespace App
 {
-    public partial class BaseForm : Form
+    public partial class BaseExecutionForm : Form
     {
         protected List<Package> softwareList = new List<Package>();
         protected List<Package> selectedSoftwareList = new List<Package>();
-        public BaseForm()
+        public BaseExecutionForm()
         {
             InitializeComponent();
         }
@@ -38,38 +37,31 @@ namespace App
                 softwareGridView.Rows.Add(softwareList[i].Displayname, softwareList[i].Version);
             }
         }
-
-        private void searchBox_TextChanged(object sender, EventArgs e)
+        protected void loadSoftwareToGridView_Role(List<Package> softwareList, Role role)
         {
-            for (int i = 0; i < softwareGridView.RowCount; i++)
+            softwareGridView.Rows.Clear();
+            for (int i = 0; i < softwareList.Count; i++)
             {
-                if (softwareGridView.Rows[i].Cells[1].Value != null && softwareGridView.Rows[i].Cells[1].Value.ToString().ToLower().Contains(searchBox.Text.ToLower()))
-                    softwareGridView.Rows[i].Visible = true;
-                else softwareGridView.Rows[i].Visible = false;
+                if (softwareList[i].Role == role)
+                    softwareGridView.Rows.Add(softwareList[i].Displayname, softwareList[i].Version);
             }
         }
 
         private void selectedSoftwareView_Button_Click(object sender, EventArgs e)
         {
+            selectedSoftwareView_Button.Tag = "clicked";
             loadSoftwareToGridView(selectedSoftwareList);
         }
         private void allSoftwareView_Button_Click(object sender, EventArgs e)
         {
+            selectedSoftwareView_Button.Tag = "unclicked";
             loadSoftwareToGridView(softwareList);
         }
 
-        private void softwareGridView_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            selectedSoftwareList.Add(new Package()
-            {
-                Displayname = softwareGridView.Rows[e.RowIndex].Cells[0].Value.ToString(),
-                Version = softwareGridView.Rows[e.RowIndex].Cells[1].Value.ToString()
-            });
-        } 
-
         private void exitButton_Click(object sender, EventArgs e)
         {
-            if (selectedSoftwareList.Count > 0)
+            selectedSoftwareView_Button.Tag = "unclicked";
+            if (selectedSoftwareList.Count != 0)
             {
                 DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn thoát?", "THOÁT", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
@@ -80,9 +72,87 @@ namespace App
             else this.Close();
         }
 
-        private void unlectedSoftware_Button_Click(object sender, EventArgs e)
+        private void searchBox_TextChanged(object sender, EventArgs e)
         {
+            for (int i = 0; i < softwareGridView.RowCount; i++)
+            {
+                if (softwareGridView.Rows[i].Cells[0].Value != null && softwareGridView.Rows[i].Cells[0].Value.ToString().ToLower().Contains(searchBox.Text.ToLower()))
+                    softwareGridView.Rows[i].Visible = true;
+                else softwareGridView.Rows[i].Visible = false;
+            }
+        }
 
+        private void menuButton_Click(object sender, EventArgs e)
+        {
+            if (menuPanel.Width != 300)
+                menuPanel.Width = 300;
+            else menuPanel.Width = 78;
+        }
+
+        private void IT_Button_Click(object sender, EventArgs e)
+        {
+            selectedSoftwareView_Button.Tag = "unclicked";
+            loadSoftwareToGridView_Role(softwareList, Role.It);
+        }
+        private void Tech_Button_Click(object sender, EventArgs e)
+        {
+            selectedSoftwareView_Button.Tag = "unclicked";
+            loadSoftwareToGridView_Role(softwareList, Role.Tech);
+        }
+        private void Graphic_Button_Click(object sender, EventArgs e)
+        {
+            selectedSoftwareView_Button.Tag = "unclicked";
+            loadSoftwareToGridView_Role(softwareList, Role.Graphic);
+        }
+        private void None_Button_Click(object sender, EventArgs e)
+        {
+            selectedSoftwareView_Button.Tag = "unclicked";
+            loadSoftwareToGridView_Role(softwareList, Role.None);
+        }
+
+        private void confirmButton_Click(object sender, EventArgs e)
+        {
+            selectedSoftwareView_Button.Tag = "unclicked";
+            if (selectedSoftwareList.Count != 0)
+            {
+                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn tiếp tục?", "TIẾP TỤC", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    //Từ từ tính tiếp
+                }
+            }
+            else MessageBox.Show("Bạn chưa chọn phần mềm nào");
+        }
+
+        private void softwareGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (selectedSoftwareView_Button.Tag.ToString() == "unclicked")
+            {
+                for (int i = 0; i < softwareList.Count; i++)
+                {
+                    if (softwareList[i].Displayname == softwareGridView.Rows[e.RowIndex].Cells[0].Value.ToString())
+                    {
+                        selectedSoftwareList.Add(softwareList[i]);
+                        softwareList.RemoveAt(i);
+                        loadSoftwareToGridView(softwareList);
+                        return;
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < selectedSoftwareList.Count; i++)
+                {
+                    if (selectedSoftwareList[i].Displayname == softwareGridView.Rows[e.RowIndex].Cells[0].Value.ToString())
+                    {
+                        softwareList.Add(selectedSoftwareList[i]);
+                        selectedSoftwareList.RemoveAt(i);
+                        softwareGridView.Rows.Remove(softwareGridView.Rows[e.RowIndex]);
+                        loadSoftwareToGridView(selectedSoftwareList);
+                        return;
+                    }
+                }
+            }
         }
     }
 }

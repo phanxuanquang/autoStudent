@@ -30,16 +30,16 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainUI));
             this.Background = new System.Windows.Forms.Panel();
-            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
+            this.minimizeButton = new Guna.UI2.WinForms.Guna2Button();
+            this.exitButton = new Guna.UI2.WinForms.Guna2Button();
             this.MainPanel = new System.Windows.Forms.Panel();
             this.wizardButton = new Guna.UI2.WinForms.Guna2ImageButton();
             this.guna2GradientButton4 = new Guna.UI2.WinForms.Guna2GradientButton();
             this.guna2GradientButton3 = new Guna.UI2.WinForms.Guna2GradientButton();
             this.guna2GradientButton2 = new Guna.UI2.WinForms.Guna2GradientButton();
             this.guna2GradientButton1 = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.minimizeButton_Above = new Guna.UI2.WinForms.Guna2Button();
+            this.exitButton_Above = new Guna.UI2.WinForms.Guna2Button();
             this.uninstallButton = new Guna.UI2.WinForms.Guna2Button();
             this.installButton = new Guna.UI2.WinForms.Guna2Button();
             this.Background.SuspendLayout();
@@ -49,54 +49,59 @@
             // Background
             // 
             this.Background.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Background.BackgroundImage")));
-            this.Background.Controls.Add(this.guna2Button2);
-            this.Background.Controls.Add(this.guna2Button4);
+            this.Background.Controls.Add(this.minimizeButton);
+            this.Background.Controls.Add(this.exitButton);
             this.Background.Controls.Add(this.MainPanel);
             this.Background.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Background.Location = new System.Drawing.Point(0, 0);
+            this.Background.Margin = new System.Windows.Forms.Padding(0);
             this.Background.Name = "Background";
             this.Background.Size = new System.Drawing.Size(971, 607);
             this.Background.TabIndex = 0;
             // 
-            // guna2Button2
+            // minimizeButton
             // 
-            this.guna2Button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2Button2.Animated = true;
-            this.guna2Button2.BorderColor = System.Drawing.Color.Cyan;
-            this.guna2Button2.BorderRadius = 3;
-            this.guna2Button2.CheckedState.Parent = this.guna2Button2;
-            this.guna2Button2.CustomImages.Parent = this.guna2Button2;
-            this.guna2Button2.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2Button2.ForeColor = System.Drawing.Color.White;
-            this.guna2Button2.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(57)))), ((int)(((byte)(125)))));
-            this.guna2Button2.HoverState.Parent = this.guna2Button2;
-            this.guna2Button2.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button2.Image")));
-            this.guna2Button2.Location = new System.Drawing.Point(894, 12);
-            this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.ShadowDecoration.Parent = this.guna2Button2;
-            this.guna2Button2.Size = new System.Drawing.Size(30, 30);
-            this.guna2Button2.TabIndex = 5;
+            this.minimizeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.minimizeButton.Animated = true;
+            this.minimizeButton.BorderColor = System.Drawing.Color.Cyan;
+            this.minimizeButton.BorderRadius = 3;
+            this.minimizeButton.CheckedState.Parent = this.minimizeButton;
+            this.minimizeButton.CustomImages.Parent = this.minimizeButton;
+            this.minimizeButton.FillColor = System.Drawing.Color.Transparent;
+            this.minimizeButton.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.minimizeButton.ForeColor = System.Drawing.Color.White;
+            this.minimizeButton.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(57)))), ((int)(((byte)(125)))));
+            this.minimizeButton.HoverState.Parent = this.minimizeButton;
+            this.minimizeButton.Image = ((System.Drawing.Image)(resources.GetObject("minimizeButton.Image")));
+            this.minimizeButton.Location = new System.Drawing.Point(894, 12);
+            this.minimizeButton.Margin = new System.Windows.Forms.Padding(0);
+            this.minimizeButton.Name = "minimizeButton";
+            this.minimizeButton.ShadowDecoration.Parent = this.minimizeButton;
+            this.minimizeButton.Size = new System.Drawing.Size(30, 30);
+            this.minimizeButton.TabIndex = 5;
+            this.minimizeButton.Click += new System.EventHandler(this.minimizeButton_Click);
             // 
-            // guna2Button4
+            // exitButton
             // 
-            this.guna2Button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2Button4.Animated = true;
-            this.guna2Button4.BorderColor = System.Drawing.Color.Cyan;
-            this.guna2Button4.BorderRadius = 3;
-            this.guna2Button4.CheckedState.Parent = this.guna2Button4;
-            this.guna2Button4.CustomImages.Parent = this.guna2Button4;
-            this.guna2Button4.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Button4.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2Button4.ForeColor = System.Drawing.Color.White;
-            this.guna2Button4.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(57)))), ((int)(((byte)(125)))));
-            this.guna2Button4.HoverState.Parent = this.guna2Button4;
-            this.guna2Button4.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button4.Image")));
-            this.guna2Button4.Location = new System.Drawing.Point(929, 12);
-            this.guna2Button4.Name = "guna2Button4";
-            this.guna2Button4.ShadowDecoration.Parent = this.guna2Button4;
-            this.guna2Button4.Size = new System.Drawing.Size(30, 30);
-            this.guna2Button4.TabIndex = 4;
+            this.exitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.exitButton.Animated = true;
+            this.exitButton.BorderColor = System.Drawing.Color.Cyan;
+            this.exitButton.BorderRadius = 3;
+            this.exitButton.CheckedState.Parent = this.exitButton;
+            this.exitButton.CustomImages.Parent = this.exitButton;
+            this.exitButton.FillColor = System.Drawing.Color.Transparent;
+            this.exitButton.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.exitButton.ForeColor = System.Drawing.Color.White;
+            this.exitButton.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(57)))), ((int)(((byte)(125)))));
+            this.exitButton.HoverState.Parent = this.exitButton;
+            this.exitButton.Image = ((System.Drawing.Image)(resources.GetObject("exitButton.Image")));
+            this.exitButton.Location = new System.Drawing.Point(929, 12);
+            this.exitButton.Margin = new System.Windows.Forms.Padding(0);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.ShadowDecoration.Parent = this.exitButton;
+            this.exitButton.Size = new System.Drawing.Size(30, 30);
+            this.exitButton.TabIndex = 4;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
             // MainPanel
             // 
@@ -107,11 +112,12 @@
             this.MainPanel.Controls.Add(this.guna2GradientButton3);
             this.MainPanel.Controls.Add(this.guna2GradientButton2);
             this.MainPanel.Controls.Add(this.guna2GradientButton1);
-            this.MainPanel.Controls.Add(this.guna2Button3);
-            this.MainPanel.Controls.Add(this.guna2Button1);
+            this.MainPanel.Controls.Add(this.minimizeButton_Above);
+            this.MainPanel.Controls.Add(this.exitButton_Above);
             this.MainPanel.Controls.Add(this.uninstallButton);
             this.MainPanel.Controls.Add(this.installButton);
             this.MainPanel.Location = new System.Drawing.Point(0, 0);
+            this.MainPanel.Margin = new System.Windows.Forms.Padding(0);
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(971, 607);
             this.MainPanel.TabIndex = 1;
@@ -124,6 +130,7 @@
             this.wizardButton.Image = ((System.Drawing.Image)(resources.GetObject("wizardButton.Image")));
             this.wizardButton.ImageSize = new System.Drawing.Size(58, 58);
             this.wizardButton.Location = new System.Drawing.Point(846, 273);
+            this.wizardButton.Margin = new System.Windows.Forms.Padding(0);
             this.wizardButton.Name = "wizardButton";
             this.wizardButton.PressedState.ImageSize = new System.Drawing.Size(58, 58);
             this.wizardButton.PressedState.Parent = this.wizardButton;
@@ -255,45 +262,49 @@
             this.guna2GradientButton1.TextOffset = new System.Drawing.Point(40, 0);
             this.guna2GradientButton1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             // 
-            // guna2Button3
+            // minimizeButton_Above
             // 
-            this.guna2Button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2Button3.Animated = true;
-            this.guna2Button3.BorderColor = System.Drawing.Color.Cyan;
-            this.guna2Button3.BorderRadius = 3;
-            this.guna2Button3.CheckedState.Parent = this.guna2Button3;
-            this.guna2Button3.CustomImages.Parent = this.guna2Button3;
-            this.guna2Button3.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Button3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2Button3.ForeColor = System.Drawing.Color.White;
-            this.guna2Button3.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(57)))), ((int)(((byte)(125)))));
-            this.guna2Button3.HoverState.Parent = this.guna2Button3;
-            this.guna2Button3.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button3.Image")));
-            this.guna2Button3.Location = new System.Drawing.Point(896, 12);
-            this.guna2Button3.Name = "guna2Button3";
-            this.guna2Button3.ShadowDecoration.Parent = this.guna2Button3;
-            this.guna2Button3.Size = new System.Drawing.Size(30, 30);
-            this.guna2Button3.TabIndex = 3;
+            this.minimizeButton_Above.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.minimizeButton_Above.Animated = true;
+            this.minimizeButton_Above.BorderColor = System.Drawing.Color.Cyan;
+            this.minimizeButton_Above.BorderRadius = 3;
+            this.minimizeButton_Above.CheckedState.Parent = this.minimizeButton_Above;
+            this.minimizeButton_Above.CustomImages.Parent = this.minimizeButton_Above;
+            this.minimizeButton_Above.FillColor = System.Drawing.Color.Transparent;
+            this.minimizeButton_Above.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.minimizeButton_Above.ForeColor = System.Drawing.Color.White;
+            this.minimizeButton_Above.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(57)))), ((int)(((byte)(125)))));
+            this.minimizeButton_Above.HoverState.Parent = this.minimizeButton_Above;
+            this.minimizeButton_Above.Image = ((System.Drawing.Image)(resources.GetObject("minimizeButton_Above.Image")));
+            this.minimizeButton_Above.Location = new System.Drawing.Point(896, 12);
+            this.minimizeButton_Above.Margin = new System.Windows.Forms.Padding(0);
+            this.minimizeButton_Above.Name = "minimizeButton_Above";
+            this.minimizeButton_Above.ShadowDecoration.Parent = this.minimizeButton_Above;
+            this.minimizeButton_Above.Size = new System.Drawing.Size(30, 30);
+            this.minimizeButton_Above.TabIndex = 3;
+            this.minimizeButton_Above.Click += new System.EventHandler(this.minimizeButton_Click);
             // 
-            // guna2Button1
+            // exitButton_Above
             // 
-            this.guna2Button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2Button1.Animated = true;
-            this.guna2Button1.BorderColor = System.Drawing.Color.Cyan;
-            this.guna2Button1.BorderRadius = 3;
-            this.guna2Button1.CheckedState.Parent = this.guna2Button1;
-            this.guna2Button1.CustomImages.Parent = this.guna2Button1;
-            this.guna2Button1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(57)))), ((int)(((byte)(125)))));
-            this.guna2Button1.HoverState.Parent = this.guna2Button1;
-            this.guna2Button1.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button1.Image")));
-            this.guna2Button1.Location = new System.Drawing.Point(931, 12);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.ShadowDecoration.Parent = this.guna2Button1;
-            this.guna2Button1.Size = new System.Drawing.Size(30, 30);
-            this.guna2Button1.TabIndex = 2;
+            this.exitButton_Above.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.exitButton_Above.Animated = true;
+            this.exitButton_Above.BorderColor = System.Drawing.Color.Cyan;
+            this.exitButton_Above.BorderRadius = 3;
+            this.exitButton_Above.CheckedState.Parent = this.exitButton_Above;
+            this.exitButton_Above.CustomImages.Parent = this.exitButton_Above;
+            this.exitButton_Above.FillColor = System.Drawing.Color.Transparent;
+            this.exitButton_Above.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.exitButton_Above.ForeColor = System.Drawing.Color.White;
+            this.exitButton_Above.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(57)))), ((int)(((byte)(125)))));
+            this.exitButton_Above.HoverState.Parent = this.exitButton_Above;
+            this.exitButton_Above.Image = ((System.Drawing.Image)(resources.GetObject("exitButton_Above.Image")));
+            this.exitButton_Above.Location = new System.Drawing.Point(931, 12);
+            this.exitButton_Above.Margin = new System.Windows.Forms.Padding(0);
+            this.exitButton_Above.Name = "exitButton_Above";
+            this.exitButton_Above.ShadowDecoration.Parent = this.exitButton_Above;
+            this.exitButton_Above.Size = new System.Drawing.Size(30, 30);
+            this.exitButton_Above.TabIndex = 2;
+            this.exitButton_Above.Click += new System.EventHandler(this.exitButton_Click);
             // 
             // uninstallButton
             // 
@@ -309,6 +320,7 @@
             this.uninstallButton.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
             this.uninstallButton.HoverState.Parent = this.uninstallButton;
             this.uninstallButton.Location = new System.Drawing.Point(217, 319);
+            this.uninstallButton.Margin = new System.Windows.Forms.Padding(0);
             this.uninstallButton.Name = "uninstallButton";
             this.uninstallButton.PressedColor = System.Drawing.Color.Cyan;
             this.uninstallButton.PressedDepth = 20;
@@ -333,6 +345,7 @@
             this.installButton.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
             this.installButton.HoverState.Parent = this.installButton;
             this.installButton.Location = new System.Drawing.Point(217, 162);
+            this.installButton.Margin = new System.Windows.Forms.Padding(0);
             this.installButton.Name = "installButton";
             this.installButton.PressedColor = System.Drawing.Color.Cyan;
             this.installButton.PressedDepth = 20;
@@ -369,11 +382,11 @@
         private Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton3;
         private Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton2;
         private Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton1;
-        private Guna.UI2.WinForms.Guna2Button guna2Button3;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2Button minimizeButton_Above;
+        private Guna.UI2.WinForms.Guna2Button exitButton_Above;
         private Guna.UI2.WinForms.Guna2Button uninstallButton;
         private Guna.UI2.WinForms.Guna2Button installButton;
-        private Guna.UI2.WinForms.Guna2Button guna2Button2;
-        private Guna.UI2.WinForms.Guna2Button guna2Button4;
+        private Guna.UI2.WinForms.Guna2Button minimizeButton;
+        private Guna.UI2.WinForms.Guna2Button exitButton;
     }
 }

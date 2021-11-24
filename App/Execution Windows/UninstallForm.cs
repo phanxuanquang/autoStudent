@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace App
 {
-    public partial class UninstallForm : BaseForm
+    public partial class UninstallForm : BaseExecutionForm
     {
         public UninstallForm()
         {
