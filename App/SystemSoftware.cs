@@ -39,7 +39,7 @@ namespace App
             }
             return supportedsSoftwares;
         }
-        public static void FindInstalledSofware(RegistryKey regKey, List<string> keys, List<SystemSoftware> installed)
+        public static void GetInstalledSofware(RegistryKey regKey, List<string> keys, List<SystemSoftware> installed)
         {
             foreach (string key in keys)
             {
@@ -66,7 +66,7 @@ namespace App
                                             {
                                                 DisplayName = displayName,
                                                 Version = Convert.ToString(sk.GetValue("DisplayVersion")),
-                                                UninstallString = CheckUninstallString(Convert.ToString(sk.GetValue("UninstallString")))
+                                                UninstallString = FixUninstallString(Convert.ToString(sk.GetValue("UninstallString")))
                                             }) ;
                                         }
                                     }
@@ -83,7 +83,7 @@ namespace App
                 }
             }
         }
-        public static string CheckUninstallString(string tmp)
+        public static string FixUninstallString(string tmp)
         {
             if (tmp != null)
             {
