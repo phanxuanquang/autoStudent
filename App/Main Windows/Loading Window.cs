@@ -16,17 +16,13 @@ namespace App
     public partial class LoadindWindow : Form
     {
         bool isLoaded_Database = false, isLoaded_System = false;
-        List<string> keys = new List<string>() {
-             @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall",
-             @"SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall"
-        };
 
         public LoadindWindow()
         {
             InitializeComponent();
 
             Program.software_Database = new List<Package>();
-            Program.software_System = new List<Package>();
+            Program.software_System = new List<SystemSoftware>();
 
             dataLoading_clock.Start();
 
@@ -59,9 +55,9 @@ namespace App
 
         private void loadFrom_System()
         {
-            findInstalledSofware(RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, Environment.Is64BitOperatingSystem ? RegistryView.Registry64 : RegistryView.Registry32), keys, Program.software_System);
-            findInstalledSofware(RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, Environment.Is64BitOperatingSystem ? RegistryView.Registry64 : RegistryView.Registry32), keys, Program.software_System);
-            Program.software_System = Program.software_System.Where(s => !string.IsNullOrWhiteSpace(s.Displayname)).Distinct().ToList();
+            SystemSoftware.GetInstalledSofware(RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, Environment.Is64BitOperatingSystem ? RegistryView.Registry64 : RegistryView.Registry32), SystemSoftware.keys, Program.software_System);
+            SystemSoftware.GetInstalledSofware(RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, Environment.Is64BitOperatingSystem ? RegistryView.Registry64 : RegistryView.Registry32), SystemSoftware.keys, Program.software_System);
+            Program.software_System = Program.software_System.Where(s => !string.IsNullOrWhiteSpace(s.DisplayName)).Distinct().ToList();
             isLoaded_System = true;
         }
         private void findInstalledSofware(RegistryKey regKey, List<string> keys, List<Package> installed)
@@ -101,14 +97,5 @@ namespace App
             }
         }
 
-        private void modifySystemSoftware_byDatabaseSoftware()
-        {
-            List<Package> temp = new List<Package>();
-            for (int i = 0; i < Program.software_System.Count; i++)
-                for (int j = 0; j < Program.software_Database.Count; j++)
-                    if (Program.software_System[i] == Program.software_Database[j])
-                        temp.Add(Program.software_Database[j]);
-            Program.software_System = temp;
-        }
     }
 }

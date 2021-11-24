@@ -15,7 +15,7 @@ namespace App
         public UninstallForm()
         {
             InitializeComponent();
-            loadSoftwareToGridViewUninstall(Program.software_System);
+            loadSoftwareToGridView(Program.software_Database);
         }
     }
 }
