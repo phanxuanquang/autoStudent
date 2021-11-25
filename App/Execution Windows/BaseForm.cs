@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace App
 {
@@ -119,6 +120,22 @@ namespace App
                 if (dialogResult == DialogResult.Yes)
                 {
                     softwareList = selectedSoftwareList;
+                    ///Download
+                    App.InstallUninstall.Download download = new InstallUninstall.Download();
+                    App.InstallUninstall.Install install = new InstallUninstall.Install();
+                    download.Start(softwareList, null, null, @"C:\");
+                    Task.Factory.StartNew(() =>
+                    {
+                        while (!download.isCompleted())
+                        {
+                            Thread.Sleep(2000);
+                        }
+                        install.Start(softwareList, @"C:\");
+                        while (!install.isCompleted())
+                        {
+                            Thread.Sleep(2000);
+                        }
+                    });
                 }
             }
             else MessageBox.Show("Bạn chưa chọn phần mềm nào");
@@ -126,33 +143,30 @@ namespace App
 
         private void softwareGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            if (selectedSoftwareView_Button.Tag.ToString() == "unclicked")
             {
-                if (selectedSoftwareView_Button.Tag.ToString() == "unclicked")
+                for (int i = 0; i < softwareList.Count; i++)
                 {
-                    for (int i = 0; i < softwareList.Count; i++)
+                    if (softwareList[i].Displayname == softwareGridView.Rows[e.RowIndex].Cells[0].Value.ToString())
                     {
-                        if (softwareList[i].Displayname == softwareGridView.Rows[e.RowIndex].Cells[0].Value.ToString())
-                        {
-                            selectedSoftwareList.Add(softwareList[i]);
-                            softwareList.RemoveAt(i);
-                            loadSoftwareToGridView(softwareList);
-                            return;
-                        }
+                        selectedSoftwareList.Add(softwareList[i]);
+                        softwareList.RemoveAt(i);
+                        loadSoftwareToGridView(softwareList);
+                        return;
                     }
                 }
-                else
+            }
+            else
+            {
+                for (int i = 0; i < selectedSoftwareList.Count; i++)
                 {
-                    for (int i = 0; i < selectedSoftwareList.Count; i++)
+                    if (selectedSoftwareList[i].Displayname == softwareGridView.Rows[e.RowIndex].Cells[0].Value.ToString())
                     {
-                        if (selectedSoftwareList[i].Displayname == softwareGridView.Rows[e.RowIndex].Cells[0].Value.ToString())
-                        {
-                            softwareList.Add(selectedSoftwareList[i]);
-                            selectedSoftwareList.RemoveAt(i);
-                            softwareGridView.Rows.Remove(softwareGridView.Rows[e.RowIndex]);
-                            loadSoftwareToGridView(selectedSoftwareList);
-                            return;
-                        }
+                        softwareList.Add(selectedSoftwareList[i]);
+                        selectedSoftwareList.RemoveAt(i);
+                        softwareGridView.Rows.Remove(softwareGridView.Rows[e.RowIndex]);
+                        loadSoftwareToGridView(selectedSoftwareList);
+                        return;
                     }
                 }
             }
