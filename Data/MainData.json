@@ -1259,11 +1259,6 @@
          "version":"latest",
          "displayname":"ONLYOFFICE Desktop Editors",
          "role":"None",
-         "uninstall argument":[
-            "{{.uninstaller}}",
-            "/uninstall",
-            "/silent"
-         ]
       },
       {
          "name":"origin",
@@ -1422,12 +1417,6 @@
          "version":"4.3.8",
          "displayname":"qBittorrent",
          "role":"None",
-         "uninstall argument":[
-            "{{unins000.exe}}",
-            "/VERYSILENT",
-            "/NORESTART",
-            "/ALLUSERS"
-         ]
       },
       {
          "name":"qtox",
@@ -1846,24 +1835,12 @@
          "installer":{
             "kind":"custom",
             "options":{
-               "x86":{
-                  "arguments":[
+               "arguments":[
                      "{{.installer}}",
                      "/install",
                      "/passive",
                      "/norestart"
-                  ],
-                  "filename":"redist_2013_x86.exe"
-               },
-               "x86_64":{
-                  "arguments":[
-                     "{{.installer}}",
-                     "/install",
-                     "/passive",
-                     "/norestart"
-                  ],
-                  "filename":"redist_2013_x86_64.exe"
-               }
+                ]
             },
             "x86":"https://aka.ms/highdpimfc2013x86enu",
             "x86_64":"https://aka.ms/highdpimfc2013x64enu"
