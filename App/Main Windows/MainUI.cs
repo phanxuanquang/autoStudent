@@ -18,7 +18,7 @@ namespace App
             DoubleBuffered = true;
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
         }
-
+        //Anti Flickering
         protected override CreateParams CreateParams
         {
             get
