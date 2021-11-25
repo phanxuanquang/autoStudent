@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainUI));
             this.Background = new System.Windows.Forms.Panel();
             this.minimizeButton = new Guna.UI2.WinForms.Guna2Button();
-            this.exitButton = new Guna.UI2.WinForms.Guna2Button();
             this.MainPanel = new System.Windows.Forms.Panel();
             this.wizardButton = new Guna.UI2.WinForms.Guna2ImageButton();
             this.guna2GradientButton4 = new Guna.UI2.WinForms.Guna2GradientButton();
@@ -42,6 +41,7 @@
             this.exitButton_Above = new Guna.UI2.WinForms.Guna2Button();
             this.uninstallButton = new Guna.UI2.WinForms.Guna2Button();
             this.installButton = new Guna.UI2.WinForms.Guna2Button();
+            this.exitButton = new Guna.UI2.WinForms.Guna2Button();
             this.Background.SuspendLayout();
             this.MainPanel.SuspendLayout();
             this.SuspendLayout();
@@ -52,10 +52,10 @@
             this.Background.Controls.Add(this.minimizeButton);
             this.Background.Controls.Add(this.MainPanel);
             this.Background.Controls.Add(this.exitButton);
-            this.Background.Location = new System.Drawing.Point(9, 9);
+            this.Background.Location = new System.Drawing.Point(0, 0);
             this.Background.Margin = new System.Windows.Forms.Padding(0);
             this.Background.Name = "Background";
-            this.Background.Size = new System.Drawing.Size(972, 607);
+            this.Background.Size = new System.Drawing.Size(971, 607);
             this.Background.TabIndex = 0;
             // 
             // minimizeButton
@@ -72,35 +72,13 @@
             this.minimizeButton.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(57)))), ((int)(((byte)(125)))));
             this.minimizeButton.HoverState.Parent = this.minimizeButton;
             this.minimizeButton.Image = ((System.Drawing.Image)(resources.GetObject("minimizeButton.Image")));
-            this.minimizeButton.Location = new System.Drawing.Point(895, 12);
+            this.minimizeButton.Location = new System.Drawing.Point(894, 12);
             this.minimizeButton.Margin = new System.Windows.Forms.Padding(0);
             this.minimizeButton.Name = "minimizeButton";
             this.minimizeButton.ShadowDecoration.Parent = this.minimizeButton;
             this.minimizeButton.Size = new System.Drawing.Size(30, 30);
             this.minimizeButton.TabIndex = 5;
             this.minimizeButton.Click += new System.EventHandler(this.minimizeButton_Click);
-            // 
-            // exitButton
-            // 
-            this.exitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.exitButton.Animated = true;
-            this.exitButton.BorderColor = System.Drawing.Color.Cyan;
-            this.exitButton.BorderRadius = 3;
-            this.exitButton.CheckedState.Parent = this.exitButton;
-            this.exitButton.CustomImages.Parent = this.exitButton;
-            this.exitButton.FillColor = System.Drawing.Color.Transparent;
-            this.exitButton.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.exitButton.ForeColor = System.Drawing.Color.White;
-            this.exitButton.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(57)))), ((int)(((byte)(125)))));
-            this.exitButton.HoverState.Parent = this.exitButton;
-            this.exitButton.Image = ((System.Drawing.Image)(resources.GetObject("exitButton.Image")));
-            this.exitButton.Location = new System.Drawing.Point(930, 12);
-            this.exitButton.Margin = new System.Windows.Forms.Padding(0);
-            this.exitButton.Name = "exitButton";
-            this.exitButton.ShadowDecoration.Parent = this.exitButton;
-            this.exitButton.Size = new System.Drawing.Size(30, 30);
-            this.exitButton.TabIndex = 4;
-            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
             // MainPanel
             // 
@@ -115,7 +93,7 @@
             this.MainPanel.Controls.Add(this.exitButton_Above);
             this.MainPanel.Controls.Add(this.uninstallButton);
             this.MainPanel.Controls.Add(this.installButton);
-            this.MainPanel.Location = new System.Drawing.Point(1, 0);
+            this.MainPanel.Location = new System.Drawing.Point(0, 0);
             this.MainPanel.Margin = new System.Windows.Forms.Padding(0);
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(971, 607);
@@ -354,6 +332,28 @@
             this.installButton.Text = "CÀI ĐẶT PHẦN MỀM";
             this.installButton.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             this.installButton.Click += new System.EventHandler(this.installButton_Click);
+            // 
+            // exitButton
+            // 
+            this.exitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.exitButton.Animated = true;
+            this.exitButton.BorderColor = System.Drawing.Color.Cyan;
+            this.exitButton.BorderRadius = 3;
+            this.exitButton.CheckedState.Parent = this.exitButton;
+            this.exitButton.CustomImages.Parent = this.exitButton;
+            this.exitButton.FillColor = System.Drawing.Color.Transparent;
+            this.exitButton.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.exitButton.ForeColor = System.Drawing.Color.White;
+            this.exitButton.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(57)))), ((int)(((byte)(125)))));
+            this.exitButton.HoverState.Parent = this.exitButton;
+            this.exitButton.Image = ((System.Drawing.Image)(resources.GetObject("exitButton.Image")));
+            this.exitButton.Location = new System.Drawing.Point(929, 12);
+            this.exitButton.Margin = new System.Windows.Forms.Padding(0);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.ShadowDecoration.Parent = this.exitButton;
+            this.exitButton.Size = new System.Drawing.Size(30, 30);
+            this.exitButton.TabIndex = 4;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
             // MainUI
             // 
