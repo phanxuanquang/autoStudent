@@ -26,10 +26,50 @@ namespace App.InstallUninstall
 
         private void DownloadProgress(object sender, DownloadProgressChangedEventArgs e)
         {
-            progressBar.Value = e.ProgressPercentage;
+            if (progressBar != null)
+            {
+                progressBar.Value = e.ProgressPercentage;
+            }
         }
 
         private void DownloadCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+        {
+            if (e.Error != null)
+            {
+                throw new Exception("Lỗi quá trình download");
+            }
+            else Downloads();
+        }
+
+        public void Start(List<Package> listSoftware, ProgressBar progressBar, Label fileDownload, string directoryFolderDownload)
+        {
+            this.listSoftware = listSoftware;
+            this.directoryFolderDownload = directoryFolderDownload;
+            this.fileDownload = fileDownload;
+            this.progressBar = progressBar;
+            if (this.progressBar != null)
+            {
+                this.progressBar.Maximum = 100;
+            }
+            this.index = -1;
+
+            Downloads();
+        }
+
+        public void Pause()
+        {
+            client.CancelAsync();
+        }
+
+        public void Continue()
+        {
+            if (index > 0)
+            {
+                Downloads();
+            }
+        }
+
+        private void Downloads()
         {
             if (this.listSoftware != null)
             {
@@ -41,32 +81,33 @@ namespace App.InstallUninstall
                     {
                         this.fileDownload.Text = fileName;
                     }
-                    client.DownloadFileAsync(new Uri(GetPath.GetURL(listSoftware[index])), Path.Combine(this.directoryFolderDownload, fileName));
+                    if (!client.IsBusy)
+                    {
+                        string URL = GetPath.GetURL(listSoftware[index]);
+                        string pathFile = Path.Combine(this.directoryFolderDownload, fileName);
+                        if (!File.Exists(pathFile) && isAvailable(URL, 30000))
+                        {
+                            client.DownloadFileAsync(new Uri(URL), pathFile);
+                        }
+                        else Downloads();
+                    }
                 }
             }
         }
 
-        public void Start(List<Package> listSoftware, ProgressBar progressBar, Label fileDownload, string directoryFolderDownload)
+        private bool isAvailable(string url, int timeoutMS)
         {
-            this.listSoftware = listSoftware;
-            this.directoryFolderDownload = directoryFolderDownload;
-            this.fileDownload = fileDownload;
-            this.progressBar = progressBar;
-            this.progressBar.Maximum = 100;
-            this.index = -1;
-
-            if (this.listSoftware != null)
+            try
             {
-                index = 0;
-                if (this.listSoftware.Count > index)
-                {
-                    string fileName = GetPath.GetFileName(listSoftware[index]);
-                    if (fileDownload != null)
-                    {
-                        this.fileDownload.Text = fileName;
-                    }
-                    client.DownloadFileAsync(new Uri(GetPath.GetURL(listSoftware[index])), Path.Combine(this.directoryFolderDownload, fileName));
-                }
+                var request = (HttpWebRequest)WebRequest.Create(url);
+                request.KeepAlive = false;
+                request.Timeout = timeoutMS;
+                using (var response = (HttpWebResponse)request.GetResponse())
+                    return true;
+            }
+            catch
+            {
+                return false;
             }
         }
 
