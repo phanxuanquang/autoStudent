@@ -39,7 +39,6 @@ namespace App
         public List<string> UninstallArgument { get; set; }
 
         public string UninstallString { get; set; }
-        public string UninstallString { get; set; }
     }
 
     public partial class Installer
