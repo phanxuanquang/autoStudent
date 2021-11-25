@@ -28,6 +28,7 @@ namespace App
 
         [JsonProperty("version")]
         public string Version { get; set; }
+
         [JsonProperty("displayname")]
         public string Displayname { get; set; }
 
@@ -36,6 +37,8 @@ namespace App
 
         [JsonProperty("uninstall argument", NullValueHandling = NullValueHandling.Ignore)]
         public List<string> UninstallArgument { get; set; }
+
+        public string UninstallString { get; set; }
     }
 
     public partial class Installer
