@@ -57,7 +57,7 @@ namespace App.InstallUninstall
 
         private void isCompletedItem()
         {
-            if (listSoftware != null && isContinue)
+            if (isContinue && listSoftware != null)
             {
                 index++;
                 MessageBox.Show(index.ToString());
