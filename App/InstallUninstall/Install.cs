@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.IO;
+using System.Windows.Forms;
+using System.Threading;
 
 namespace App.InstallUninstall
 {
@@ -13,37 +15,74 @@ namespace App.InstallUninstall
         private List<Package> listSoftware;
         private string directoryFolderDownload;
         private TrackingProcess tracking;
+        private int index;
+        private bool isContinue;
 
-        public Install(List<Package> listSoftware)
+        public Install()
         {
-            this.listSoftware = listSoftware;
             tracking = new TrackingProcess();
         }
 
-        public void Start(string directoryFolderDownload)
+        public void Start(List<Package> listSoftware, string directoryFolderDownload)
         {
+            this.listSoftware = listSoftware;
             this.directoryFolderDownload = directoryFolderDownload;
-            if (Environment.Is64BitOperatingSystem)
-            {
-                for (int index = 0; index < listSoftware.Count; index++)
-                {
-                    GetPath.NewProcess item = GetPath.CommandInstall(Path.Combine(this.directoryFolderDownload, GetPath.GetFileName(listSoftware[index])), listSoftware[index].Installer.Kind);
-                }
-            }
-            else
-            {
-                for (int index = 0; index < listSoftware.Count; index++)
-                {
-
-                }
-            }
+            index = -1;
+            isContinue = true;
+            isCompletedItem();
         }
 
-        private void isCompletedItem(object sender, EventArgs e)
+        public void Pause()
         {
-
+            isContinue = false;
         }
-        private void InstallItem(GetPath.NewProcess newProcess)
+
+        public void Continue()
+        {
+            if (index > 0)
+            {
+                isContinue = true;
+                isCompletedItem();
+            }
+        }
+
+        public bool isCompleted()
+        {
+            if (listSoftware != null)
+            {
+                return index == listSoftware.Count;
+            }
+            return true;
+        }
+
+        private void isCompletedItem()
+        {
+            if (listSoftware != null && isContinue)
+            {
+                index++;
+                MessageBox.Show(index.ToString());
+                if (listSoftware.Count > index)
+                {
+                    if (InstallItem(GetPath.CommandInstall(directoryFolderDownload, listSoftware[index])))
+                    {
+                        Task.Factory.StartNew(() =>
+                        {
+                            while (!tracking.isCompleted)
+                            {
+                                Thread.Sleep(250);
+                            }
+                            isCompletedItem();
+                        });
+                    }
+                    else
+                    {
+                        isCompletedItem();
+                    }
+                }
+            }
+        }
+
+        private bool InstallItem(GetPath.NewProcess newProcess)
         {
             if (newProcess != null)
             {
@@ -55,8 +94,10 @@ namespace App.InstallUninstall
                 processStartInfo.Verb = "runas";
                 process.StartInfo = processStartInfo;
                 process.Start();
-                tracking.Tracking(process.Id, isCompletedItem);
+                tracking.Tracking(process.Id);
+                return true;
             }
+            return false;
         }
     }
 }
