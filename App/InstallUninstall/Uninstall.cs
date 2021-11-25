@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace App.InstallUninstall
 {
     class Uninstall
     {
         private List<Package> listSoftware;
-        private List<string> UninstallString;
         private TrackingProcess tracking;
         private int index;
         private bool isContinue;
@@ -20,13 +21,12 @@ namespace App.InstallUninstall
             tracking = new TrackingProcess();
         }
 
-        public void Start(List<Package> listSoftware, List<string> UninstallString)
+        public void Start(List<Package> listSoftware)
         {
             this.listSoftware = listSoftware;
-            this.UninstallString = UninstallString;
             index = -1;
             isContinue = true;
-            isCompletedItem(null, null);
+            isCompletedItem();
         }
 
         public void Pause()
@@ -39,7 +39,7 @@ namespace App.InstallUninstall
             if (index > 0)
             {
                 isContinue = true;
-                isCompletedItem(null, null);
+                isCompletedItem();
             }
         }
 
@@ -52,14 +52,29 @@ namespace App.InstallUninstall
             return true;
         }
 
-        private void isCompletedItem(object sender, EventArgs e)
+        private void isCompletedItem()
         {
-            if (isContinue && listSoftware != null && UninstallString != null)
+            if (isContinue && listSoftware != null)
             {
                 index++;
+                MessageBox.Show(index.ToString());
                 if (listSoftware.Count > index)
                 {
-                    UninstallItem(GetPath.CommandInstall(UninstallString[index], listSoftware[index]));
+                    if (UninstallItem(GetPath.CommandUninstall(listSoftware[index])))
+                    {
+                        Task.Factory.StartNew(() =>
+                        {
+                            while (!tracking.isCompleted)
+                            {
+                                Thread.Sleep(250);
+                            }
+                            isCompletedItem();
+                        });
+                    }
+                    else
+                    {
+                        isCompletedItem();
+                    }
                 }
             }
         }
@@ -76,7 +91,7 @@ namespace App.InstallUninstall
                 processStartInfo.Verb = "runas";
                 process.StartInfo = processStartInfo;
                 process.Start();
-                //tracking.Tracking(process.Id, isCompletedItem);
+                tracking.Tracking(process.Id);
                 return true;
             }
             return false;

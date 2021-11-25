@@ -120,10 +120,10 @@ namespace App.InstallUninstall
             return newProcess;
         }
 
-        public static NewProcess CommandUninstall(string uninstallString, Package package)
+        public static NewProcess CommandUninstall(Package package)
         {
-            if (package == null || String.IsNullOrEmpty(uninstallString)) return null;
-            string pathUninstaller = UninstallString2PathFile(uninstallString);
+            if (package == null || String.IsNullOrEmpty(package.UninstallString)) return null;
+            string pathUninstaller = UninstallString2PathFile(package.UninstallString);
             NewProcess newProcess = new NewProcess();
             if (newProcess != null)
             {
