@@ -16,6 +16,7 @@ namespace App
         public string DisplayName { get; set; }
         public string UninstallString { get; set; }
         public string Version { get; set; }
+
         // Tra ve 1 list phan mem da cai dat trong may ma app ho tro
         public static List<SystemSoftware> GetSupportedSoftwares(List<Package> packages, List<SystemSoftware> installed)
         {
@@ -39,6 +40,7 @@ namespace App
             }
             return supportedsSoftwares;
         }
+
         public static void GetInstalledSofware(RegistryKey regKey, List<string> keys, List<SystemSoftware> installed)
         {
             foreach (string key in keys)
@@ -83,6 +85,7 @@ namespace App
                 }
             }
         }
+
         public static string FixUninstallString(string tmp)
         {
             if (tmp != null)

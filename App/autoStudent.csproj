@@ -54,10 +54,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Guna.UI">
-      <HintPath>C:\Users\tuyen\Downloads\Compressed\Bunifu and Guna\Guna UI 2.0.0.1\Guna UI Framework Ultimate v2.0.0.1 Lib-Master\Guna.UI WinForms\.net 4.0\Guna.UI.dll</HintPath>
+      <HintPath>..\packages\Guna.UI.dll</HintPath>
     </Reference>
     <Reference Include="Guna.UI2">
-      <HintPath>C:\Users\tuyen\Downloads\Compressed\Bunifu and Guna\Guna UI 2.0.0.1\Guna UI Framework Ultimate v2.0.0.1 Lib-Master\Guna.UI2 WinForms\.net 4.0\Guna.UI2.dll</HintPath>
+      <HintPath>..\packages\Guna.UI2.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -84,6 +84,7 @@
     </Compile>
     <Compile Include="Data\DataAccess.cs" />
     <Compile Include="InstallUninstall\Download.cs" />
+    <Compile Include="InstallUninstall\GetPath.cs" />
     <Compile Include="InstallUninstall\Install.cs" />
     <Compile Include="Execution Windows\InstallForm.cs">
       <SubType>Form</SubType>
