@@ -36,31 +36,6 @@
          "role":"IT"
       },
       {
-         "name":"aescrypt-gui",
-         "installer":{
-            "kind":"msi",
-            "options":{
-               "x86":{
-                  "container":{
-                     "installer":"AESCrypt_v310_win32\\AESCrypt.msi",
-                     "kind":"zip"
-                  }
-               },
-               "x86_64":{
-                  "container":{
-                     "installer":"AESCrypt_v310_x64\\AESCrypt.msi",
-                     "kind":"zip"
-                  }
-               }
-            },
-            "x86":"https://www.aescrypt.com/download/v3/windows/AESCrypt_v{{.version}}_win32.zip",
-            "x86_64":"https://www.aescrypt.com/download/v3/windows/AESCrypt_v{{.version}}_x64.zip"
-         },
-         "version":"310",
-         "displayname":"AES Crypt",
-         "role":"None"
-      },
-      {
          "name":"amazon-corretto-11",
          "installer":{
             "kind":"msi",
