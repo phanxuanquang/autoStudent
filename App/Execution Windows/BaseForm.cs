@@ -50,18 +50,15 @@ namespace App
 
         private void selectedSoftwareView_Button_Click(object sender, EventArgs e)
         {
-            selectedSoftwareView_Button.Tag = "clicked";
             loadSoftwareToGridView(selectedSoftwareList);
         }
         private void allSoftwareView_Button_Click(object sender, EventArgs e)
         {
-            selectedSoftwareView_Button.Tag = "unclicked";
             loadSoftwareToGridView(softwareList);
         }
 
         private void exitButton_Click(object sender, EventArgs e)
         {
-            selectedSoftwareView_Button.Tag = "unclicked";
             if (selectedSoftwareList.Count != 0)
             {
                 DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn thoát?", "THOÁT", MessageBoxButtons.YesNo);
@@ -92,53 +89,24 @@ namespace App
 
         private void IT_Button_Click(object sender, EventArgs e)
         {
-            selectedSoftwareView_Button.Tag = "unclicked";
             loadSoftwareToGridView_Role(softwareList, Role.It);
         }
         private void Tech_Button_Click(object sender, EventArgs e)
         {
-            selectedSoftwareView_Button.Tag = "unclicked";
             loadSoftwareToGridView_Role(softwareList, Role.Tech);
         }
         private void Graphic_Button_Click(object sender, EventArgs e)
         {
-            selectedSoftwareView_Button.Tag = "unclicked";
             loadSoftwareToGridView_Role(softwareList, Role.Graphic);
         }
         private void None_Button_Click(object sender, EventArgs e)
         {
-            selectedSoftwareView_Button.Tag = "unclicked";
             loadSoftwareToGridView_Role(softwareList, Role.None);
         }
 
-        protected void confirmButton_Click(object sender, EventArgs e)
+        protected virtual void confirmButton_Click(object sender, EventArgs e)
         {
-            selectedSoftwareView_Button.Tag = "unclicked";
-            if (selectedSoftwareList.Count != 0)
-            {
-                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn tiếp tục?", "TIẾP TỤC", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    softwareList = selectedSoftwareList;
-                    ///Download
-                    App.InstallUninstall.Download download = new InstallUninstall.Download();
-                    App.InstallUninstall.Install install = new InstallUninstall.Install();
-                    download.Start(softwareList, null, null, @"C:\");
-                    Task.Factory.StartNew(() =>
-                    {
-                        while (!download.isCompleted())
-                        {
-                            Thread.Sleep(2000);
-                        }
-                        install.Start(softwareList, @"C:\");
-                        while (!install.isCompleted())
-                        {
-                            Thread.Sleep(2000);
-                        }
-                    });
-                }
-            }
-            else MessageBox.Show("Bạn chưa chọn phần mềm nào");
+            
         }
 
         private void softwareGridView_CellClick(object sender, DataGridViewCellEventArgs e)
