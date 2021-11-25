@@ -1919,7 +1919,15 @@
          },
          "version":"latest",
          "displayname":"Microsoft Visual Studio Code",
-         "role":"IT"
+         "role":"IT",
+	 "uninstall argument":[
+            "{{.uninstaller}}",
+            "/norestart",
+	    "/verysilent",
+	    "/suppressmsgboxes",
+	    "/sp-",
+	    "/allusers"
+         ]
       },
       {
          "name":"visual-studio-community-2019",
