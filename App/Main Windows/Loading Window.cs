@@ -71,9 +71,13 @@ namespace App
             {
                 for (int j = 0; j < packages.Count; j++)
                 {
-                    if (installed[i].Displayname == packages[j].Displayname)
+                    if (installed[i].Displayname.Contains(packages[j].Displayname))
                     {
-                        supportedsSoftwares.Add(installed[i]);
+                        Package temp = packages[j];
+                        temp.Displayname = installed[i].Displayname;
+                        temp.Version = installed[i].Version;
+                        temp.UninstallString = installed[i].UninstallString;
+                        supportedsSoftwares.Add(temp);
                     }
                 }
             }

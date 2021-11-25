@@ -15,8 +15,10 @@ namespace App
         public MainUI()
         {
             InitializeComponent();
+            DoubleBuffered = true;
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
         }
-        // Anti Flickering
+        //Anti Flickering
         protected override CreateParams CreateParams
         {
             get

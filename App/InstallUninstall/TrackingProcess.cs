@@ -15,34 +15,41 @@ namespace App.InstallUninstall
         private int pidNewProcess;
         private bool running;
         public delegate void delegateAction(object sender, EventArgs e);
-        private delegateAction actionComplete;
+        private bool _isProcessing;
         private bool _isCompleted;
-        private bool isCompleted
+        private bool isProcessing
+        {
+            get
+            {
+                return _isProcessing;
+            }
+            set
+            {
+                if (_isProcessing)
+                {
+                    if (value != _isProcessing)
+                    {
+                        _isCompleted = true;
+                        running = false;
+                        _isProcessing = false;
+                    }
+                }
+                else _isProcessing = value;
+            }
+        }
+
+        public bool isCompleted
         {
             get
             {
                 return _isCompleted;
             }
-            set
-            {
-                if (_isCompleted)
-                {
-                    if (value != _isCompleted && actionComplete != null)
-                    {
-                        actionComplete(null, null);
-                        running = false;
-                        _isCompleted = false;
-                    }
-                }
-                else _isCompleted = value;
-            }
         }
 
-        public void Tracking(int PID, delegateAction action)
+        public void Tracking(int PID)
         {
             _isCompleted = false;
             running = false;
-            actionComplete = new delegateAction(action);
             this.pidNewProcess = PID;
             Start();
         }
@@ -85,11 +92,7 @@ namespace App.InstallUninstall
 
         private void Analyst()
         {
-            if (String.IsNullOrEmpty(_pid))
-            {
-                isCompleted = false;
-            }
-            else isCompleted = true;
+            isProcessing = !String.IsNullOrEmpty(_pid);
         }
     }
 }
