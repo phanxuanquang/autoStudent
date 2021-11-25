@@ -143,6 +143,5 @@ namespace App
                 notifyIcon.BalloonTipText = "Việc cài đặt sẽ được bắt đầu sau " + startProcess.ToString("HH:mm:ss dd/MM/yyyy");
             }
         }
-
     }
 }

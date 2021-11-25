@@ -110,7 +110,7 @@ namespace App
             loadSoftwareToGridView_Role(softwareList, Role.None);
         }
 
-        private void confirmButton_Click(object sender, EventArgs e)
+        protected void confirmButton_Click(object sender, EventArgs e)
         {
             selectedSoftwareView_Button.Tag = "unclicked";
             if (selectedSoftwareList.Count != 0)
@@ -118,7 +118,7 @@ namespace App
                 DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn tiếp tục?", "TIẾP TỤC", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    //Từ từ tính tiếp
+                    softwareList = selectedSoftwareList;
                 }
             }
             else MessageBox.Show("Bạn chưa chọn phần mềm nào");
