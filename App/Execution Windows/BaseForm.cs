@@ -126,30 +126,33 @@ namespace App
 
         private void softwareGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (selectedSoftwareView_Button.Tag.ToString() == "unclicked")
+            if (e.RowIndex >= 0)
             {
-                for (int i = 0; i < softwareList.Count; i++)
+                if (selectedSoftwareView_Button.Tag.ToString() == "unclicked")
                 {
-                    if (softwareList[i].Displayname == softwareGridView.Rows[e.RowIndex].Cells[0].Value.ToString())
+                    for (int i = 0; i < softwareList.Count; i++)
                     {
-                        selectedSoftwareList.Add(softwareList[i]);
-                        softwareList.RemoveAt(i);
-                        loadSoftwareToGridView(softwareList);
-                        return;
+                        if (softwareList[i].Displayname == softwareGridView.Rows[e.RowIndex].Cells[0].Value.ToString())
+                        {
+                            selectedSoftwareList.Add(softwareList[i]);
+                            softwareList.RemoveAt(i);
+                            loadSoftwareToGridView(softwareList);
+                            return;
+                        }
                     }
                 }
-            }
-            else
-            {
-                for (int i = 0; i < selectedSoftwareList.Count; i++)
+                else
                 {
-                    if (selectedSoftwareList[i].Displayname == softwareGridView.Rows[e.RowIndex].Cells[0].Value.ToString())
+                    for (int i = 0; i < selectedSoftwareList.Count; i++)
                     {
-                        softwareList.Add(selectedSoftwareList[i]);
-                        selectedSoftwareList.RemoveAt(i);
-                        softwareGridView.Rows.Remove(softwareGridView.Rows[e.RowIndex]);
-                        loadSoftwareToGridView(selectedSoftwareList);
-                        return;
+                        if (selectedSoftwareList[i].Displayname == softwareGridView.Rows[e.RowIndex].Cells[0].Value.ToString())
+                        {
+                            softwareList.Add(selectedSoftwareList[i]);
+                            selectedSoftwareList.RemoveAt(i);
+                            softwareGridView.Rows.Remove(softwareGridView.Rows[e.RowIndex]);
+                            loadSoftwareToGridView(selectedSoftwareList);
+                            return;
+                        }
                     }
                 }
             }

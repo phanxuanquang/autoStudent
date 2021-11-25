@@ -65,7 +65,7 @@ namespace App
             // 
             // dataLoading_clock
             // 
-            this.dataLoading_clock.Interval = 10;
+            this.dataLoading_clock.Interval = 1;
             this.dataLoading_clock.Tick += new System.EventHandler(this.dataLoading_clock_Tick);
             // 
             // LoadindWindow
