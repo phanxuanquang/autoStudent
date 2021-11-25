@@ -342,17 +342,17 @@
       },
       {
          "name":"dbeaver",
-         "installer":{
-            "kind":"custom",
-            "options":{
-               "arguments":[
-                  "{{.installer}}",
-                  "/allusers",
-                  "/S"
-               ]
-            },
-            "x86_64":"https://github.com/dbeaver/dbeaver/releases/download/21.2.1/dbeaver-ce-21.2.1-x86_64-setup.exe"
-         },
+        "installer": {
+          "kind": "custom",
+          "options": {
+            "arguments": [
+              "{{.installer}}",
+              "/allusers",
+              "/S"
+            ]
+          },
+          "x86_64": "https://dbeaver.io/files/dbeaver-ce-latest-x86_64-setup.exe"
+        },
          "version":"21.2.1",
          "displayname":"DBeaver",
          "role":"IT",
@@ -947,12 +947,12 @@
       },
       {
          "name":"libreoffice",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://download.documentfoundation.org/libreoffice/stable/7.2.1/win/x86/LibreOffice_7.2.1_Win_x86.msi",
-            "x86_64":"https://download.documentfoundation.org/libreoffice/stable/7.2.1/win/x86_64/LibreOffice_7.2.1_Win_x64.msi"
-         },
-         "version":"7.2.1",
+        "installer": {
+          "kind": "msi",
+          "x86": "https://www.libreoffice.org/donate/dl/win-x86/7.2.2/vi/LibreOffice_7.2.2_Win_x86.msi",
+          "x86_64": "https://www.libreoffice.org/donate/dl/win-x86_64/7.2.2/vi/LibreOffice_7.2.2_Win_x64.msi"
+        },
+         "version":"7.2.2",
          "displayname":"LibreOffice",
          "role":"None"
       },
@@ -2031,12 +2031,12 @@
       },
       {
          "name":"wireshark",
-         "installer":{
-            "kind":"nsis",
-            "x86":"https://1.na.dl.wireshark.org/win32/Wireshark-win32-3.4.8.exe",
-            "x86_64":"https://1.na.dl.wireshark.org/win64/Wireshark-win64-3.4.8.exe"
-         },
-         "version":"3.4.8",
+        "installer": {
+          "kind": "nsis",
+          "x86": "https://1.as.dl.wireshark.org/win32/Wireshark-win32-3.6.0.exe",
+          "x86_64": "https://1.as.dl.wireshark.org/win64/Wireshark-win64-3.6.0.exe"
+        },
+         "version":"3.6.0",
          "displayname":"Wireshark",
          "role":"IT"
       },
