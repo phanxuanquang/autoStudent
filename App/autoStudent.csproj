@@ -117,10 +117,11 @@
     <Compile Include="Execution Windows\UninstallForm.Designer.cs">
       <DependentUpon>UninstallForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SettingForm.cs">
+    <Compile Include="Main Windows\MenuForm\Setting.cs" />
+    <Compile Include="Main Windows\MenuForm\SettingForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SettingForm.Designer.cs">
+    <Compile Include="Main Windows\MenuForm\SettingForm.Designer.cs">
       <DependentUpon>SettingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
@@ -148,7 +149,7 @@
     <EmbeddedResource Include="Execution Windows\UninstallForm.resx">
       <DependentUpon>UninstallForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SettingForm.resx">
+    <EmbeddedResource Include="Main Windows\MenuForm\SettingForm.resx">
       <DependentUpon>SettingForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
@@ -178,8 +179,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Main Windows\MenuForm\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
