@@ -160,15 +160,15 @@ namespace App.InstallUninstall
                     case Kind.Custom:
                         if (package.UninstallArgument != null)
                         {
-                            for (int index = 0; index < package.Installer.Options.Arguments.Count; index++)
+                            for (int index = 0; index < package.UninstallArgument.Count; index++)
                             {
-                                if (package.Installer.Options.Arguments[index].Contains("{{.uninstaller}}"))
+                                if (package.UninstallArgument[index].Contains("{{.uninstaller}}"))
                                 {
                                     newProcess.FileName = pathUninstaller;
                                 }
                                 else
                                 {
-                                    newProcess.Arguments += package.Installer.Options.Arguments[index] + " ";
+                                    newProcess.Arguments += package.UninstallArgument[index] + " ";
                                 }
                             }
                         }

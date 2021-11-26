@@ -69,5 +69,13 @@ namespace App
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        private void settingButton_Click(object sender, EventArgs e)
+        {
+            SettingForm settingForm = new SettingForm();
+            this.Hide();
+            settingForm.ShowDialog();
+            this.Show();
+        }
     }
 }

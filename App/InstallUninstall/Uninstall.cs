@@ -9,50 +9,9 @@ using System.Windows.Forms;
 
 namespace App.InstallUninstall
 {
-    class Uninstall
+    class Uninstall : BaseProcess
     {
-        private List<Package> listSoftware;
-        private TrackingProcess tracking;
-        private int index;
-        private bool isContinue;
-
-        public Uninstall()
-        {
-            tracking = new TrackingProcess();
-        }
-
-        public void Start(List<Package> listSoftware)
-        {
-            this.listSoftware = listSoftware;
-            index = -1;
-            isContinue = true;
-            isCompletedItem();
-        }
-
-        public void Pause()
-        {
-            isContinue = false;
-        }
-
-        public void Continue()
-        {
-            if (index > 0)
-            {
-                isContinue = true;
-                isCompletedItem();
-            }
-        }
-
-        public bool isCompleted()
-        {
-            if (listSoftware != null)
-            {
-                return index == listSoftware.Count;
-            }
-            return true;
-        }
-
-        private void isCompletedItem()
+        protected override void isCompletedItem()
         {
             if (isContinue && listSoftware != null)
             {
@@ -60,7 +19,7 @@ namespace App.InstallUninstall
                 MessageBox.Show(index.ToString());
                 if (listSoftware.Count > index)
                 {
-                    if (UninstallItem(GetPath.CommandUninstall(listSoftware[index])))
+                    if (CreateProcess(GetPath.CommandUninstall(listSoftware[index])))
                     {
                         Task.Factory.StartNew(() =>
                         {
@@ -77,24 +36,6 @@ namespace App.InstallUninstall
                     }
                 }
             }
-        }
-
-        private bool UninstallItem(GetPath.NewProcess newProcess)
-        {
-            if (newProcess != null)
-            {
-                Process process = new Process();
-                ProcessStartInfo processStartInfo = new ProcessStartInfo();
-                processStartInfo.FileName = newProcess.FileName;
-                processStartInfo.Arguments = newProcess.Arguments;
-                processStartInfo.UseShellExecute = false;
-                processStartInfo.Verb = "runas";
-                process.StartInfo = processStartInfo;
-                process.Start();
-                tracking.Tracking(process.Id);
-                return true;
-            }
-            return false;
         }
     }
 }

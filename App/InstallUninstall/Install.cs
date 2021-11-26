@@ -10,52 +10,17 @@ using System.Threading;
 
 namespace App.InstallUninstall
 {
-    class Install
+    class Install : BaseProcess
     {
-        private List<Package> listSoftware;
         private string directoryFolderDownload;
-        private TrackingProcess tracking;
-        private int index;
-        private bool isContinue;
-
-        public Install()
-        {
-            tracking = new TrackingProcess();
-        }
 
         public void Start(List<Package> listSoftware, string directoryFolderDownload)
         {
-            this.listSoftware = listSoftware;
             this.directoryFolderDownload = directoryFolderDownload;
-            index = -1;
-            isContinue = true;
-            isCompletedItem();
+            base.Start(listSoftware);
         }
 
-        public void Pause()
-        {
-            isContinue = false;
-        }
-
-        public void Continue()
-        {
-            if (index > 0)
-            {
-                isContinue = true;
-                isCompletedItem();
-            }
-        }
-
-        public bool isCompleted()
-        {
-            if (listSoftware != null)
-            {
-                return index == listSoftware.Count;
-            }
-            return true;
-        }
-
-        private void isCompletedItem()
+        protected override void isCompletedItem()
         {
             if (isContinue && listSoftware != null)
             {
@@ -63,7 +28,7 @@ namespace App.InstallUninstall
                 MessageBox.Show(index.ToString());
                 if (listSoftware.Count > index)
                 {
-                    if (InstallItem(GetPath.CommandInstall(directoryFolderDownload, listSoftware[index])))
+                    if (CreateProcess(GetPath.CommandInstall(directoryFolderDownload, listSoftware[index])))
                     {
                         Task.Factory.StartNew(() =>
                         {
@@ -80,24 +45,6 @@ namespace App.InstallUninstall
                     }
                 }
             }
-        }
-
-        private bool InstallItem(GetPath.NewProcess newProcess)
-        {
-            if (newProcess != null)
-            {
-                Process process = new Process();
-                ProcessStartInfo processStartInfo = new ProcessStartInfo();
-                processStartInfo.FileName = newProcess.FileName;
-                processStartInfo.Arguments = newProcess.Arguments;
-                processStartInfo.UseShellExecute = false;
-                processStartInfo.Verb = "runas";
-                process.StartInfo = processStartInfo;
-                process.Start();
-                tracking.Tracking(process.Id);
-                return true;
-            }
-            return false;
         }
     }
 }
