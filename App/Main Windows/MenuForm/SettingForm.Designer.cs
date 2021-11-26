@@ -167,7 +167,7 @@
             "Tắt máy",
             "Khởi động lại",
             "Khóa máy",
-            "Ngủ đông"});
+            "Ngủ"});
             this.activatedAction.ItemsAppearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
             this.activatedAction.ItemsAppearance.ForeColor = System.Drawing.Color.Cyan;
             this.activatedAction.ItemsAppearance.Parent = this.activatedAction;
