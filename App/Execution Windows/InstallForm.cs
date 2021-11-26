@@ -30,7 +30,7 @@ namespace App
                     softwareList = selectedSoftwareList;
                     ///Download
                     App.InstallUninstall.Download download = new InstallUninstall.Download();
-                    App.InstallUninstall.Install install = new InstallUninstall.Install();
+                    App.InstallUninstall.BaseProcess install = new InstallUninstall.Install();
                     download.Start(softwareList, null, null, @"C:\");
                     Task.Factory.StartNew(() =>
                     {
@@ -38,7 +38,7 @@ namespace App
                         {
                             Thread.Sleep(2000);
                         }
-                        install.Start(softwareList, @"C:\");
+                        ((InstallUninstall.Install)install).Start(softwareList, @"C:\");
                         while (!install.isCompleted())
                         {
                             Thread.Sleep(2000);
