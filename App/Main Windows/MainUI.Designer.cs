@@ -36,7 +36,7 @@
             this.guna2GradientButton4 = new Guna.UI2.WinForms.Guna2GradientButton();
             this.guna2GradientButton3 = new Guna.UI2.WinForms.Guna2GradientButton();
             this.guna2GradientButton2 = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.guna2GradientButton1 = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.settingButton = new Guna.UI2.WinForms.Guna2GradientButton();
             this.minimizeButton_Above = new Guna.UI2.WinForms.Guna2Button();
             this.exitButton_Above = new Guna.UI2.WinForms.Guna2Button();
             this.uninstallButton = new Guna.UI2.WinForms.Guna2Button();
@@ -88,7 +88,7 @@
             this.MainPanel.Controls.Add(this.guna2GradientButton4);
             this.MainPanel.Controls.Add(this.guna2GradientButton3);
             this.MainPanel.Controls.Add(this.guna2GradientButton2);
-            this.MainPanel.Controls.Add(this.guna2GradientButton1);
+            this.MainPanel.Controls.Add(this.settingButton);
             this.MainPanel.Controls.Add(this.minimizeButton_Above);
             this.MainPanel.Controls.Add(this.exitButton_Above);
             this.MainPanel.Controls.Add(this.uninstallButton);
@@ -208,36 +208,37 @@
             this.guna2GradientButton2.TextOffset = new System.Drawing.Point(40, 0);
             this.guna2GradientButton2.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             // 
-            // guna2GradientButton1
+            // settingButton
             // 
-            this.guna2GradientButton1.Animated = true;
-            this.guna2GradientButton1.BorderColor = System.Drawing.Color.Transparent;
-            this.guna2GradientButton1.CheckedState.Parent = this.guna2GradientButton1;
-            this.guna2GradientButton1.CustomImages.Parent = this.guna2GradientButton1;
-            this.guna2GradientButton1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(16)))), ((int)(((byte)(47)))));
-            this.guna2GradientButton1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(16)))), ((int)(((byte)(47)))));
-            this.guna2GradientButton1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.guna2GradientButton1.ForeColor = System.Drawing.Color.Transparent;
-            this.guna2GradientButton1.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
-            this.guna2GradientButton1.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(16)))), ((int)(((byte)(47)))));
-            this.guna2GradientButton1.HoverState.ForeColor = System.Drawing.Color.Cyan;
-            this.guna2GradientButton1.HoverState.Parent = this.guna2GradientButton1;
-            this.guna2GradientButton1.Image = ((System.Drawing.Image)(resources.GetObject("guna2GradientButton1.Image")));
-            this.guna2GradientButton1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2GradientButton1.ImageOffset = new System.Drawing.Point(10, 0);
-            this.guna2GradientButton1.ImageSize = new System.Drawing.Size(25, 25);
-            this.guna2GradientButton1.Location = new System.Drawing.Point(0, 131);
-            this.guna2GradientButton1.Margin = new System.Windows.Forms.Padding(0);
-            this.guna2GradientButton1.Name = "guna2GradientButton1";
-            this.guna2GradientButton1.PressedColor = System.Drawing.Color.Cyan;
-            this.guna2GradientButton1.PressedDepth = 20;
-            this.guna2GradientButton1.ShadowDecoration.Parent = this.guna2GradientButton1;
-            this.guna2GradientButton1.Size = new System.Drawing.Size(200, 75);
-            this.guna2GradientButton1.TabIndex = 4;
-            this.guna2GradientButton1.Text = "Thiết lập";
-            this.guna2GradientButton1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2GradientButton1.TextOffset = new System.Drawing.Point(40, 0);
-            this.guna2GradientButton1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.settingButton.Animated = true;
+            this.settingButton.BorderColor = System.Drawing.Color.Transparent;
+            this.settingButton.CheckedState.Parent = this.settingButton;
+            this.settingButton.CustomImages.Parent = this.settingButton;
+            this.settingButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(16)))), ((int)(((byte)(47)))));
+            this.settingButton.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(16)))), ((int)(((byte)(47)))));
+            this.settingButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.settingButton.ForeColor = System.Drawing.Color.Transparent;
+            this.settingButton.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
+            this.settingButton.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(16)))), ((int)(((byte)(47)))));
+            this.settingButton.HoverState.ForeColor = System.Drawing.Color.Cyan;
+            this.settingButton.HoverState.Parent = this.settingButton;
+            this.settingButton.Image = ((System.Drawing.Image)(resources.GetObject("settingButton.Image")));
+            this.settingButton.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.settingButton.ImageOffset = new System.Drawing.Point(10, 0);
+            this.settingButton.ImageSize = new System.Drawing.Size(25, 25);
+            this.settingButton.Location = new System.Drawing.Point(0, 131);
+            this.settingButton.Margin = new System.Windows.Forms.Padding(0);
+            this.settingButton.Name = "settingButton";
+            this.settingButton.PressedColor = System.Drawing.Color.Cyan;
+            this.settingButton.PressedDepth = 20;
+            this.settingButton.ShadowDecoration.Parent = this.settingButton;
+            this.settingButton.Size = new System.Drawing.Size(200, 75);
+            this.settingButton.TabIndex = 4;
+            this.settingButton.Text = "Thiết lập";
+            this.settingButton.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.settingButton.TextOffset = new System.Drawing.Point(40, 0);
+            this.settingButton.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.settingButton.Click += new System.EventHandler(this.settingButton_Click);
             // 
             // minimizeButton_Above
             // 
@@ -381,7 +382,7 @@
         private Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton4;
         private Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton3;
         private Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton2;
-        private Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton1;
+        private Guna.UI2.WinForms.Guna2GradientButton settingButton;
         private Guna.UI2.WinForms.Guna2Button minimizeButton_Above;
         private Guna.UI2.WinForms.Guna2Button exitButton_Above;
         private Guna.UI2.WinForms.Guna2Button uninstallButton;
