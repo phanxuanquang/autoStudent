@@ -29,7 +29,7 @@ namespace App
                 {
                     softwareList = selectedSoftwareList;
                     ///Uninstall
-                    App.InstallUninstall.Uninstall uninstall = new InstallUninstall.Uninstall();
+                    App.InstallUninstall.BaseProcess uninstall = new InstallUninstall.Uninstall();
                     Task.Factory.StartNew(() =>
                     {
                         uninstall.Start(softwareList);

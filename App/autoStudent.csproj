@@ -83,6 +83,7 @@
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\DataAccess.cs" />
+    <Compile Include="InstallUninstall\BaseProcess.cs" />
     <Compile Include="InstallUninstall\Download.cs" />
     <Compile Include="InstallUninstall\GetPath.cs" />
     <Compile Include="InstallUninstall\Install.cs" />
