@@ -117,6 +117,7 @@
     <Compile Include="Execution Windows\UninstallForm.Designer.cs">
       <DependentUpon>UninstallForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Setting.cs" />
     <Compile Include="SettingForm.cs">
       <SubType>Form</SubType>
     </Compile>

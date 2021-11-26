@@ -15,6 +15,7 @@ namespace App
         public SettingForm()
         {
             InitializeComponent();
+            setToDefault();
         }
         // Anti Flickering
         protected override CreateParams CreateParams
@@ -29,31 +30,47 @@ namespace App
 
         private void defaultSetting_Button_Click(object sender, EventArgs e)
         {
-            timeSetter.Value = DateTime.Now;
-            activatingAction.Text = "Không làm gì";
-            activatedAction.Text = "Không làm gì";
-            cleanAfterCompleted_Switch.Checked = false;
-            excelExportAfterCompleted_Switch.Checked = false;
-            saveSetting_Button.Tag = "saved";
+            setToDefault();
+        }
+
+        private void setToDefault()
+        {
+            Setting defaultSetting = new Setting();
+            timeSetter.Value = Program.setting.timeSetter = defaultSetting.timeSetter;
+            activatingAction.Text = Program.setting.activatingAction = defaultSetting.activatingAction;
+            activatedAction.Text = Program.setting.activatedAction = defaultSetting.activatedAction;
+            cleanAfterCompleted_Switch.Checked = Program.setting.cleanAfterCompleted = defaultSetting.cleanAfterCompleted;
+            excelExportAfterCompleted_Switch.Checked = Program.setting.excelExportAfterCompleted = defaultSetting.excelExportAfterCompleted;
         }
 
         private void exitButton_Click(object sender, EventArgs e)
         {
-            if (saveSetting_Button.Tag.ToString() == "saved")
-                this.Close();
-            else
-            {
-                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn thoát?", "THOÁT", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    this.Close();
-                }
-            }
+            this.Close();
         }
 
-        private void saveSetting_Button_Click(object sender, EventArgs e)
+        private void activatingAction_SelectedIndexChanged(object sender, EventArgs e)
         {
-            saveSetting_Button.Tag = "saved";
+            Program.setting.activatingAction = activatingAction.Text;
+        }
+
+        private void activatedAction_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Program.setting.activatedAction = activatedAction.Text;
+        }
+
+        private void timeSetter_ValueChanged(object sender, EventArgs e)
+        {
+            Program.setting.timeSetter = timeSetter.Value;
+        }
+
+        private void cleanAfterCompleted_Switch_CheckedChanged(object sender, EventArgs e)
+        {
+            Program.setting.cleanAfterCompleted = cleanAfterCompleted_Switch.Checked;
+        }
+
+        private void excelExportAfterCompleted_Switch_CheckedChanged(object sender, EventArgs e)
+        {
+            Program.setting.excelExportAfterCompleted = excelExportAfterCompleted_Switch.Checked;
         }
     }
 }

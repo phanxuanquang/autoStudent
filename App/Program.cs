@@ -21,5 +21,6 @@ namespace App
         }
         static public List<Package> software_Database;
         static public List<Package> software_System;
+        static public Setting setting = new Setting();
     }
 }

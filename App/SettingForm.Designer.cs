@@ -37,7 +37,6 @@
             this.activatedAction = new Guna.UI2.WinForms.Guna2ComboBox();
             this.cleanAfterCompleted_Switch = new Guna.UI2.WinForms.Guna2ToggleSwitch();
             this.label4 = new System.Windows.Forms.Label();
-            this.saveSetting_Button = new Guna.UI2.WinForms.Guna2Button();
             this.defaultSetting_Button = new Guna.UI2.WinForms.Guna2Button();
             this.exitButton = new Guna.UI2.WinForms.Guna2Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -64,6 +63,7 @@
             this.timeSetter.Size = new System.Drawing.Size(267, 26);
             this.timeSetter.TabIndex = 0;
             this.timeSetter.Value = new System.DateTime(2021, 11, 26, 8, 29, 0, 0);
+            this.timeSetter.ValueChanged += new System.EventHandler(this.timeSetter_ValueChanged);
             // 
             // label1
             // 
@@ -139,6 +139,7 @@
             this.activatingAction.TabIndex = 4;
             this.activatingAction.TextOffset = new System.Drawing.Point(10, 0);
             this.activatingAction.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.activatingAction.SelectedIndexChanged += new System.EventHandler(this.activatingAction_SelectedIndexChanged);
             // 
             // activatedAction
             // 
@@ -162,6 +163,7 @@
             this.activatedAction.ItemHeight = 40;
             this.activatedAction.Items.AddRange(new object[] {
             "Không làm gì",
+            "Thoát chương trình",
             "Tắt máy",
             "Khởi động lại",
             "Khóa máy",
@@ -178,6 +180,7 @@
             this.activatedAction.TabIndex = 5;
             this.activatedAction.TextOffset = new System.Drawing.Point(10, 0);
             this.activatedAction.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.activatedAction.SelectedIndexChanged += new System.EventHandler(this.activatedAction_SelectedIndexChanged);
             // 
             // cleanAfterCompleted_Switch
             // 
@@ -205,6 +208,7 @@
             this.cleanAfterCompleted_Switch.UncheckedState.InnerBorderRadius = 8;
             this.cleanAfterCompleted_Switch.UncheckedState.InnerColor = System.Drawing.Color.Cyan;
             this.cleanAfterCompleted_Switch.UncheckedState.Parent = this.cleanAfterCompleted_Switch;
+            this.cleanAfterCompleted_Switch.CheckedChanged += new System.EventHandler(this.cleanAfterCompleted_Switch_CheckedChanged);
             // 
             // label4
             // 
@@ -218,31 +222,6 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "Dọn dẹp sau khi hoàn tất:";
             this.label4.UseCompatibleTextRendering = true;
-            // 
-            // saveSetting_Button
-            // 
-            this.saveSetting_Button.Animated = true;
-            this.saveSetting_Button.AutoRoundedCorners = true;
-            this.saveSetting_Button.BackColor = System.Drawing.Color.Transparent;
-            this.saveSetting_Button.BorderColor = System.Drawing.Color.Cyan;
-            this.saveSetting_Button.BorderRadius = 23;
-            this.saveSetting_Button.BorderThickness = 3;
-            this.saveSetting_Button.CheckedState.Parent = this.saveSetting_Button;
-            this.saveSetting_Button.CustomImages.Parent = this.saveSetting_Button;
-            this.saveSetting_Button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
-            this.saveSetting_Button.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.saveSetting_Button.ForeColor = System.Drawing.Color.Cyan;
-            this.saveSetting_Button.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(75)))), ((int)(((byte)(163)))));
-            this.saveSetting_Button.HoverState.Parent = this.saveSetting_Button;
-            this.saveSetting_Button.Location = new System.Drawing.Point(418, 392);
-            this.saveSetting_Button.Name = "saveSetting_Button";
-            this.saveSetting_Button.ShadowDecoration.Parent = this.saveSetting_Button;
-            this.saveSetting_Button.Size = new System.Drawing.Size(220, 49);
-            this.saveSetting_Button.TabIndex = 23;
-            this.saveSetting_Button.Tag = "unsaved";
-            this.saveSetting_Button.Text = "LƯU TÙY CHỌN";
-            this.saveSetting_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
-            this.saveSetting_Button.Click += new System.EventHandler(this.saveSetting_Button_Click);
             // 
             // defaultSetting_Button
             // 
@@ -329,6 +308,7 @@
             this.excelExportAfterCompleted_Switch.UncheckedState.InnerBorderRadius = 8;
             this.excelExportAfterCompleted_Switch.UncheckedState.InnerColor = System.Drawing.Color.Cyan;
             this.excelExportAfterCompleted_Switch.UncheckedState.Parent = this.excelExportAfterCompleted_Switch;
+            this.excelExportAfterCompleted_Switch.CheckedChanged += new System.EventHandler(this.excelExportAfterCompleted_Switch_CheckedChanged);
             // 
             // SettingForm
             // 
@@ -340,7 +320,6 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.excelExportAfterCompleted_Switch);
             this.Controls.Add(this.exitButton);
-            this.Controls.Add(this.saveSetting_Button);
             this.Controls.Add(this.defaultSetting_Button);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cleanAfterCompleted_Switch);
@@ -369,7 +348,6 @@
         private Guna.UI2.WinForms.Guna2ComboBox activatedAction;
         private Guna.UI2.WinForms.Guna2ToggleSwitch cleanAfterCompleted_Switch;
         private System.Windows.Forms.Label label4;
-        private Guna.UI2.WinForms.Guna2Button saveSetting_Button;
         private Guna.UI2.WinForms.Guna2Button defaultSetting_Button;
         private Guna.UI2.WinForms.Guna2Button exitButton;
         private System.Windows.Forms.Label label5;
