@@ -75,21 +75,25 @@ namespace App
 
         public void exec_cleanAfterCompleted(string savedSetupFolderPath)
         {
-            foreach (string filePath in Directory.GetFiles("C:\\Windows\\Temp", "*.*", SearchOption.AllDirectories))
+            void cleanFolder(DirectoryInfo dir)
             {
-                FileInfo currentFile = new FileInfo(filePath);
-                currentFile.Delete();
+                foreach (FileInfo file in dir.EnumerateFiles())
+                {
+                    file.Delete();
+                }
+                foreach (DirectoryInfo subDir in dir.EnumerateDirectories())
+                {
+                    subDir.Delete(true);
+                }
             }
-            foreach (string filePath in Directory.GetFiles("C:\\Windows\\Prefetch", "*.*", SearchOption.AllDirectories))
-            {
-                FileInfo currentFile = new FileInfo(filePath);
-                currentFile.Delete();
-            }
-            foreach (string filePath in Directory.GetFiles(savedSetupFolderPath, "*.*", SearchOption.AllDirectories))
-            {
-                FileInfo currentFile = new FileInfo(filePath);
-                currentFile.Delete();
-            }
+
+            DirectoryInfo tempFolder = new DirectoryInfo("C:\\Windows\\Temp");
+            DirectoryInfo prefetchFolder = new DirectoryInfo("C:\\Windows\\Prefetch");
+            DirectoryInfo setupFolder = new DirectoryInfo(savedSetupFolderPath);
+
+            cleanFolder(tempFolder);
+            cleanFolder(prefetchFolder);
+            cleanFolder(setupFolder);
         }
 
         public void exec_dataExportAfterCompleted(List<Package> dataList, string fullName)
