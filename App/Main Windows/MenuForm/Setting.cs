@@ -19,6 +19,7 @@ namespace App
         public string activatedAction;
         public bool cleanAfterCompleted;
         public bool dataExportAfterCompleted;
+        public string otherDirectoryPath;
 
         public Setting()
         {
@@ -27,6 +28,12 @@ namespace App
             activatedAction = "Không làm gì";
             cleanAfterCompleted = false;
             dataExportAfterCompleted = false;
+            otherDirectoryPath = "C:\\";
+        }
+
+        public void exec_timeSetter()
+        {
+
         }
 
         public void exec_activatingAction()
@@ -75,21 +82,25 @@ namespace App
 
         public void exec_cleanAfterCompleted(string savedSetupFolderPath)
         {
-            foreach (string filePath in Directory.GetFiles("C:\\Windows\\Temp", "*.*", SearchOption.AllDirectories))
+            void cleanFolder(DirectoryInfo dir)
             {
-                FileInfo currentFile = new FileInfo(filePath);
-                currentFile.Delete();
+                foreach (FileInfo file in dir.EnumerateFiles())
+                {
+                    file.Delete();
+                }
+                foreach (DirectoryInfo subDir in dir.EnumerateDirectories())
+                {
+                    subDir.Delete(true);
+                }
             }
-            foreach (string filePath in Directory.GetFiles("C:\\Windows\\Prefetch", "*.*", SearchOption.AllDirectories))
-            {
-                FileInfo currentFile = new FileInfo(filePath);
-                currentFile.Delete();
-            }
-            foreach (string filePath in Directory.GetFiles(savedSetupFolderPath, "*.*", SearchOption.AllDirectories))
-            {
-                FileInfo currentFile = new FileInfo(filePath);
-                currentFile.Delete();
-            }
+
+            DirectoryInfo prefetchFolder = new DirectoryInfo("C:\\Windows\\Prefetch\\");
+            //DirectoryInfo setupFolder = new DirectoryInfo(savedSetupFolderPath);
+
+            cleanFolder(prefetchFolder);
+            //cleanFolder(setupFolder);
+
+            MessageBox.Show("Dọn dẹp hoàn tất");
         }
 
         public void exec_dataExportAfterCompleted(List<Package> dataList, string fullName)

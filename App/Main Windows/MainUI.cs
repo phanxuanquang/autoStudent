@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,7 @@ namespace App
             DoubleBuffered = true;
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
         }
+
         //Anti Flickering
         protected override CreateParams CreateParams
         {
@@ -28,6 +30,20 @@ namespace App
                 return handleParam;
             }
         }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            if (Program.setting.timeSetter.Minute != DateTime.Now.Minute)
+            {
+                // Hàm chạy ngầm
+            }
+            else Application.Exit();
+        }
+        private void minimizeButton_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
         private void wizardButton_Click(object sender, EventArgs e)
         {
             if (MainPanel.Left >= 0)
@@ -51,7 +67,6 @@ namespace App
             installForm.ShowDialog();
             this.Show();
         }
-
         private void uninstallButton_Click(object sender, EventArgs e)
         {
             UninstallForm unInstallForm = new UninstallForm();
@@ -60,22 +75,34 @@ namespace App
             this.Show();
         }
 
-        private void exitButton_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void minimizeButton_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
         private void settingButton_Click(object sender, EventArgs e)
         {
             SettingForm settingForm = new SettingForm();
             this.Hide();
             settingForm.ShowDialog();
             this.Show();
+        }
+        private void cleanButton_Click(object sender, EventArgs e)
+        {
+            Program.setting.exec_cleanAfterCompleted(Program.setting.otherDirectoryPath);
+        }
+
+        private void updateButton_Click(object sender, EventArgs e)
+        {
+            if (1 != 1)
+            {
+
+            }
+            else MessageBox.Show("Bạn đang sử dụng phiên bản mới nhất");
+        }
+
+        private void githubButton_Click(object sender, EventArgs e)
+        {
+            Process openGitHub = new Process();
+            openGitHub.StartInfo.FileName = "CMD.exe";
+            openGitHub.StartInfo.Arguments = "/C start https://github.com/phanxuanquang/autoStudent";
+            openGitHub.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            openGitHub.Start();
         }
     }
 }

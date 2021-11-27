@@ -23,35 +23,32 @@ namespace App
             loadSoftwareToGridView(softwareList);
         }
 
-        protected override void confirmButton_Click(object sender, EventArgs e)
+        protected override void exec()
         {
-            if (selectedSoftwareList.Count != 0)
-            {
-                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn tiếp tục?", "TIẾP TỤC", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    softwareList = selectedSoftwareList;
+            Program.software_Database = selectedSoftwareList;
 
-                    ///Download
-                    App.InstallUninstall.Download download = new InstallUninstall.Download();
-                    App.InstallUninstall.BaseProcess install = new InstallUninstall.Install();
-                    download.Start(softwareList, null, null, @"C:\");
-                    Task.Factory.StartNew(() =>
-                    {
-                        while (!download.isCompleted())
-                        {
-                            Thread.Sleep(2000);
-                        }
-                        ((InstallUninstall.Install)install).Start(softwareList, @"C:\");
-                        while (!install.isCompleted())
-                        {
-                            Thread.Sleep(2000);
-                        }
-                    });
+            App.InstallUninstall.Download download = new InstallUninstall.Download();
+            App.InstallUninstall.BaseProcess install = new InstallUninstall.Install();
+
+            download.Start(Program.software_Database, null, null, @"C:\");
+
+            Task.Factory.StartNew(() =>
+            {
+                while (!download.isCompleted())
+                {
+                    Thread.Sleep(2000);
                 }
-            }
-            else MessageBox.Show("Bạn chưa chọn phần mềm nào");
+                ((InstallUninstall.Install)install).Start(Program.software_Database, @"C:\");
+                while (!install.isCompleted())
+                {
+                    Thread.Sleep(2000);
+                }
+            });
+        }
+
+        void DownloadInstall(ref List<Package> softwarePackage)
+        {
+            
         }
     }
-    
 }
