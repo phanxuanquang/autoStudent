@@ -47,6 +47,7 @@ namespace App
                     softwareGridView.Rows.Add(softwareList[i].Displayname, softwareList[i].Version);
             }
         }
+        protected virtual void exec() { }
 
         private void selectedSoftwareView_Button_Click(object sender, EventArgs e)
         {
@@ -57,6 +58,16 @@ namespace App
         {
             selectedSoftwareView_Button.Tag = "unclicked";
             loadSoftwareToGridView(softwareList);
+        }
+
+        private void searchBox_TextChanged(object sender, EventArgs e)
+        {
+            for (int i = 0; i < softwareGridView.RowCount; i++)
+            {
+                if (softwareGridView.Rows[i].Cells[0].Value != null && softwareGridView.Rows[i].Cells[0].Value.ToString().ToLower().Contains(searchBox.Text.ToLower()))
+                    softwareGridView.Rows[i].Visible = true;
+                else softwareGridView.Rows[i].Visible = false;
+            }
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -71,22 +82,23 @@ namespace App
             }
             else this.Close();
         }
-
-        private void searchBox_TextChanged(object sender, EventArgs e)
-        {
-            for (int i = 0; i < softwareGridView.RowCount; i++)
-            {
-                if (softwareGridView.Rows[i].Cells[0].Value != null && softwareGridView.Rows[i].Cells[0].Value.ToString().ToLower().Contains(searchBox.Text.ToLower()))
-                    softwareGridView.Rows[i].Visible = true;
-                else softwareGridView.Rows[i].Visible = false;
-            }
-        }
-
         private void menuButton_Click(object sender, EventArgs e)
         {
             if (menuPanel.Width != 300)
                 menuPanel.Width = 300;
             else menuPanel.Width = 78;
+        }
+        private void confirmButton_Click(object sender, EventArgs e)
+        {
+            if (selectedSoftwareList.Count != 0)
+            {
+                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn tiếp tục?", "TIẾP TỤC", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    exec();
+                }
+            }
+            else MessageBox.Show("Bạn chưa chọn phần mềm nào");
         }
 
         private void IT_Button_Click(object sender, EventArgs e)
@@ -104,11 +116,6 @@ namespace App
         private void None_Button_Click(object sender, EventArgs e)
         {
             loadSoftwareToGridView_Role(softwareList, Role.None);
-        }
-
-        protected virtual void confirmButton_Click(object sender, EventArgs e)
-        {
-           
         }
 
         private void softwareGridView_CellClick(object sender, DataGridViewCellEventArgs e)

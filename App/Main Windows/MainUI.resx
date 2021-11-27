@@ -1132,7 +1132,7 @@
         AAAASUVORK5CYII=
 </value>
   </data>
-  <data name="guna2GradientButton4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="githubButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         EwAACxMBAJqcGAAA3BlJREFUeF7t/Xn8dVtR3/uezpM+UWM0msS+byL2XUREbBEbOkFQwRZREBEBBQRF
@@ -2077,7 +2077,7 @@
         KIritEkvFkVRFEVxyvzN//L/B3OSZ0BZ2nz2AAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="guna2GradientButton3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="updateButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         EwAACxMBAJqcGAAA3BlJREFUeF7t/Xn8dVtR3/uezpM+UWM0msS+byL2XUREbBEbOkFQwRZREBEBBQRF
@@ -3022,7 +3022,7 @@
         KIritEkvFkVRFEVxyvzN//L/B3OSZ0BZ2nz2AAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="guna2GradientButton2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="cleanButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         EwAACxMBAJqcGAAA3BlJREFUeF7t/Xn8dVtR3/uezpM+UWM0msS+byL2XUREbBEbOkFQwRZREBEBBQRF

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.WindowsAPICodePack.Dialogs;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -40,7 +41,8 @@ namespace App
             activatingAction.Text = Program.setting.activatingAction = defaultSetting.activatingAction;
             activatedAction.Text = Program.setting.activatedAction = defaultSetting.activatedAction;
             cleanAfterCompleted_Switch.Checked = Program.setting.cleanAfterCompleted = defaultSetting.cleanAfterCompleted;
-            dataExportAfterCompleted_Switch.Checked = Program.setting.dataExportAfterCompleted = defaultSetting.dataExportAfterCompleted; ;
+            dataExportAfterCompleted_Switch.Checked = Program.setting.dataExportAfterCompleted = defaultSetting.dataExportAfterCompleted;
+            otherDirectoryPath.Text = Program.setting.otherDirectoryPath = defaultSetting.otherDirectoryPath;
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -72,5 +74,16 @@ namespace App
         {
             Program.setting.dataExportAfterCompleted = dataExportAfterCompleted_Switch.Checked;
         }
+
+        private void otherPath_Button_Click(object sender, EventArgs e)
+        {
+            CommonOpenFileDialog destinationPathdlg = new CommonOpenFileDialog();
+            destinationPathdlg.IsFolderPicker = true;
+            if (destinationPathdlg.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                Program.setting.otherDirectoryPath = otherDirectoryPath.Text = destinationPathdlg.FileName;
+            }
+        }
     }
 }
+

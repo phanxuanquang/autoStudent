@@ -20,27 +20,19 @@ namespace App
             loadSoftwareToGridView(softwareList);
         }
 
-        protected override void confirmButton_Click(object sender, EventArgs e)
+        protected override void exec()
         {
-            if (selectedSoftwareList.Count != 0)
+            softwareList = selectedSoftwareList;
+
+            App.InstallUninstall.BaseProcess uninstall = new InstallUninstall.Uninstall();
+            Task.Factory.StartNew(() =>
             {
-                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn tiếp tục?", "TIẾP TỤC", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
+                uninstall.Start(softwareList);
+                while (!uninstall.isCompleted())
                 {
-                    softwareList = selectedSoftwareList;
-                    ///Uninstall
-                    App.InstallUninstall.BaseProcess uninstall = new InstallUninstall.Uninstall();
-                    Task.Factory.StartNew(() =>
-                    {
-                        uninstall.Start(softwareList);
-                        while (!uninstall.isCompleted())
-                        {
-                            Thread.Sleep(2000);
-                        }
-                    });
+                    Thread.Sleep(2000);
                 }
-            }
-            else MessageBox.Show("Bạn chưa chọn phần mềm nào");
+            });
         }
     }
 }

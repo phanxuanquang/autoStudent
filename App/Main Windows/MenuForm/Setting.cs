@@ -19,6 +19,7 @@ namespace App
         public string activatedAction;
         public bool cleanAfterCompleted;
         public bool dataExportAfterCompleted;
+        public string otherDirectoryPath;
 
         public Setting()
         {
@@ -27,6 +28,12 @@ namespace App
             activatedAction = "Không làm gì";
             cleanAfterCompleted = false;
             dataExportAfterCompleted = false;
+            otherDirectoryPath = "C:\\";
+        }
+
+        public void exec_timeSetter()
+        {
+
         }
 
         public void exec_activatingAction()
@@ -87,13 +94,13 @@ namespace App
                 }
             }
 
-            DirectoryInfo tempFolder = new DirectoryInfo("C:\\Windows\\Temp");
-            DirectoryInfo prefetchFolder = new DirectoryInfo("C:\\Windows\\Prefetch");
-            DirectoryInfo setupFolder = new DirectoryInfo(savedSetupFolderPath);
+            DirectoryInfo prefetchFolder = new DirectoryInfo("C:\\Windows\\Prefetch\\");
+            //DirectoryInfo setupFolder = new DirectoryInfo(savedSetupFolderPath);
 
-            cleanFolder(tempFolder);
             cleanFolder(prefetchFolder);
-            cleanFolder(setupFolder);
+            //cleanFolder(setupFolder);
+
+            MessageBox.Show("Dọn dẹp hoàn tất");
         }
 
         public void exec_dataExportAfterCompleted(List<Package> dataList, string fullName)
