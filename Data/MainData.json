@@ -1144,17 +1144,6 @@
          "role":"None"
       },
       {
-         "name":"node",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://nodejs.org/dist/v16.10.0/node-v16.10.0-x86.msi",
-            "x86_64":"https://nodejs.org/dist/v16.10.0/node-v16.10.0-x64.msi"
-         },
-         "version":"16.10.0",
-         "displayname":"Node.js",
-         "role":"IT"
-      },
-      {
          "name":"node-lts",
          "installer":{
             "kind":"msi",

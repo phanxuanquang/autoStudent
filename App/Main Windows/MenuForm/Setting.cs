@@ -6,6 +6,9 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.Json;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace App
 {
@@ -15,7 +18,7 @@ namespace App
         public string activatingAction;
         public string activatedAction;
         public bool cleanAfterCompleted;
-        public bool excelExportAfterCompleted;
+        public bool dataExportAfterCompleted;
 
         public Setting()
         {
@@ -23,7 +26,7 @@ namespace App
             activatingAction = "Không làm gì";
             activatedAction = "Không làm gì";
             cleanAfterCompleted = false;
-            excelExportAfterCompleted = false;
+            dataExportAfterCompleted = false;
         }
 
         public void exec_activatingAction()
@@ -70,14 +73,29 @@ namespace App
             }
         }
 
-        public void exec_cleanAfterCompleted()
+        public void exec_cleanAfterCompleted(string savedSetupFolderPath)
         {
-
+            foreach (string filePath in Directory.GetFiles("C:\\Windows\\Temp", "*.*", SearchOption.AllDirectories))
+            {
+                FileInfo currentFile = new FileInfo(filePath);
+                currentFile.Delete();
+            }
+            foreach (string filePath in Directory.GetFiles("C:\\Windows\\Prefetch", "*.*", SearchOption.AllDirectories))
+            {
+                FileInfo currentFile = new FileInfo(filePath);
+                currentFile.Delete();
+            }
+            foreach (string filePath in Directory.GetFiles(savedSetupFolderPath, "*.*", SearchOption.AllDirectories))
+            {
+                FileInfo currentFile = new FileInfo(filePath);
+                currentFile.Delete();
+            }
         }
 
-        public void exec_excelExportAfterCompleted()
+        public void exec_dataExportAfterCompleted(List<Package> dataList, string fullName)
         {
-
+            string jsonString = JsonConvert.SerializeObject(dataList, Formatting.Indented);
+            File.WriteAllText(fullName + ".json", jsonString);
         }
     }
     
