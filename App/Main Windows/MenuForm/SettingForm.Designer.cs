@@ -40,7 +40,7 @@
             this.defaultSetting_Button = new Guna.UI2.WinForms.Guna2Button();
             this.exitButton = new Guna.UI2.WinForms.Guna2Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.excelExportAfterCompleted_Switch = new Guna.UI2.WinForms.Guna2ToggleSwitch();
+            this.dataExportAfterCompleted_Switch = new Guna.UI2.WinForms.Guna2ToggleSwitch();
             this.SuspendLayout();
             // 
             // timeSetter
@@ -282,33 +282,33 @@
             this.label5.Text = "Xuất danh sách sau khi hoàn tất:";
             this.label5.UseCompatibleTextRendering = true;
             // 
-            // excelExportAfterCompleted_Switch
+            // dataExportAfterCompleted_Switch
             // 
-            this.excelExportAfterCompleted_Switch.Animated = true;
-            this.excelExportAfterCompleted_Switch.AutoRoundedCorners = true;
-            this.excelExportAfterCompleted_Switch.BackColor = System.Drawing.Color.Transparent;
-            this.excelExportAfterCompleted_Switch.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.excelExportAfterCompleted_Switch.CheckedState.BorderRadius = 12;
-            this.excelExportAfterCompleted_Switch.CheckedState.FillColor = System.Drawing.Color.Cyan;
-            this.excelExportAfterCompleted_Switch.CheckedState.InnerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
-            this.excelExportAfterCompleted_Switch.CheckedState.InnerBorderRadius = 8;
-            this.excelExportAfterCompleted_Switch.CheckedState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
-            this.excelExportAfterCompleted_Switch.CheckedState.Parent = this.excelExportAfterCompleted_Switch;
-            this.excelExportAfterCompleted_Switch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.excelExportAfterCompleted_Switch.Location = new System.Drawing.Point(371, 326);
-            this.excelExportAfterCompleted_Switch.Margin = new System.Windows.Forms.Padding(0);
-            this.excelExportAfterCompleted_Switch.Name = "excelExportAfterCompleted_Switch";
-            this.excelExportAfterCompleted_Switch.ShadowDecoration.Parent = this.excelExportAfterCompleted_Switch;
-            this.excelExportAfterCompleted_Switch.Size = new System.Drawing.Size(50, 26);
-            this.excelExportAfterCompleted_Switch.TabIndex = 25;
-            this.excelExportAfterCompleted_Switch.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.excelExportAfterCompleted_Switch.UncheckedState.BorderRadius = 12;
-            this.excelExportAfterCompleted_Switch.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(16)))), ((int)(((byte)(47)))));
-            this.excelExportAfterCompleted_Switch.UncheckedState.InnerBorderColor = System.Drawing.Color.White;
-            this.excelExportAfterCompleted_Switch.UncheckedState.InnerBorderRadius = 8;
-            this.excelExportAfterCompleted_Switch.UncheckedState.InnerColor = System.Drawing.Color.Cyan;
-            this.excelExportAfterCompleted_Switch.UncheckedState.Parent = this.excelExportAfterCompleted_Switch;
-            this.excelExportAfterCompleted_Switch.CheckedChanged += new System.EventHandler(this.excelExportAfterCompleted_Switch_CheckedChanged);
+            this.dataExportAfterCompleted_Switch.Animated = true;
+            this.dataExportAfterCompleted_Switch.AutoRoundedCorners = true;
+            this.dataExportAfterCompleted_Switch.BackColor = System.Drawing.Color.Transparent;
+            this.dataExportAfterCompleted_Switch.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.dataExportAfterCompleted_Switch.CheckedState.BorderRadius = 12;
+            this.dataExportAfterCompleted_Switch.CheckedState.FillColor = System.Drawing.Color.Cyan;
+            this.dataExportAfterCompleted_Switch.CheckedState.InnerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
+            this.dataExportAfterCompleted_Switch.CheckedState.InnerBorderRadius = 8;
+            this.dataExportAfterCompleted_Switch.CheckedState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
+            this.dataExportAfterCompleted_Switch.CheckedState.Parent = this.dataExportAfterCompleted_Switch;
+            this.dataExportAfterCompleted_Switch.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dataExportAfterCompleted_Switch.Location = new System.Drawing.Point(371, 326);
+            this.dataExportAfterCompleted_Switch.Margin = new System.Windows.Forms.Padding(0);
+            this.dataExportAfterCompleted_Switch.Name = "dataExportAfterCompleted_Switch";
+            this.dataExportAfterCompleted_Switch.ShadowDecoration.Parent = this.dataExportAfterCompleted_Switch;
+            this.dataExportAfterCompleted_Switch.Size = new System.Drawing.Size(50, 26);
+            this.dataExportAfterCompleted_Switch.TabIndex = 25;
+            this.dataExportAfterCompleted_Switch.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.dataExportAfterCompleted_Switch.UncheckedState.BorderRadius = 12;
+            this.dataExportAfterCompleted_Switch.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(16)))), ((int)(((byte)(47)))));
+            this.dataExportAfterCompleted_Switch.UncheckedState.InnerBorderColor = System.Drawing.Color.White;
+            this.dataExportAfterCompleted_Switch.UncheckedState.InnerBorderRadius = 8;
+            this.dataExportAfterCompleted_Switch.UncheckedState.InnerColor = System.Drawing.Color.Cyan;
+            this.dataExportAfterCompleted_Switch.UncheckedState.Parent = this.dataExportAfterCompleted_Switch;
+            this.dataExportAfterCompleted_Switch.CheckedChanged += new System.EventHandler(this.dataExportAfterCompleted_Switch_CheckedChanged);
             // 
             // SettingForm
             // 
@@ -318,7 +318,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(724, 492);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.excelExportAfterCompleted_Switch);
+            this.Controls.Add(this.dataExportAfterCompleted_Switch);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.defaultSetting_Button);
             this.Controls.Add(this.label4);
@@ -351,6 +351,6 @@
         private Guna.UI2.WinForms.Guna2Button defaultSetting_Button;
         private Guna.UI2.WinForms.Guna2Button exitButton;
         private System.Windows.Forms.Label label5;
-        private Guna.UI2.WinForms.Guna2ToggleSwitch excelExportAfterCompleted_Switch;
+        private Guna.UI2.WinForms.Guna2ToggleSwitch dataExportAfterCompleted_Switch;
     }
 }

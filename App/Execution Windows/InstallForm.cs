@@ -1,10 +1,13 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -28,6 +31,7 @@ namespace App
                 if (dialogResult == DialogResult.Yes)
                 {
                     softwareList = selectedSoftwareList;
+
                     ///Download
                     App.InstallUninstall.Download download = new InstallUninstall.Download();
                     App.InstallUninstall.BaseProcess install = new InstallUninstall.Install();
