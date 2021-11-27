@@ -16,7 +16,6 @@ namespace App
         public SettingForm()
         {
             InitializeComponent();
-            setToDefault();
         }
         // Anti Flickering
         protected override CreateParams CreateParams
@@ -31,18 +30,48 @@ namespace App
 
         private void defaultSetting_Button_Click(object sender, EventArgs e)
         {
-            setToDefault();
+            timeSetter.Value = DateTime.Now;
+            timeSetter.Checked = false;
+            activatedAction.SelectedIndex = 0;
+            cleanAfterCompleted_Switch.Checked = false;
+            dataExportAfterCompleted_Switch.Checked = false;
+            saveDownload.Text = @"C:\";
         }
 
-        private void setToDefault()
+        private void SettingForm_Load(object sender, EventArgs e)
         {
-            Setting defaultSetting = new Setting();
-            timeSetter.Value = Program.setting.timeSetter = defaultSetting.timeSetter;
-            activatingAction.Text = Program.setting.activatingAction = defaultSetting.activatingAction;
-            activatedAction.Text = Program.setting.activatedAction = defaultSetting.activatedAction;
-            cleanAfterCompleted_Switch.Checked = Program.setting.cleanAfterCompleted = defaultSetting.cleanAfterCompleted;
-            dataExportAfterCompleted_Switch.Checked = Program.setting.dataExportAfterCompleted = defaultSetting.dataExportAfterCompleted;
-            otherDirectoryPath.Text = Program.setting.otherDirectoryPath = defaultSetting.otherDirectoryPath;
+            timeSetter.Value = Program.setting.timeSetter;
+            timeSetter.Checked = Program.setting.isSetTime;
+            activatedAction.SelectedIndex = ((int)Program.setting.afterAction);
+            cleanAfterCompleted_Switch.Checked = Program.setting.cleanAfter;
+            saveDownload.Text = Program.setting.saveDownloadPath;
+            exportPath.Visible = exportPath_Button.Visible = dataExportAfterCompleted_Switch.Checked = Program.setting.dataExport;
+            exportPath.Text = Program.setting.exportPath;
+        }
+
+        private void exportPath_Button_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                exportPath.Text = saveFileDialog.FileName;
+            }
+        }
+
+        private void dataExportAfterCompleted_Switch_CheckedChanged(object sender, EventArgs e)
+        {
+            Program.setting.dataExport = dataExportAfterCompleted_Switch.Checked;
+            exportPath.Visible = exportPath_Button.Visible = dataExportAfterCompleted_Switch.Checked;
+        }
+
+        private void saveDownload_Button_Click(object sender, EventArgs e)
+        {
+            CommonOpenFileDialog destinationPathdlg = new CommonOpenFileDialog();
+            destinationPathdlg.IsFolderPicker = true;
+            if (destinationPathdlg.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                saveDownload.Text = destinationPathdlg.FileName;
+            }
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -50,14 +79,9 @@ namespace App
             this.Close();
         }
 
-        private void activatingAction_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Program.setting.activatingAction = activatingAction.Text;
-        }
-
         private void activatedAction_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Program.setting.activatedAction = activatedAction.Text;
+            Program.setting.afterAction = ((Setting.AfterAction)activatedAction.SelectedIndex);
         }
 
         private void timeSetter_ValueChanged(object sender, EventArgs e)
@@ -67,22 +91,17 @@ namespace App
 
         private void cleanAfterCompleted_Switch_CheckedChanged(object sender, EventArgs e)
         {
-            Program.setting.cleanAfterCompleted = cleanAfterCompleted_Switch.Checked;
+            Program.setting.cleanAfter = cleanAfterCompleted_Switch.Checked;
         }
 
-        private void dataExportAfterCompleted_Switch_CheckedChanged(object sender, EventArgs e)
+        private void saveDownload_TextChanged(object sender, EventArgs e)
         {
-            Program.setting.dataExportAfterCompleted = dataExportAfterCompleted_Switch.Checked;
+            Program.setting.saveDownloadPath = saveDownload.Text;
         }
 
-        private void otherPath_Button_Click(object sender, EventArgs e)
+        private void exportPath_TextChanged(object sender, EventArgs e)
         {
-            CommonOpenFileDialog destinationPathdlg = new CommonOpenFileDialog();
-            destinationPathdlg.IsFolderPicker = true;
-            if (destinationPathdlg.ShowDialog() == CommonFileDialogResult.Ok)
-            {
-                Program.setting.otherDirectoryPath = otherDirectoryPath.Text = destinationPathdlg.FileName;
-            }
+            Program.setting.exportPath = exportPath.Text;
         }
     }
 }

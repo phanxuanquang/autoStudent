@@ -84,7 +84,7 @@ namespace App
         }
         private void cleanButton_Click(object sender, EventArgs e)
         {
-            Program.setting.exec_cleanAfterCompleted(Program.setting.otherDirectoryPath);
+            Program.setting.RunCleanAction(Program.setting.saveDownloadPath);
         }
 
         private void updateButton_Click(object sender, EventArgs e)

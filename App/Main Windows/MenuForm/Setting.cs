@@ -14,38 +14,108 @@ namespace App
 {
     class Setting
     {
-        public DateTime timeSetter;
-        public string activatingAction;
-        public string activatedAction;
-        public bool cleanAfterCompleted;
-        public bool dataExportAfterCompleted;
-        public string otherDirectoryPath;
+        public enum AfterAction
+        {
+            Shutdown = 5,
+            Restart = 4,
+            Sleep = 3,
+            Lock = 2,
+            Exit = 1,
+            None = 0
+        }
+        private DateTime _timeSetter;
+        private AfterAction _afterAction;
+        private bool _cleanAfter;
+        private bool _dataExport;
+        private bool _isSetTime;
+        private string _saveDownloadPath;
+        private string _exportPath;
+        public DateTime timeSetter
+        {
+            get
+            {
+                return _timeSetter;
+            }
+            set
+            {
+                _timeSetter = value;
+            }
+        }
+        public AfterAction afterAction
+        {
+            get
+            {
+                return _afterAction;
+            }
+            set
+            {
+                _afterAction = value;
+            }
+        }
+        public bool cleanAfter
+        {
+            get
+            {
+                return _cleanAfter;
+            }
+            set
+            {
+                _cleanAfter = value;
+            }
+        }
+        public bool dataExport
+        {
+            get
+            {
+                return _dataExport;
+            }
+            set
+            {
+                _dataExport = value;
+            }
+        }
+        public string saveDownloadPath
+        {
+            get
+            {
+                return _saveDownloadPath;
+            }
+            set
+            {
+                _saveDownloadPath = value;
+            }
+        }
+        public bool isSetTime
+        {
+            get
+            {
+                return _isSetTime;
+            }
+            set
+            {
+                _isSetTime = value;
+            }
+        }
+        public string exportPath
+        {
+            get
+            {
+                return _exportPath;
+            }
+            set
+            {
+                _exportPath = value;
+            }
+        }
 
         public Setting()
         {
-            timeSetter = DateTime.Now;
-            activatingAction = "Không làm gì";
-            activatedAction = "Không làm gì";
-            cleanAfterCompleted = false;
-            dataExportAfterCompleted = false;
-            otherDirectoryPath = "C:\\";
-        }
-
-        public void exec_timeSetter()
-        {
-
-        }
-
-        public void exec_activatingAction()
-        {
-            switch (activatingAction)
-            {
-                case "Chạy ngầm":
-                    // Background Runnning Functions
-                    break;
-                default:
-                    break;
-            }
+            this._timeSetter = DateTime.Now;
+            this._afterAction = AfterAction.None;
+            this._cleanAfter = false;
+            this._dataExport = false;
+            this._saveDownloadPath = @"C:\";
+            this._exportPath = String.Empty;
         }
 
         // For Lock
@@ -56,58 +126,79 @@ namespace App
         [DllImport("PowrProf.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
         public static extern bool SetSuspendState(bool hiberate, bool forceCritical, bool disableWakeEvent);
 
-        public void exec_activatedAction()
+        public void RunAfterAction()
         {
-            switch (activatedAction)
+            switch (afterAction)
             {
-                case "Thoát chương trình":
+                case AfterAction.Exit:
                     Application.Exit();
                     break;
-                case "Tắt máy":
+                case AfterAction.Shutdown:
                     Process.Start("shutdown", "/s /t 0");
                     break;
-                case "Khởi động lại":
+                case AfterAction.Restart:
                     Process.Start("shutdown", "/r /t 0");
                     break;
-                case "Khóa máy":
+                case AfterAction.Lock:
                     LockWorkStation();
                     break;
-                case "Ngủ":
+                case AfterAction.Sleep:
                     SetSuspendState(false, true, true);
                     break;
-                default:
-                    break;
             }
         }
 
-        public void exec_cleanAfterCompleted(string savedSetupFolderPath)
+        public bool RunCleanAction(string downloadFolderPath)
         {
-            void cleanFolder(DirectoryInfo dir)
+            if (cleanAfter)
             {
-                foreach (FileInfo file in dir.EnumerateFiles())
+                if (Directory.Exists(downloadFolderPath))
                 {
-                    file.Delete();
-                }
-                foreach (DirectoryInfo subDir in dir.EnumerateDirectories())
-                {
-                    subDir.Delete(true);
+                    try
+                    {
+                        Directory.Delete(downloadFolderPath);
+                        return true;
+                    }
+                    catch (UnauthorizedAccessException)
+                    {
+                        MessageBox.Show("Không có quyền xóa thư mục tạm thời");
+                    }
+                    catch (IOException)
+                    {
+                        MessageBox.Show("Lỗi xóa thư mục tạm thời");
+                    }
+                    catch { }
                 }
             }
-
-            DirectoryInfo prefetchFolder = new DirectoryInfo("C:\\Windows\\Prefetch\\");
-            //DirectoryInfo setupFolder = new DirectoryInfo(savedSetupFolderPath);
-
-            cleanFolder(prefetchFolder);
-            //cleanFolder(setupFolder);
-
-            MessageBox.Show("Dọn dẹp hoàn tất");
+            return false;
         }
 
-        public void exec_dataExportAfterCompleted(List<Package> dataList, string fullName)
+        public bool RunDataExport(List<Package> dataList, string pathSaveExport)
         {
-            string jsonString = JsonConvert.SerializeObject(dataList, Formatting.Indented);
-            File.WriteAllText(fullName + ".json", jsonString);
+            if (dataExport && dataList != null)
+            {
+                if (!String.IsNullOrEmpty(pathSaveExport) && Directory.Exists(Path.GetDirectoryName(pathSaveExport)))
+                {
+                    string jsonString = JsonConvert.SerializeObject(dataList, Formatting.Indented);
+                    try
+                    {
+                        File.WriteAllText(pathSaveExport, jsonString);
+                        return true;
+                    }
+                    catch (IOException)
+                    {
+                        MessageBox.Show("Lỗi lưu file");
+                    }
+                    catch (UnauthorizedAccessException)
+                    {
+                        MessageBox.Show("Không có quyền lưu ở thư mục chọn");
+                    }
+                }
+                else MessageBox.Show("Lỗi đường dẫn lưu file");
+            }
+            else MessageBox.Show("Chưa có gì để export");
+            return false;
         }
     }
-    
+
 }
