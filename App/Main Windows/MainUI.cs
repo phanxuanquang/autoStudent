@@ -33,17 +33,11 @@ namespace App
 
         private void exitButton_Click(object sender, EventArgs e)
         {
-            if (Program.setting.timeSetter.Minute != DateTime.Now.Minute)
-            {
-                // Hàm chạy ngầm
-            }
-            else Application.Exit();
+            Application.Exit();
         }
         private void minimizeButton_Click(object sender, EventArgs e)
         {
-            //this.WindowState = FormWindowState.Minimized;
-            var temp = new ProgressForm.ProgressForm();
-            temp.ShowDialog();
+            this.WindowState = FormWindowState.Minimized;
         }
 
         private void wizardButton_Click(object sender, EventArgs e)

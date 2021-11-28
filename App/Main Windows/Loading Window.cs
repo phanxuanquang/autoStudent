@@ -31,7 +31,6 @@ namespace App
 
             loadFrom_Database();
             loadFrom_System();
-
         }
 
         // Progress Bar

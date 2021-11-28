@@ -13,7 +13,6 @@ namespace App
 {
     public partial class SettingForm : Form
     {
-        Setting newSetting = new Setting();
         public SettingForm()
         {
             InitializeComponent();
@@ -42,39 +41,35 @@ namespace App
 
         private void exitButton_Click(object sender, EventArgs e)
         {
-            if (Program.setting == newSetting)
-                this.Close();
-            else
-            {
-                DialogResult dialogResult = MessageBox.Show("Các thiết lập chưa được lưu, bạn có chắc chắn muốn thoát?", "THOÁT", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    this.Close();
-                }
-            }
+            this.Close();
         }
 
+        private void timeSetter_Switch_CheckedChanged(object sender, EventArgs e)
+        {
+            timeSetter.Visible = Program.setting.isSetTime = timeSetter_Switch.Checked;
+        }
         private void timeSetter_ValueChanged(object sender, EventArgs e)
         {
-            newSetting.timeSetter = timeSetter.Value;
+            Program.setting.timeSetter = timeSetter.Value;
         }
+
         private void activatedAction_SelectedIndexChanged(object sender, EventArgs e)
         {
-            newSetting.afterAction = ((Setting.AfterAction)activatedAction.SelectedIndex);
+            Program.setting.afterAction = ((Setting.AfterAction)activatedAction.SelectedIndex);
         }
         private void cleanAfterCompleted_Switch_CheckedChanged(object sender, EventArgs e)
         {
-            newSetting.cleanAfter = cleanAfterCompleted_Switch.Checked;
+            Program.setting.cleanAfter = cleanAfterCompleted_Switch.Checked;
         }
         
         private void dataExportAfterCompleted_Switch_CheckedChanged(object sender, EventArgs e)
         {
-            newSetting.dataExport = dataExportAfterCompleted_Switch.Checked;
+            Program.setting.dataExport = dataExportAfterCompleted_Switch.Checked;
             exportPath.Visible = exportPath_Button.Visible = dataExportAfterCompleted_Switch.Checked;
         }
         private void exportPath_TextChanged(object sender, EventArgs e)
         {
-            newSetting.exportPath = exportPath.Text;
+            Program.setting.exportPath = exportPath.Text;
         }
         private void exportPath_Button_Click(object sender, EventArgs e)
         {
@@ -87,7 +82,7 @@ namespace App
         
         private void saveDownload_TextChanged(object sender, EventArgs e)
         {
-            newSetting.saveDownloadPath = saveDownload.Text;
+            Program.setting.saveDownloadPath = saveDownload.Text;
         }
         private void saveDownload_Button_Click(object sender, EventArgs e)
         {
@@ -101,17 +96,13 @@ namespace App
 
         private void defaultSetting_Button_Click(object sender, EventArgs e)
         {
-            timeSetter.Value = Program.setting.timeSetter;
-            timeSetter.Checked = false;
-            activatedAction.SelectedIndex = 0;
             cleanAfterCompleted_Switch.Checked = false;
+            activatedAction.SelectedIndex = 0;
+            timeSetter_Switch.Checked = false;
             dataExportAfterCompleted_Switch.Checked = false;
-            saveDownload.Text = @"C:\";
-        }
-        private void settingSaved_Button_Click(object sender, EventArgs e)
-        {
-            Program.setting = newSetting;
-            this.Close();
+
+            timeSetter.Value = Program.setting.timeSetter = DateTime.Now;
+            Program.setting.exportPath = exportPath.Text = saveDownload.Text = @"C:\";
         }
     }
 }
