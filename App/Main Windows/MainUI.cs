@@ -41,7 +41,9 @@ namespace App
         }
         private void minimizeButton_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Minimized;
+            //this.WindowState = FormWindowState.Minimized;
+            var temp = new ProgressForm.ProgressForm();
+            temp.ShowDialog();
         }
 
         private void wizardButton_Click(object sender, EventArgs e)

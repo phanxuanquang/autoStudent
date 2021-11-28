@@ -7,6 +7,8 @@ using System.IO;
 using System.Threading;
 using System.Collections.Generic;
 using System;
+using Guna.UI2.WinForms;
+using Guna.UI.WinForms;
 
 namespace App.InstallUninstall
 {
@@ -14,8 +16,8 @@ namespace App.InstallUninstall
     {
         private static HttpClient client;
         private List<Package> listSoftware;
-        private ProgressBar progressBar;
-        private Label fileDownload;
+        private Guna2ProgressBar progressBar;
+        private GunaLabel fileDownload;
         private string directoryFolderDownload;
         private int index = -1;
         private bool isCancel;
@@ -27,7 +29,7 @@ namespace App.InstallUninstall
             client.Timeout = TimeSpan.FromSeconds(30);
         }
 
-        public void Start(List<Package> listSoftware, ProgressBar progressBar, Label fileDownload, string directoryFolderDownload)
+        public void Start(List<Package> listSoftware, Guna2ProgressBar progressBar, GunaLabel fileDownload, string directoryFolderDownload)
         {
             this.listSoftware = listSoftware;
             this.directoryFolderDownload = directoryFolderDownload;
