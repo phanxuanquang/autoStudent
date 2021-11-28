@@ -44,6 +44,7 @@
             this.saveDownload_Button = new Guna.UI2.WinForms.Guna2Button();
             this.exportPath_Button = new Guna.UI2.WinForms.Guna2Button();
             this.exportPath = new Guna.UI2.WinForms.Guna2TextBox();
+            this.settingSaved_Button = new Guna.UI2.WinForms.Guna2Button();
             this.SuspendLayout();
             // 
             // timeSetter
@@ -59,12 +60,12 @@
             this.timeSetter.CustomFormat = "    dd/MM/yyyy   HH:mm tt";
             this.timeSetter.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.timeSetter.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.timeSetter.Location = new System.Drawing.Point(358, 87);
+            this.timeSetter.Location = new System.Drawing.Point(357, 87);
             this.timeSetter.Margin = new System.Windows.Forms.Padding(10);
             this.timeSetter.Name = "timeSetter";
             this.timeSetter.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.timeSetter.ShowCheckBox = true;
-            this.timeSetter.Size = new System.Drawing.Size(355, 26);
+            this.timeSetter.Size = new System.Drawing.Size(378, 26);
             this.timeSetter.TabIndex = 0;
             this.timeSetter.Value = new System.DateTime(2021, 11, 26, 8, 29, 0, 0);
             this.timeSetter.ValueChanged += new System.EventHandler(this.timeSetter_ValueChanged);
@@ -75,7 +76,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label1.ForeColor = System.Drawing.Color.Cyan;
-            this.label1.Location = new System.Drawing.Point(74, 91);
+            this.label1.Location = new System.Drawing.Point(73, 91);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(181, 23);
             this.label1.TabIndex = 1;
@@ -88,7 +89,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label3.ForeColor = System.Drawing.Color.Cyan;
-            this.label3.Location = new System.Drawing.Point(74, 161);
+            this.label3.Location = new System.Drawing.Point(73, 161);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(139, 23);
             this.label3.TabIndex = 3;
@@ -127,10 +128,10 @@
             this.activatedAction.ItemsAppearance.Parent = this.activatedAction;
             this.activatedAction.ItemsAppearance.SelectedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.activatedAction.ItemsAppearance.SelectedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
-            this.activatedAction.Location = new System.Drawing.Point(358, 151);
+            this.activatedAction.Location = new System.Drawing.Point(357, 151);
             this.activatedAction.Name = "activatedAction";
             this.activatedAction.ShadowDecoration.Parent = this.activatedAction;
-            this.activatedAction.Size = new System.Drawing.Size(355, 36);
+            this.activatedAction.Size = new System.Drawing.Size(378, 36);
             this.activatedAction.TabIndex = 5;
             this.activatedAction.TextOffset = new System.Drawing.Point(10, 0);
             this.activatedAction.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
@@ -149,7 +150,7 @@
             this.cleanAfterCompleted_Switch.CheckedState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
             this.cleanAfterCompleted_Switch.CheckedState.Parent = this.cleanAfterCompleted_Switch;
             this.cleanAfterCompleted_Switch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cleanAfterCompleted_Switch.Location = new System.Drawing.Point(358, 225);
+            this.cleanAfterCompleted_Switch.Location = new System.Drawing.Point(357, 225);
             this.cleanAfterCompleted_Switch.Margin = new System.Windows.Forms.Padding(0);
             this.cleanAfterCompleted_Switch.Name = "cleanAfterCompleted_Switch";
             this.cleanAfterCompleted_Switch.ShadowDecoration.Parent = this.cleanAfterCompleted_Switch;
@@ -170,7 +171,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label4.ForeColor = System.Drawing.Color.Cyan;
-            this.label4.Location = new System.Drawing.Point(74, 228);
+            this.label4.Location = new System.Drawing.Point(73, 228);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(207, 23);
             this.label4.TabIndex = 7;
@@ -179,22 +180,20 @@
             // 
             // defaultSetting_Button
             // 
-            this.defaultSetting_Button.Animated = true;
-            this.defaultSetting_Button.AutoRoundedCorners = true;
             this.defaultSetting_Button.BackColor = System.Drawing.Color.Transparent;
             this.defaultSetting_Button.BorderColor = System.Drawing.Color.Cyan;
-            this.defaultSetting_Button.BorderRadius = 23;
+            this.defaultSetting_Button.BorderRadius = 30;
             this.defaultSetting_Button.BorderThickness = 3;
             this.defaultSetting_Button.CheckedState.Parent = this.defaultSetting_Button;
             this.defaultSetting_Button.CustomImages.Parent = this.defaultSetting_Button;
-            this.defaultSetting_Button.FillColor = System.Drawing.Color.Cyan;
-            this.defaultSetting_Button.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.defaultSetting_Button.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
+            this.defaultSetting_Button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
+            this.defaultSetting_Button.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.defaultSetting_Button.ForeColor = System.Drawing.Color.Cyan;
             this.defaultSetting_Button.HoverState.Parent = this.defaultSetting_Button;
-            this.defaultSetting_Button.Location = new System.Drawing.Point(260, 436);
+            this.defaultSetting_Button.Location = new System.Drawing.Point(108, 446);
             this.defaultSetting_Button.Name = "defaultSetting_Button";
             this.defaultSetting_Button.ShadowDecoration.Parent = this.defaultSetting_Button;
-            this.defaultSetting_Button.Size = new System.Drawing.Size(267, 49);
+            this.defaultSetting_Button.Size = new System.Drawing.Size(275, 66);
             this.defaultSetting_Button.TabIndex = 22;
             this.defaultSetting_Button.Text = "ĐẶT VỀ MẶC ĐỊNH";
             this.defaultSetting_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
@@ -215,7 +214,7 @@
             this.exitButton.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(57)))), ((int)(((byte)(125)))));
             this.exitButton.HoverState.Parent = this.exitButton;
             this.exitButton.Image = ((System.Drawing.Image)(resources.GetObject("exitButton.Image")));
-            this.exitButton.Location = new System.Drawing.Point(753, 4);
+            this.exitButton.Location = new System.Drawing.Point(774, 4);
             this.exitButton.Name = "exitButton";
             this.exitButton.ShadowDecoration.Parent = this.exitButton;
             this.exitButton.Size = new System.Drawing.Size(30, 30);
@@ -228,7 +227,7 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label5.ForeColor = System.Drawing.Color.Cyan;
-            this.label5.Location = new System.Drawing.Point(74, 295);
+            this.label5.Location = new System.Drawing.Point(73, 295);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(263, 23);
             this.label5.TabIndex = 26;
@@ -248,7 +247,7 @@
             this.dataExportAfterCompleted_Switch.CheckedState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
             this.dataExportAfterCompleted_Switch.CheckedState.Parent = this.dataExportAfterCompleted_Switch;
             this.dataExportAfterCompleted_Switch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dataExportAfterCompleted_Switch.Location = new System.Drawing.Point(358, 290);
+            this.dataExportAfterCompleted_Switch.Location = new System.Drawing.Point(357, 290);
             this.dataExportAfterCompleted_Switch.Margin = new System.Windows.Forms.Padding(0);
             this.dataExportAfterCompleted_Switch.Name = "dataExportAfterCompleted_Switch";
             this.dataExportAfterCompleted_Switch.ShadowDecoration.Parent = this.dataExportAfterCompleted_Switch;
@@ -269,7 +268,7 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label6.ForeColor = System.Drawing.Color.Cyan;
-            this.label6.Location = new System.Drawing.Point(74, 362);
+            this.label6.Location = new System.Drawing.Point(73, 362);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(169, 23);
             this.label6.TabIndex = 27;
@@ -295,14 +294,14 @@
             this.saveDownload.ForeColor = System.Drawing.Color.Cyan;
             this.saveDownload.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.saveDownload.HoverState.Parent = this.saveDownload;
-            this.saveDownload.Location = new System.Drawing.Point(358, 355);
+            this.saveDownload.Location = new System.Drawing.Point(357, 355);
             this.saveDownload.Margin = new System.Windows.Forms.Padding(0);
             this.saveDownload.Name = "saveDownload";
             this.saveDownload.PasswordChar = '\0';
             this.saveDownload.PlaceholderText = "C:\\";
             this.saveDownload.SelectedText = "";
             this.saveDownload.ShadowDecoration.Parent = this.saveDownload;
-            this.saveDownload.Size = new System.Drawing.Size(270, 35);
+            this.saveDownload.Size = new System.Drawing.Size(291, 35);
             this.saveDownload.TabIndex = 28;
             this.saveDownload.TextOffset = new System.Drawing.Point(5, 0);
             this.saveDownload.TextChanged += new System.EventHandler(this.saveDownload_TextChanged);
@@ -321,7 +320,7 @@
             this.saveDownload_Button.ForeColor = System.Drawing.Color.Cyan;
             this.saveDownload_Button.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(75)))), ((int)(((byte)(163)))));
             this.saveDownload_Button.HoverState.Parent = this.saveDownload_Button;
-            this.saveDownload_Button.Location = new System.Drawing.Point(634, 355);
+            this.saveDownload_Button.Location = new System.Drawing.Point(656, 355);
             this.saveDownload_Button.Margin = new System.Windows.Forms.Padding(0);
             this.saveDownload_Button.Name = "saveDownload_Button";
             this.saveDownload_Button.ShadowDecoration.Parent = this.saveDownload_Button;
@@ -345,7 +344,7 @@
             this.exportPath_Button.ForeColor = System.Drawing.Color.Cyan;
             this.exportPath_Button.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(75)))), ((int)(((byte)(163)))));
             this.exportPath_Button.HoverState.Parent = this.exportPath_Button;
-            this.exportPath_Button.Location = new System.Drawing.Point(634, 285);
+            this.exportPath_Button.Location = new System.Drawing.Point(656, 285);
             this.exportPath_Button.Margin = new System.Windows.Forms.Padding(0);
             this.exportPath_Button.Name = "exportPath_Button";
             this.exportPath_Button.ShadowDecoration.Parent = this.exportPath_Button;
@@ -357,6 +356,7 @@
             // 
             // exportPath
             // 
+            this.exportPath.Animated = true;
             this.exportPath.BackColor = System.Drawing.Color.Transparent;
             this.exportPath.BorderColor = System.Drawing.Color.Cyan;
             this.exportPath.BorderRadius = 5;
@@ -374,17 +374,39 @@
             this.exportPath.ForeColor = System.Drawing.Color.Cyan;
             this.exportPath.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.exportPath.HoverState.Parent = this.exportPath;
-            this.exportPath.Location = new System.Drawing.Point(419, 285);
+            this.exportPath.Location = new System.Drawing.Point(415, 285);
             this.exportPath.Margin = new System.Windows.Forms.Padding(0);
             this.exportPath.Name = "exportPath";
             this.exportPath.PasswordChar = '\0';
             this.exportPath.PlaceholderText = "C:\\";
             this.exportPath.SelectedText = "";
             this.exportPath.ShadowDecoration.Parent = this.exportPath;
-            this.exportPath.Size = new System.Drawing.Size(209, 35);
+            this.exportPath.Size = new System.Drawing.Size(233, 35);
             this.exportPath.TabIndex = 30;
             this.exportPath.TextOffset = new System.Drawing.Point(5, 0);
             this.exportPath.TextChanged += new System.EventHandler(this.exportPath_TextChanged);
+            // 
+            // settingSaved_Button
+            // 
+            this.settingSaved_Button.Animated = true;
+            this.settingSaved_Button.BackColor = System.Drawing.Color.Transparent;
+            this.settingSaved_Button.BorderColor = System.Drawing.Color.Cyan;
+            this.settingSaved_Button.BorderRadius = 30;
+            this.settingSaved_Button.BorderThickness = 3;
+            this.settingSaved_Button.CheckedState.Parent = this.settingSaved_Button;
+            this.settingSaved_Button.CustomImages.Parent = this.settingSaved_Button;
+            this.settingSaved_Button.FillColor = System.Drawing.Color.Cyan;
+            this.settingSaved_Button.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.settingSaved_Button.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
+            this.settingSaved_Button.HoverState.Parent = this.settingSaved_Button;
+            this.settingSaved_Button.Location = new System.Drawing.Point(426, 446);
+            this.settingSaved_Button.Name = "settingSaved_Button";
+            this.settingSaved_Button.ShadowDecoration.Parent = this.settingSaved_Button;
+            this.settingSaved_Button.Size = new System.Drawing.Size(275, 66);
+            this.settingSaved_Button.TabIndex = 32;
+            this.settingSaved_Button.Text = "LƯU VÀ THOÁT";
+            this.settingSaved_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.settingSaved_Button.Click += new System.EventHandler(this.settingSaved_Button_Click);
             // 
             // SettingForm
             // 
@@ -392,7 +414,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(787, 559);
+            this.ClientSize = new System.Drawing.Size(808, 559);
+            this.Controls.Add(this.settingSaved_Button);
             this.Controls.Add(this.exportPath_Button);
             this.Controls.Add(this.exportPath);
             this.Controls.Add(this.saveDownload_Button);
@@ -435,5 +458,6 @@
         private Guna.UI2.WinForms.Guna2Button saveDownload_Button;
         private Guna.UI2.WinForms.Guna2Button exportPath_Button;
         private Guna.UI2.WinForms.Guna2TextBox exportPath;
+        private Guna.UI2.WinForms.Guna2Button settingSaved_Button;
     }
 }

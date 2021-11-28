@@ -45,10 +45,5 @@ namespace App
                 }
             });
         }
-
-        void DownloadInstall(ref List<Package> softwarePackage)
-        {
-            
-        }
     }
 }

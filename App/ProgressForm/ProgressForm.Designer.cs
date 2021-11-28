@@ -33,7 +33,6 @@
             this.minimizeButton = new Guna.UI2.WinForms.Guna2Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.guna2VScrollBar1 = new Guna.UI2.WinForms.Guna2VScrollBar();
-            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // exitButton_Above
@@ -51,7 +50,7 @@
             this.exitButton_Above.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(57)))), ((int)(((byte)(125)))));
             this.exitButton_Above.HoverState.Parent = this.exitButton_Above;
             this.exitButton_Above.Image = ((System.Drawing.Image)(resources.GetObject("exitButton_Above.Image")));
-            this.exitButton_Above.Location = new System.Drawing.Point(734, 14);
+            this.exitButton_Above.Location = new System.Drawing.Point(768, 5);
             this.exitButton_Above.Margin = new System.Windows.Forms.Padding(0, 5, 5, 0);
             this.exitButton_Above.Name = "exitButton_Above";
             this.exitButton_Above.ShadowDecoration.Parent = this.exitButton_Above;
@@ -73,7 +72,7 @@
             this.minimizeButton.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(57)))), ((int)(((byte)(125)))));
             this.minimizeButton.HoverState.Parent = this.minimizeButton;
             this.minimizeButton.Image = ((System.Drawing.Image)(resources.GetObject("minimizeButton.Image")));
-            this.minimizeButton.Location = new System.Drawing.Point(699, 14);
+            this.minimizeButton.Location = new System.Drawing.Point(733, 5);
             this.minimizeButton.Margin = new System.Windows.Forms.Padding(0, 5, 5, 0);
             this.minimizeButton.Name = "minimizeButton";
             this.minimizeButton.ShadowDecoration.Parent = this.minimizeButton;
@@ -109,7 +108,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(776, 482);
+            this.ClientSize = new System.Drawing.Size(803, 512);
             this.Controls.Add(this.guna2VScrollBar1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.exitButton_Above);
@@ -118,8 +117,6 @@
             this.Name = "ProgressForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ProgressForm";
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }

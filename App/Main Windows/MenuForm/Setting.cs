@@ -110,12 +110,16 @@ namespace App
 
         public Setting()
         {
-            this._timeSetter = DateTime.Now;
+            this._timeSetter = Program.setting.timeSetter;
             this._afterAction = AfterAction.None;
             this._cleanAfter = false;
             this._dataExport = false;
             this._saveDownloadPath = @"C:\";
             this._exportPath = String.Empty;
+        }
+        public Setting(DateTime dateTime)
+        {
+            _timeSetter = dateTime;
         }
 
         // For Lock
