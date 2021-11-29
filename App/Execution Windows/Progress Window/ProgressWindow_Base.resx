@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="exitButton_Above.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="exitButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAYAAAA7bUf6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         EwAACxMBAJqcGAAAANdJREFUOE+l08EOwUAQxvG+jcTBAxASvP8FESQiBHGVsI7r+9pOOmZntweHfw/T
@@ -126,14 +126,6 @@
         DpggrO2QHPRp0zMFpAjzIJ0BWIowQvbXGXEDMB9ZIg/hzHlrKULAbqJONlut+UU8gIvsvzJQh3iAbGLP
         d9Qgc1T4DuoKUIM81A3mvMYsdBFkr4Y5QLLQWhAc57BBJ4Sz4C7WcS9w8MKqimHwBRQG4bzLZoZoAAAA
         AElFTkSuQmCC
-</value>
-  </data>
-  <data name="minimizeButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABYAAAAVCAYAAABCIB6VAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EwAACxMBAJqcGAAAAGdJREFUSEu1zDEKgEAMRNE9uHZ65QhaxCyIZOVXZrZ4KX5gmrtPgVEBowJGBYwK
-        GBUwKmBUwKjwHNvDFaKW9I0tDx/pWWV52D7PimF4DWd6/tU3lnd4BowKGBUwKmBUwKiAUQFjnbcbTrBf
-        4xCKv10AAAAASUVORK5CYII=
 </value>
   </data>
   <data name="$this.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

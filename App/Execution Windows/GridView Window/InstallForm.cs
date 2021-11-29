@@ -26,24 +26,9 @@ namespace App
         protected override void exec()
         {
             Program.software_Database = selectedSoftwareList;
-
-            App.InstallUninstall.Download download = new InstallUninstall.Download();
-            App.InstallUninstall.BaseProcess install = new InstallUninstall.Install();
-
-            download.Start(Program.software_Database, null, null, @"C:\");
-
-            Task.Factory.StartNew(() =>
-            {
-                while (!download.isCompleted())
-                {
-                    Thread.Sleep(2000);
-                }
-                ((InstallUninstall.Install)install).Start(Program.software_Database, @"C:\");
-                while (!install.isCompleted())
-                {
-                    Thread.Sleep(2000);
-                }
-            });
+            ProgressWindow_Install progressWindow_Install = new ProgressWindow_Install(Program.software_Database);
+            progressWindow_Install.ShowDialog();
+            this.Show();
         }
     }
 }
