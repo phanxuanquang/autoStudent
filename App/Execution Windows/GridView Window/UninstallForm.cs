@@ -22,17 +22,10 @@ namespace App
 
         protected override void exec()
         {
-            softwareList = selectedSoftwareList;
-
-            App.InstallUninstall.BaseProcess uninstall = new InstallUninstall.Uninstall();
-            Task.Factory.StartNew(() =>
-            {
-                uninstall.Start(softwareList);
-                while (!uninstall.isCompleted())
-                {
-                    Thread.Sleep(2000);
-                }
-            });
+            Program.software_System = selectedSoftwareList;
+            ProgressWindow_Uninstall progressWindow_Uninstall = new ProgressWindow_Uninstall(Program.software_System);
+            progressWindow_Uninstall.ShowDialog();
+            this.Show();
         }
     }
 }

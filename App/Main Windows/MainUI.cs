@@ -33,11 +33,7 @@ namespace App
 
         private void exitButton_Click(object sender, EventArgs e)
         {
-            if (Program.setting.timeSetter.Minute != DateTime.Now.Minute)
-            {
-                // Hàm chạy ngầm
-            }
-            else Application.Exit();
+            Application.Exit();
         }
         private void minimizeButton_Click(object sender, EventArgs e)
         {
@@ -84,7 +80,7 @@ namespace App
         }
         private void cleanButton_Click(object sender, EventArgs e)
         {
-            Program.setting.exec_cleanAfterCompleted(Program.setting.otherDirectoryPath);
+            Program.setting.RunCleanAction(Program.setting.saveDownloadPath);
         }
 
         private void updateButton_Click(object sender, EventArgs e)
