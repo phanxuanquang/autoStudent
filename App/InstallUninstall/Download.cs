@@ -16,12 +16,40 @@ namespace App.InstallUninstall
     {
         private static HttpClient client;
         private List<Package> listSoftware;
-        private Guna2ProgressBar progressBar;
-        private GunaLabel fileDownload;
         private string directoryFolderDownload;
-        private int index = -1;
         private bool isCancel;
         private const int step = 10;
+        private bool statusDownload;
+        private float percentDownload;
+        private bool exception;
+        public bool isCompleted
+        {
+            get
+            {
+                return statusDownload;
+            }
+        }
+        public float GetPercentDownload
+        {
+            get
+            {
+                return percentDownload;
+            }
+        }
+        public bool isCanceled
+        {
+            get
+            {
+                return isCancel;
+            }
+        }
+        public bool HasException
+        {
+            get
+            {
+                return exception;
+            }
+        }
 
         public Download()
         {
@@ -29,20 +57,12 @@ namespace App.InstallUninstall
             client.Timeout = TimeSpan.FromSeconds(30);
         }
 
-        public void Start(List<Package> listSoftware, Guna2ProgressBar progressBar, GunaLabel fileDownload, string directoryFolderDownload)
+        public void Start(List<Package> listSoftware, string directoryFolderDownload)
         {
             this.listSoftware = listSoftware;
             this.directoryFolderDownload = directoryFolderDownload;
-            this.fileDownload = fileDownload;
             this.isCancel = false;
-            this.progressBar = progressBar;
-            if (this.progressBar != null)
-            {
-                this.progressBar.Maximum = 100;
-            }
-            this.index = -1;
-
-            Downloads();
+            statusDownload = false;
         }
 
         public void Pause()
@@ -50,120 +70,92 @@ namespace App.InstallUninstall
             isCancel = true;
         }
 
-        public void Continue()
+        private async void DownloadsNext(int index)
         {
-            if (index > 0 && isCancel == true)
+            statusDownload = false;
+            percentDownload = 0.0f;
+            isCancel = false;
+            exception = true;
+            if (this.listSoftware != null && index > -1)
             {
-                isCancel = false;
-                Downloads();
-            }
-        }
-
-        public bool isCompleted()
-        {
-            if (listSoftware != null)
-            {
-                return index == listSoftware.Count;
-            }
-            return true;
-        }
-
-        private async void Downloads()
-        {
-            {
-                if (this.listSoftware != null)
+                if (listSoftware.Count > index)
                 {
-                    index++;
-                    if (listSoftware.Count > index)
+                    string fileName = GetPath.GetFileName(listSoftware[index]);
+                    string URL = GetPath.GetURL(listSoftware[index]);
+                    string pathFile = Path.Combine(this.directoryFolderDownload, fileName);
+                    if (!File.Exists(pathFile))
                     {
-                        string fileName = GetPath.GetFileName(listSoftware[index]);
-                        if (fileDownload != null)
+                        using (HttpResponseMessage response = client.GetAsync(new Uri(URL), HttpCompletionOption.ResponseHeadersRead).Result)
                         {
-                            this.fileDownload.Text = fileName;
-                        }
-                        string URL = GetPath.GetURL(listSoftware[index]);
-                        string pathFile = Path.Combine(this.directoryFolderDownload, fileName);
-                        if (!File.Exists(pathFile))
-                        {
-                            using (HttpResponseMessage response = client.GetAsync(new Uri(URL), HttpCompletionOption.ResponseHeadersRead).Result)
+                            HttpResponseMessage httpRequestMessage = response.EnsureSuccessStatusCode();
+                            if (httpRequestMessage.IsSuccessStatusCode && long.TryParse(response.Content.Headers.SingleOrDefault(h => h.Key.Equals("Content-Length")).Value.First(), out long totalSize))
                             {
-                                HttpResponseMessage httpRequestMessage = response.EnsureSuccessStatusCode();
-                                if (httpRequestMessage.IsSuccessStatusCode && long.TryParse(response.Content.Headers.SingleOrDefault(h => h.Key.Equals("Content-Length")).Value.First(), out long totalSize))
+                                try
                                 {
-                                    try
+                                    using (Stream contentStream = await response.Content.ReadAsStreamAsync(), fileStream = new FileStream(pathFile, FileMode.Create, FileAccess.Write, FileShare.None, 8192, true))
                                     {
-                                        using (Stream contentStream = await response.Content.ReadAsStreamAsync(), fileStream = new FileStream(pathFile, FileMode.Create, FileAccess.Write, FileShare.None, 8192, true))
+                                        var totalRead = 0L;
+                                        var stepSegment = 0L;
+                                        var buffer = new byte[8192];
+                                        var isMoreToRead = true;
+                                        do
                                         {
-                                            var totalRead = 0L;
-                                            var stepSegment = 0L;
-                                            var buffer = new byte[8192];
-                                            var isMoreToRead = true;
-
-                                            do
+                                            if (!isCancel)
                                             {
-                                                if (!isCancel)
+                                                var read = await contentStream.ReadAsync(buffer, 0, buffer.Length);
+                                                if (read == 0)
                                                 {
-                                                    var read = await contentStream.ReadAsync(buffer, 0, buffer.Length);
-                                                    if (read == 0)
-                                                    {
-                                                        isMoreToRead = false;
-                                                    }
-                                                    else
-                                                    {
-                                                        await fileStream.WriteAsync(buffer, 0, read);
-
-                                                        totalRead += read;
-                                                        stepSegment += 1;
-
-                                                        if (progressBar != null)
-                                                        {
-                                                            if (stepSegment % step == 0)
-                                                            {
-                                                                progressBar.BeginInvoke(new Action(() =>
-                                                                {
-                                                                    progressBar.Value = Convert.ToInt32(totalRead * 100 / totalSize);
-                                                                }));
-                                                            }
-                                                        }
-                                                    }
+                                                    isMoreToRead = false;
                                                 }
                                                 else
                                                 {
-                                                    break;
+                                                    await fileStream.WriteAsync(buffer, 0, read);
+
+                                                    totalRead += read;
+                                                    stepSegment += 1;
+
+                                                    percentDownload = totalRead * 100.0f / totalSize;
                                                 }
                                             }
-                                            while (isMoreToRead);
-                                        }
-                                        if (isCancel)
-                                        {
-                                            if (File.Exists(pathFile))
+                                            else
                                             {
-                                                File.Delete(pathFile);
+                                                break;
                                             }
-                                            MessageBox.Show("Đã hủy");
-                                            return;
                                         }
-                                        else
+                                        while (isMoreToRead);
+                                        exception = false;
+                                    }
+                                    if (isCancel)
+                                    {
+                                        if (File.Exists(pathFile))
                                         {
-                                            MessageBox.Show("tai xong" + index.ToString());
+                                            File.Delete(pathFile);
                                         }
+                                        MessageBox.Show("Đã hủy");
+                                        return;
                                     }
-                                    catch (IOException)
+                                    else
                                     {
-                                        MessageBox.Show("Bộ nhớ đầy");
-                                    }
-                                    catch (UnauthorizedAccessException)
-                                    {
-                                        MessageBox.Show("Không truy cập được");
+                                        MessageBox.Show("tai xong" + index.ToString());
                                     }
                                 }
-                            }
-                            if (!isCancel)
-                            {
-                                Downloads();
+                                catch (IOException)
+                                {
+                                    MessageBox.Show("Bộ nhớ đầy");
+                                }
+                                catch (UnauthorizedAccessException)
+                                {
+                                    MessageBox.Show("Không truy cập được");
+                                }
+                                statusDownload = true;
                             }
                         }
-                        else Downloads();
+                    }
+                    else
+                    {
+                        statusDownload = true;
+                        percentDownload = 100.0f;
+                        exception = false;
                     }
                 }
             }
