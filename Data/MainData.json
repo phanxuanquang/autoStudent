@@ -1,2122 +1,2123 @@
 {
-   "packages":[
-      {
-         "name":"1password",
-         "installer":{
-            "kind":"innosetup",
-            "options":{
-               "extension":".exe"
-            },
-            "x86":"https://app-updates.agilebits.com/download/OPW4"
-         },
-         "version":"latest-4.x",
-         "displayname":"1Password",
-         "role":"None"
-      },
-      {
-         "name":"7zip",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://www.7-zip.org/a/7z1900.msi",
-            "x86_64":"https://www.7-zip.org/a/7z1900-x64.msi"
-         },
-         "version":"19.00",
-         "displayname":"7-Zip",
-         "role":"None"
-      },
-      {
-         "name":"adoptopenjdk-14-jre",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://github.com/AdoptOpenJDK/openjdk14-binaries/releases/download/jdk-14.0.2%2B12/OpenJDK14U-jre_x86-32_windows_hotspot_14.0.2_12.msi",
-            "x86_64":"https://github.com/AdoptOpenJDK/openjdk14-binaries/releases/download/jdk-14.0.2%2B12/OpenJDK14U-jre_x64_windows_hotspot_14.0.2_12.msi"
-         },
-         "version":"14.0.2+12",
-         "displayname":"AdoptOpenJDK JRE with Hotspot",
-         "role":"IT"
-      },
-      {
-         "name":"amazon-corretto-11",
-         "installer":{
-            "kind":"msi",
-            "x86_64":"https://corretto.aws/downloads/latest/amazon-corretto-11-x64-windows-jdk.msi"
-         },
-         "version":"latest",
-         "displayname":"Amazon Corretto",
-         "role":"IT"
-      },
-      {
-         "name":"anaconda",
-         "installer":{
-            "kind":"nsis",
-            "x86":"https://repo.anaconda.com/archive/Anaconda3-2021.05-Windows-x86.exe",
-            "x86_64":"https://repo.anaconda.com/archive/Anaconda3-2021.05-Windows-x86_64.exe"
-         },
-         "version":"2021.05",
-         "displayname":"Anaconda",
-         "role":"IT"
-      },
-      {
-         "name":"android-studio-ide",
-         "installer":{
-            "kind":"nsis",
-            "x86_64":"https://redirector.gvt1.com/edgedl/android/studio/install/2020.3.1.24/android-studio-2020.3.1.24-windows.exe"
-         },
-         "version":"2020.3.1.24",
-         "displayname":"Android Studio",
-         "role":"IT"
-      },
-      {
-         "name":"anydesk",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://download.anydesk.com/AnyDesk.msi"
-         },
-         "version":"latest",
-         "displayname":"AnyDesk MSI",
-         "role":"None"
-      },
-      {
-         "name":"atom",
-         "installer":{
-            "kind":"squirrel",
-            "options":{
-               "extension":".exe"
-            },
-            "x86":"https://atom.io/download/windows",
-            "x86_64":"https://atom.io/download/windows_x64"
-         },
-         "version":"latest",
-         "displayname":"Atom",
-         "role":"IT"
-      },
-      {
-         "name":"audacity",
-         "installer":{
-            "kind":"innosetup",
-            "x86":"https://github.com/audacity/audacity/releases/download/Audacity-3.0.5/audacity-win-3.0.5-32bit.exe",
-            "x86_64":"https://github.com/audacity/audacity/releases/download/Audacity-3.0.5/audacity-win-3.0.5-64bit.exe"
-         },
-         "version":"3.0.5",
-         "displayname":"Audacity",
-         "role":"None"
-      },
-      {
-         "name":"aws-cli",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://s3.amazonaws.com/aws-cli/AWSCLI32.msi",
-            "x86_64":"https://s3.amazonaws.com/aws-cli/AWSCLI64.msi"
-         },
-         "version":"latest",
-         "displayname":"AWS Command Line Interface",
-         "role":"IT"
-      },
-      {
-         "name":"azcopy",
-         "installer":{
-            "kind":"msi",
-            "options":{
-               "extension":".exe"
-            },
-            "x86":"https://aka.ms/downloadazcopy"
-         },
-         "version":"latest",
-         "displayname":"Microsoft Azure Storage AzCopy",
-         "role":"IT"
-      },
-      {
-         "name":"azure-cli",
-         "installer":{
-            "kind":"msi",
-            "options":{
-               "extension":".exe"
-            },
-            "x86":"https://aka.ms/installazurecliwindows"
-         },
-         "version":"latest",
-         "displayname":"Microsoft Azure CLI",
-         "role":"IT"
-      },
-      {
-         "name":"bcuninstaller",
-         "installer":{
-            "kind":"innosetup",
-            "x86":"https://github.com/Klocman/Bulk-Crap-Uninstaller/releases/download/v5.1/BCUninstaller_5.1_setup.exe"
-         },
-         "version":"5.1",
-         "displayname":"BCUninstaller",
-         "role":"None"
-      },
-      {
-         "name":"bitwarden",
-         "installer":{
-            "kind":"nsis",
-            "options":{
-               "extension":".exe"
-            },
-            "x86":"https://vault.bitwarden.com/download/?app=desktop&platform=windows&variant=exe"
-         },
-         "version":"latest",
-         "displayname":"Bitwarden",
-         "role":"None"
-      },
-      {
-         "name":"bleachbit",
-         "installer":{
-            "kind":"custom",
-            "options":{
-               "arguments":[
-                  "{{.installer}}",
-                  "/allusers",
-                  "/S"
-               ]
-            },
-            "x86":"https://download.bleachbit.org/BleachBit-4.4.0-setup.exe"
-         },
-         "version":"4.4.0",
-         "displayname":"BleachBit",
-         "role":"None",
-         "uninstall argument":[
-            "{{.uninstaller}}",
-            "/uninstall",
-            "/allusers",
-            "/S"
-         ]
-      },
-      {
-         "name":"blender",
-         "installer":{
-            "kind":"msi",
-            "x86_64":"https://download.blender.org/release/Blender2.93/blender-2.93.4-windows-x64.msi"
-         },
-         "version":"2.93.4",
-         "displayname":"blender",
-         "role":"Graphic"
-      },
-      {
-         "name":"brackets",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://github.com/adobe/brackets/releases/download/release-1.14.2/Brackets.Release.1.14.2.msi"
-         },
-         "version":"1.14.2",
-         "displayname":"Brackets",
-         "role":"IT"
-      },
-      {
-         "name":"calibre",
-         "installer":{
-            "kind":"msi",
-            "options":{
-               "extension":".exe"
-            },
-            "x86":"https://calibre-ebook.com/dist/win32",
-            "x86_64":"https://calibre-ebook.com/dist/win64"
-         },
-         "version":"latest",
-         "displayname":"calibre",
-         "role":"None"
-      },
-      {
-         "name":"ccleaner",
-         "installer":{
-            "kind":"nsis",
-            "x86":"https://download.ccleaner.com/ccsetup582.exe"
-         },
-         "version":"5.82",
-         "displayname":"CCleaner",
-         "role":"None"
-      },
-      {
-         "name":"chrome-remote-desktop-host",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://dl.google.com/dl/edgedl/chrome-remote-desktop/chromeremotedesktophost.msi"
-         },
-         "version":"latest",
-         "displayname":"Chrome Remote Desktop Host",
-         "role":"None"
-      },
-      {
-         "name":"citrix-receiver",
-         "installer":{
-            "kind":"custom",
-            "options":{
-               "arguments":[
-                  "{{.installer}}",
-                  "/silent",
-                  "/noreboot"
-               ]
-            },
-            "x86":"https://downloadplugins.citrix.com/Windows/CitrixReceiver.exe"
-         },
-         "version":"latest",
-         "displayname":"Citrix Receiver",
-         "role":"None",
-         "uninstall argument":[
-            "{{.uninstaller}}",
-            "/uninstall",
-            "/cleanup",
-            "/silent"
-         ]
-      },
-      {
-         "name":"clementine-player",
-         "installer":{
-            "kind":"nsis",
-            "x86":"https://github.com/clementine-player/Clementine/releases/download/1.3.1/ClementineSetup-1.3.1.exe"
-         },
-         "version":"1.3.1",
-         "displayname":"Clementine",
-         "role":"None"
-      },
-      {
-         "name":"cmake",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://github.com/Kitware/CMake/releases/download/v3.21.3/cmake-3.21.3-windows-i386.msi",
-            "x86_64":"https://github.com/Kitware/CMake/releases/download/v3.21.3/cmake-3.21.3-windows-x86_64.msi"
-         },
-         "version":"3.21.3",
-         "displayname":"CMake",
-         "role":"IT"
-      },
-      {
-         "name":"codeblocks-mingw",
-         "installer":{
-            "kind":"nsis",
-            "options":{
-               "extension":".exe"
-            },
-            "x86":"https://sourceforge.net/projects/codeblocks/files/Binaries/{{.version}}/Windows/32bit/codeblocks-{{.version}}-32bit-mingw-32bit-setup.exe/download",
-            "x86_64":"https://sourceforge.net/projects/codeblocks/files/Binaries/{{.version}}/Windows/codeblocks-{{.version}}mingw-setup.exe/download"
-         },
-         "version":"20.03",
-         "displayname":"CodeBlocks",
-         "role":"IT"
-      },
-      {
-         "name":"conan",
-         "installer":{
-            "kind":"innosetup",
-            "x86":"https://github.com/conan-io/conan/releases/download/1.40.3/conan-win-32.exe",
-            "x86_64":"https://github.com/conan-io/conan/releases/download/1.40.3/conan-win-64.exe"
-         },
-         "version":"1.40.3",
-         "displayname":"Conan Package Manager",
-         "role":"IT"
-      },
-      {
-         "name":"cpu-z",
-         "installer":{
-            "kind":"innosetup",
-            "x86":"https://download.cpuid.com/cpu-z/cpu-z_1.97-en.exe"
-         },
-         "version":"1.97",
-         "displayname":"CPUID CPU-Z",
-         "role":"None"
-      },
-      {
-         "name":"cryptomator",
-         "installer":{
-            "kind":"innosetup",
-            "options":{
-               "extension":".exe"
-            },
-            "x86_64":"https://github.com/cryptomator/cryptomator/releases/download/1.5.16/Cryptomator-1.5.16-x64.exe"
-         },
-         "version":"1.5.16",
-         "displayname":"Cryptomator",
-         "role":"None"
-      },
-      {
-         "name":"cyberduck",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://update.cyberduck.io/windows/Cyberduck-Installer-7.10.2.35432.msi"
-         },
-         "version":"7.10.2.35432",
-         "displayname":"Cyberduck",
-         "role":"IT"
-      },
-      {
-         "name":"dbeaver",
-        "installer": {
-          "kind": "custom",
-          "options": {
-            "arguments": [
-              "{{.installer}}",
-              "/allusers",
-              "/S"
-            ]
-          },
-          "x86_64": "https://dbeaver.io/files/dbeaver-ce-latest-x86_64-setup.exe"
+  "updatedate": "2021-01-12T00:00:00Z",
+  "packages": [
+    {
+      "name": "1password",
+      "installer": {
+        "kind": "innosetup",
+        "options": {
+          "extension": ".exe"
         },
-         "version":"21.2.1",
-         "displayname":"DBeaver",
-         "role":"IT",
-         "uninstall argument":[
-            "{{.uninstaller}}",
-            "/uninstall",
+        "x86": "https://app-updates.agilebits.com/download/OPW4"
+      },
+      "version": "latest-4.x",
+      "displayname": "1Password",
+      "role": "None"
+    },
+    {
+      "name": "7zip",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://www.7-zip.org/a/7z1900.msi",
+        "x86_64": "https://www.7-zip.org/a/7z1900-x64.msi"
+      },
+      "version": "19.00",
+      "displayname": "7-Zip",
+      "role": "None"
+    },
+    {
+      "name": "adoptopenjdk-14-jre",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://github.com/AdoptOpenJDK/openjdk14-binaries/releases/download/jdk-14.0.2%2B12/OpenJDK14U-jre_x86-32_windows_hotspot_14.0.2_12.msi",
+        "x86_64": "https://github.com/AdoptOpenJDK/openjdk14-binaries/releases/download/jdk-14.0.2%2B12/OpenJDK14U-jre_x64_windows_hotspot_14.0.2_12.msi"
+      },
+      "version": "14.0.2+12",
+      "displayname": "AdoptOpenJDK JRE with Hotspot",
+      "role": "IT"
+    },
+    {
+      "name": "amazon-corretto-11",
+      "installer": {
+        "kind": "msi",
+        "x86_64": "https://corretto.aws/downloads/latest/amazon-corretto-11-x64-windows-jdk.msi"
+      },
+      "version": "latest",
+      "displayname": "Amazon Corretto",
+      "role": "IT"
+    },
+    {
+      "name": "anaconda",
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://repo.anaconda.com/archive/Anaconda3-2021.05-Windows-x86.exe",
+        "x86_64": "https://repo.anaconda.com/archive/Anaconda3-2021.05-Windows-x86_64.exe"
+      },
+      "version": "2021.05",
+      "displayname": "Anaconda",
+      "role": "IT"
+    },
+    {
+      "name": "android-studio-ide",
+      "installer": {
+        "kind": "nsis",
+        "x86_64": "https://redirector.gvt1.com/edgedl/android/studio/install/2020.3.1.24/android-studio-2020.3.1.24-windows.exe"
+      },
+      "version": "2020.3.1.24",
+      "displayname": "Android Studio",
+      "role": "IT"
+    },
+    {
+      "name": "anydesk",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://download.anydesk.com/AnyDesk.msi"
+      },
+      "version": "latest",
+      "displayname": "AnyDesk MSI",
+      "role": "None"
+    },
+    {
+      "name": "atom",
+      "installer": {
+        "kind": "squirrel",
+        "options": {
+          "extension": ".exe"
+        },
+        "x86": "https://atom.io/download/windows",
+        "x86_64": "https://atom.io/download/windows_x64"
+      },
+      "version": "latest",
+      "displayname": "Atom",
+      "role": "IT"
+    },
+    {
+      "name": "audacity",
+      "installer": {
+        "kind": "innosetup",
+        "x86": "https://github.com/audacity/audacity/releases/download/Audacity-3.0.5/audacity-win-3.0.5-32bit.exe",
+        "x86_64": "https://github.com/audacity/audacity/releases/download/Audacity-3.0.5/audacity-win-3.0.5-64bit.exe"
+      },
+      "version": "3.0.5",
+      "displayname": "Audacity",
+      "role": "None"
+    },
+    {
+      "name": "aws-cli",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://s3.amazonaws.com/aws-cli/AWSCLI32.msi",
+        "x86_64": "https://s3.amazonaws.com/aws-cli/AWSCLI64.msi"
+      },
+      "version": "latest",
+      "displayname": "AWS Command Line Interface",
+      "role": "IT"
+    },
+    {
+      "name": "azcopy",
+      "installer": {
+        "kind": "msi",
+        "options": {
+          "extension": ".exe"
+        },
+        "x86": "https://aka.ms/downloadazcopy"
+      },
+      "version": "latest",
+      "displayname": "Microsoft Azure Storage AzCopy",
+      "role": "IT"
+    },
+    {
+      "name": "azure-cli",
+      "installer": {
+        "kind": "msi",
+        "options": {
+          "extension": ".exe"
+        },
+        "x86": "https://aka.ms/installazurecliwindows"
+      },
+      "version": "latest",
+      "displayname": "Microsoft Azure CLI",
+      "role": "IT"
+    },
+    {
+      "name": "bcuninstaller",
+      "installer": {
+        "kind": "innosetup",
+        "x86": "https://github.com/Klocman/Bulk-Crap-Uninstaller/releases/download/v5.1/BCUninstaller_5.1_setup.exe"
+      },
+      "version": "5.1",
+      "displayname": "BCUninstaller",
+      "role": "None"
+    },
+    {
+      "name": "bitwarden",
+      "installer": {
+        "kind": "nsis",
+        "options": {
+          "extension": ".exe"
+        },
+        "x86": "https://vault.bitwarden.com/download/?app=desktop&platform=windows&variant=exe"
+      },
+      "version": "latest",
+      "displayname": "Bitwarden",
+      "role": "None"
+    },
+    {
+      "name": "bleachbit",
+      "installer": {
+        "kind": "custom",
+        "options": {
+          "arguments": [
+            "{{.installer}}",
             "/allusers",
             "/S"
-         ]
+          ]
+        },
+        "x86": "https://download.bleachbit.org/BleachBit-4.4.0-setup.exe"
       },
-      {
-         "name":"deluge",
-         "installer":{
-            "kind":"nsis",
-            "x86":"https://ftp.osuosl.org/pub/deluge/windows/deluge-1.3.15-win32-py2.7.exe"
-         },
-         "version":"1.3.15",
-         "displayname":"Deluge",
-         "role":"None"
+      "version": "4.4.0",
+      "displayname": "BleachBit",
+      "role": "None",
+      "uninstall argument": [
+        "{{.uninstaller}}",
+        "/uninstall",
+        "/allusers",
+        "/S"
+      ]
+    },
+    {
+      "name": "blender",
+      "installer": {
+        "kind": "msi",
+        "x86_64": "https://download.blender.org/release/Blender2.93/blender-2.93.4-windows-x64.msi"
       },
-      {
-         "name":"discord",
-         "installer":{
-            "kind":"squirrel",
-            "options":{
-               "extension":".exe"
-            },
-            "x86":"https://discordapp.com/api/download?platform=win"
-         },
-         "version":"latest",
-         "displayname":"Discord",
-         "role":"None"
+      "version": "2.93.4",
+      "displayname": "blender",
+      "role": "Tech"
+    },
+    {
+      "name": "brackets",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://github.com/adobe/brackets/releases/download/release-1.14.2/Brackets.Release.1.14.2.msi"
       },
-      {
-         "name":"displaycal",
-         "installer":{
-            "kind":"innosetup",
-            "options":{
-               "extension":".exe"
-            },
-            "x86":"https://sourceforge.net/projects/dispcalgui/files/release/3.8.9.3/DisplayCAL-3.8.9.3-Setup.exe/download"
-         },
-         "version":"3.8.9.3",
-         "displayname":"DisplayCAL",
-         "role":"Graphic"
+      "version": "1.14.2",
+      "displayname": "Brackets",
+      "role": "IT"
+    },
+    {
+      "name": "calibre",
+      "installer": {
+        "kind": "msi",
+        "options": {
+          "extension": ".exe"
+        },
+        "x86": "https://calibre-ebook.com/dist/win32",
+        "x86_64": "https://calibre-ebook.com/dist/win64"
       },
-      {
-         "name":"dropbox",
-         "installer":{
-            "kind":"custom",
-            "options":{
-               "extension":".exe",
-               "arguments":[
-                  "{{.installer}}",
-                  "/S"
-               ]
-            },
-            "x86":"https://www.dropbox.com/download?type=full&plat=win"
-         },
-         "version":"latest",
-         "displayname":"Dropbox",
-         "role":"None",
-         "uninstall argument":[
-            "{{.uninstaller}}",
-            "/uninstall",
+      "version": "latest",
+      "displayname": "calibre",
+      "role": "None"
+    },
+    {
+      "name": "ccleaner",
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://download.ccleaner.com/ccsetup582.exe"
+      },
+      "version": "5.82",
+      "displayname": "CCleaner",
+      "role": "None"
+    },
+    {
+      "name": "chrome-remote-desktop-host",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://dl.google.com/dl/edgedl/chrome-remote-desktop/chromeremotedesktophost.msi"
+      },
+      "version": "latest",
+      "displayname": "Chrome Remote Desktop Host",
+      "role": "None"
+    },
+    {
+      "name": "citrix-receiver",
+      "installer": {
+        "kind": "custom",
+        "options": {
+          "arguments": [
+            "{{.installer}}",
+            "/silent",
+            "/noreboot"
+          ]
+        },
+        "x86": "https://downloadplugins.citrix.com/Windows/CitrixReceiver.exe"
+      },
+      "version": "latest",
+      "displayname": "Citrix Receiver",
+      "role": "None",
+      "uninstall argument": [
+        "{{.uninstaller}}",
+        "/uninstall",
+        "/cleanup",
+        "/silent"
+      ]
+    },
+    {
+      "name": "clementine-player",
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://github.com/clementine-player/Clementine/releases/download/1.3.1/ClementineSetup-1.3.1.exe"
+      },
+      "version": "1.3.1",
+      "displayname": "Clementine",
+      "role": "None"
+    },
+    {
+      "name": "cmake",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://github.com/Kitware/CMake/releases/download/v3.21.3/cmake-3.21.3-windows-i386.msi",
+        "x86_64": "https://github.com/Kitware/CMake/releases/download/v3.21.3/cmake-3.21.3-windows-x86_64.msi"
+      },
+      "version": "3.21.3",
+      "displayname": "CMake",
+      "role": "IT"
+    },
+    {
+      "name": "codeblocks-mingw",
+      "installer": {
+        "kind": "nsis",
+        "options": {
+          "extension": ".exe"
+        },
+        "x86": "https://sourceforge.net/projects/codeblocks/files/Binaries/{{.version}}/Windows/32bit/codeblocks-{{.version}}-32bit-mingw-32bit-setup.exe/download",
+        "x86_64": "https://sourceforge.net/projects/codeblocks/files/Binaries/{{.version}}/Windows/codeblocks-{{.version}}mingw-setup.exe/download"
+      },
+      "version": "20.03",
+      "displayname": "CodeBlocks",
+      "role": "IT"
+    },
+    {
+      "name": "conan",
+      "installer": {
+        "kind": "innosetup",
+        "x86": "https://github.com/conan-io/conan/releases/download/1.40.3/conan-win-32.exe",
+        "x86_64": "https://github.com/conan-io/conan/releases/download/1.40.3/conan-win-64.exe"
+      },
+      "version": "1.40.3",
+      "displayname": "Conan Package Manager",
+      "role": "IT"
+    },
+    {
+      "name": "cpu-z",
+      "installer": {
+        "kind": "innosetup",
+        "x86": "https://download.cpuid.com/cpu-z/cpu-z_1.97-en.exe"
+      },
+      "version": "1.97",
+      "displayname": "CPUID CPU-Z",
+      "role": "None"
+    },
+    {
+      "name": "cryptomator",
+      "installer": {
+        "kind": "innosetup",
+        "options": {
+          "extension": ".exe"
+        },
+        "x86_64": "https://github.com/cryptomator/cryptomator/releases/download/1.5.16/Cryptomator-1.5.16-x64.exe"
+      },
+      "version": "1.5.16",
+      "displayname": "Cryptomator",
+      "role": "None"
+    },
+    {
+      "name": "cyberduck",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://update.cyberduck.io/windows/Cyberduck-Installer-7.10.2.35432.msi"
+      },
+      "version": "7.10.2.35432",
+      "displayname": "Cyberduck",
+      "role": "IT"
+    },
+    {
+      "name": "dbeaver",
+      "installer": {
+        "kind": "custom",
+        "options": {
+          "arguments": [
+            "{{.installer}}",
             "/allusers",
             "/S"
-         ]
+          ]
+        },
+        "x86_64": "https://dbeaver.io/files/dbeaver-ce-latest-x86_64-setup.exe"
       },
-      {
-         "name":"duck",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://dist.duck.sh/duck-7.10.2.35432.msi"
-         },
-         "version":"7.10.2.35432",
-         "displayname":"Cyberduck CLI",
-         "role":"IT"
+      "version": "21.2.1",
+      "displayname": "DBeaver",
+      "role": "IT",
+      "uninstall argument": [
+        "{{.uninstaller}}",
+        "/uninstall",
+        "/allusers",
+        "/S"
+      ]
+    },
+    {
+      "name": "deluge",
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://ftp.osuosl.org/pub/deluge/windows/deluge-1.3.15-win32-py2.7.exe"
       },
-      {
-         "name":"em-client",
-         "installer":{
-            "kind":"msi",
-            "x86":"http://www.emclient.com/dist/latest/setup.msi"
-         },
-         "version":"latest",
-         "displayname":"eM Client",
-         "role":"None"
+      "version": "1.3.15",
+      "displayname": "Deluge",
+      "role": "None"
+    },
+    {
+      "name": "discord",
+      "installer": {
+        "kind": "squirrel",
+        "options": {
+          "extension": ".exe"
+        },
+        "x86": "https://discordapp.com/api/download?platform=win"
       },
-      {
-         "name":"empoche",
-         "installer":{
-            "kind":"nsis",
-            "x86":"https://empoche-desktop.s3.eu-central-1.amazonaws.com/Empoche+Setup+0.4.5.exe"
-         },
-         "version":"0.4.5",
-         "displayname":"Empoche ",
-         "role":"None"
+      "version": "latest",
+      "displayname": "Discord",
+      "role": "None"
+    },
+    {
+      "name": "displaycal",
+      "installer": {
+        "kind": "innosetup",
+        "options": {
+          "extension": ".exe"
+        },
+        "x86": "https://sourceforge.net/projects/dispcalgui/files/release/3.8.9.3/DisplayCAL-3.8.9.3-Setup.exe/download"
       },
-      {
-         "name":"enpass",
-         "installer":{
-            "kind":"nsis",
-            "x86":"https://dl.enpass.io/stable/windows/setup/6.7.2.887/Enpass-setup.exe"
-         },
-         "version":"6.7.2.887",
-         "displayname":"Enpass",
-         "role":"None"
+      "version": "3.8.9.3",
+      "displayname": "DisplayCAL",
+      "role": "Graphic"
+    },
+    {
+      "name": "dropbox",
+      "installer": {
+        "kind": "custom",
+        "options": {
+          "extension": ".exe",
+          "arguments": [
+            "{{.installer}}",
+            "/S"
+          ]
+        },
+        "x86": "https://www.dropbox.com/download?type=full&plat=win"
       },
-      {
-         "name":"epic-games-launcher",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://launcher-public-service-prod06.ol.epicgames.com/launcher/api/installer/download/EpicGamesLauncherInstaller.msi"
-         },
-         "version":"latest",
-         "displayname":"Epic Games Launcher",
-         "role":"None"
+      "version": "latest",
+      "displayname": "Dropbox",
+      "role": "None",
+      "uninstall argument": [
+        "{{.uninstaller}}",
+        "/uninstall",
+        "/allusers",
+        "/S"
+      ]
+    },
+    {
+      "name": "duck",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://dist.duck.sh/duck-7.10.2.35432.msi"
       },
-      {
-         "name":"erlang",
-         "installer":{
-            "kind":"nsis",
-            "x86":"http://erlang.org/download/otp_win32_24.1.exe",
-            "x86_64":"http://erlang.org/download/otp_win64_24.1.exe"
-         },
-         "version":"24.1",
-         "displayname":"Erlang OTP ",
-         "role":"IT"
+      "version": "7.10.2.35432",
+      "displayname": "Cyberduck CLI",
+      "role": "IT"
+    },
+    {
+      "name": "em-client",
+      "installer": {
+        "kind": "msi",
+        "x86": "http://www.emclient.com/dist/latest/setup.msi"
       },
-      {
-         "name":"everything-search",
-         "installer":{
-            "kind":"nsis",
-            "x86":"https://www.voidtools.com/Everything-1.4.1.1009.x86-Setup.exe",
-            "x86_64":"https://www.voidtools.com/Everything-1.4.1.1009.x64-Setup.exe"
-         },
-         "version":"1.4.1.1009",
-         "displayname":"Everything",
-         "role":"None"
+      "version": "latest",
+      "displayname": "eM Client",
+      "role": "None"
+    },
+    {
+      "name": "empoche",
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://empoche-desktop.s3.eu-central-1.amazonaws.com/Empoche+Setup+0.4.5.exe"
       },
-      {
-         "name":"firefox",
-         "installer":{
-            "kind":"nsis",
-            "options":{
-               "extension":".exe"
-            },
-            "x86":"https://download.mozilla.org/?product=firefox-latest&os=win&lang=en-US",
-            "x86_64":"https://download.mozilla.org/?product=firefox-latest&os=win64&lang=en-US"
-         },
-         "version":"latest",
-         "displayname":"Firefox",
-         "role":"None"
+      "version": "0.4.5",
+      "displayname": "Empoche ",
+      "role": "None"
+    },
+    {
+      "name": "enpass",
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://dl.enpass.io/stable/windows/setup/6.7.2.887/Enpass-setup.exe"
       },
-      {
-         "name":"firefox-beta",
-         "installer":{
-            "kind":"nsis",
-            "options":{
-               "extension":".exe"
-            },
-            "x86":"https://download.mozilla.org/?product=firefox-beta-latest&os=win&lang=en-US",
-            "x86_64":"https://download.mozilla.org/?product=firefox-beta-latest&os=win64&lang=en-US"
-         },
-         "version":"latest",
-         "displayname":"Firefox",
-         "role":"None"
+      "version": "6.7.2.887",
+      "displayname": "Enpass",
+      "role": "None"
+    },
+    {
+      "name": "epic-games-launcher",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://launcher-public-service-prod06.ol.epicgames.com/launcher/api/installer/download/EpicGamesLauncherInstaller.msi"
       },
-      {
-         "name":"firefox-developer-edition",
-         "installer":{
-            "kind":"nsis",
-            "options":{
-               "extension":".exe"
-            },
-            "x86":"https://download.mozilla.org/?product=firefox-devedition-latest-ssl&os=win&lang=en-US",
-            "x86_64":"https://download.mozilla.org/?product=firefox-devedition-latest-ssl&os=win64&lang=en-US"
-         },
-         "version":"latest",
-         "displayname":"Firefox",
-         "role":"None"
+      "version": "latest",
+      "displayname": "Epic Games Launcher",
+      "role": "None"
+    },
+    {
+      "name": "erlang",
+      "installer": {
+        "kind": "nsis",
+        "x86": "http://erlang.org/download/otp_win32_24.1.exe",
+        "x86_64": "http://erlang.org/download/otp_win64_24.1.exe"
       },
-      {
-         "name":"firefox-esr",
-         "installer":{
-            "kind":"nsis",
-            "options":{
-               "extension":".exe"
-            },
-            "x86":"https://download.mozilla.org/?product=firefox-esr-latest&os=win&lang=en-US",
-            "x86_64":"https://download.mozilla.org/?product=firefox-esr-latest&os=win64&lang=en-US"
-         },
-         "version":"latest",
-         "displayname":"Firefox",
-         "role":"None"
+      "version": "24.1",
+      "displayname": "Erlang OTP ",
+      "role": "IT"
+    },
+    {
+      "name": "everything-search",
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://www.voidtools.com/Everything-1.4.1.1009.x86-Setup.exe",
+        "x86_64": "https://www.voidtools.com/Everything-1.4.1.1009.x64-Setup.exe"
       },
-      {
-         "name":"flux",
-         "installer":{
-            "kind":"nsis",
-            "x86":"https://justgetflux.com/flux-setup.exe"
-         },
-         "version":"latest",
-         "displayname":"Flux",
-         "role":"None"
+      "version": "1.4.1.1009",
+      "displayname": "Everything",
+      "role": "None"
+    },
+    {
+      "name": "firefox",
+      "installer": {
+        "kind": "nsis",
+        "options": {
+          "extension": ".exe"
+        },
+        "x86": "https://download.mozilla.org/?product=firefox-latest&os=win&lang=en-US",
+        "x86_64": "https://download.mozilla.org/?product=firefox-latest&os=win64&lang=en-US"
       },
-      {
-         "name":"foxitreader",
-         "installer":{
-            "kind":"msi",
-            "options":{
-               "extension":".exe"
-            },
-            "x86":"https://www.foxitsoftware.com/downloads/latest.php?product=Foxit-Enterprise-Reader&platform=Windows&package_type=msi"
-         },
-         "version":"latest",
-         "displayname":"Foxit PDF Reader",
-         "role":"None"
+      "version": "latest",
+      "displayname": "Firefox",
+      "role": "None"
+    },
+    {
+      "name": "firefox-beta",
+      "installer": {
+        "kind": "nsis",
+        "options": {
+          "extension": ".exe"
+        },
+        "x86": "https://download.mozilla.org/?product=firefox-beta-latest&os=win&lang=en-US",
+        "x86_64": "https://download.mozilla.org/?product=firefox-beta-latest&os=win64&lang=en-US"
       },
-      {
-         "name":"freecad",
-         "installer":{
-            "kind":"nsis",
-            "x86_64":"https://github.com/FreeCAD/FreeCAD/releases/download/0.19.2/FreeCAD-0.19.2.7b5e18a-WIN-x64-installer1.exe"
-         },
-         "version":"0.19.2",
-         "displayname":"FreeCAD",
-         "role":"Graphic"
+      "version": "latest",
+      "displayname": "Firefox",
+      "role": "None"
+    },
+    {
+      "name": "firefox-developer-edition",
+      "installer": {
+        "kind": "nsis",
+        "options": {
+          "extension": ".exe"
+        },
+        "x86": "https://download.mozilla.org/?product=firefox-devedition-latest-ssl&os=win&lang=en-US",
+        "x86_64": "https://download.mozilla.org/?product=firefox-devedition-latest-ssl&os=win64&lang=en-US"
       },
-      {
-         "name":"gimp",
-         "installer":{
-            "kind":"innosetup",
-            "x86":"https://download.gimp.org/mirror/pub/gimp/v2.10/windows/gimp-2.10.28-setup.exe"
-         },
-         "version":"2.10.28",
-         "displayname":"GIMP",
-         "role":"Graphic"
+      "version": "latest",
+      "displayname": "Firefox",
+      "role": "None"
+    },
+    {
+      "name": "firefox-esr",
+      "installer": {
+        "kind": "nsis",
+        "options": {
+          "extension": ".exe"
+        },
+        "x86": "https://download.mozilla.org/?product=firefox-esr-latest&os=win&lang=en-US",
+        "x86_64": "https://download.mozilla.org/?product=firefox-esr-latest&os=win64&lang=en-US"
       },
-      {
-         "name":"git",
-         "installer":{
-            "kind":"innosetup",
-            "options":{
-               "shims":[
-                  "{{.PROGRAMFILES}}\\Git\\bin\\git.exe"
-               ]
-            },
-            "x86":"https://github.com/git-for-windows/git/releases/download/v2.33.0.windows.2/Git-2.33.0.2-32-bit.exe",
-            "x86_64":"https://github.com/git-for-windows/git/releases/download/v2.33.0.windows.2/Git-2.33.0.2-64-bit.exe"
-         },
-         "version":"2.33.0",
-         "displayname":"Git",
-         "role":"IT"
+      "version": "latest",
+      "displayname": "Firefox",
+      "role": "None"
+    },
+    {
+      "name": "flux",
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://justgetflux.com/flux-setup.exe"
       },
-      {
-         "name":"git-lfs",
-         "installer":{
-            "kind":"innosetup",
-            "options":{
-               "shims":[
-                  "{{.PROGRAMFILES}}\\Git LFS\\git-lfs.exe"
-               ]
-            },
-            "x86":"https://github.com/git-lfs/git-lfs/releases/download/v3.0.1/git-lfs-windows-v3.0.1.exe"
-         },
-         "version":"3.0.1",
-         "displayname":"Git LFS",
-         "role":"IT"
+      "version": "latest",
+      "displayname": "Flux",
+      "role": "None"
+    },
+    {
+      "name": "foxitreader",
+      "installer": {
+        "kind": "msi",
+        "options": {
+          "extension": ".exe"
+        },
+        "x86": "https://www.foxitsoftware.com/downloads/latest.php?product=Foxit-Enterprise-Reader&platform=Windows&package_type=msi"
       },
-      {
-         "name":"gitextensions",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://github.com/gitextensions/gitextensions/releases/download/v3.5.4/GitExtensions-3.5.4.12724-65f01f399.msi"
-         },
-         "version":"3.5.4",
-         "displayname":"Git Extensions",
-         "role":"IT"
+      "version": "latest",
+      "displayname": "Foxit PDF Reader",
+      "role": "None"
+    },
+    {
+      "name": "freecad",
+      "installer": {
+        "kind": "nsis",
+        "x86_64": "https://github.com/FreeCAD/FreeCAD/releases/download/0.19.2/FreeCAD-0.19.2.7b5e18a-WIN-x64-installer1.exe"
       },
-      {
-         "name":"github",
-         "installer":{
-            "kind":"squirrel",
-            "options":{
-               "extension":".exe"
-            },
-            "x86":"https://central.github.com/deployments/desktop/desktop/latest/win32"
-         },
-         "version":"latest",
-         "displayname":"GitHub Desktop",
-         "role":"IT"
+      "version": "0.19.2",
+      "displayname": "FreeCAD",
+      "role": "Tech"
+    },
+    {
+      "name": "gimp",
+      "installer": {
+        "kind": "innosetup",
+        "x86": "https://download.gimp.org/mirror/pub/gimp/v2.10/windows/gimp-2.10.28-setup.exe"
       },
-      {
-         "name":"gitkraken",
-         "installer":{
-            "kind":"squirrel",
-            "x86":"https://release.gitkraken.com/win32/GitKrakenSetup.exe",
-            "x86_64":"https://release.gitkraken.com/win64/GitKrakenSetup.exe"
-         },
-         "version":"latest",
-         "displayname":"GitKraken",
-         "role":"IT"
+      "version": "2.10.28",
+      "displayname": "GIMP",
+      "role": "Graphic"
+    },
+    {
+      "name": "git",
+      "installer": {
+        "kind": "innosetup",
+        "options": {
+          "shims": [
+            "{{.PROGRAMFILES}}\\Git\\bin\\git.exe"
+          ]
+        },
+        "x86": "https://github.com/git-for-windows/git/releases/download/v2.33.0.windows.2/Git-2.33.0.2-32-bit.exe",
+        "x86_64": "https://github.com/git-for-windows/git/releases/download/v2.33.0.windows.2/Git-2.33.0.2-64-bit.exe"
       },
-      {
-         "name":"go",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://dl.google.com/go/go1.17.1.windows-386.msi",
-            "x86_64":"https://dl.google.com/go/go1.17.1.windows-amd64.msi"
-         },
-         "version":"1.17.1",
-         "displayname":"Go Programming Language",
-         "role":"IT"
+      "version": "2.33.0",
+      "displayname": "Git",
+      "role": "IT"
+    },
+    {
+      "name": "git-lfs",
+      "installer": {
+        "kind": "innosetup",
+        "options": {
+          "shims": [
+            "{{.PROGRAMFILES}}\\Git LFS\\git-lfs.exe"
+          ]
+        },
+        "x86": "https://github.com/git-lfs/git-lfs/releases/download/v3.0.1/git-lfs-windows-v3.0.1.exe"
       },
-      {
-         "name":"gog-galaxy",
-         "installer":{
-            "kind":"innosetup",
-            "options":{
-               "extension":".exe"
-            },
-            "x86":"https://content-system.gog.com/open_link/download?path=/open/galaxy/client/setup_galaxy_2.0.14.257.exe"
-         },
-         "version":"2.0.14.257",
-         "displayname":"GOG GALAXY",
-         "role":"None"
+      "version": "3.0.1",
+      "displayname": "Git LFS",
+      "role": "IT"
+    },
+    {
+      "name": "gitextensions",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://github.com/gitextensions/gitextensions/releases/download/v3.5.4/GitExtensions-3.5.4.12724-65f01f399.msi"
       },
-      {
-         "name":"google-chrome",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://dl.google.com/tag/s/dl/chrome/install/googlechromestandaloneenterprise.msi",
-            "x86_64":"https://dl.google.com/tag/s/dl/chrome/install/googlechromestandaloneenterprise64.msi"
-         },
-         "version":"latest",
-         "displayname":"Google Chrome",
-         "role":"None"
+      "version": "3.5.4",
+      "displayname": "Git Extensions",
+      "role": "IT"
+    },
+    {
+      "name": "github",
+      "installer": {
+        "kind": "squirrel",
+        "options": {
+          "extension": ".exe"
+        },
+        "x86": "https://central.github.com/deployments/desktop/desktop/latest/win32"
       },
-      {
-         "name":"google-chrome-beta",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://dl.google.com/tag/s/dl/chrome/install/beta/googlechromebetastandaloneenterprise.msi",
-            "x86_64":"https://dl.google.com/tag/s/dl/chrome/install/beta/googlechromebetastandaloneenterprise64.msi"
-         },
-         "version":"latest",
-         "displayname":"Google Chrome Beta",
-         "role":"None"
+      "version": "latest",
+      "displayname": "GitHub Desktop",
+      "role": "IT"
+    },
+    {
+      "name": "gitkraken",
+      "installer": {
+        "kind": "squirrel",
+        "x86": "https://release.gitkraken.com/win32/GitKrakenSetup.exe",
+        "x86_64": "https://release.gitkraken.com/win64/GitKrakenSetup.exe"
       },
-      {
-         "name":"google-chrome-dev",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://dl.google.com/tag/s/dl/chrome/install/dev/googlechromedevstandaloneenterprise.msi",
-            "x86_64":"https://dl.google.com/tag/s/dl/chrome/install/dev/googlechromedevstandaloneenterprise64.msi"
-         },
-         "version":"latest",
-         "displayname":"Google Chrome Dev",
-         "role":"None"
+      "version": "latest",
+      "displayname": "GitKraken",
+      "role": "IT"
+    },
+    {
+      "name": "go",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://dl.google.com/go/go1.17.1.windows-386.msi",
+        "x86_64": "https://dl.google.com/go/go1.17.1.windows-amd64.msi"
       },
-      {
-         "name":"google-drive",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://dl.google.com/drive/gsync_enterprise.msi"
-         },
-         "version":"latest",
-         "displayname":"Backup and Sync from Google",
-         "role":"None"
+      "version": "1.17.1",
+      "displayname": "Go Programming Language",
+      "role": "IT"
+    },
+    {
+      "name": "gog-galaxy",
+      "installer": {
+        "kind": "innosetup",
+        "options": {
+          "extension": ".exe"
+        },
+        "x86": "https://content-system.gog.com/open_link/download?path=/open/galaxy/client/setup_galaxy_2.0.14.257.exe"
       },
-      {
-         "name":"gow",
-         "installer":{
-            "kind":"nsis",
-            "x86":"https://github.com/bmatzelle/gow/releases/download/v0.8.0/Gow-0.8.0.exe"
-         },
-         "version":"0.8.0",
-         "displayname":"Gow",
-         "role":"IT"
+      "version": "2.0.14.257",
+      "displayname": "GOG GALAXY",
+      "role": "None"
+    },
+    {
+      "name": "google-chrome",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://dl.google.com/tag/s/dl/chrome/install/googlechromestandaloneenterprise.msi",
+        "x86_64": "https://dl.google.com/tag/s/dl/chrome/install/googlechromestandaloneenterprise64.msi"
       },
-      {
-         "name":"gpg4win",
-         "installer":{
-            "kind":"nsis",
-            "x86":"https://files.gpg4win.org/gpg4win-latest.exe"
-         },
-         "version":"latest",
-         "displayname":"Gpg4win",
-         "role":"None"
+      "version": "latest",
+      "displayname": "Google Chrome",
+      "role": "None"
+    },
+    {
+      "name": "google-chrome-beta",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://dl.google.com/tag/s/dl/chrome/install/beta/googlechromebetastandaloneenterprise.msi",
+        "x86_64": "https://dl.google.com/tag/s/dl/chrome/install/beta/googlechromebetastandaloneenterprise64.msi"
       },
-      {
-         "name":"greenshot",
-         "installer":{
-            "kind":"innosetup",
-            "x86":"https://github.com/greenshot/greenshot/releases/download/Greenshot-RELEASE-1.2.10.6/Greenshot-INSTALLER-1.2.10.6-RELEASE.exe"
-         },
-         "version":"1.2.10.6",
-         "displayname":"Greenshot",
-         "role":"None"
+      "version": "latest",
+      "displayname": "Google Chrome Beta",
+      "role": "None"
+    },
+    {
+      "name": "google-chrome-dev",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://dl.google.com/tag/s/dl/chrome/install/dev/googlechromedevstandaloneenterprise.msi",
+        "x86_64": "https://dl.google.com/tag/s/dl/chrome/install/dev/googlechromedevstandaloneenterprise64.msi"
       },
-      {
-         "name":"gvim",
-         "installer":{
-            "kind":"nsis",
-            "x86":"http://ftp.vim.org/pub/vim/pc/gvim82.exe"
-         },
-         "version":"8.2",
-         "displayname":"Vim",
-         "role":"IT"
+      "version": "latest",
+      "displayname": "Google Chrome Dev",
+      "role": "None"
+    },
+    {
+      "name": "google-drive",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://dl.google.com/drive/gsync_enterprise.msi"
       },
-      {
-         "name":"handbrake",
-         "installer":{
-            "kind":"nsis",
-            "x86_64":"https://github.com/HandBrake/HandBrake/releases/download/1.4.1/HandBrake-1.4.1-x86_64-Win_GUI.exe"
-         },
-         "version":"1.4.1",
-         "displayname":"HandBrake",
-         "role":"Graphic"
+      "version": "latest",
+      "displayname": "Backup and Sync from Google",
+      "role": "None"
+    },
+    {
+      "name": "gow",
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://github.com/bmatzelle/gow/releases/download/v0.8.0/Gow-0.8.0.exe"
       },
-      {
-         "name":"hashcheck",
-         "installer":{
-            "kind":"nsis",
-            "x86":"https://github.com/gurnec/HashCheck/releases/download/v2.4.0/HashCheckSetup-v2.4.0.exe"
-         },
-         "version":"2.4.0",
-         "displayname":"HashCheck Shell Extension",
-         "role":"IT"
+      "version": "0.8.0",
+      "displayname": "Gow",
+      "role": "IT"
+    },
+    {
+      "name": "gpg4win",
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://files.gpg4win.org/gpg4win-latest.exe"
       },
-      {
-         "name":"heidisql",
-         "installer":{
-            "kind":"innosetup",
-            "x86":"https://www.heidisql.com/installers/HeidiSQL_11.3.0.6295_Setup.exe"
-         },
-         "version":"11.3.0.6295",
-         "displayname":"HeidiSQL",
-         "role":"IT"
+      "version": "latest",
+      "displayname": "Gpg4win",
+      "role": "None"
+    },
+    {
+      "name": "greenshot",
+      "installer": {
+        "kind": "innosetup",
+        "x86": "https://github.com/greenshot/greenshot/releases/download/Greenshot-RELEASE-1.2.10.6/Greenshot-INSTALLER-1.2.10.6-RELEASE.exe"
       },
-      {
-         "name":"hexchat",
-         "installer":{
-            "kind":"innosetup",
-            "x86":"https://dl.hexchat.net/hexchat/HexChat%202.16.0%20x86.exe",
-            "x86_64":"https://dl.hexchat.net/hexchat/HexChat%202.16.0%20x64.exe"
-         },
-         "version":"2.16.0",
-         "displayname":"HexChat",
-         "role":"None"
+      "version": "1.2.10.6",
+      "displayname": "Greenshot",
+      "role": "None"
+    },
+    {
+      "name": "gvim",
+      "installer": {
+        "kind": "nsis",
+        "x86": "http://ftp.vim.org/pub/vim/pc/gvim82.exe"
       },
-      {
-         "name":"innosetup",
-         "installer":{
-            "kind":"innosetup",
-            "options":{
-               "extension":".exe"
-            },
-            "x86":"https://www.jrsoftware.org/download.php/is.exe"
-         },
-         "version":"latest",
-         "displayname":"Inno Setup version",
-         "role":"IT"
+      "version": "8.2",
+      "displayname": "Vim",
+      "role": "IT"
+    },
+    {
+      "name": "handbrake",
+      "installer": {
+        "kind": "nsis",
+        "x86_64": "https://github.com/HandBrake/HandBrake/releases/download/1.4.1/HandBrake-1.4.1-x86_64-Win_GUI.exe"
       },
-      {
-         "name":"intellij-idea-community",
-         "installer":{
-            "kind":"nsis",
-            "x86":"https://download.jetbrains.com/idea/ideaIC-2021.2.2.exe"
-         },
-         "version":"2021.2.2",
-         "displayname":"IntelliJ IDEA Community Edition",
-         "role":"IT"
+      "version": "1.4.1",
+      "displayname": "HandBrake",
+      "role": "Graphic"
+    },
+    {
+      "name": "hashcheck",
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://github.com/gurnec/HashCheck/releases/download/v2.4.0/HashCheckSetup-v2.4.0.exe"
       },
-      {
-         "name":"itch",
-         "installer":{
-            "kind":"squirrel",
-            "options":{
-               "extension":".exe"
-            },
-            "x86":"https://itch.io/app/download?platform=windows"
-         },
-         "version":"latest",
-         "displayname":"itch",
-         "role":"None"
+      "version": "2.4.0",
+      "displayname": "HashCheck Shell Extension",
+      "role": "IT"
+    },
+    {
+      "name": "heidisql",
+      "installer": {
+        "kind": "innosetup",
+        "x86": "https://www.heidisql.com/installers/HeidiSQL_11.3.0.6295_Setup.exe"
       },
-      {
-         "name":"jetbrains-toolbox",
-         "installer":{
-            "kind":"nsis",
-            "options":{
-               "extension":".exe"
-            },
-            "x86":"https://data.services.jetbrains.com/products/download?code=TBA&platform=windows"
-         },
-         "version":"latest",
-         "displayname":"JetBrains Toolbox",
-         "role":"IT"
+      "version": "11.3.0.6295",
+      "displayname": "HeidiSQL",
+      "role": "IT"
+    },
+    {
+      "name": "hexchat",
+      "installer": {
+        "kind": "innosetup",
+        "x86": "https://dl.hexchat.net/hexchat/HexChat%202.16.0%20x86.exe",
+        "x86_64": "https://dl.hexchat.net/hexchat/HexChat%202.16.0%20x64.exe"
       },
-      {
-         "name":"keepass",
-         "installer":{
-            "kind":"msi",
-            "options":{
-               "extension":".msi"
-            },
-            "x86":"https://sourceforge.net/projects/keepass/files/KeePass%202.x/2.49/KeePass-2.49.msi/download"
-         },
-         "version":"2.49",
-         "displayname":"KeePass",
-         "role":"None"
+      "version": "2.16.0",
+      "displayname": "HexChat",
+      "role": "None"
+    },
+    {
+      "name": "innosetup",
+      "installer": {
+        "kind": "innosetup",
+        "options": {
+          "extension": ".exe"
+        },
+        "x86": "https://www.jrsoftware.org/download.php/is.exe"
       },
-      {
-         "name":"keepassxc",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://github.com/keepassxreboot/keepassxc/releases/download/2.6.6/KeePassXC-2.6.6-Win32.msi",
-            "x86_64":"https://github.com/keepassxreboot/keepassxc/releases/download/2.6.6/KeePassXC-2.6.6-Win64.msi"
-         },
-         "version":"2.6.6",
-         "displayname":"KeePassXC",
-         "role":"None"
+      "version": "latest",
+      "displayname": "Inno Setup version",
+      "role": "IT"
+    },
+    {
+      "name": "intellij-idea-community",
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://download.jetbrains.com/idea/ideaIC-2021.2.2.exe"
       },
-      {
-         "name":"keeweb",
-         "installer":{
-            "kind":"nsis",
-            "x86":"https://github.com/keeweb/keeweb/releases/download/v1.18.7/KeeWeb-1.18.7.win.ia32.exe",
-            "x86_64":"https://github.com/keeweb/keeweb/releases/download/v1.18.7/KeeWeb-1.18.7.win.x64.exe"
-         },
-         "version":"1.18.7",
-         "displayname":"KeeWeb",
-         "role":"None"
+      "version": "2021.2.2",
+      "displayname": "IntelliJ IDEA Community Edition",
+      "role": "IT"
+    },
+    {
+      "name": "itch",
+      "installer": {
+        "kind": "squirrel",
+        "options": {
+          "extension": ".exe"
+        },
+        "x86": "https://itch.io/app/download?platform=windows"
       },
-      {
-         "name":"keybase",
-         "installer":{
-            "kind":"custom",
-            "options":{
-               "arguments":[
-                  "{{.installer}}",
-                  "/install",
-                  "/quiet"
-               ]
-            },
-            "x86":"https://prerelease.keybase.io/keybase_setup_386.exe"
-         },
-         "version":"latest",
-         "displayname":"Keybase",
-         "role":"None",
-         "uninstall argument":[
-            "{{.uninstaller}}",
-            "/uninstall",
+      "version": "latest",
+      "displayname": "itch",
+      "role": "None"
+    },
+    {
+      "name": "jetbrains-toolbox",
+      "installer": {
+        "kind": "nsis",
+        "options": {
+          "extension": ".exe"
+        },
+        "x86": "https://data.services.jetbrains.com/products/download?code=TBA&platform=windows"
+      },
+      "version": "latest",
+      "displayname": "JetBrains Toolbox",
+      "role": "IT"
+    },
+    {
+      "name": "keepass",
+      "installer": {
+        "kind": "msi",
+        "options": {
+          "extension": ".msi"
+        },
+        "x86": "https://sourceforge.net/projects/keepass/files/KeePass%202.x/2.49/KeePass-2.49.msi/download"
+      },
+      "version": "2.49",
+      "displayname": "KeePass",
+      "role": "None"
+    },
+    {
+      "name": "keepassxc",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://github.com/keepassxreboot/keepassxc/releases/download/2.6.6/KeePassXC-2.6.6-Win32.msi",
+        "x86_64": "https://github.com/keepassxreboot/keepassxc/releases/download/2.6.6/KeePassXC-2.6.6-Win64.msi"
+      },
+      "version": "2.6.6",
+      "displayname": "KeePassXC",
+      "role": "None"
+    },
+    {
+      "name": "keeweb",
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://github.com/keeweb/keeweb/releases/download/v1.18.7/KeeWeb-1.18.7.win.ia32.exe",
+        "x86_64": "https://github.com/keeweb/keeweb/releases/download/v1.18.7/KeeWeb-1.18.7.win.x64.exe"
+      },
+      "version": "1.18.7",
+      "displayname": "KeeWeb",
+      "role": "None"
+    },
+    {
+      "name": "keybase",
+      "installer": {
+        "kind": "custom",
+        "options": {
+          "arguments": [
+            "{{.installer}}",
+            "/install",
+            "/quiet"
+          ]
+        },
+        "x86": "https://prerelease.keybase.io/keybase_setup_386.exe"
+      },
+      "version": "latest",
+      "displayname": "Keybase",
+      "role": "None",
+      "uninstall argument": [
+        "{{.uninstaller}}",
+        "/uninstall",
+        "/quiet",
+        "/norestart"
+      ]
+    },
+    {
+      "name": "kicad",
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://kicad-downloads.s3.cern.ch/windows/stable/kicad-5.1.10_1-i686.exe",
+        "x86_64": "https://kicad-downloads.s3.cern.ch/windows/stable/kicad-5.1.10_1-x86_64.exe"
+      },
+      "version": "5.1.10",
+      "displayname": "KiCad",
+      "role": "Tech"
+    },
+    {
+      "name": "kodi",
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://mirrors.kodi.tv/releases/windows/win32/kodi-19.1-Matrix-x86.exe"
+      },
+      "version": "19.1",
+      "displayname": "Kodi",
+      "role": "None"
+    },
+    {
+      "name": "krita",
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://download.kde.org/stable/krita/4.4.3/krita-x86-4.4.3-setup.exe",
+        "x86_64": "https://download.kde.org/stable/krita/4.4.3/krita-x64-4.4.3-setup.exe"
+      },
+      "version": "4.4.3",
+      "displayname": "Krita",
+      "role": "Graphic"
+    },
+    {
+      "name": "libreoffice",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://www.libreoffice.org/donate/dl/win-x86/7.2.2/vi/LibreOffice_7.2.2_Win_x86.msi",
+        "x86_64": "https://www.libreoffice.org/donate/dl/win-x86_64/7.2.2/vi/LibreOffice_7.2.2_Win_x64.msi"
+      },
+      "version": "7.2.2",
+      "displayname": "LibreOffice",
+      "role": "None"
+    },
+    {
+      "name": "lockhunter",
+      "installer": {
+        "kind": "innosetup",
+        "x86": "https://lockhunter.com/assets/exe/lockhuntersetup_3-4-2.exe"
+      },
+      "version": "3.4.2",
+      "displayname": "LockHunter",
+      "role": "None"
+    },
+    {
+      "name": "mailspring",
+      "installer": {
+        "kind": "squirrel",
+        "options": {
+          "extension": ".exe"
+        },
+        "x86": "https://updates.getmailspring.com/download?platform=win32"
+      },
+      "version": "latest",
+      "displayname": "Mailspring",
+      "role": "None"
+    },
+    {
+      "name": "mailstore-home",
+      "installer": {
+        "kind": "as-is",
+        "options": {
+          "extension": ".exe"
+        },
+        "x86": "https://my.mailstore.com/Downloads/Home"
+      },
+      "version": "latest",
+      "displayname": "MailStore Home",
+      "role": "None"
+    },
+    {
+      "name": "malwarebytes",
+      "installer": {
+        "kind": "innosetup",
+        "options": {
+          "extension": ".exe"
+        },
+        "x86": "https://downloads.malwarebytes.com/file/mbam_current/"
+      },
+      "version": "latest",
+      "displayname": "Malwarebytes",
+      "role": "None"
+    },
+    {
+      "name": "marktext",
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://github.com/marktext/marktext/releases/download/v0.16.3/marktext-setup.exe"
+      },
+      "version": "0.16.3",
+      "displayname": "Mark Text ",
+      "role": "None"
+    },
+    {
+      "name": "mega-sync",
+      "installer": {
+        "kind": "nsis",
+        "x86_64": "https://mega.nz/MEGAsyncSetup64.exe"
+      },
+      "version": "latest",
+      "displayname": "MEGAsync",
+      "role": "None"
+    },
+    {
+      "name": "mercurial",
+      "installer": {
+        "kind": "msi",
+        "options": {
+          "shims": [
+            "{{.PROGRAMFILES}}\\Mercurial\\hg.exe"
+          ]
+        },
+        "x86": "https://www.mercurial-scm.org/release/windows/mercurial-5.9.1-x86.msi",
+        "x86_64": "https://www.mercurial-scm.org/release/windows/mercurial-5.9.1-x64.msi"
+      },
+      "version": "5.9.1",
+      "displayname": "Mercurial",
+      "role": "None"
+    },
+    {
+      "name": "microsoft-teams",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://teams.microsoft.com/downloads/desktopurl?env=production&plat=windows&arch=x86&managedInstaller=true&download=true",
+        "x86_64": "https://teams.microsoft.com/downloads/desktopurl?env=production&plat=windows&arch=x64&managedInstaller=true&download=true"
+      },
+      "version": "latest",
+      "displayname": "Microsoft Teams",
+      "role": "None"
+    },
+    {
+      "name": "mono",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://download.mono-project.com/archive/6.12.0/windows-installer/mono-6.12.0.107-x64-0.msi"
+      },
+      "version": "6.12.0.122",
+      "displayname": "Mono for Windows",
+      "role": "IT"
+    },
+    {
+      "name": "mountainduck",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://dist.mountainduck.io/Mountain%20Duck%20Installer-4.7.2.18403.msi"
+      },
+      "version": "4.7.2.18403",
+      "displayname": "Mountain Duck",
+      "role": "None"
+    },
+    {
+      "name": "mp3tag",
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://download.mp3tag.de/mp3tagv310setup.exe"
+      },
+      "version": "3.10",
+      "displayname": "Mp3tag",
+      "role": "None"
+    },
+    {
+      "name": "mremoteng",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://github.com/mRemoteNG/mRemoteNG/releases/download/v1.76.20/mRemoteNG-Installer-1.76.20.24615.msi"
+      },
+      "version": "1.76.20",
+      "displayname": "mRemoteNG",
+      "role": "None"
+    },
+    {
+      "name": "mumble",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://github.com/mumble-voip/mumble/releases/download/1.3.4/mumble-1.3.4.msi"
+      },
+      "version": "1.3.4",
+      "displayname": "Mumble",
+      "role": "None"
+    },
+    {
+      "name": "mysql-workbench",
+      "installer": {
+        "kind": "msi",
+        "x86_64": "https://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workbench-community-8.0.26-winx64.msi"
+      },
+      "version": "8.0.26",
+      "displayname": "MySQL Workbench",
+      "role": "IT"
+    },
+    {
+      "name": "naps2",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://github.com/cyanfish/naps2/releases/download/v6.1.2/naps2-6.1.2-setup.msi"
+      },
+      "version": "6.1.2",
+      "displayname": "NAPS2",
+      "role": "None"
+    },
+    {
+      "name": "nettime",
+      "installer": {
+        "kind": "innosetup",
+        "x86": "http://www.timesynctool.com/NetTimeSetup-314.exe"
+      },
+      "version": "3.14",
+      "displayname": "NetTime",
+      "role": "None"
+    },
+    {
+      "name": "nextcloud",
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://github.com/nextcloud/desktop/releases/download/v3.3.5/Nextcloud-3.3.5-x86.msi",
+        "x86_64": "https://github.com/nextcloud/desktop/releases/download/v3.3.5/Nextcloud-3.3.5-x64.msi"
+      },
+      "version": "3.3.5",
+      "displayname": "Nextcloud",
+      "role": "None"
+    },
+    {
+      "name": "node-lts",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://nodejs.org/dist/v14.18.0/node-v14.18.0-x86.msi",
+        "x86_64": "https://nodejs.org/dist/v14.18.0/node-v14.18.0-x64.msi"
+      },
+      "version": "14.18.0",
+      "displayname": "Node.js",
+      "role": "IT"
+    },
+    {
+      "name": "notepad++",
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.1.5/npp.8.1.5.Installer.exe",
+        "x86_64": "https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.1.5/npp.8.1.5.Installer.x64.exe"
+      },
+      "version": "8.1.5",
+      "displayname": "Notepad++",
+      "role": "IT"
+    },
+    {
+      "name": "notepad2-mod",
+      "installer": {
+        "kind": "innosetup",
+        "x86": "https://github.com/XhmikosR/notepad2-mod/releases/download/4.2.25.998/Notepad2-mod.4.2.25.998.exe"
+      },
+      "version": "4.2.25.998",
+      "displayname": "Notepad2-mod",
+      "role": "IT"
+    },
+    {
+      "name": "npackd",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://github.com/npackd/npackd-cpp/releases/download/version_1.26.9/Npackd32-1.26.9.msi",
+        "x86_64": "https://github.com/npackd/npackd-cpp/releases/download/version_1.26.9/Npackd64-1.26.9.msi"
+      },
+      "version": "1.26.9",
+      "displayname": "Npackd",
+      "role": "None"
+    },
+    {
+      "name": "npackdcl",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://github.com/npackd/npackd-cpp/releases/download/version_1.26.9/NpackdCL32-1.26.9.msi",
+        "x86_64": "https://github.com/npackd/npackd-cpp/releases/download/version_1.26.9/NpackdCL64-1.26.9.msi"
+      },
+      "version": "1.26.9",
+      "displayname": "NpackdCL",
+      "role": "None"
+    },
+    {
+      "name": "nsis",
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://sourceforge.net/projects/nsis/files/NSIS%203/3.08/nsis-3.08-setup.exe/download"
+      },
+      "version": "3.08",
+      "displayname": "Nullsoft Install System",
+      "role": "None"
+    },
+    {
+      "name": "nxlog",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://nxlog.co/system/files/products/files/348/nxlog-ce-2.11.2190.msi"
+      },
+      "version": "2.11.2190",
+      "displayname": "NXLog-CE",
+      "role": "None"
+    },
+    {
+      "name": "obs-studio",
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://cdn-fastly.obsproject.com/downloads/OBS-Studio-27.1.1-Full-Installer-x64.exe"
+      },
+      "version": "27.1.1",
+      "displayname": "OBS Studio",
+      "role": "None"
+    },
+    {
+      "name": "octave",
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://ftp.gnu.org/gnu/octave/windows/octave-6.3.0-w32-installer.exe",
+        "x86_64": "https://ftp.gnu.org/gnu/octave/windows/octave-6.3.0-w64-installer.exe"
+      },
+      "version": "6.3.0",
+      "displayname": "Octave",
+      "role": "Tech"
+    },
+    {
+      "name": "onlyoffice-desktopeditors",
+      "installer": {
+        "kind": "innosetup",
+        "x86": "http://download.onlyoffice.com/install/desktop/editors/windows/distrib/onlyoffice/DesktopEditors_x86.exe",
+        "x86_64": "http://download.onlyoffice.com/install/desktop/editors/windows/distrib/onlyoffice/DesktopEditors_x64.exe"
+      },
+      "version": "latest",
+      "displayname": "ONLYOFFICE Desktop Editors",
+      "role": "None"
+    },
+    {
+      "name": "origin",
+      "installer": {
+        "kind": "innosetup",
+        "x86": "https://eaassets-a.akamaihd.net/Origin-Client-Download/origin/live/OriginThinSetup.exe"
+      },
+      "version": "latest",
+      "displayname": "Origin",
+      "role": "None"
+    },
+    {
+      "name": "parsec",
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://s3.amazonaws.com/parsec-build/package/parsec-windows32.exe",
+        "x86_64": "https://s3.amazonaws.com/parsec-build/package/parsec-windows.exe"
+      },
+      "version": "latest",
+      "displayname": "Parsec",
+      "role": "None"
+    },
+    {
+      "name": "perl",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://strawberryperl.com/download/5.32.1.1/strawberry-perl-5.32.1.1-32bit.msi",
+        "x86_64": "https://strawberryperl.com/download/5.32.1.1/strawberry-perl-5.32.1.1-64bit.msi"
+      },
+      "version": "5.32.1.1",
+      "displayname": "Strawberry Perl",
+      "role": "IT"
+    },
+    {
+      "name": "pia",
+      "installer": {
+        "kind": "innosetup",
+        "x86": "https://installers.privateinternetaccess.com/download/pia-v82-installer-win.exe"
+      },
+      "version": "6",
+      "displayname": "Private Internet Access",
+      "role": "None"
+    },
+    {
+      "name": "plex-media-server",
+      "installer": {
+        "kind": "custom",
+        "options": {
+          "arguments": [
+            "{{.installer}}",
             "/quiet",
             "/norestart"
-         ]
-      },
-      {
-         "name":"kicad",
-         "installer":{
-            "kind":"nsis",
-            "x86":"https://kicad-downloads.s3.cern.ch/windows/stable/kicad-5.1.10_1-i686.exe",
-            "x86_64":"https://kicad-downloads.s3.cern.ch/windows/stable/kicad-5.1.10_1-x86_64.exe"
-         },
-         "version":"5.1.10",
-         "displayname":"KiCad",
-         "role":"Tech"
-      },
-      {
-         "name":"kodi",
-         "installer":{
-            "kind":"nsis",
-            "x86":"https://mirrors.kodi.tv/releases/windows/win32/kodi-19.1-Matrix-x86.exe"
-         },
-         "version":"19.1",
-         "displayname":"Kodi",
-         "role":"None"
-      },
-      {
-         "name":"krita",
-         "installer":{
-            "kind":"nsis",
-            "x86":"https://download.kde.org/stable/krita/4.4.3/krita-x86-4.4.3-setup.exe",
-            "x86_64":"https://download.kde.org/stable/krita/4.4.3/krita-x64-4.4.3-setup.exe"
-         },
-         "version":"4.4.3",
-         "displayname":"Krita",
-         "role":"Graphic"
-      },
-      {
-         "name":"libreoffice",
-        "installer": {
-          "kind": "msi",
-          "x86": "https://www.libreoffice.org/donate/dl/win-x86/7.2.2/vi/LibreOffice_7.2.2_Win_x86.msi",
-          "x86_64": "https://www.libreoffice.org/donate/dl/win-x86_64/7.2.2/vi/LibreOffice_7.2.2_Win_x64.msi"
+          ]
         },
-         "version":"7.2.2",
-         "displayname":"LibreOffice",
-         "role":"None"
-      },
-      {
-         "name":"lockhunter",
-         "installer":{
-            "kind":"innosetup",
-            "x86":"https://lockhunter.com/assets/exe/lockhuntersetup_3-4-2.exe"
-         },
-         "version":"3.4.2",
-         "displayname":"LockHunter",
-         "role":"None"
-      },
-      {
-         "name":"mailspring",
-         "installer":{
-            "kind":"squirrel",
-            "options":{
-               "extension":".exe"
-            },
-            "x86":"https://updates.getmailspring.com/download?platform=win32"
-         },
-         "version":"latest",
-         "displayname":"Mailspring",
-         "role":"None"
-      },
-      {
-         "name":"mailstore-home",
-         "installer":{
-            "kind":"as-is",
-            "options":{
-               "extension":".exe"
-            },
-            "x86":"https://my.mailstore.com/Downloads/Home"
-         },
-         "version":"latest",
-         "displayname":"MailStore Home",
-         "role":"None"
-      },
-      {
-         "name":"malwarebytes",
-         "installer":{
-            "kind":"innosetup",
-            "options":{
-               "extension":".exe"
-            },
-            "x86":"https://downloads.malwarebytes.com/file/mbam_current/"
-         },
-         "version":"latest",
-         "displayname":"Malwarebytes",
-         "role":"None"
-      },
-      {
-         "name":"marktext",
-         "installer":{
-            "kind":"nsis",
-            "x86":"https://github.com/marktext/marktext/releases/download/v0.16.3/marktext-setup.exe"
-         },
-         "version":"0.16.3",
-         "displayname":"Mark Text ",
-         "role":"None"
-      },
-      {
-         "name":"mega-sync",
-         "installer":{
-            "kind":"nsis",
-            "x86_64":"https://mega.nz/MEGAsyncSetup64.exe"
-         },
-         "version":"latest",
-         "displayname":"MEGAsync",
-         "role":"None"
-      },
-      {
-         "name":"mercurial",
-         "installer":{
-            "kind":"msi",
-            "options":{
-               "shims":[
-                  "{{.PROGRAMFILES}}\\Mercurial\\hg.exe"
-               ]
-            },
-            "x86":"https://www.mercurial-scm.org/release/windows/mercurial-5.9.1-x86.msi",
-            "x86_64":"https://www.mercurial-scm.org/release/windows/mercurial-5.9.1-x64.msi"
-         },
-         "version":"5.9.1",
-         "displayname":"Mercurial",
-         "role":"None"
-      },
-      {
-         "name":"microsoft-teams",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://teams.microsoft.com/downloads/desktopurl?env=production&plat=windows&arch=x86&managedInstaller=true&download=true",
-            "x86_64":"https://teams.microsoft.com/downloads/desktopurl?env=production&plat=windows&arch=x64&managedInstaller=true&download=true"
-         },
-         "version":"latest",
-         "displayname":"Microsoft Teams",
-         "role":"None"
-      },
-      {
-         "name":"mono",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://download.mono-project.com/archive/6.12.0/windows-installer/mono-6.12.0.107-x64-0.msi"
-         },
-         "version":"6.12.0.122",
-         "displayname":"Mono for Windows",
-         "role":"IT"
-      },
-      {
-         "name":"mountainduck",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://dist.mountainduck.io/Mountain%20Duck%20Installer-4.7.2.18403.msi"
-         },
-         "version":"4.7.2.18403",
-         "displayname":"Mountain Duck",
-         "role":"None"
-      },
-      {
-         "name":"mp3tag",
-         "installer":{
-            "kind":"nsis",
-            "x86":"https://download.mp3tag.de/mp3tagv310setup.exe"
-         },
-         "version":"3.10",
-         "displayname":"Mp3tag",
-         "role":"None"
-      },
-      {
-         "name":"mremoteng",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://github.com/mRemoteNG/mRemoteNG/releases/download/v1.76.20/mRemoteNG-Installer-1.76.20.24615.msi"
-         },
-         "version":"1.76.20",
-         "displayname":"mRemoteNG",
-         "role":"None"
-      },
-      {
-         "name":"mumble",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://github.com/mumble-voip/mumble/releases/download/1.3.4/mumble-1.3.4.msi"
-         },
-         "version":"1.3.4",
-         "displayname":"Mumble",
-         "role":"None"
-      },
-      {
-         "name":"mysql-workbench",
-         "installer":{
-            "kind":"msi",
-            "x86_64":"https://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workbench-community-8.0.26-winx64.msi"
-         },
-         "version":"8.0.26",
-         "displayname":"MySQL Workbench",
-         "role":"IT"
-      },
-      {
-         "name":"naps2",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://github.com/cyanfish/naps2/releases/download/v6.1.2/naps2-6.1.2-setup.msi"
-         },
-         "version":"6.1.2",
-         "displayname":"NAPS2",
-         "role":"None"
-      },
-      {
-         "name":"nettime",
-         "installer":{
-            "kind":"innosetup",
-            "x86":"http://www.timesynctool.com/NetTimeSetup-314.exe"
-         },
-         "version":"3.14",
-         "displayname":"NetTime",
-         "role":"None"
-      },
-      {
-         "name":"nextcloud",
-         "installer":{
-            "kind":"nsis",
-            "x86":"https://github.com/nextcloud/desktop/releases/download/v3.3.5/Nextcloud-3.3.5-x86.msi",
-            "x86_64":"https://github.com/nextcloud/desktop/releases/download/v3.3.5/Nextcloud-3.3.5-x64.msi"
-         },
-         "version":"3.3.5",
-         "displayname":"Nextcloud",
-         "role":"None"
-      },
-      {
-         "name":"node-lts",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://nodejs.org/dist/v14.18.0/node-v14.18.0-x86.msi",
-            "x86_64":"https://nodejs.org/dist/v14.18.0/node-v14.18.0-x64.msi"
-         },
-         "version":"14.18.0",
-         "displayname":"Node.js",
-         "role":"IT"
-      },
-      {
-         "name":"notepad++",
-         "installer":{
-            "kind":"nsis",
-            "x86":"https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.1.5/npp.8.1.5.Installer.exe",
-            "x86_64":"https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.1.5/npp.8.1.5.Installer.x64.exe"
-         },
-         "version":"8.1.5",
-         "displayname":"Notepad++",
-         "role":"IT"
-      },
-      {
-         "name":"notepad2-mod",
-         "installer":{
-            "kind":"innosetup",
-            "x86":"https://github.com/XhmikosR/notepad2-mod/releases/download/4.2.25.998/Notepad2-mod.4.2.25.998.exe"
-         },
-         "version":"4.2.25.998",
-         "displayname":"Notepad2-mod",
-         "role":"IT"
-      },
-      {
-         "name":"npackd",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://github.com/npackd/npackd-cpp/releases/download/version_1.26.9/Npackd32-1.26.9.msi",
-            "x86_64":"https://github.com/npackd/npackd-cpp/releases/download/version_1.26.9/Npackd64-1.26.9.msi"
-         },
-         "version":"1.26.9",
-         "displayname":"Npackd",
-         "role":"None"
-      },
-      {
-         "name":"npackdcl",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://github.com/npackd/npackd-cpp/releases/download/version_1.26.9/NpackdCL32-1.26.9.msi",
-            "x86_64":"https://github.com/npackd/npackd-cpp/releases/download/version_1.26.9/NpackdCL64-1.26.9.msi"
-         },
-         "version":"1.26.9",
-         "displayname":"NpackdCL",
-         "role":"None"
-      },
-      {
-         "name":"nsis",
-         "installer":{
-            "kind":"nsis",
-            "x86":"https://sourceforge.net/projects/nsis/files/NSIS%203/3.08/nsis-3.08-setup.exe/download"
-         },
-         "version":"3.08",
-         "displayname":"Nullsoft Install System",
-         "role":"None"
-      },
-      {
-         "name":"nxlog",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://nxlog.co/system/files/products/files/348/nxlog-ce-2.11.2190.msi"
-         },
-         "version":"2.11.2190",
-         "displayname":"NXLog-CE",
-         "role":"None"
-      },
-      {
-         "name":"obs-studio",
-         "installer":{
-            "kind":"nsis",
-            "x86":"https://cdn-fastly.obsproject.com/downloads/OBS-Studio-27.1.1-Full-Installer-x64.exe"
-         },
-         "version":"27.1.1",
-         "displayname":"OBS Studio",
-         "role":"None"
-      },
-      {
-         "name":"octave",
-         "installer":{
-            "kind":"nsis",
-            "x86":"https://ftp.gnu.org/gnu/octave/windows/octave-6.3.0-w32-installer.exe",
-            "x86_64":"https://ftp.gnu.org/gnu/octave/windows/octave-6.3.0-w64-installer.exe"
-         },
-         "version":"6.3.0",
-         "displayname":"Octave",
-         "role":"Tech"
-      },
-      {
-         "name":"onlyoffice-desktopeditors",
-         "installer":{
-            "kind":"innosetup",
-            "x86":"http://download.onlyoffice.com/install/desktop/editors/windows/distrib/onlyoffice/DesktopEditors_x86.exe",
-            "x86_64":"http://download.onlyoffice.com/install/desktop/editors/windows/distrib/onlyoffice/DesktopEditors_x64.exe"
-         },
-         "version":"latest",
-         "displayname":"ONLYOFFICE Desktop Editors",
-         "role":"None",
-      },
-      {
-         "name":"origin",
-         "installer":{
-            "kind":"innosetup",
-            "x86":"https://eaassets-a.akamaihd.net/Origin-Client-Download/origin/live/OriginThinSetup.exe"
-         },
-         "version":"latest",
-         "displayname":"Origin",
-         "role":"None"
-      },
-      {
-         "name":"parsec",
-         "installer":{
-            "kind":"nsis",
-            "x86":"https://s3.amazonaws.com/parsec-build/package/parsec-windows32.exe",
-            "x86_64":"https://s3.amazonaws.com/parsec-build/package/parsec-windows.exe"
-         },
-         "version":"latest",
-         "displayname":"Parsec",
-         "role":"None"
-      },
-      {
-         "name":"perl",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://strawberryperl.com/download/5.32.1.1/strawberry-perl-5.32.1.1-32bit.msi",
-            "x86_64":"https://strawberryperl.com/download/5.32.1.1/strawberry-perl-5.32.1.1-64bit.msi"
-         },
-         "version":"5.32.1.1",
-         "displayname":"Strawberry Perl",
-         "role":"IT"
-      },
-      {
-         "name":"pia",
-         "installer":{
-            "kind":"innosetup",
-            "x86":"https://installers.privateinternetaccess.com/download/pia-v82-installer-win.exe"
-         },
-         "version":"6",
-         "displayname":"Private Internet Access",
-         "role":"None"
-      },
-      {
-         "name":"plex-media-server",
-         "installer":{
-            "kind":"custom",
-            "options":{
-               "arguments":[
-                  "{{.installer}}",
-                  "/quiet",
-                  "/norestart"
-               ]
-            },
-            "x86":"https://downloads.plex.tv/plex-media-server-new/1.24.3.5033-757abe6b4/windows/PlexMediaServer-1.24.3.5033-757abe6b4-x86.exe"
-         },
-         "version":"1.24.3.5033",
-         "displayname":"Plex Media Server",
-         "role":"None",
-         "uninstall argument":[
-            "{{.uninstaller}}",
-            "/uninstall",
-            "/quiet"
-         ]
-      },
-      {
-         "name":"postman",
-         "installer":{
-            "kind":"squirrel",
-            "options":{
-               "extension":".exe"
-            },
-            "x86":"https://dl.pstmn.io/download/latest/win32",
-            "x86_64":"https://dl.pstmn.io/download/latest/win64"
-         },
-         "version":"latest",
-         "displayname":"Postman",
-         "role":"None"
-      },
-      {
-         "name":"potplayer",
-         "installer":{
-            "kind":"nsis",
-            "x86":"https://t1.daumcdn.net/potplayer/PotPlayer/Version/Latest/PotPlayerSetup.exe",
-            "x86_64":"https://t1.daumcdn.net/potplayer/PotPlayer/Version/Latest/PotPlayerSetup64.exe"
-         },
-         "version":"latest",
-         "displayname":"PotPlayer",
-         "role":"None"
-      },
-      {
-         "name":"powershell-core",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://github.com/PowerShell/PowerShell/releases/download/v7.1.4/PowerShell-7.1.4-win-x86.msi",
-            "x86_64":"https://github.com/PowerShell/PowerShell/releases/download/v7.1.4/PowerShell-7.1.4-win-x64.msi"
-         },
-         "version":"7.1.4",
-         "displayname":"PowerShell 7",
-         "role":"IT"
-      },
-      {
-         "name":"processhacker",
-         "installer":{
-            "kind":"innosetup",
-            "x86":"https://github.com/processhacker/processhacker/releases/download/v2.39/processhacker-2.39-setup.exe"
-         },
-         "version":"2.39",
-         "displayname":"Process Hacker",
-         "role":"IT"
-      },
-      {
-         "name":"putty",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://the.earth.li/~sgtatham/putty/latest/w32/putty-0.76-installer.msi",
-            "x86_64":"https://the.earth.li/~sgtatham/putty/latest/w64/putty-64bit-0.76-installer.msi"
-         },
-         "version":"0.76",
-         "displayname":"PuTTY",
-         "role":"IT"
-      },
-      {
-         "name":"python3",
-         "installer":{
-            "kind":"custom",
-            "options":{
-               "arguments":[
-                  "{{.installer}}",
-                  "/quiet",
-                  "InstallAllUsers=1"
-               ]
-            },
-            "x86":"https://www.python.org/ftp/python/3.9.7/python-3.9.7.exe",
-            "x86_64":"https://www.python.org/ftp/python/3.9.7/python-3.9.7-amd64.exe"
-         },
-         "version":"3.9.7",
-         "displayname":"Python ",
-         "role":"IT",
-         "uninstall argument":[
-            "{{.uninstaller}}",
-            "/uninstall",
-            "/quiet"
-         ]
-      },
-      {
-         "name":"qbittorrent",
-         "installer":{
-            "kind":"nsis",
-            "options":{
-               "extension":".exe"
-            },
-            "x86":"https://sourceforge.net/projects/qbittorrent/files/qbittorrent-win32/qbittorrent-4.3.8/qbittorrent_4.3.8_setup.exe/download",
-            "x86_64":"https://sourceforge.net/projects/qbittorrent/files/qbittorrent-win32/qbittorrent-4.3.8/qbittorrent_4.3.8_x64_setup.exe/download"
-         },
-         "version":"4.3.8",
-         "displayname":"qBittorrent",
-         "role":"None",
-      },
-      {
-         "name":"qtox",
-         "installer":{
-            "kind":"nsis",
-            "x86":"https://github.com/qTox/qTox/releases/download/v1.17.3/setup-qtox-i686-release.exe",
-            "x86_64":"https://github.com/qTox/qTox/releases/download/v1.17.3/setup-qtox-x86_64-release.exe"
-         },
-         "version":"1.17.3",
-         "displayname":"qTox",
-         "role":"None"
-      },
-      {
-         "name":"rambox-community",
-         "installer":{
-            "kind":"nsis",
-            "x86":"https://github.com/ramboxapp/community-edition/releases/download/0.7.9/Rambox-0.7.9-win.exe"
-         },
-         "version":"0.7.9",
-         "displayname":"Rambox ",
-         "role":"None"
-      },
-      {
-         "name":"rclone-browser",
-         "installer":{
-            "kind":"innosetup",
-            "x86":"https://github.com/kapitainsky/RcloneBrowser/releases/download/{{.version}}/rclone-browser-{{.version}}-a0b66c6-windows-32-bit.exe",
-            "x86_64":"https://github.com/kapitainsky/RcloneBrowser/releases/download/{{.version}}/rclone-browser-{{.version}}-a0b66c6-windows-64-bit.exe"
-         },
-         "version":"1.8.0",
-         "displayname":"Rclone Browser version ",
-         "role":"None"
-      },
-      {
-         "name":"resilio-sync",
-         "installer":{
-            "kind":"custom",
-            "options":{
-               "arguments":[
-                  "{{.installer}}",
-                  "/PERFORMINSTALL",
-                  "/S"
-               ]
-            },
-            "x86":"https://download-cdn.resilio.com/stable/windows/Resilio-Sync.exe",
-            "x86_64":"https://download-cdn.resilio.com/stable/windows64/Resilio-Sync_x64.exe"
-         },
-         "version":"latest",
-         "displayname":"Resilio Sync",
-         "role":"None",
-         "uninstall argument":[
-            "{{.uninstaller}}",
-            "/UNINSTALL",
-            "/S",
-            "/REMSETTINGS"
-         ]
-      },
-      {
-         "name":"resource-hacker",
-         "installer":{
-            "kind":"innosetup",
-            "x86":"http://angusj.com/resourcehacker/reshacker_setup.exe"
-         },
-         "version":"latest",
-         "displayname":"Resource Hacker",
-         "role":"IT"
-      },
-      {
-         "name":"retroarch",
-         "installer":{
-            "kind":"nsis",
-            "x86":"https://buildbot.libretro.com/stable/1.9.10/windows/x86/RetroArch-Win32-setup.exe",
-            "x86_64":"https://buildbot.libretro.com/stable/1.9.10/windows/x86_64/RetroArch-Win64-setup.exe"
-         },
-         "version":"1.9.10",
-         "displayname":"RetroArch",
-         "role":"IT"
-      },
-      {
-         "name":"ruby",
-         "installer":{
-            "kind":"innosetup",
-            "options":{
-               "shims":[
-                  "{{.SYSTEMDRIVE}}\\Ruby193\\bin\\ruby.exe",
-                  "{{.SYSTEMDRIVE}}\\Ruby193\\bin\\rubyw.exe"
-               ]
-            },
-            "x86":"https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.0.2-1/rubyinstaller-3.0.2-1-x86.exe",
-            "x86_64":"https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.0.2-1/rubyinstaller-3.0.2-1-x64.exe"
-         },
-         "version":"3.0.2",
-         "displayname":"Ruby",
-         "role":"IT"
-      },
-      {
-         "name":"sdm",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://e5.onthehub.com/Static/Installers/SDM_EN.msi"
-         },
-         "version":"latest",
-         "displayname":"e5 Secure Download Manager",
-         "role":"None"
-      },
-      {
-         "name":"seafile-client",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://s3.eu-central-1.amazonaws.com/download.seadrive.org/seafile-7.0.10-en.msi"
-         },
-         "version":"7.0.10",
-         "displayname":"Seafile",
-         "role":"None"
-      },
-      {
-         "name":"sharex",
-         "installer":{
-            "kind":"innosetup",
-            "x86":"https://github.com/ShareX/ShareX/releases/download/v13.6.1/ShareX-13.6.1-setup.exe"
-         },
-         "version":"13.6.1",
-         "displayname":"ShareX",
-         "role":"None"
-      },
-      {
-         "name":"sharpkeys",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://github.com/randyrants/sharpkeys/releases/download/v3.9.2/sharpkeys392.msi"
-         },
-         "version":"3.9.2",
-         "displayname":"SharpKeys",
-         "role":"IT"
-      },
-      {
-         "name":"signal",
-         "installer":{
-            "kind":"nsis",
-            "x86":"https://updates.signal.org/desktop/signal-desktop-win-5.18.0.exe"
-         },
-         "version":"5.18.0",
-         "displayname":"Signal",
-         "role":"None"
-      },
-      {
-         "name":"slack",
-         "installer":{
-            "kind":"squirrel",
-            "options":{
-               "extension":".exe"
-            },
-            "x86":"https://slack.com/ssb/download-win"
-         },
-         "version":"latest",
-         "displayname":"Slack",
-         "role":"None"
-      },
-      {
-         "name":"smplayer",
-         "installer":{
-            "kind":"nsis",
-            "options":{
-               "extension":".exe"
-            },
-            "x86":"https://sourceforge.net/projects/smplayer/files/SMPlayer/21.8.0/smplayer-21.8.0-win32.exe/download",
-            "x86_64":"https://sourceforge.net/projects/smplayer/files/SMPlayer/21.8.0/smplayer-21.8.0-x64.exe/download"
-         },
-         "version":"21.8.0",
-         "displayname":"SMPlayer",
-         "role":"Graphic"
-      },
-      {
-         "name":"spice-guest-tools",
-         "installer":{
-            "kind":"nsis",
-            "x86":"https://www.spice-space.org/download/windows/spice-guest-tools/spice-guest-tools-latest.exe"
-         },
-         "version":"latest",
-         "displayname":"SPICE Guest Tools",
-         "role":"IT"
-      },
-      {
-         "name":"spice-webdavd",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://www.spice-space.org/download/windows/spice-webdavd/spice-webdavd-x86-latest.msi",
-            "x86_64":"https://www.spice-space.org/download/windows/spice-webdavd/spice-webdavd-x64-latest.msi"
-         },
-         "version":"latest",
-         "displayname":"Spice webdavd",
-         "role":"IT"
-      },
-      {
-         "name":"steam",
-         "installer":{
-            "kind":"nsis",
-            "x86":"https://steamcdn-a.akamaihd.net/client/installer/SteamSetup.exe"
-         },
-         "version":"latest",
-         "displayname":"Steam",
-         "role":"None"
-      },
-      {
-         "name":"sublime-text-3",
-         "installer":{
-            "kind":"innosetup",
-            "options":{
-               "shims":[
-                  "{{.PROGRAMFILES}}\\Sublime Text 3\\subl.exe"
-               ]
-            },
-            "x86":"https://download.sublimetext.com/Sublime%20Text%20Build%203211%20Setup.exe",
-            "x86_64":"https://download.sublimetext.com/Sublime%20Text%20Build%203211%20x64%20Setup.exe"
-         },
-         "version":"3211",
-         "displayname":"Sublime Text",
-         "role":"IT"
-      },
-      {
-         "name":"teamspeak",
-         "installer":{
-            "kind":"nsis",
-            "x86":"https://files.teamspeak-services.com/releases/client/3.5.6/TeamSpeak3-Client-win32-3.5.6.exe",
-            "x86_64":"https://files.teamspeak-services.com/releases/client/3.5.6/TeamSpeak3-Client-win64-3.5.6.exe"
-         },
-         "version":"3.5.6",
-         "displayname":"TeamSpeak",
-         "role":"None"
-      },
-      {
-         "name":"teamviewer",
-         "installer":{
-            "kind":"nsis",
-            "x86":"https://download.teamviewer.com/download/TeamViewer_Setup.exe"
-         },
-         "version":"latest",
-         "displayname":"TeamViewer",
-         "role":"None"
-      },
-      {
-         "name":"telegram",
-         "installer":{
-            "kind":"innosetup",
-            "options":{
-               "extension":".exe"
-            },
-            "x86":"https://telegram.org/dl/desktop/win"
-         },
-         "version":"latest",
-         "displayname":"Telegram Desktop",
-         "role":"None"
-      },
-      {
-         "name":"thunderbird",
-         "installer":{
-            "kind":"nsis",
-            "options":{
-               "extension":".exe"
-            },
-            "x86":"https://download.mozilla.org/?product=thunderbird-latest&os=win&lang=en-US",
-            "x86_64":"https://download.mozilla.org/?product=thunderbird-latest&os=win64&lang=en-US"
-         },
-         "version":"latest",
-         "displayname":"Mozilla Thunderbird",
-         "role":"None"
-      },
-      {
-         "name":"tightvnc",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://www.tightvnc.com/download/2.8.63/tightvnc-2.8.63-gpl-setup-32bit.msi",
-            "x86_64":"https://www.tightvnc.com/download/2.8.63/tightvnc-2.8.63-gpl-setup-64bit.msi"
-         },
-         "version":"2.8.63",
-         "displayname":"TightVNC",
-         "role":"None"
-      },
-      {
-         "name":"torguard",
-         "installer":{
-            "kind":"nsis",
-            "x86":"https://updates.torguard.biz/Software/Windows/torguard-setup-latest.exe",
-            "x86_64":"https://updates.torguard.biz/Software/Windows/torguard-setup-latest.exe"
-         },
-         "version":"latest",
-         "displayname":"VPNetwork LLC - TorGuard",
-         "role":"IT"
-      },
-      {
-         "name":"tortoisegit",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://download.tortoisegit.org/tgit/2.12.0.0/TortoiseGit-2.12.0.0-32bit.msi",
-            "x86_64":"https://download.tortoisegit.org/tgit/2.12.0.0/TortoiseGit-2.12.0.0-64bit.msi"
-         },
-         "version":"2.12.0.0",
-         "displayname":"TortoiseGit",
-         "role":"IT"
-      },
-      {
-         "name":"tortoisesvn",
-         "installer":{
-            "kind":"msi",
-            "options":{
-               "extension":".msi"
-            },
-            "x86":"https://osdn.net/frs/redir.php?m=constant&f=%2Fstorage%2Fg%2Ft%2Fto%2Ftortoisesvn%2F1.14.1%2FApplication%2FTortoiseSVN-1.14.1.29085-win32-svn-1.14.1.msi",
-            "x86_64":"https://osdn.net/frs/redir.php?m=ipconnect&f=%2Fstorage%2Fg%2Ft%2Fto%2Ftortoisesvn%2F1.14.1%2FApplication%2FTortoiseSVN-1.14.1.29085-x64-svn-1.14.1.msi"
-         },
-         "version":"1.14.1",
-         "displayname":"TortoiseSVN",
-         "role":"IT"
-      },
-      {
-         "name":"transmission",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://github.com/transmission/transmission-releases/raw/master/transmission-3.00-x86.msi",
-            "x86_64":"https://github.com/transmission/transmission-releases/raw/master/transmission-3.00-x64.msi"
-         },
-         "version":"3.00",
-         "displayname":"Transmission",
-         "role":"IT"
-      },
-      {
-         "name":"ubisoft-connect",
-         "installer":{
-            "kind":"nsis",
-            "options":{
-               "extension":".exe"
-            },
-            "x86":"https://ubistatic3-a.akamaihd.net/orbit/launcher_installer/UbisoftConnectInstaller.exe"
-         },
-         "version":"latest",
-         "displayname":"Ubisoft Connect",
-         "role":"IT"
-      },
-      {
-         "name":"vagrant",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://releases.hashicorp.com/vagrant/2.2.18/vagrant_2.2.18_i686.msi",
-            "x86_64":"https://releases.hashicorp.com/vagrant/2.2.18/vagrant_2.2.18_x86_64.msi"
-         },
-         "version":"2.2.18",
-         "displayname":"Vagrant",
-         "role":"IT"
-      },
-      {
-         "name":"vcredist-2005",
-         "installer":{
-            "kind":"custom",
-            "options":{
-               "arguments":[
-                  "{{.installer}}",
-                  "/q"
-               ]
-            },
-            "x86":"https://download.microsoft.com/download/8/B/4/8B42259F-5D70-43F4-AC2E-4B208FD8D66A/vcredist_x86.EXE",
-            "x86_64":"https://download.microsoft.com/download/8/B/4/8B42259F-5D70-43F4-AC2E-4B208FD8D66A/vcredist_x64.EXE"
-         },
-         "version":"8.0.61000",
-         "displayname":"Microsoft Visual C++ 2005 Redistributable",
-         "role":"IT",
-         "uninstall argument":[
-            "{{.uninstaller}}",
-            "/quiet"
-         ]
-      },
-      {
-         "name":"vcredist-2008",
-         "installer":{
-            "kind":"custom",
-            "options":{
-               "arguments":[
-                  "{{.installer}}",
-                  "/qb"
-               ]
-            },
-            "x86":"https://download.microsoft.com/download/5/D/8/5D8C65CB-C849-4025-8E95-C3966CAFD8AE/vcredist_x86.exe",
-            "x86_64":"https://download.microsoft.com/download/5/D/8/5D8C65CB-C849-4025-8E95-C3966CAFD8AE/vcredist_x64.exe"
-         },
-         "version":"9.0.30729.6161",
-         "displayname":"Microsoft Visual C++ 2008 Redistributable",
-         "role":"IT",
-         "uninstall argument":[
-            "{{.uninstaller}}",
-            "/quiet"
-         ]
-      },
-      {
-         "name":"vcredist-2012",
-         "installer":{
-            "kind":"custom",
-            "options":{
-               "arguments":[
-                  "{{.installer}}",
-                  "/passive",
-                  "/norestart"
-               ]
-            },
-            "x86":"https://download.microsoft.com/download/1/6/B/16B06F60-3B20-4FF2-B699-5E9B7962F9AE/VSU_4/vcredist_x86.exe",
-            "x86_64":"https://download.microsoft.com/download/1/6/B/16B06F60-3B20-4FF2-B699-5E9B7962F9AE/VSU_4/vcredist_x64.exe"
-         },
-         "version":"11.0.61030",
-         "displayname":"Microsoft Visual C++ 2012 Redistributable",
-         "role":"IT",
-         "uninstall argument":[
-            "{{.uninstaller}}",
-            "/quiet"
-         ]
-      },
-      {
-         "name":"vcredist-2013",
-         "installer":{
-            "kind":"custom",
-            "options":{
-               "arguments":[
-                     "{{.installer}}",
-                     "/install",
-                     "/passive",
-                     "/norestart"
-                ]
-            },
-            "x86":"https://aka.ms/highdpimfc2013x86enu",
-            "x86_64":"https://aka.ms/highdpimfc2013x64enu"
-         },
-         "version":"12.0.40664.0",
-         "displayname":"Microsoft Visual C++ 2013 Redistributable",
-         "role":"IT",
-         "uninstall argument":[
-            "{{.uninstaller}}",
-            "/quiet"
-         ]
-      },
-      {
-         "name":"vcvrack",
-         "installer":{
-            "kind":"nsis",
-            "options":{
-               "extension":".exe"
-            },
-            "x86_64":"https://vcvrack.com/downloads/Rack-1.1.6-win.exe"
-         },
-         "version":"1.1.6",
-         "displayname":"VCV Rack",
-         "role":"Tech"
-      },
-      {
-         "name":"virtualbox",
-         "installer":{
-            "kind":"custom",
-            "options":{
-               "shims":[
-                  "{{.PROGRAMFILES}}\\Oracle\\VirtualBox\\VBox.exe",
-                  "{{.PROGRAMFILES}}\\Oracle\\VirtualBox\\VBoxManage.exe"
-               ],
-               "arguments":[
-                  "{{.installer}}",
-                  "--silent"
-               ]
-            },
-            "x86":"https://download.virtualbox.org/virtualbox/6.1.26/VirtualBox-6.1.26-145957-Win.exe"
-         },
-         "version":"6.1.26",
-         "displayname":"Oracle VM VirtualBox",
-         "role":"IT",
-         "uninstall argument":[
-            "{{.uninstaller}}",
-            "/quiet"
-         ]
-      },
-      {
-         "name":"viscosity",
-         "installer":{
-            "kind":"innosetup",
-            "x86":"https://www.sparklabs.com/downloads/Viscosity%20Installer.exe"
-         },
-         "version":"latest",
-         "displayname":"Viscosity",
-         "role":"None"
-      },
-      {
-         "name":"visual-studio-code",
-         "installer":{
-            "kind":"custom",
-            "options":{
-               "extension":".exe",
-               "arguments":[
-                  "{{.installer}}",
-                  "/norestart",
-                  "/sp-",
-                  "/verysilent",
-                  "/mergetasks=!runcode"
-               ]
-            },
-            "x86":"https://go.microsoft.com/fwlink/?LinkID=623230",
-            "x86_64":"https://go.microsoft.com/fwlink/?Linkid=852157"
-         },
-         "version":"latest",
-         "displayname":"Microsoft Visual Studio Code",
-         "role":"IT",
-	 "uninstall argument":[
-            "{{.uninstaller}}",
-            "/norestart",
-	    "/verysilent",
-	    "/suppressmsgboxes",
-	    "/sp-",
-	    "/allusers"
-         ]
-      },
-      {
-         "name":"visual-studio-community-2019",
-         "installer":{
-            "kind":"custom",
-            "options":{
-               "extension":".exe",
-               "arguments":[
-                  "{{.installer}}",
-                  "--quiet",
-                  "--norestart",
-                  "--wait"
-               ]
-            },
-            "x86":"https://aka.ms/vs/16/release/vs_community.exe"
-         },
-         "version":"latest",
-         "displayname":"Visual Studio Community",
-         "role":"IT",
-         "uninstall argument":[
-            "{{.uninstaller}}",
-            "-q"
-         ]
-      },
-      {
-         "name":"visual-studio-enterprise-2019",
-         "installer":{
-            "kind":"custom",
-            "options":{
-               "extension":".exe",
-               "arguments":[
-                  "{{.installer}}",
-                  "--quiet",
-                  "--norestart",
-                  "--wait"
-               ]
-            },
-            "x86":"https://aka.ms/vs/16/release/vs_enterprise.exe"
-         },
-         "version":"latest",
-         "displayname":"Visual Studio Enterprise",
-         "role":"IT"
-      },
-      {
-         "name":"vlc",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://download.videolan.org/pub/videolan/vlc/last/win32/vlc-3.0.16-win32.msi",
-            "x86_64":"https://download.videolan.org/pub/videolan/vlc/last/win64/vlc-3.0.16-win64.msi"
-         },
-         "version":"3.0.16",
-         "displayname":"VLC media player",
-         "role":"None"
-      },
-      {
-         "name":"whatsapp",
-         "installer":{
-            "kind":"squirrel",
-            "x86":"https://web.whatsapp.com/desktop/windows/release/ia32/WhatsAppSetup.exe",
-            "x86_64":"https://web.whatsapp.com/desktop/windows/release/x64/WhatsAppSetup.exe"
-         },
-         "version":"latest",
-         "displayname":"WhatsApp",
-         "role":"None"
-      },
-      {
-         "name":"winfsp",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://github.com/billziss-gh/winfsp/releases/download/v1.9/winfsp-1.9.21096.msi"
-         },
-         "version":"1.9",
-         "displayname":"WinFsp ",
-         "role":"None"
-      },
-      {
-         "name":"winrar",
-         "installer":{
-            "kind":"custom",
-            "options":{
-               "arguments":[
-                  "{{.installer}}",
-                  "/S"
-               ]
-            },
-            "x86":"https://rarlab.com/rar/wrar602.exe",
-            "x86_64":"https://rarlab.com/rar/winrar-x64-602.exe"
-         },
-         "version":"6.02",
-         "displayname":"WinRAR",
-         "role":"None",
-         "uninstall argument":[
-            "{{.uninstaller}}",
+        "x86": "https://downloads.plex.tv/plex-media-server-new/1.24.3.5033-757abe6b4/windows/PlexMediaServer-1.24.3.5033-757abe6b4-x86.exe"
+      },
+      "version": "1.24.3.5033",
+      "displayname": "Plex Media Server",
+      "role": "None",
+      "uninstall argument": [
+        "{{.uninstaller}}",
+        "/uninstall",
+        "/quiet"
+      ]
+    },
+    {
+      "name": "postman",
+      "installer": {
+        "kind": "squirrel",
+        "options": {
+          "extension": ".exe"
+        },
+        "x86": "https://dl.pstmn.io/download/latest/win32",
+        "x86_64": "https://dl.pstmn.io/download/latest/win64"
+      },
+      "version": "latest",
+      "displayname": "Postman",
+      "role": "None"
+    },
+    {
+      "name": "potplayer",
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://t1.daumcdn.net/potplayer/PotPlayer/Version/Latest/PotPlayerSetup.exe",
+        "x86_64": "https://t1.daumcdn.net/potplayer/PotPlayer/Version/Latest/PotPlayerSetup64.exe"
+      },
+      "version": "latest",
+      "displayname": "PotPlayer",
+      "role": "None"
+    },
+    {
+      "name": "powershell-core",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://github.com/PowerShell/PowerShell/releases/download/v7.1.4/PowerShell-7.1.4-win-x86.msi",
+        "x86_64": "https://github.com/PowerShell/PowerShell/releases/download/v7.1.4/PowerShell-7.1.4-win-x64.msi"
+      },
+      "version": "7.1.4",
+      "displayname": "PowerShell 7",
+      "role": "IT"
+    },
+    {
+      "name": "processhacker",
+      "installer": {
+        "kind": "innosetup",
+        "x86": "https://github.com/processhacker/processhacker/releases/download/v2.39/processhacker-2.39-setup.exe"
+      },
+      "version": "2.39",
+      "displayname": "Process Hacker",
+      "role": "IT"
+    },
+    {
+      "name": "putty",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://the.earth.li/~sgtatham/putty/latest/w32/putty-0.76-installer.msi",
+        "x86_64": "https://the.earth.li/~sgtatham/putty/latest/w64/putty-64bit-0.76-installer.msi"
+      },
+      "version": "0.76",
+      "displayname": "PuTTY",
+      "role": "IT"
+    },
+    {
+      "name": "python3",
+      "installer": {
+        "kind": "custom",
+        "options": {
+          "arguments": [
+            "{{.installer}}",
+            "/quiet",
+            "InstallAllUsers=1"
+          ]
+        },
+        "x86": "https://www.python.org/ftp/python/3.9.7/python-3.9.7.exe",
+        "x86_64": "https://www.python.org/ftp/python/3.9.7/python-3.9.7-amd64.exe"
+      },
+      "version": "3.9.7",
+      "displayname": "Python ",
+      "role": "IT",
+      "uninstall argument": [
+        "{{.uninstaller}}",
+        "/uninstall",
+        "/quiet"
+      ]
+    },
+    {
+      "name": "qbittorrent",
+      "installer": {
+        "kind": "nsis",
+        "options": {
+          "extension": ".exe"
+        },
+        "x86": "https://sourceforge.net/projects/qbittorrent/files/qbittorrent-win32/qbittorrent-4.3.8/qbittorrent_4.3.8_setup.exe/download",
+        "x86_64": "https://sourceforge.net/projects/qbittorrent/files/qbittorrent-win32/qbittorrent-4.3.8/qbittorrent_4.3.8_x64_setup.exe/download"
+      },
+      "version": "4.3.8",
+      "displayname": "qBittorrent",
+      "role": "None"
+    },
+    {
+      "name": "qtox",
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://github.com/qTox/qTox/releases/download/v1.17.3/setup-qtox-i686-release.exe",
+        "x86_64": "https://github.com/qTox/qTox/releases/download/v1.17.3/setup-qtox-x86_64-release.exe"
+      },
+      "version": "1.17.3",
+      "displayname": "qTox",
+      "role": "None"
+    },
+    {
+      "name": "rambox-community",
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://github.com/ramboxapp/community-edition/releases/download/0.7.9/Rambox-0.7.9-win.exe"
+      },
+      "version": "0.7.9",
+      "displayname": "Rambox ",
+      "role": "None"
+    },
+    {
+      "name": "rclone-browser",
+      "installer": {
+        "kind": "innosetup",
+        "x86": "https://github.com/kapitainsky/RcloneBrowser/releases/download/{{.version}}/rclone-browser-{{.version}}-a0b66c6-windows-32-bit.exe",
+        "x86_64": "https://github.com/kapitainsky/RcloneBrowser/releases/download/{{.version}}/rclone-browser-{{.version}}-a0b66c6-windows-64-bit.exe"
+      },
+      "version": "1.8.0",
+      "displayname": "Rclone Browser version ",
+      "role": "None"
+    },
+    {
+      "name": "resilio-sync",
+      "installer": {
+        "kind": "custom",
+        "options": {
+          "arguments": [
+            "{{.installer}}",
+            "/PERFORMINSTALL",
             "/S"
-         ]
-      },
-      {
-         "name":"winscp",
-         "installer":{
-            "kind":"innosetup",
-            "options":{
-               "extension":".exe"
-            },
-            "x86":"https://sourceforge.net/projects/winscp/files/WinSCP/5.19.2/WinSCP-5.19.2-Setup.exe/download"
-         },
-         "version":"5.19.2",
-         "displayname":"WinSCP",
-         "role":"None"
-      },
-      {
-         "name":"wireshark",
-        "installer": {
-          "kind": "nsis",
-          "x86": "https://1.as.dl.wireshark.org/win32/Wireshark-win32-3.6.0.exe",
-          "x86_64": "https://1.as.dl.wireshark.org/win64/Wireshark-win64-3.6.0.exe"
+          ]
         },
-         "version":"3.6.0",
-         "displayname":"Wireshark",
-         "role":"IT"
+        "x86": "https://download-cdn.resilio.com/stable/windows/Resilio-Sync.exe",
+        "x86_64": "https://download-cdn.resilio.com/stable/windows64/Resilio-Sync_x64.exe"
       },
-      {
-         "name":"wix",
-         "installer":{
-            "kind":"custom",
-            "options":{
-               "shims":[
-                  "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.11\\bin\\candle.exe",
-                  "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.11\\bin\\dark.exe",
-                  "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.11\\bin\\heat.exe",
-                  "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.11\\bin\\insignia.exe",
-                  "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.11\\bin\\light.exe",
-                  "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.11\\bin\\lit.exe",
-                  "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.11\\bin\\lux.exe",
-                  "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.11\\bin\\melt.exe",
-                  "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.11\\bin\\nit.exe",
-                  "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.11\\bin\\pyro.exe",
-                  "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.11\\bin\\shine.exe",
-                  "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.11\\bin\\smoke.exe",
-                  "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.11\\bin\\ThmViewer.exe",
-                  "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.11\\bin\\torch.exe",
-                  "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.11\\bin\\WixCop.exe"
-               ],
-               "arguments":[
-                  "{{.installer}}",
-                  "-norestart",
-                  "-quiet"
-               ]
-            },
-            "x86":"https://github.com/wixtoolset/wix3/releases/download/wix3111rtm/wix311.exe"
-         },
-         "version":"3.11.1",
-         "displayname":"WiX Toolset",
-         "role":"None",
-         "uninstall argument":[
-            "{{.uninstaller}}",
+      "version": "latest",
+      "displayname": "Resilio Sync",
+      "role": "None",
+      "uninstall argument": [
+        "{{.uninstaller}}",
+        "/UNINSTALL",
+        "/S",
+        "/REMSETTINGS"
+      ]
+    },
+    {
+      "name": "resource-hacker",
+      "installer": {
+        "kind": "innosetup",
+        "x86": "http://angusj.com/resourcehacker/reshacker_setup.exe"
+      },
+      "version": "latest",
+      "displayname": "Resource Hacker",
+      "role": "IT"
+    },
+    {
+      "name": "retroarch",
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://buildbot.libretro.com/stable/1.9.10/windows/x86/RetroArch-Win32-setup.exe",
+        "x86_64": "https://buildbot.libretro.com/stable/1.9.10/windows/x86_64/RetroArch-Win64-setup.exe"
+      },
+      "version": "1.9.10",
+      "displayname": "RetroArch",
+      "role": "IT"
+    },
+    {
+      "name": "ruby",
+      "installer": {
+        "kind": "innosetup",
+        "options": {
+          "shims": [
+            "{{.SYSTEMDRIVE}}\\Ruby193\\bin\\ruby.exe",
+            "{{.SYSTEMDRIVE}}\\Ruby193\\bin\\rubyw.exe"
+          ]
+        },
+        "x86": "https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.0.2-1/rubyinstaller-3.0.2-1-x86.exe",
+        "x86_64": "https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.0.2-1/rubyinstaller-3.0.2-1-x64.exe"
+      },
+      "version": "3.0.2",
+      "displayname": "Ruby",
+      "role": "IT"
+    },
+    {
+      "name": "sdm",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://e5.onthehub.com/Static/Installers/SDM_EN.msi"
+      },
+      "version": "latest",
+      "displayname": "e5 Secure Download Manager",
+      "role": "None"
+    },
+    {
+      "name": "seafile-client",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://s3.eu-central-1.amazonaws.com/download.seadrive.org/seafile-7.0.10-en.msi"
+      },
+      "version": "7.0.10",
+      "displayname": "Seafile",
+      "role": "None"
+    },
+    {
+      "name": "sharex",
+      "installer": {
+        "kind": "innosetup",
+        "x86": "https://github.com/ShareX/ShareX/releases/download/v13.6.1/ShareX-13.6.1-setup.exe"
+      },
+      "version": "13.6.1",
+      "displayname": "ShareX",
+      "role": "None"
+    },
+    {
+      "name": "sharpkeys",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://github.com/randyrants/sharpkeys/releases/download/v3.9.2/sharpkeys392.msi"
+      },
+      "version": "3.9.2",
+      "displayname": "SharpKeys",
+      "role": "IT"
+    },
+    {
+      "name": "signal",
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://updates.signal.org/desktop/signal-desktop-win-5.18.0.exe"
+      },
+      "version": "5.18.0",
+      "displayname": "Signal",
+      "role": "None"
+    },
+    {
+      "name": "slack",
+      "installer": {
+        "kind": "squirrel",
+        "options": {
+          "extension": ".exe"
+        },
+        "x86": "https://slack.com/ssb/download-win"
+      },
+      "version": "latest",
+      "displayname": "Slack",
+      "role": "None"
+    },
+    {
+      "name": "smplayer",
+      "installer": {
+        "kind": "nsis",
+        "options": {
+          "extension": ".exe"
+        },
+        "x86": "https://sourceforge.net/projects/smplayer/files/SMPlayer/21.8.0/smplayer-21.8.0-win32.exe/download",
+        "x86_64": "https://sourceforge.net/projects/smplayer/files/SMPlayer/21.8.0/smplayer-21.8.0-x64.exe/download"
+      },
+      "version": "21.8.0",
+      "displayname": "SMPlayer",
+      "role": "Graphic"
+    },
+    {
+      "name": "spice-guest-tools",
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://www.spice-space.org/download/windows/spice-guest-tools/spice-guest-tools-latest.exe"
+      },
+      "version": "latest",
+      "displayname": "SPICE Guest Tools",
+      "role": "IT"
+    },
+    {
+      "name": "spice-webdavd",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://www.spice-space.org/download/windows/spice-webdavd/spice-webdavd-x86-latest.msi",
+        "x86_64": "https://www.spice-space.org/download/windows/spice-webdavd/spice-webdavd-x64-latest.msi"
+      },
+      "version": "latest",
+      "displayname": "Spice webdavd",
+      "role": "IT"
+    },
+    {
+      "name": "steam",
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://steamcdn-a.akamaihd.net/client/installer/SteamSetup.exe"
+      },
+      "version": "latest",
+      "displayname": "Steam",
+      "role": "None"
+    },
+    {
+      "name": "sublime-text-3",
+      "installer": {
+        "kind": "innosetup",
+        "options": {
+          "shims": [
+            "{{.PROGRAMFILES}}\\Sublime Text 3\\subl.exe"
+          ]
+        },
+        "x86": "https://download.sublimetext.com/Sublime%20Text%20Build%203211%20Setup.exe",
+        "x86_64": "https://download.sublimetext.com/Sublime%20Text%20Build%203211%20x64%20Setup.exe"
+      },
+      "version": "3211",
+      "displayname": "Sublime Text",
+      "role": "IT"
+    },
+    {
+      "name": "teamspeak",
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://files.teamspeak-services.com/releases/client/3.5.6/TeamSpeak3-Client-win32-3.5.6.exe",
+        "x86_64": "https://files.teamspeak-services.com/releases/client/3.5.6/TeamSpeak3-Client-win64-3.5.6.exe"
+      },
+      "version": "3.5.6",
+      "displayname": "TeamSpeak",
+      "role": "None"
+    },
+    {
+      "name": "teamviewer",
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://download.teamviewer.com/download/TeamViewer_Setup.exe"
+      },
+      "version": "latest",
+      "displayname": "TeamViewer",
+      "role": "None"
+    },
+    {
+      "name": "telegram",
+      "installer": {
+        "kind": "innosetup",
+        "options": {
+          "extension": ".exe"
+        },
+        "x86": "https://telegram.org/dl/desktop/win"
+      },
+      "version": "latest",
+      "displayname": "Telegram Desktop",
+      "role": "None"
+    },
+    {
+      "name": "thunderbird",
+      "installer": {
+        "kind": "nsis",
+        "options": {
+          "extension": ".exe"
+        },
+        "x86": "https://download.mozilla.org/?product=thunderbird-latest&os=win&lang=en-US",
+        "x86_64": "https://download.mozilla.org/?product=thunderbird-latest&os=win64&lang=en-US"
+      },
+      "version": "latest",
+      "displayname": "Mozilla Thunderbird",
+      "role": "None"
+    },
+    {
+      "name": "tightvnc",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://www.tightvnc.com/download/2.8.63/tightvnc-2.8.63-gpl-setup-32bit.msi",
+        "x86_64": "https://www.tightvnc.com/download/2.8.63/tightvnc-2.8.63-gpl-setup-64bit.msi"
+      },
+      "version": "2.8.63",
+      "displayname": "TightVNC",
+      "role": "None"
+    },
+    {
+      "name": "torguard",
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://updates.torguard.biz/Software/Windows/torguard-setup-latest.exe",
+        "x86_64": "https://updates.torguard.biz/Software/Windows/torguard-setup-latest.exe"
+      },
+      "version": "latest",
+      "displayname": "VPNetwork LLC - TorGuard",
+      "role": "IT"
+    },
+    {
+      "name": "tortoisegit",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://download.tortoisegit.org/tgit/2.12.0.0/TortoiseGit-2.12.0.0-32bit.msi",
+        "x86_64": "https://download.tortoisegit.org/tgit/2.12.0.0/TortoiseGit-2.12.0.0-64bit.msi"
+      },
+      "version": "2.12.0.0",
+      "displayname": "TortoiseGit",
+      "role": "IT"
+    },
+    {
+      "name": "tortoisesvn",
+      "installer": {
+        "kind": "msi",
+        "options": {
+          "extension": ".msi"
+        },
+        "x86": "https://osdn.net/frs/redir.php?m=constant&f=%2Fstorage%2Fg%2Ft%2Fto%2Ftortoisesvn%2F1.14.1%2FApplication%2FTortoiseSVN-1.14.1.29085-win32-svn-1.14.1.msi",
+        "x86_64": "https://osdn.net/frs/redir.php?m=ipconnect&f=%2Fstorage%2Fg%2Ft%2Fto%2Ftortoisesvn%2F1.14.1%2FApplication%2FTortoiseSVN-1.14.1.29085-x64-svn-1.14.1.msi"
+      },
+      "version": "1.14.1",
+      "displayname": "TortoiseSVN",
+      "role": "IT"
+    },
+    {
+      "name": "transmission",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://github.com/transmission/transmission-releases/raw/master/transmission-3.00-x86.msi",
+        "x86_64": "https://github.com/transmission/transmission-releases/raw/master/transmission-3.00-x64.msi"
+      },
+      "version": "3.00",
+      "displayname": "Transmission",
+      "role": "IT"
+    },
+    {
+      "name": "ubisoft-connect",
+      "installer": {
+        "kind": "nsis",
+        "options": {
+          "extension": ".exe"
+        },
+        "x86": "https://ubistatic3-a.akamaihd.net/orbit/launcher_installer/UbisoftConnectInstaller.exe"
+      },
+      "version": "latest",
+      "displayname": "Ubisoft Connect",
+      "role": "IT"
+    },
+    {
+      "name": "vagrant",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://releases.hashicorp.com/vagrant/2.2.18/vagrant_2.2.18_i686.msi",
+        "x86_64": "https://releases.hashicorp.com/vagrant/2.2.18/vagrant_2.2.18_x86_64.msi"
+      },
+      "version": "2.2.18",
+      "displayname": "Vagrant",
+      "role": "IT"
+    },
+    {
+      "name": "vcredist-2005",
+      "installer": {
+        "kind": "custom",
+        "options": {
+          "arguments": [
+            "{{.installer}}",
+            "/q"
+          ]
+        },
+        "x86": "https://download.microsoft.com/download/8/B/4/8B42259F-5D70-43F4-AC2E-4B208FD8D66A/vcredist_x86.EXE",
+        "x86_64": "https://download.microsoft.com/download/8/B/4/8B42259F-5D70-43F4-AC2E-4B208FD8D66A/vcredist_x64.EXE"
+      },
+      "version": "8.0.61000",
+      "displayname": "Microsoft Visual C++ 2005 Redistributable",
+      "role": "IT",
+      "uninstall argument": [
+        "{{.uninstaller}}",
+        "/quiet"
+      ]
+    },
+    {
+      "name": "vcredist-2008",
+      "installer": {
+        "kind": "custom",
+        "options": {
+          "arguments": [
+            "{{.installer}}",
+            "/qb"
+          ]
+        },
+        "x86": "https://download.microsoft.com/download/5/D/8/5D8C65CB-C849-4025-8E95-C3966CAFD8AE/vcredist_x86.exe",
+        "x86_64": "https://download.microsoft.com/download/5/D/8/5D8C65CB-C849-4025-8E95-C3966CAFD8AE/vcredist_x64.exe"
+      },
+      "version": "9.0.30729.6161",
+      "displayname": "Microsoft Visual C++ 2008 Redistributable",
+      "role": "IT",
+      "uninstall argument": [
+        "{{.uninstaller}}",
+        "/quiet"
+      ]
+    },
+    {
+      "name": "vcredist-2012",
+      "installer": {
+        "kind": "custom",
+        "options": {
+          "arguments": [
+            "{{.installer}}",
+            "/passive",
+            "/norestart"
+          ]
+        },
+        "x86": "https://download.microsoft.com/download/1/6/B/16B06F60-3B20-4FF2-B699-5E9B7962F9AE/VSU_4/vcredist_x86.exe",
+        "x86_64": "https://download.microsoft.com/download/1/6/B/16B06F60-3B20-4FF2-B699-5E9B7962F9AE/VSU_4/vcredist_x64.exe"
+      },
+      "version": "11.0.61030",
+      "displayname": "Microsoft Visual C++ 2012 Redistributable",
+      "role": "IT",
+      "uninstall argument": [
+        "{{.uninstaller}}",
+        "/quiet"
+      ]
+    },
+    {
+      "name": "vcredist-2013",
+      "installer": {
+        "kind": "custom",
+        "options": {
+          "arguments": [
+            "{{.installer}}",
+            "/install",
+            "/passive",
+            "/norestart"
+          ]
+        },
+        "x86": "https://aka.ms/highdpimfc2013x86enu",
+        "x86_64": "https://aka.ms/highdpimfc2013x64enu"
+      },
+      "version": "12.0.40664.0",
+      "displayname": "Microsoft Visual C++ 2013 Redistributable",
+      "role": "IT",
+      "uninstall argument": [
+        "{{.uninstaller}}",
+        "/quiet"
+      ]
+    },
+    {
+      "name": "vcvrack",
+      "installer": {
+        "kind": "nsis",
+        "options": {
+          "extension": ".exe"
+        },
+        "x86_64": "https://vcvrack.com/downloads/Rack-1.1.6-win.exe"
+      },
+      "version": "1.1.6",
+      "displayname": "VCV Rack",
+      "role": "Tech"
+    },
+    {
+      "name": "virtualbox",
+      "installer": {
+        "kind": "custom",
+        "options": {
+          "shims": [
+            "{{.PROGRAMFILES}}\\Oracle\\VirtualBox\\VBox.exe",
+            "{{.PROGRAMFILES}}\\Oracle\\VirtualBox\\VBoxManage.exe"
+          ],
+          "arguments": [
+            "{{.installer}}",
+            "--silent"
+          ]
+        },
+        "x86": "https://download.virtualbox.org/virtualbox/6.1.26/VirtualBox-6.1.26-145957-Win.exe"
+      },
+      "version": "6.1.26",
+      "displayname": "Oracle VM VirtualBox",
+      "role": "IT",
+      "uninstall argument": [
+        "{{.uninstaller}}",
+        "/quiet"
+      ]
+    },
+    {
+      "name": "viscosity",
+      "installer": {
+        "kind": "innosetup",
+        "x86": "https://www.sparklabs.com/downloads/Viscosity%20Installer.exe"
+      },
+      "version": "latest",
+      "displayname": "Viscosity",
+      "role": "None"
+    },
+    {
+      "name": "visual-studio-code",
+      "installer": {
+        "kind": "custom",
+        "options": {
+          "extension": ".exe",
+          "arguments": [
+            "{{.installer}}",
+            "/norestart",
+            "/sp-",
+            "/verysilent",
+            "/mergetasks=!runcode"
+          ]
+        },
+        "x86": "https://go.microsoft.com/fwlink/?LinkID=623230",
+        "x86_64": "https://go.microsoft.com/fwlink/?Linkid=852157"
+      },
+      "version": "latest",
+      "displayname": "Microsoft Visual Studio Code",
+      "role": "IT",
+      "uninstall argument": [
+        "{{.uninstaller}}",
+        "/norestart",
+        "/verysilent",
+        "/suppressmsgboxes",
+        "/sp-",
+        "/allusers"
+      ]
+    },
+    {
+      "name": "visual-studio-community-2019",
+      "installer": {
+        "kind": "custom",
+        "options": {
+          "extension": ".exe",
+          "arguments": [
+            "{{.installer}}",
+            "--quiet",
+            "--norestart",
+            "--wait"
+          ]
+        },
+        "x86": "https://aka.ms/vs/16/release/vs_community.exe"
+      },
+      "version": "latest",
+      "displayname": "Visual Studio Community",
+      "role": "IT",
+      "uninstall argument": [
+        "{{.uninstaller}}",
+        "-q"
+      ]
+    },
+    {
+      "name": "visual-studio-enterprise-2019",
+      "installer": {
+        "kind": "custom",
+        "options": {
+          "extension": ".exe",
+          "arguments": [
+            "{{.installer}}",
+            "--quiet",
+            "--norestart",
+            "--wait"
+          ]
+        },
+        "x86": "https://aka.ms/vs/16/release/vs_enterprise.exe"
+      },
+      "version": "latest",
+      "displayname": "Visual Studio Enterprise",
+      "role": "IT"
+    },
+    {
+      "name": "vlc",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://download.videolan.org/pub/videolan/vlc/last/win32/vlc-3.0.16-win32.msi",
+        "x86_64": "https://download.videolan.org/pub/videolan/vlc/last/win64/vlc-3.0.16-win64.msi"
+      },
+      "version": "3.0.16",
+      "displayname": "VLC media player",
+      "role": "None"
+    },
+    {
+      "name": "whatsapp",
+      "installer": {
+        "kind": "squirrel",
+        "x86": "https://web.whatsapp.com/desktop/windows/release/ia32/WhatsAppSetup.exe",
+        "x86_64": "https://web.whatsapp.com/desktop/windows/release/x64/WhatsAppSetup.exe"
+      },
+      "version": "latest",
+      "displayname": "WhatsApp",
+      "role": "None"
+    },
+    {
+      "name": "winfsp",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://github.com/billziss-gh/winfsp/releases/download/v1.9/winfsp-1.9.21096.msi"
+      },
+      "version": "1.9",
+      "displayname": "WinFsp ",
+      "role": "None"
+    },
+    {
+      "name": "winrar",
+      "installer": {
+        "kind": "custom",
+        "options": {
+          "arguments": [
+            "{{.installer}}",
+            "/S"
+          ]
+        },
+        "x86": "https://rarlab.com/rar/wrar602.exe",
+        "x86_64": "https://rarlab.com/rar/winrar-x64-602.exe"
+      },
+      "version": "6.02",
+      "displayname": "WinRAR",
+      "role": "None",
+      "uninstall argument": [
+        "{{.uninstaller}}",
+        "/S"
+      ]
+    },
+    {
+      "name": "winscp",
+      "installer": {
+        "kind": "innosetup",
+        "options": {
+          "extension": ".exe"
+        },
+        "x86": "https://sourceforge.net/projects/winscp/files/WinSCP/5.19.2/WinSCP-5.19.2-Setup.exe/download"
+      },
+      "version": "5.19.2",
+      "displayname": "WinSCP",
+      "role": "None"
+    },
+    {
+      "name": "wireshark",
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://1.as.dl.wireshark.org/win32/Wireshark-win32-3.6.0.exe",
+        "x86_64": "https://1.as.dl.wireshark.org/win64/Wireshark-win64-3.6.0.exe"
+      },
+      "version": "3.6.0",
+      "displayname": "Wireshark",
+      "role": "IT"
+    },
+    {
+      "name": "wix",
+      "installer": {
+        "kind": "custom",
+        "options": {
+          "shims": [
+            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.11\\bin\\candle.exe",
+            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.11\\bin\\dark.exe",
+            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.11\\bin\\heat.exe",
+            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.11\\bin\\insignia.exe",
+            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.11\\bin\\light.exe",
+            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.11\\bin\\lit.exe",
+            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.11\\bin\\lux.exe",
+            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.11\\bin\\melt.exe",
+            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.11\\bin\\nit.exe",
+            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.11\\bin\\pyro.exe",
+            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.11\\bin\\shine.exe",
+            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.11\\bin\\smoke.exe",
+            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.11\\bin\\ThmViewer.exe",
+            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.11\\bin\\torch.exe",
+            "{{.PROGRAMFILES_X86}}\\WiX Toolset v3.11\\bin\\WixCop.exe"
+          ],
+          "arguments": [
+            "{{.installer}}",
+            "-norestart",
             "-quiet"
-         ]
+          ]
+        },
+        "x86": "https://github.com/wixtoolset/wix3/releases/download/wix3111rtm/wix311.exe"
       },
-      {
-         "name":"wixedit",
-         "installer":{
-            "kind":"msi",
-            "x86":"https://github.com/WixEdit/WixEdit/releases/download/v0.7.5.0/wixedit-0.7.5.msi"
-         },
-         "version":"0.7.5",
-         "displayname":"WixEdit",
-         "role":"None"
+      "version": "3.11.1",
+      "displayname": "WiX Toolset",
+      "role": "None",
+      "uninstall argument": [
+        "{{.uninstaller}}",
+        "-quiet"
+      ]
+    },
+    {
+      "name": "wixedit",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://github.com/WixEdit/WixEdit/releases/download/v0.7.5.0/wixedit-0.7.5.msi"
       },
-      {
-         "name":"workflowy",
-         "installer":{
-            "kind":"nsis",
-            "x86":"https://github.com/workflowy/desktop/releases/download/v1.3.6-555/WorkFlowy-Installer.exe"
-         },
-         "version":"1.3.6",
-         "displayname":"WorkFlowy",
-         "role":"None"
+      "version": "0.7.5",
+      "displayname": "WixEdit",
+      "role": "None"
+    },
+    {
+      "name": "workflowy",
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://github.com/workflowy/desktop/releases/download/v1.3.6-555/WorkFlowy-Installer.exe"
       },
-      {
-         "name":"wox",
-         "installer":{
-            "kind":"squirrel",
-            "x86":"https://github.com/Wox-launcher/Wox/releases/download/v1.3.524/Wox-1.3.524.exe"
-         },
-         "version":"1.3.524",
-         "displayname":"Wox",
-         "role":"None"
+      "version": "1.3.6",
+      "displayname": "WorkFlowy",
+      "role": "None"
+    },
+    {
+      "name": "wox",
+      "installer": {
+        "kind": "squirrel",
+        "x86": "https://github.com/Wox-launcher/Wox/releases/download/v1.3.524/Wox-1.3.524.exe"
       },
-      {
-         "name":"yarn",
-         "installer":{
-            "kind":"msi",
-            "options":{
-               "extension":".exe"
-            },
-            "x86":"https://yarnpkg.com/latest.msi"
-         },
-         "version":"latest",
-         "displayname":"Yarn",
-         "role":"None"
-      }
-   ]
+      "version": "1.3.524",
+      "displayname": "Wox",
+      "role": "None"
+    },
+    {
+      "name": "yarn",
+      "installer": {
+        "kind": "msi",
+        "options": {
+          "extension": ".exe"
+        },
+        "x86": "https://yarnpkg.com/latest.msi"
+      },
+      "version": "latest",
+      "displayname": "Yarn",
+      "role": "None"
+    }
+  ]
 }

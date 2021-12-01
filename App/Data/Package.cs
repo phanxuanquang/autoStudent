@@ -13,7 +13,8 @@ namespace App
 
     public partial class Root
     {
-
+        [JsonProperty("updatedate")]
+        public DateTime UpdateDate { get; set; }
         [JsonProperty("packages")]
         public List<Package> Packages { get; set; }
     }
