@@ -75,63 +75,70 @@ namespace App.InstallUninstall
                     string pathFile = Path.Combine(this.directoryFolderDownload, fileName);
                     if (!File.Exists(pathFile))
                     {
-                        using (HttpResponseMessage response = client.GetAsync(new Uri(URL), HttpCompletionOption.ResponseHeadersRead).Result)
+                        try
                         {
-                            HttpResponseMessage httpRequestMessage = response.EnsureSuccessStatusCode();
-                            if (httpRequestMessage.IsSuccessStatusCode && long.TryParse(response.Content.Headers.SingleOrDefault(h => h.Key.Equals("Content-Length")).Value.First(), out long totalSize))
+                            using (HttpResponseMessage response = client.GetAsync(new Uri(URL), HttpCompletionOption.ResponseHeadersRead).Result)
                             {
-                                try
+                                HttpResponseMessage httpRequestMessage = response.EnsureSuccessStatusCode();
+                                if (httpRequestMessage.IsSuccessStatusCode && long.TryParse(response.Content.Headers.SingleOrDefault(h => h.Key.Equals("Content-Length")).Value.First(), out long totalSize))
                                 {
-                                    using (Stream contentStream = await response.Content.ReadAsStreamAsync(), fileStream = new FileStream(pathFile, FileMode.Create, FileAccess.Write, FileShare.None, 8192, true))
+                                    try
                                     {
-                                        var totalRead = 0L;
-                                        var stepSegment = 0L;
-                                        var buffer = new byte[8192];
-                                        var isMoreToRead = true;
-                                        do
+                                        using (Stream contentStream = await response.Content.ReadAsStreamAsync(), fileStream = new FileStream(pathFile, FileMode.Create, FileAccess.Write, FileShare.None, 8192, true))
                                         {
-                                            var read = await contentStream.ReadAsync(buffer, 0, buffer.Length);
-                                            if (read == 0)
+                                            var totalRead = 0L;
+                                            var stepSegment = 0L;
+                                            var buffer = new byte[8192];
+                                            var isMoreToRead = true;
+                                            do
                                             {
-                                                isMoreToRead = false;
-                                            }
-                                            else
-                                            {
-                                                await fileStream.WriteAsync(buffer, 0, read);
+                                                var read = await contentStream.ReadAsync(buffer, 0, buffer.Length);
+                                                if (read == 0)
+                                                {
+                                                    isMoreToRead = false;
+                                                }
+                                                else
+                                                {
+                                                    await fileStream.WriteAsync(buffer, 0, read);
 
-                                                totalRead += read;
-                                                stepSegment += 1;
+                                                    totalRead += read;
+                                                    stepSegment += 1;
 
-                                                percentDownload = totalRead * 100.0f / totalSize;
+                                                    percentDownload = totalRead * 100.0f / totalSize;
+                                                }
+                                                if (blackList != null && blackList[index] == ProgressWindow_Base.ActionProcess.Canceled) break;
                                             }
-                                            if (blackList != null && blackList[index] == ProgressWindow_Base.ActionProcess.Canceled) break;
+                                            while (isMoreToRead);
+                                            exception = false;
                                         }
-                                        while (isMoreToRead);
-                                        exception = false;
-                                    }
-                                    if (blackList != null && blackList[index] == ProgressWindow_Base.ActionProcess.Canceled)
-                                    {
-                                        if (File.Exists(pathFile))
+                                        if (blackList != null && blackList[index] == ProgressWindow_Base.ActionProcess.Canceled)
                                         {
-                                            File.Delete(pathFile);
+                                            if (File.Exists(pathFile))
+                                            {
+                                                File.Delete(pathFile);
+                                            }
+                                            MessageBox.Show("Đã hủy");
                                         }
-                                        MessageBox.Show("Đã hủy");
+                                        else
+                                        {
+                                            MessageBox.Show("Tải hoàn tất" + index.ToString());
+                                        }
                                     }
-                                    else
+                                    catch (IOException)
                                     {
-                                        MessageBox.Show("Tải hoàn tất" + index.ToString());
+                                        MessageBox.Show("Bộ nhớ đầy");
                                     }
+                                    catch (UnauthorizedAccessException)
+                                    {
+                                        MessageBox.Show("Không truy cập được");
+                                    }
+                                    statusDownload = true;
                                 }
-                                catch (IOException)
-                                {
-                                    MessageBox.Show("Bộ nhớ đầy");
-                                }
-                                catch (UnauthorizedAccessException)
-                                {
-                                    MessageBox.Show("Không truy cập được");
-                                }
-                                statusDownload = true;
                             }
+                        }
+                        catch
+                        {
+                            statusDownload = true;
                         }
                     }
                     else
