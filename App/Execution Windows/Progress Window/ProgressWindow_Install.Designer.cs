@@ -45,7 +45,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(125, 25);
             this.label1.TabIndex = 41;
-            this.label1.Text = "Đã hoàn thành";
+            this.label1.Text = "Tiến độ";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label1.UseCompatibleTextRendering = true;
             // 
@@ -90,7 +90,7 @@
             this.guna2Button1.Text = "HỦY";
             this.guna2Button1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
 
-            this.ResumeLayout();
+            this.ResumeLayout(false);
         }
 
         #endregion

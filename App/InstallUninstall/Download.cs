@@ -70,7 +70,7 @@ namespace App.InstallUninstall
             isCancel = true;
         }
 
-        private async void DownloadsNext(int index)
+        public async void DownloadsNext(int index)
         {
             statusDownload = false;
             percentDownload = 0.0f;

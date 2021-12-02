@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace App
 {
@@ -47,6 +48,7 @@ namespace App
         }
 
         protected virtual void LoadDataGridView() { }
+        protected virtual void ToDo() { }
 
         protected void UpdateCompletedAmount(int value)
         {
@@ -54,14 +56,14 @@ namespace App
             {
                 try
                 {
-                    progressBar.Value = Convert.ToInt32(value / listSoftware.Count);
+                    progressBar.Value = Convert.ToInt32(value * 100.0f / listSoftware.Count);
                     completedAmountLabel.Text = String.Format("{0}/{1}", value, listSoftware.Count);
                 }
                 catch
                 {
                     progressBar.BeginInvoke(new Action(() =>
                     {
-                        progressBar.Value = Convert.ToInt32(value / listSoftware.Count);
+                        progressBar.Value = Convert.ToInt32(value * 100.0f / listSoftware.Count);
                     }));
                     completedAmountLabel.BeginInvoke(new Action(() =>
                     {
@@ -97,6 +99,151 @@ namespace App
         private void guna2Button2_Click(object sender, EventArgs e)
         {
             softwareGridView.Visible = !softwareGridView.Visible;
+        }
+
+        protected void UpdateStatusProcess(int index, StatusDataGridView status)
+        {
+            UpdateActionButton(index, status);
+            if (listSoftware != null && index > -1 && index < listSoftware.Count)
+            {
+                try
+                {
+                    softwareGridView.Rows[index].Cells[softwareGridView.Columns.Count - 2].Value = GetImageStatus(status);
+                }
+                catch
+                {
+                    softwareGridView.BeginInvoke(new Action(() =>
+                    {
+                        softwareGridView.Rows[index].Cells[softwareGridView.Columns.Count - 2].Value = GetImageStatus(status);
+                    }));
+                }
+            }
+        }
+        protected void UpdateActionButton(int index, StatusDataGridView status)
+        {
+            if (status == StatusDataGridView.Uninstalling || status == StatusDataGridView.Installing)
+            {
+                if (listSoftware != null && index > -1 && index < listSoftware.Count)
+                {
+                    try
+                    {
+                        ((DataGridViewDisableButtonCell)softwareGridView.Rows[index].Cells[softwareGridView.Columns.Count - 1]).Enabled = false;
+                    }
+                    catch
+                    {
+                        softwareGridView.BeginInvoke(new Action(() =>
+                        {
+                            ((DataGridViewDisableButtonCell)softwareGridView.Rows[index].Cells[softwareGridView.Columns.Count - 1]).Enabled = false;
+                        }));
+                    }
+                }
+                softwareGridView.Refresh();
+            }
+        }
+    }
+
+    /// <summary>
+    /// Disable button data grid view
+    /// link: https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/disable-buttons-in-a-button-column-in-the-datagrid?view=netframeworkdesktop-4.8
+    /// </summary>
+    public class DataGridViewDisableButtonColumn : DataGridViewButtonColumn
+    {
+        public DataGridViewDisableButtonColumn()
+        {
+            this.CellTemplate = new DataGridViewDisableButtonCell();
+        }
+    }
+
+    public class DataGridViewDisableButtonCell : DataGridViewButtonCell
+    {
+        private bool enabledValue;
+        public bool Enabled
+        {
+            get
+            {
+                return enabledValue;
+            }
+            set
+            {
+                enabledValue = value;
+            }
+        }
+
+        // Override the Clone method so that the Enabled property is copied.
+        public override object Clone()
+        {
+            DataGridViewDisableButtonCell cell =
+                (DataGridViewDisableButtonCell)base.Clone();
+            cell.Enabled = this.Enabled;
+            return cell;
+        }
+
+        // By default, enable the button cell.
+        public DataGridViewDisableButtonCell()
+        {
+            this.enabledValue = true;
+        }
+
+        protected override void Paint(Graphics graphics,
+            Rectangle clipBounds, Rectangle cellBounds, int rowIndex,
+            DataGridViewElementStates elementState, object value,
+            object formattedValue, string errorText,
+            DataGridViewCellStyle cellStyle,
+            DataGridViewAdvancedBorderStyle advancedBorderStyle,
+            DataGridViewPaintParts paintParts)
+        {
+            // The button cell is disabled, so paint the border,
+            // background, and disabled button for the cell.
+            if (!this.enabledValue)
+            {
+                // Draw the cell background, if specified.
+                if ((paintParts & DataGridViewPaintParts.Background) ==
+                    DataGridViewPaintParts.Background)
+                {
+                    SolidBrush cellBackground =
+                        new SolidBrush(cellStyle.BackColor);
+                    graphics.FillRectangle(cellBackground, cellBounds);
+                    cellBackground.Dispose();
+                }
+
+                // Draw the cell borders, if specified.
+                if ((paintParts & DataGridViewPaintParts.Border) ==
+                    DataGridViewPaintParts.Border)
+                {
+                    PaintBorder(graphics, clipBounds, cellBounds, cellStyle,
+                        advancedBorderStyle);
+                }
+
+                // Calculate the area in which to draw the button.
+                Rectangle buttonArea = cellBounds;
+                Rectangle buttonAdjustment =
+                    this.BorderWidths(advancedBorderStyle);
+                buttonArea.X += buttonAdjustment.X;
+                buttonArea.Y += buttonAdjustment.Y;
+                buttonArea.Height -= buttonAdjustment.Height;
+                buttonArea.Width -= buttonAdjustment.Width;
+
+                // Draw the disabled button.
+                ButtonRenderer.DrawButton(graphics, buttonArea,
+                    PushButtonState.Disabled);
+
+                // Draw the disabled button text.
+                if (this.FormattedValue is String)
+                {
+                    TextRenderer.DrawText(graphics,
+                        (string)this.FormattedValue,
+                        this.DataGridView.Font,
+                        buttonArea, SystemColors.GrayText);
+                }
+            }
+            else
+            {
+                // The button cell is enabled, so let the base class
+                // handle the painting.
+                base.Paint(graphics, clipBounds, cellBounds, rowIndex,
+                    elementState, value, formattedValue, errorText,
+                    cellStyle, advancedBorderStyle, paintParts);
+            }
         }
     }
 }

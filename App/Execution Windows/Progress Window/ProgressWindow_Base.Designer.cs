@@ -44,7 +44,7 @@
             this.NameSoftware = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PercentDownload = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StatusProcess = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ActionButton = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ActionButton = new DataGridViewDisableButtonColumn();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.softwareGridView)).BeginInit();
             this.SuspendLayout();
@@ -329,6 +329,6 @@
         protected System.Windows.Forms.DataGridViewTextBoxColumn NameSoftware;
         protected System.Windows.Forms.DataGridViewTextBoxColumn PercentDownload;
         protected System.Windows.Forms.DataGridViewImageColumn StatusProcess;
-        protected System.Windows.Forms.DataGridViewButtonColumn ActionButton;
+        protected DataGridViewDisableButtonColumn ActionButton;
     }
 }
