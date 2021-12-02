@@ -13,10 +13,15 @@ namespace App
 {
     public partial class ProgressWindow_Base : Form
     {
+        private static RunBackground runBackground;
         protected List<Package> listSoftware;
+        protected List<ActionProcess> blackList;
+        protected int countCompletedAmount;
+        protected bool HasExitTodoTask;
         public enum StatusDataGridView
         {
             None,
+            Ready,
             Downloading,
             Installing,
             Uninstalling,
@@ -24,17 +29,34 @@ namespace App
             Canceled,
             Failed
         }
+        public enum ActionProcess
+        {
+            Done,
+            Canceled,
+            None
+        }
 
         public ProgressWindow_Base(List<Package> listSoftware) : this()
         {
             this.listSoftware = listSoftware;
-            UpdateCompletedAmount(0);
+            countCompletedAmount = 0;
+            UpdateCompletedAmount(countCompletedAmount);
+
+            blackList = new List<ActionProcess>();
+            for (int index = 0; index < this.listSoftware.Count; index++)
+            {
+                blackList.Add(ActionProcess.None);
+            }
         }
         public ProgressWindow_Base()
         {
             InitializeComponent();
             this.DoubleBuffered = true;
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            if (runBackground == null)
+            {
+                runBackground = new RunBackground(this, this.components);
+            }
         }
         //Anti Flickering
         protected override CreateParams CreateParams
@@ -78,6 +100,8 @@ namespace App
             Image result = null;
             switch (status)
             {
+                case StatusDataGridView.Ready:
+                    break;
                 case StatusDataGridView.Downloading:
                     break;
                 case StatusDataGridView.Installing:
@@ -128,16 +152,89 @@ namespace App
                     try
                     {
                         ((DataGridViewDisableButtonCell)softwareGridView.Rows[index].Cells[softwareGridView.Columns.Count - 1]).Enabled = false;
+                        softwareGridView.Refresh();
                     }
                     catch
                     {
                         softwareGridView.BeginInvoke(new Action(() =>
                         {
                             ((DataGridViewDisableButtonCell)softwareGridView.Rows[index].Cells[softwareGridView.Columns.Count - 1]).Enabled = false;
+                            softwareGridView.Refresh();
                         }));
                     }
                 }
-                softwareGridView.Refresh();
+            }
+        }
+
+        private void softwareGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.RowIndex < listSoftware.Count)
+            {
+                ActionButton_TextChanged(e.RowIndex, e.ColumnIndex, blackList[e.RowIndex] == ActionProcess.None ? ActionProcess.Canceled : ActionProcess.None);
+            }
+        }
+
+        protected void ActionButton_TextChanged(int row, int column, ActionProcess action)
+        {
+            if (column == softwareGridView.Columns.Count - 1 && row > -1 && row < listSoftware.Count)
+            {
+                if (((DataGridViewDisableButtonCell)softwareGridView.Rows[row].Cells[softwareGridView.Columns.Count - 1]).Enabled)
+                {
+                    string value = "";
+                    switch (action)
+                    {
+                        case ActionProcess.None:
+                            value = "HỦY";
+                            break;
+                        case ActionProcess.Done:
+                            value = "HỦY";
+                            break;
+                        case ActionProcess.Canceled:
+                            value = "KHÔI PHỤC";
+                            break;
+                    }
+                    try
+                    {
+                        softwareGridView.Rows[row].Cells[softwareGridView.Columns.Count - 1].Value = value;
+                    }
+                    catch
+                    {
+                        softwareGridView.BeginInvoke(new Action(() =>
+                        {
+                            softwareGridView.Rows[row].Cells[softwareGridView.Columns.Count - 1].Value = value;
+                        }));
+                    }
+                    blackList[row] = action;
+                    if (blackList[row] == ActionProcess.None && HasExitTodoTask)
+                    {
+                        ToDo();
+                    }
+                }
+            }
+        }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            if (HasExitTodoTask)
+            {
+                this.Close();
+            }
+            else backgroundRunning_Button_Click(null, null);
+        }
+
+        private void cancelAll_Button_Click(object sender, EventArgs e)
+        {
+            for(int index = 0; index < blackList.Count; index++)
+            {
+                ActionButton_TextChanged(index, softwareGridView.Columns.Count - 1, ActionProcess.Canceled);
+            }
+        }
+
+        private void backgroundRunning_Button_Click(object sender, EventArgs e)
+        {
+            if (runBackground != null)
+            {
+                runBackground.EnableRunBackground(Program.setting.timeSetter);
             }
         }
     }

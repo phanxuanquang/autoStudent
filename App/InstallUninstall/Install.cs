@@ -22,6 +22,7 @@ namespace App.InstallUninstall
 
         public override void RunProcess(int index)
         {
+            base.statusProcess = false;
             if (listSoftware != null && index > -1)
             {
                 MessageBox.Show(index.ToString());

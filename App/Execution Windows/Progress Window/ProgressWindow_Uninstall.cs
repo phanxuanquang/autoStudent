@@ -42,7 +42,7 @@ namespace App
             {
                 for(int index = 0; index < base.listSoftware.Count; index++)
                 {
-                    base.softwareGridView.Rows.Add(base.listSoftware[index].Displayname, null, "HỦY");
+                    base.softwareGridView.Rows.Add(base.listSoftware[index].Displayname, GetImageStatus(StatusDataGridView.Ready), "HỦY");
                 }
             }
         }
@@ -51,7 +51,8 @@ namespace App
         {
             Task.Factory.StartNew(() =>
             {
-                for (int index = 0; index < listSoftware.Count; index++)
+                int index = -1;
+                while ((index = blackList.IndexOf(ActionProcess.None)) != -1)
                 {
                     uninstall.RunProcess(index);
                     UpdateStatusProcess(index, StatusDataGridView.Uninstalling);
@@ -60,8 +61,10 @@ namespace App
                         Thread.Sleep(500);
                     }
                     UpdateStatusProcess(index, StatusDataGridView.Completed);
-                    UpdateCompletedAmount(index + 1);
+                    UpdateCompletedAmount(++countCompletedAmount);
+                    blackList[index] = ActionProcess.Done;
                 }
+                HasExitTodoTask = true;
             });
         }
     }

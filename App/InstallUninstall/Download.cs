@@ -17,7 +17,6 @@ namespace App.InstallUninstall
         private static HttpClient client;
         private List<Package> listSoftware;
         private string directoryFolderDownload;
-        private bool isCancel;
         private const int step = 10;
         private bool statusDownload;
         private float percentDownload;
@@ -34,13 +33,6 @@ namespace App.InstallUninstall
             get
             {
                 return percentDownload;
-            }
-        }
-        public bool isCanceled
-        {
-            get
-            {
-                return isCancel;
             }
         }
         public bool HasException
@@ -61,20 +53,18 @@ namespace App.InstallUninstall
         {
             this.listSoftware = listSoftware;
             this.directoryFolderDownload = directoryFolderDownload;
-            this.isCancel = false;
             statusDownload = false;
         }
 
-        public void Pause()
-        {
-            isCancel = true;
-        }
-
-        public async void DownloadsNext(int index)
+        public async void DownloadsNext(int index, List<ProgressWindow_Base.ActionProcess> blackList)
         {
             statusDownload = false;
             percentDownload = 0.0f;
-            isCancel = false;
+            if (blackList != null && index > -1 && index < listSoftware.Count && blackList[index] == ProgressWindow_Base.ActionProcess.Canceled)
+            {
+                statusDownload = true;
+                return;
+            }
             exception = true;
             if (this.listSoftware != null && index > -1)
             {
@@ -100,32 +90,26 @@ namespace App.InstallUninstall
                                         var isMoreToRead = true;
                                         do
                                         {
-                                            if (!isCancel)
+                                            var read = await contentStream.ReadAsync(buffer, 0, buffer.Length);
+                                            if (read == 0)
                                             {
-                                                var read = await contentStream.ReadAsync(buffer, 0, buffer.Length);
-                                                if (read == 0)
-                                                {
-                                                    isMoreToRead = false;
-                                                }
-                                                else
-                                                {
-                                                    await fileStream.WriteAsync(buffer, 0, read);
-
-                                                    totalRead += read;
-                                                    stepSegment += 1;
-
-                                                    percentDownload = totalRead * 100.0f / totalSize;
-                                                }
+                                                isMoreToRead = false;
                                             }
                                             else
                                             {
-                                                break;
+                                                await fileStream.WriteAsync(buffer, 0, read);
+
+                                                totalRead += read;
+                                                stepSegment += 1;
+
+                                                percentDownload = totalRead * 100.0f / totalSize;
                                             }
+                                            if (blackList != null && blackList[index] == ProgressWindow_Base.ActionProcess.Canceled) break;
                                         }
                                         while (isMoreToRead);
                                         exception = false;
                                     }
-                                    if (isCancel)
+                                    if (blackList != null && blackList[index] == ProgressWindow_Base.ActionProcess.Canceled)
                                     {
                                         if (File.Exists(pathFile))
                                         {

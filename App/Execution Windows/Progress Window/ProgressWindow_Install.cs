@@ -55,7 +55,7 @@ namespace App
             {
                 for (int index = 0; index < base.listSoftware.Count; index++)
                 {
-                    base.softwareGridView.Rows.Add(base.listSoftware[index].Displayname, "0%", null, "HỦY");
+                    base.softwareGridView.Rows.Add(base.listSoftware[index].Displayname, "0%", GetImageStatus(StatusDataGridView.Ready), "HỦY");
                 }
             }
         }
@@ -87,24 +87,27 @@ namespace App
         {
             Task.Factory.StartNew(() =>
             {
-                for (int index = 0; index < listSoftware.Count; index++)
+                HasExitTodoTask = false;
+                int index = -1;
+                while ((index = blackList.IndexOf(ActionProcess.None)) != -1)
                 {
-                    download.DownloadsNext(index);
+                    download.DownloadsNext(index, blackList);
                     UpdateStatusProcess(index, StatusDataGridView.Downloading);
                     while (!download.isCompleted)
                     {
                         UpdatePercentProcess(index, download.GetPercentDownload);
                         Thread.Sleep(500);
                     }
-                    if (download.isCanceled)
+                    if (blackList[index] == ActionProcess.Canceled)
                     {
                         UpdateStatusProcess(index, StatusDataGridView.Canceled);
-                        break;
+                        continue;
                     }
                     if (download.HasException)
                     {
                         UpdateStatusProcess(index, StatusDataGridView.Failed);
-                        break;
+                        ActionButton_TextChanged(index, base.softwareGridView.Columns.Count - 1, ActionProcess.Canceled);
+                        continue;
                     }
                     UpdatePercentProcess(index, 100.0f);
                     UpdateStatusProcess(index, StatusDataGridView.Installing);
@@ -114,9 +117,13 @@ namespace App
                         Thread.Sleep(1000);
                     }
                     UpdateStatusProcess(index, StatusDataGridView.Completed);
-                    UpdateCompletedAmount(index + 1);
+                    UpdateCompletedAmount(++countCompletedAmount);
+                    blackList[index] = ActionProcess.Done;
                 }
+                HasExitTodoTask = true;
             });
         }
+
+        
     }
 }
