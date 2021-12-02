@@ -120,6 +120,11 @@ namespace App
         public Setting(DateTime dateTime)
         {
             _timeSetter = dateTime;
+            this._afterAction = AfterAction.None;
+            this._cleanAfter = false;
+            this._dataExport = false;
+            this._saveDownloadPath = @"C:\";
+            this._exportPath = String.Empty;
         }
 
         // For Lock
@@ -204,5 +209,4 @@ namespace App
             return false;
         }
     }
-
 }

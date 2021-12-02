@@ -116,11 +116,10 @@ namespace App.InstallUninstall
                                             File.Delete(pathFile);
                                         }
                                         MessageBox.Show("Đã hủy");
-                                        return;
                                     }
                                     else
                                     {
-                                        MessageBox.Show("tai xong" + index.ToString());
+                                        MessageBox.Show("Tải hoàn tất" + index.ToString());
                                     }
                                 }
                                 catch (IOException)
