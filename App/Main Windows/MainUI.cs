@@ -93,7 +93,7 @@ namespace App
                 DateTime modificationFileWeb = GetLastModifyTime(path);
                 DateTime modificationFileSystem = DataAccess.Instance.GetUpdateTime();
 
-                if (modificationFileWeb >= modificationFileSystem)
+                if (modificationFileWeb > modificationFileSystem)
                 {
                     WebClient Client = new WebClient();
                     client.DownloadFile(path, DataAccess.Instance.GetFilePath());

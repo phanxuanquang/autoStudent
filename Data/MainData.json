@@ -1,5 +1,5 @@
 {
-  "updatedate": "2021-01-12T00:00:00Z",
+  "updatedate": "2021-12-03T00:00:00Z",
   "packages": [
     {
       "name": "1password",
@@ -78,6 +78,16 @@
       "role": "None"
     },
     {
+      "name": "artweaver",
+      "installer": {
+        "kind": "innosetup",
+        "x86_64": "https://www.artweaver.de/en/download/artweaverfree"
+      },
+      "version": "7.0.10",
+      "displayname": "Artweaver Free",
+      "role": "Graphic"
+    },
+    {
       "name": "atom",
       "installer": {
         "kind": "squirrel",
@@ -101,6 +111,17 @@
       "version": "3.0.5",
       "displayname": "Audacity",
       "role": "None"
+    },
+    {
+      "name": "audacity",
+      "installer": {
+        "kind": "innosetup",
+        "x86": "https://github.com/audacity/audacity/releases/download/Audacity-3.1.2/audacity-win-3.1.2-32bit.exe",
+        "x86_64": "https://github.com/audacity/audacity/releases/download/Audacity-3.1.2/audacity-win-3.1.2-64bit.exe"
+      },
+      "version": "3.1.2",
+      "displayname": "Audacity",
+      "role": "Tech"
     },
     {
       "name": "aws-cli",
@@ -204,6 +225,16 @@
       "version": "1.14.2",
       "displayname": "Brackets",
       "role": "IT"
+    },
+    {
+      "name": "brlcad",
+      "installer": {
+        "kind": "nsis",
+        "x86_64": "https://sourceforge.net/projects/brlcad/files/latest/download"
+      },
+      "version": "7.32.2",
+      "displayname": "BRL-CAD",
+      "role": "Tech"
     },
     {
       "name": "calibre",
@@ -434,6 +465,17 @@
       "role": "IT"
     },
     {
+      "name": "easyeda",
+      "installer": {
+        "kind": "innosetup",
+        "x86": "https://image.easyeda.com/files/easyeda-windows-ia32-6.4.25.exe",
+        "x86_64": "https://image.easyeda.com/files/easyeda-windows-x64-6.4.25.exe"
+      },
+      "version": "6.4.25",
+      "displayname": "EasyEDA",
+      "role": "Tech"
+    },
+    {
       "name": "em-client",
       "installer": {
         "kind": "msi",
@@ -494,6 +536,17 @@
       "version": "1.4.1.1009",
       "displayname": "Everything",
       "role": "None"
+    },
+    {
+      "name": "firealpaca",
+      "installer": {
+        "kind": "innosetup",
+        "x86": "https://firealpaca.com/download/win",
+        "x86_64": "https://firealpaca.com/download/win64"
+      },
+      "version": "2.6.7",
+      "displayname": "FireAlpaca",
+      "role": "Graphic"
     },
     {
       "name": "firefox",
@@ -808,6 +861,28 @@
       "role": "None"
     },
     {
+      "name": "hydrogen",
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://github.com/hydrogen-music/hydrogen/releases/download/1.1.0/Hydrogen-1.1.0-win32.exe",
+        "x86_64": "https://github.com/hydrogen-music/hydrogen/releases/download/1.1.0/Hydrogen-1.1.0-win64.exe"
+      },
+      "version": "1.1.0",
+      "displayname": "Hydrogen",
+      "role": "Tech"
+    },
+    {
+      "name": "inkscape",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://inkscape.org/release/inkscape-1.1.1/windows/32-bit/msi/dl/",
+        "x86_64": "https://inkscape.org/release/inkscape-1.1.1/windows/64-bit/msi/dl/"
+      },
+      "version": "1.1.1",
+      "displayname": "Inkscape",
+      "role": "Graphic"
+    },
+    {
       "name": "innosetup",
       "installer": {
         "kind": "innosetup",
@@ -855,6 +930,16 @@
       "version": "latest",
       "displayname": "JetBrains Toolbox",
       "role": "IT"
+    },
+    {
+      "name": "kdenlive",
+      "installer": {
+        "kind": "innosetup",
+        "x86_64": "https://download.kde.org/stable/kdenlive/21.08/windows/kdenlive-21.08.3.exe"
+      },
+      "version": "21.08.3",
+      "displayname": "kdenlive",
+      "role": "Graphic"
     },
     {
       "name": "keepass",
@@ -947,6 +1032,26 @@
       "role": "Graphic"
     },
     {
+      "name": "leocad",
+      "installer": {
+        "kind": "nsis",
+        "x86_64": "https://github.com/leozide/leocad/releases/download/v21.06/LeoCAD-Windows-21.06.exe"
+      },
+      "version": "21.06",
+      "displayname": "LeoCAD",
+      "role": "Tech"
+    },
+    {
+      "name": "librecad",
+      "installer": {
+        "kind": "nsis",
+        "x86_64": "https://sourceforge.net/projects/librecad/files/latest/download"
+      },
+      "version": "2.1.3",
+      "displayname": "LibreCAD",
+      "role": "Tech"
+    },
+    {
       "name": "libreoffice",
       "installer": {
         "kind": "msi",
@@ -958,6 +1063,17 @@
       "role": "None"
     },
     {
+      "name": "lmms",
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://github.com/LMMS/lmms/releases/download/v1.2.2/lmms-1.2.2-win32.exe",
+        "x86_64": "https://github.com/LMMS/lmms/releases/download/v1.2.2/lmms-1.2.2-win64.exe"
+      },
+      "version": "1.2.2",
+      "displayname": "LMMS",
+      "role": "Tech"
+    },
+    {
       "name": "lockhunter",
       "installer": {
         "kind": "innosetup",
@@ -966,6 +1082,16 @@
       "version": "3.4.2",
       "displayname": "LockHunter",
       "role": "None"
+    },
+    {
+      "name": "madiacoder",
+      "installer": {
+        "kind": "nsis",
+        "x86_64": "https://www.fosshub.com/MediaCoder.html?dwl=MediaCoder-x64-0.8.63.exe"
+      },
+      "version": "0.8.63",
+      "displayname": "MediaCoder",
+      "role": "Graphic"
     },
     {
       "name": "mailspring",
@@ -992,6 +1118,16 @@
       "version": "latest",
       "displayname": "MailStore Home",
       "role": "None"
+    },
+    {
+      "name": "makemkv",
+      "installer": {
+        "kind": "nsis",
+        "x86_64": "https://www.makemkv.com/download/Setup_MakeMKV_v1.16.5.exe"
+      },
+      "version": "1.16.5",
+      "displayname": "MakeMKV",
+      "role": "Graphic"
     },
     {
       "name": "malwarebytes",
@@ -1052,6 +1188,17 @@
       "version": "latest",
       "displayname": "Microsoft Teams",
       "role": "None"
+    },
+    {
+      "name": "mkvtoolnix",
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://www.fosshub.com/MKVToolNix.html?dwl=mkvtoolnix-32-bit-63.0.0-setup.exe",
+        "x86_64": "https://www.fosshub.com/MKVToolNix.html?dwl=mkvtoolnix-64-bit-63.0.0-setup.exe"
+      },
+      "version": "63.0.0",
+      "displayname": "MKVToolNix",
+      "role": "Graphic"
     },
     {
       "name": "mono",
@@ -1226,7 +1373,7 @@
       },
       "version": "27.1.1",
       "displayname": "OBS Studio",
-      "role": "None"
+      "role": "Graphic"
     },
     {
       "name": "octave",
@@ -1249,6 +1396,38 @@
       "version": "latest",
       "displayname": "ONLYOFFICE Desktop Editors",
       "role": "None"
+    },
+    {
+      "name": "openscad",
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://files.openscad.org/OpenSCAD-2021.01-x86-32-Installer.exe",
+        "x86_64": "https://files.openscad.org/OpenSCAD-2021.01-x86-64-Installer.exe"
+      },
+      "version": "2021.01",
+      "displayname": "OpenSCAD",
+      "role": "Tech"
+    },
+    {
+      "name": "openshot",
+      "installer": {
+        "kind": "innosetup",
+        "x86": "https://github.com/OpenShot/openshot-qt/releases/download/v2.6.1/OpenShot-v2.6.1-x86.exe",
+        "x86_64": "https://github.com/OpenShot/openshot-qt/releases/download/v2.6.1/OpenShot-v2.6.1-x86_64.exe"
+      },
+      "version": "2.6.1",
+      "displayname": "OpenShot Video Editor",
+      "role": "Graphic"
+    },
+    {
+      "name": "opentoon",
+      "installer": {
+        "kind": "innosetup",
+        "x86_64": "https://github.com/opentoonz/opentoonz/releases/download/v1.5.0/OpenToonzSetup.exe"
+      },
+      "version": "1.5",
+      "displayname": "OpenToonz",
+      "role": "Graphic"
     },
     {
       "name": "origin",
@@ -1351,6 +1530,16 @@
       "role": "IT"
     },
     {
+      "name": "pricosmos",
+      "installer": {
+        "kind": "nsis",
+        "x86_64": "http://download.pcfreetime.com/PTSetup2.6.0.1.exe"
+      },
+      "version": "2.6.0.1",
+      "displayname": "PicosmosTools",
+      "role": "Graphic"
+    },
+    {
       "name": "processhacker",
       "installer": {
         "kind": "innosetup",
@@ -1409,6 +1598,17 @@
       "role": "None"
     },
     {
+      "name": "qcad",
+      "installer": {
+        "kind": "msi",
+        "x86": "https://www.qcad.org/archives/qcad/qcad-3.26.4-trial-win32-installer.msi",
+        "x86_64": "https://www.qcad.org/archives/qcad/qcad-3.26.4-trial-win64-installer.msi"
+      },
+      "version": "3.26.4",
+      "displayname": "QCAD",
+      "role": "Tech"
+    },
+    {
       "name": "qtox",
       "installer": {
         "kind": "nsis",
@@ -1439,6 +1639,16 @@
       "version": "1.8.0",
       "displayname": "Rclone Browser version ",
       "role": "None"
+    },
+    {
+      "name": "reaper",
+      "installer": {
+        "kind": "nsis",
+        "x86_64": "https://www.reaper.fm/files/6.x/reaper642_x64-install.exe"
+      },
+      "version": "6.42",
+      "displayname": "REAPER",
+      "role": "Tech"
     },
     {
       "name": "resilio-sync",
@@ -1541,6 +1751,16 @@
       "version": "3.9.2",
       "displayname": "SharpKeys",
       "role": "IT"
+    },
+    {
+      "name": "shotcut",
+      "installer": {
+        "kind": "nsis",
+        "x86_64": "https://github.com/mltframework/shotcut/releases/download/v21.10.31/shotcut-win64-211031.exe"
+      },
+      "version": "21.10.31",
+      "displayname": "Shotcut",
+      "role": "Graphic"
     },
     {
       "name": "signal",
@@ -1755,6 +1975,17 @@
       "version": "2.2.18",
       "displayname": "Vagrant",
       "role": "IT"
+    },
+    {
+      "name": "vclmediaplayer",
+      "installer": {
+        "kind": "nsis",
+        "x86": "https://get.videolan.org/vlc/3.0.16/win32/vlc-3.0.16-win32.exe",
+        "x86_64": "https://get.videolan.org/vlc/3.0.16/win64/vlc-3.0.16-win64.exe"
+      },
+      "version": "3.0.16",
+      "displayname": "VLC media player",
+      "role": "Graphic"
     },
     {
       "name": "vcredist-2005",
