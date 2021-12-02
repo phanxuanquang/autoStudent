@@ -22,8 +22,7 @@ namespace App
 
         protected override void exec()
         {
-            Program.software_System = selectedSoftwareList;
-            ProgressWindow_Uninstall progressWindow_Uninstall = new ProgressWindow_Uninstall(Program.software_System);
+            ProgressWindow_Uninstall progressWindow_Uninstall = new ProgressWindow_Uninstall(selectedSoftwareList);
             progressWindow_Uninstall.ShowDialog();
             this.Show();
         }
