@@ -13,8 +13,7 @@ namespace App.InstallUninstall
     {
         protected List<Package> listSoftware;
         protected TrackingProcess tracking;
-        protected int index;
-        protected bool isContinue;
+        protected bool statusProcess;
 
         public BaseProcess()
         {
@@ -24,35 +23,17 @@ namespace App.InstallUninstall
         public void Start(List<Package> listSoftware)
         {
             this.listSoftware = listSoftware;
-            index = -1;
-            isContinue = true;
-            isCompletedItem();
         }
 
-        public void Pause()
+        public bool isCompleted
         {
-            isContinue = false;
-        }
-
-        public void Continue()
-        {
-            if (index > 0)
+            get
             {
-                isContinue = true;
-                isCompletedItem();
+                return statusProcess;
             }
         }
 
-        public bool isCompleted()
-        {
-            if (listSoftware != null)
-            {
-                return index == listSoftware.Count;
-            }
-            return true;
-        }
-
-        protected abstract void isCompletedItem();
+        public abstract void RunProcess(int index);
 
         protected bool CreateProcess(GetPath.NewProcess newProcess)
         {

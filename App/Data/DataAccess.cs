@@ -98,5 +98,15 @@ namespace App
             List<Package> packages = new List<Package>(root.Packages);
             return packages;
         }
+
+        public string GetFilePath()
+        {
+            return filePath;
+        }
+
+        public DateTime GetUpdateTime()
+        {
+            return root.UpdateDate;
+        }
     }
 }

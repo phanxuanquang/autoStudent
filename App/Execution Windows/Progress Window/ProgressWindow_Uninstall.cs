@@ -13,63 +13,59 @@ namespace App
 {
     public partial class ProgressWindow_Uninstall : ProgressWindow_Base
     {
-        List<Package> SoftwareList;
-
-        public ProgressWindow_Uninstall(List<Package> softwareList)
+        private InstallUninstall.BaseProcess uninstall;
+        public ProgressWindow_Uninstall(List<Package> listSoftware) : base(listSoftware)
         {
             InitializeComponent();
-            this.SoftwareList = softwareList;
-            loadSoftwareToGridView(softwareList);
+
+            base.softwareGridView.Columns.Add(base.NameSoftware);
+            base.softwareGridView.Columns.Add(base.StatusProcess);
+            base.softwareGridView.Columns.Add(base.ActionButton);
+
+            LoadDataGridView();
+
+            uninstall = new InstallUninstall.Uninstall();
+            uninstall.Start(listSoftware);
+
+            this.Shown += ProgressWindow_Uninstall_Shown;
         }
 
-        void uninstall(List<Package> softwareList)
+        private void ProgressWindow_Uninstall_Shown(object sender, EventArgs e)
         {
-            App.InstallUninstall.BaseProcess uninstall = new InstallUninstall.Uninstall();
+            this.Shown -= ProgressWindow_Uninstall_Shown;
+            ToDo();
+        }
+
+        protected override void LoadDataGridView()
+        {
+            if (base.listSoftware != null)
+            {
+                for(int index = 0; index < base.listSoftware.Count; index++)
+                {
+                    base.softwareGridView.Rows.Add(base.listSoftware[index].Displayname, GetImageStatus(StatusDataGridView.Ready), "HỦY");
+                }
+            }
+        }
+
+        protected override void ToDo()
+        {
             Task.Factory.StartNew(() =>
             {
-                uninstall.Start(softwareList);
-                while (!uninstall.isCompleted())
+                int index = -1;
+                while ((index = blackList.IndexOf(ActionProcess.None)) != -1)
                 {
-                    Thread.Sleep(2000);
-                }
-            });
-        }
-        protected void loadSoftwareToGridView(List<Package> softwareList)
-        {
-            processGridView.Rows.Clear();
-            for (int i = 0; i < softwareList.Count; i++)
-            {
-                processGridView.Rows.Add(softwareList[i].Displayname, false);
-            }
-        }
-
-        private void detail_Button_Click(object sender, EventArgs e)
-        {
-            if (!processGridView.Visible)
-                processGridView.Visible = true;
-            else processGridView.Visible = false;
-        }
-
-        private void processGridView_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (processGridView.Columns[e.ColumnIndex].Name == "action" && processGridView.Rows[e.RowIndex].Cells[1].Value.ToString() == "false" && e.RowIndex >= 0)
-            {
-                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn hủy trình cài đặt này?", "HỦY", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    for (int i = 0; i < SoftwareList.Count; i++)
+                    uninstall.RunProcess(index);
+                    UpdateStatusProcess(index, StatusDataGridView.Uninstalling);
+                    while (!uninstall.isCompleted)
                     {
-                        if (SoftwareList[i].Displayname == processGridView.Rows[e.RowIndex].Cells[0].Value.ToString())
-                        {
-                            processGridView.Rows.Remove(processGridView.Rows[e.RowIndex]);
-                            SoftwareList.RemoveAt(i);
-                            loadSoftwareToGridView(SoftwareList);
-                            return;
-                        }
+                        Thread.Sleep(500);
                     }
+                    UpdateStatusProcess(index, StatusDataGridView.Completed);
+                    UpdateCompletedAmount(++countCompletedAmount);
+                    blackList[index] = ActionProcess.Done;
                 }
-
-            }
+                HasExitTodoTask = true;
+            });
         }
     }
 }

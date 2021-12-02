@@ -5,6 +5,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -85,11 +86,28 @@ namespace App
 
         private void updateButton_Click(object sender, EventArgs e)
         {
-            if (1 != 1)
+            try
             {
+                WebClient client = new WebClient();
+                string path = @"https://dung-ovl.github.io/MainData.json";
+                DateTime modificationFileWeb = GetLastModifyTime(path);
+                DateTime modificationFileSystem = DataAccess.Instance.GetUpdateTime();
 
+                if (modificationFileWeb > modificationFileSystem)
+                {
+                    WebClient Client = new WebClient();
+                    client.DownloadFile(path, DataAccess.Instance.GetFilePath());
+                    /*
+                    Code reload data
+                    */
+                    MessageBox.Show("Đã cập nhập");
+                }
+                else MessageBox.Show("Bạn đang sử dụng phiên bản mới nhất");
             }
-            else MessageBox.Show("Bạn đang sử dụng phiên bản mới nhất");
+            catch (Exception)
+            {
+                MessageBox.Show("Lỗi không xác định");
+            }
         }
 
         private void githubButton_Click(object sender, EventArgs e)
@@ -99,6 +117,25 @@ namespace App
             openGitHub.StartInfo.Arguments = "/C start https://github.com/phanxuanquang/autoStudent";
             openGitHub.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
             openGitHub.Start();
+        }
+
+        private DateTime GetLastModifyTime(string url)
+        {
+            WebRequest request = WebRequest.Create(url);
+            request.Credentials = CredentialCache.DefaultNetworkCredentials;
+            request.Method = "HEAD";
+
+            using (WebResponse response = request.GetResponse())
+            {
+                string lastModifyString = response.Headers.Get("Last-Modified");
+                DateTime remoteTime;
+                if (DateTime.TryParse(lastModifyString, out remoteTime))
+                {
+                    return remoteTime;
+                }
+
+                return DateTime.MinValue;
+            }
         }
     }
 }

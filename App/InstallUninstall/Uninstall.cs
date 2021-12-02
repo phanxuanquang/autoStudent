@@ -11,11 +11,11 @@ namespace App.InstallUninstall
 {
     class Uninstall : BaseProcess
     {
-        protected override void isCompletedItem()
+        public override void RunProcess(int index)
         {
-            if (isContinue && listSoftware != null)
+            base.statusProcess = false;
+            if (listSoftware != null && index > -1)
             {
-                index++;
                 MessageBox.Show(index.ToString());
                 if (listSoftware.Count > index)
                 {
@@ -27,12 +27,12 @@ namespace App.InstallUninstall
                             {
                                 Thread.Sleep(250);
                             }
-                            isCompletedItem();
+                            base.statusProcess = true;
                         });
                     }
                     else
                     {
-                        isCompletedItem();
+                        base.statusProcess = true;
                     }
                 }
             }
