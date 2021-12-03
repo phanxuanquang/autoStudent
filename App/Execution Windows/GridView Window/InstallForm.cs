@@ -25,8 +25,7 @@ namespace App
 
         protected override void exec()
         {
-            Program.software_Database = selectedSoftwareList;
-            ProgressWindow_Install progressWindow_Install = new ProgressWindow_Install(Program.software_Database);
+            ProgressWindow_Install progressWindow_Install = new ProgressWindow_Install(selectedSoftwareList);
             progressWindow_Install.ShowDialog();
             this.Show();
         }

@@ -154,7 +154,7 @@ namespace App
             }
         }
 
-        private void importSoftwareList_Click(object sender, EventArgs e)
+        private void ImportSoftwareList_Button_Click(object sender, EventArgs e)
         {
 
         }
