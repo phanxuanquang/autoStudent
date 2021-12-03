@@ -95,9 +95,10 @@ namespace App
                 DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn tiếp tục?", "TIẾP TỤC", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    //softwareList = selectedSoftwareList;
                     this.Hide();
                     exec();
+                    selectedSoftwareList.Clear();
+                    this.Refresh();
                 }
             }
             else MessageBox.Show("Bạn chưa chọn phần mềm nào");
@@ -151,6 +152,11 @@ namespace App
                     }
                 }
             }
+        }
+
+        private void importSoftwareList_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

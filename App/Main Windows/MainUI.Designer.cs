@@ -132,7 +132,7 @@
             this.githubButton.Image = ((System.Drawing.Image)(resources.GetObject("githubButton.Image")));
             this.githubButton.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.githubButton.ImageOffset = new System.Drawing.Point(10, 0);
-            this.githubButton.ImageSize = new System.Drawing.Size(25, 25);
+            this.githubButton.ImageSize = new System.Drawing.Size(30, 30);
             this.githubButton.Location = new System.Drawing.Point(0, 401);
             this.githubButton.Margin = new System.Windows.Forms.Padding(0);
             this.githubButton.Name = "githubButton";
@@ -196,7 +196,7 @@
             this.cleanButton.Image = ((System.Drawing.Image)(resources.GetObject("cleanButton.Image")));
             this.cleanButton.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.cleanButton.ImageOffset = new System.Drawing.Point(10, 0);
-            this.cleanButton.ImageSize = new System.Drawing.Size(25, 25);
+            this.cleanButton.ImageSize = new System.Drawing.Size(35, 35);
             this.cleanButton.Location = new System.Drawing.Point(0, 221);
             this.cleanButton.Margin = new System.Windows.Forms.Padding(0);
             this.cleanButton.Name = "cleanButton";
@@ -228,7 +228,7 @@
             this.settingButton.Image = ((System.Drawing.Image)(resources.GetObject("settingButton.Image")));
             this.settingButton.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.settingButton.ImageOffset = new System.Drawing.Point(10, 0);
-            this.settingButton.ImageSize = new System.Drawing.Size(25, 25);
+            this.settingButton.ImageSize = new System.Drawing.Size(30, 30);
             this.settingButton.Location = new System.Drawing.Point(0, 131);
             this.settingButton.Margin = new System.Windows.Forms.Padding(0);
             this.settingButton.Name = "settingButton";

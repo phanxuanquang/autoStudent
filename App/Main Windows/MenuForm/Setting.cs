@@ -108,17 +108,9 @@ namespace App
             }
         }
 
-        public Setting()
-        {
-            this._timeSetter = Program.setting.timeSetter;
-            this._afterAction = AfterAction.None;
-            this._cleanAfter = false;
-            this._dataExport = false;
-            this._saveDownloadPath = @"C:\";
-            this._exportPath = String.Empty;
-        }
         public Setting(DateTime dateTime)
         {
+            //importSetting();
             _timeSetter = dateTime;
             this._afterAction = AfterAction.None;
             this._cleanAfter = false;
@@ -208,5 +200,6 @@ namespace App
             else MessageBox.Show("Chưa có gì để export");
             return false;
         }
+
     }
 }

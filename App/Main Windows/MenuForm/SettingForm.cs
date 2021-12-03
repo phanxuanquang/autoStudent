@@ -17,6 +17,7 @@ namespace App
         {
             InitializeComponent();
         }
+
         // Anti Flickering
         protected override CreateParams CreateParams
         {
@@ -102,7 +103,7 @@ namespace App
             dataExportAfterCompleted_Switch.Checked = false;
 
             timeSetter.Value = Program.setting.timeSetter = DateTime.Now;
-            Program.setting.exportPath = exportPath.Text = saveDownload.Text = @"C:\";
+            exportPath.Text = saveDownload.Text = @"C:\";
         }
     }
 }

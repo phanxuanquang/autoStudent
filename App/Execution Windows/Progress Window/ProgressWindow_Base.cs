@@ -58,6 +58,7 @@ namespace App
                 runBackground = new RunBackground(this, this.components);
             }
         }
+
         //Anti Flickering
         protected override CreateParams CreateParams
         {

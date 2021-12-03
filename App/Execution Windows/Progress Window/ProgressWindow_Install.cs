@@ -96,7 +96,7 @@ namespace App
                     while (!download.isCompleted)
                     {
                         UpdatePercentProcess(index, download.GetPercentDownload);
-                        Thread.Sleep(500);
+                        Thread.Sleep(250);
                     }
                     if (blackList[index] == ActionProcess.Canceled)
                     {
@@ -123,7 +123,5 @@ namespace App
                 HasExitTodoTask = true;
             });
         }
-
-        
     }
 }
