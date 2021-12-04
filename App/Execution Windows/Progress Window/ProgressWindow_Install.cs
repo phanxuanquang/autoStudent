@@ -73,14 +73,18 @@ namespace App
                 }
                 catch
                 {
-                    ThreadProgressBar.BeginInvoke(new Action(() =>
+                    try
                     {
-                        ThreadProgressBar.Value = Convert.ToInt32(value);
-                    }));
-                    base.softwareGridView.BeginInvoke(new Action(() =>
-                    {
-                        base.softwareGridView.Rows[index].Cells[1].Value = String.Format("{0}%", Math.Round(value, 2));
-                    }));
+                        ThreadProgressBar.BeginInvoke(new Action(() =>
+                        {
+                            ThreadProgressBar.Value = Convert.ToInt32(value);
+                        }));
+                        base.softwareGridView.BeginInvoke(new Action(() =>
+                        {
+                            base.softwareGridView.Rows[index].Cells[1].Value = String.Format("{0}%", Math.Round(value, 2));
+                        }));
+                    }
+                    catch { }
                 }
             }
         }
@@ -98,6 +102,7 @@ namespace App
                     while (!download.isCompleted)
                     {
                         UpdatePercentProcess(index, download.GetPercentDownload);
+                        UpdateCompletedAmount(countCompletedAmount, download.GetPercentDownload);
                         Thread.Sleep(250);
                     }
                     if (blackList[index] == ActionProcess.Canceled)
@@ -111,15 +116,17 @@ namespace App
                         ActionButton_TextChanged(index, base.softwareGridView.Columns.Count - 1, ActionProcess.Canceled);
                         continue;
                     }
-                    UpdatePercentProcess(index, 100.0f);
+                    UpdatePercentProcess(index, 90.0f);
+                    UpdateCompletedAmount(countCompletedAmount, 90.0f);
                     UpdateStatusProcess(index, StatusDataGridView.Installing);
                     install.RunProcess(index);
                     while (!install.isCompleted)
                     {
                         Thread.Sleep(1000);
                     }
+                    UpdatePercentProcess(index, 100.0f);
                     UpdateStatusProcess(index, StatusDataGridView.Completed);
-                    UpdateCompletedAmount(++countCompletedAmount);
+                    UpdateCompletedAmount(++countCompletedAmount, 0);
                     blackList[index] = ActionProcess.Done;
                 }
                 HasExitTodoTask = true;

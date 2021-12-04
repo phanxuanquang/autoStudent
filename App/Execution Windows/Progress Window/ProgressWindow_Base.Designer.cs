@@ -111,7 +111,7 @@
             this.exitButton.ForeColor = System.Drawing.Color.White;
             this.exitButton.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(57)))), ((int)(((byte)(125)))));
             this.exitButton.HoverState.Parent = this.exitButton;
-            this.exitButton.Image = Properties.Resources.Exit;
+            this.exitButton.Image = global::App.Properties.Resources.Exit;
             this.exitButton.Location = new System.Drawing.Point(787, 2);
             this.exitButton.Name = "exitButton";
             this.exitButton.ShadowDecoration.Parent = this.exitButton;
@@ -135,8 +135,8 @@
             this.cancelAll_Button.ForeColor = System.Drawing.Color.Cyan;
             this.cancelAll_Button.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(57)))), ((int)(((byte)(125)))));
             this.cancelAll_Button.HoverState.Parent = this.cancelAll_Button;
-            this.cancelAll_Button.Location = new System.Drawing.Point(489, 45);
-            this.cancelAll_Button.Margin = new System.Windows.Forms.Padding(62, 4, 0, 0);
+            this.cancelAll_Button.Location = new System.Drawing.Point(487, 45);
+            this.cancelAll_Button.Margin = new System.Windows.Forms.Padding(61, 4, 0, 0);
             this.cancelAll_Button.Name = "cancelAll_Button";
             this.cancelAll_Button.ShadowDecoration.Parent = this.cancelAll_Button;
             this.cancelAll_Button.Size = new System.Drawing.Size(120, 35);
@@ -161,7 +161,7 @@
             this.backgroundRunning_Button.ForeColor = System.Drawing.Color.Cyan;
             this.backgroundRunning_Button.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(57)))), ((int)(((byte)(125)))));
             this.backgroundRunning_Button.HoverState.Parent = this.backgroundRunning_Button;
-            this.backgroundRunning_Button.Location = new System.Drawing.Point(307, 45);
+            this.backgroundRunning_Button.Location = new System.Drawing.Point(306, 45);
             this.backgroundRunning_Button.Margin = new System.Windows.Forms.Padding(0, 4, 0, 0);
             this.backgroundRunning_Button.Name = "backgroundRunning_Button";
             this.backgroundRunning_Button.ShadowDecoration.Parent = this.backgroundRunning_Button;
@@ -202,16 +202,16 @@
             this.detail_Button.ForeColor = System.Drawing.Color.Cyan;
             this.detail_Button.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(57)))), ((int)(((byte)(125)))));
             this.detail_Button.HoverState.Parent = this.detail_Button;
+            this.detail_Button.Image = global::App.Properties.Resources.Detail;
             this.detail_Button.ImageSize = new System.Drawing.Size(18, 18);
             this.detail_Button.Location = new System.Drawing.Point(125, 45);
-            this.detail_Button.Margin = new System.Windows.Forms.Padding(125, 4, 62, 0);
+            this.detail_Button.Margin = new System.Windows.Forms.Padding(125, 4, 61, 0);
             this.detail_Button.Name = "detail_Button";
             this.detail_Button.ShadowDecoration.Parent = this.detail_Button;
             this.detail_Button.Size = new System.Drawing.Size(120, 35);
             this.detail_Button.TabIndex = 41;
             this.detail_Button.Text = "CHI TIẾT";
             this.detail_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
-            this.detail_Button.Image = Properties.Resources.Detail;
             this.detail_Button.Click += new System.EventHandler(this.detai_Button_Click);
             // 
             // softwareGridView
@@ -308,9 +308,9 @@
             // 
             this.StatusProcess.FillWeight = 40F;
             this.StatusProcess.HeaderText = "TRẠNG THÁI";
+            this.StatusProcess.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.StatusProcess.Name = "StatusProcess";
             this.StatusProcess.ReadOnly = true;
-            this.StatusProcess.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             // 
             // ActionButton
             // 
@@ -324,7 +324,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.BackgroundImage = Properties.Resources.Background__SubWindow;
+            this.BackgroundImage = global::App.Properties.Resources.Background__SubWindow;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(819, 492);
             this.Controls.Add(this.softwareGridView);

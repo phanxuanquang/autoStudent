@@ -61,7 +61,7 @@ namespace App
                         Thread.Sleep(500);
                     }
                     UpdateStatusProcess(index, StatusDataGridView.Completed);
-                    UpdateCompletedAmount(++countCompletedAmount);
+                    UpdateCompletedAmount(++countCompletedAmount, 0);
                     blackList[index] = ActionProcess.Done;
                 }
                 HasExitTodoTask = true;

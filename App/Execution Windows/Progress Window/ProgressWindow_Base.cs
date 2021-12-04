@@ -18,6 +18,15 @@ namespace App
         protected List<ActionProcess> blackList;
         protected int countCompletedAmount;
         protected bool HasExitTodoTask;
+
+        private static readonly Image Ready = Properties.Resources.Ready;
+        private static readonly Image Download = Properties.Resources.Download;
+        private static readonly Image Install = Properties.Resources.Install;
+        private static readonly Image Uninstall = Properties.Resources.Uninstall;
+        private static readonly Image Complete = Properties.Resources.Complete;
+        private static readonly Image Cancel = Properties.Resources.Cancel;
+        private static readonly Image Fail = Properties.Resources.Fail;
+
         public enum StatusDataGridView
         {
             None,
@@ -40,7 +49,7 @@ namespace App
         {
             this.listSoftware = listSoftware;
             countCompletedAmount = 0;
-            UpdateCompletedAmount(countCompletedAmount);
+            UpdateCompletedAmount(countCompletedAmount, 0);
 
             blackList = new List<ActionProcess>();
             for (int index = 0; index < this.listSoftware.Count; index++)
@@ -84,28 +93,33 @@ namespace App
         protected virtual void ToDo() { }
 
         // Update
-        protected void UpdateCompletedAmount(int value)
+        protected void UpdateCompletedAmount(int value, float percentOfValue)
         {
             if (listSoftware != null && value >= 0)
             {
                 try
                 {
-                    progressBar.Value = Convert.ToInt32(value * 100.0f / listSoftware.Count);
+                    progressBar.Value = Convert.ToInt32((value * 100.0f + percentOfValue) / listSoftware.Count);
                     completedAmountLabel.Text = String.Format("{0}/{1}", value, listSoftware.Count);
                 }
                 catch
                 {
-                    progressBar.BeginInvoke(new Action(() =>
+                    try
                     {
-                        progressBar.Value = Convert.ToInt32(value * 100.0f / listSoftware.Count);
-                    }));
-                    completedAmountLabel.BeginInvoke(new Action(() =>
-                    {
-                        completedAmountLabel.Text = String.Format("{0}/{1}", value, listSoftware.Count);
-                    }));
+                        progressBar.BeginInvoke(new Action(() =>
+                        {
+                            progressBar.Value = Convert.ToInt32(value * 100.0f / listSoftware.Count);
+                        }));
+                        completedAmountLabel.BeginInvoke(new Action(() =>
+                        {
+                            completedAmountLabel.Text = String.Format("{0}/{1}", value, listSoftware.Count);
+                        }));
+                    }
+                    catch { }
                 }
             }
         }
+
         protected void UpdateStatusProcess(int index, StatusDataGridView status)
         {
             UpdateActionButton(index, status);
@@ -117,10 +131,14 @@ namespace App
                 }
                 catch
                 {
-                    softwareGridView.BeginInvoke(new Action(() =>
+                    try
                     {
-                        softwareGridView.Rows[index].Cells[softwareGridView.Columns.Count - 2].Value = GetImageStatus(status);
-                    }));
+                        softwareGridView.BeginInvoke(new Action(() =>
+                        {
+                            softwareGridView.Rows[index].Cells[softwareGridView.Columns.Count - 2].Value = GetImageStatus(status);
+                        }));
+                    }
+                    catch { }
                 }
             }
         }
@@ -137,11 +155,15 @@ namespace App
                     }
                     catch
                     {
-                        softwareGridView.BeginInvoke(new Action(() =>
+                        try
                         {
-                            ((DataGridViewDisableButtonCell)softwareGridView.Rows[index].Cells[softwareGridView.Columns.Count - 1]).Enabled = false;
-                            softwareGridView.Refresh();
-                        }));
+                            softwareGridView.BeginInvoke(new Action(() =>
+                            {
+                                ((DataGridViewDisableButtonCell)softwareGridView.Rows[index].Cells[softwareGridView.Columns.Count - 1]).Enabled = false;
+                                softwareGridView.Refresh();
+                            }));
+                        }
+                        catch { }
                     }
                 }
             }
@@ -153,25 +175,25 @@ namespace App
             switch (status)
             {
                 case StatusDataGridView.Ready:
-                    result = Properties.Resources.Ready;
+                    result = Ready;
                     break;
                 case StatusDataGridView.Downloading:
-                    result = Properties.Resources.Download;
+                    result = Download;
                     break;
                 case StatusDataGridView.Installing:
-                    result = Properties.Resources.Install;
+                    result = Install;
                     break;
                 case StatusDataGridView.Uninstalling:
-                    result = Properties.Resources.Uninstall;
+                    result = Uninstall;
                     break;
                 case StatusDataGridView.Completed:
-                    result = Properties.Resources.Complete;
+                    result = Complete;
                     break;
                 case StatusDataGridView.Canceled:
-                    result = Properties.Resources.Cancel;
+                    result = Cancel;
                     break;
                 case StatusDataGridView.Failed:
-                    result = Properties.Resources.Fail;
+                    result = Fail;
                     break;
                 case StatusDataGridView.None:
                     break;
@@ -212,10 +234,14 @@ namespace App
                     }
                     catch
                     {
-                        softwareGridView.BeginInvoke(new Action(() =>
+                        try
                         {
-                            softwareGridView.Rows[row].Cells[softwareGridView.Columns.Count - 1].Value = value;
-                        }));
+                            softwareGridView.BeginInvoke(new Action(() =>
+                            {
+                                softwareGridView.Rows[row].Cells[softwareGridView.Columns.Count - 1].Value = value;
+                            }));
+                        }
+                        catch { }
                     }
                     blackList[row] = action;
                     if (blackList[row] == ActionProcess.None && HasExitTodoTask)

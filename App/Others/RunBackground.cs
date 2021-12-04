@@ -86,7 +86,7 @@ namespace App
 
                 //notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("guna2Button4.Image")));
                 //Bắt buộc phải dùng icon. Dùng đỡ để test
-                notifyIcon.Icon = System.Drawing.Icon.ExtractAssociatedIcon(@"..\..\..\download_120262.ico");
+                notifyIcon.Icon = Properties.Resources.Icon_app_temporary;
                 notifyIcon.Text = "autoStudent";
 
                 ExitToolStripMenuItem.Text = "Thoát";
