@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.Background = new System.Windows.Forms.Panel();
             this.minimizeButton = new Guna.UI2.WinForms.Guna2Button();
             this.MainPanel = new System.Windows.Forms.Panel();
             this.wizardButton = new Guna.UI2.WinForms.Guna2ImageButton();
@@ -43,21 +42,8 @@
             this.installButton = new Guna.UI2.WinForms.Guna2Button();
             this.exitButton = new Guna.UI2.WinForms.Guna2Button();
             this.roundEdge = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.Background.SuspendLayout();
             this.MainPanel.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // Background
-            // 
-            this.Background.BackgroundImage = global::App.Properties.Resources.Background;
-            this.Background.Controls.Add(this.minimizeButton);
-            this.Background.Controls.Add(this.MainPanel);
-            this.Background.Controls.Add(this.exitButton);
-            this.Background.Location = new System.Drawing.Point(0, 0);
-            this.Background.Margin = new System.Windows.Forms.Padding(0);
-            this.Background.Name = "Background";
-            this.Background.Size = new System.Drawing.Size(971, 607);
-            this.Background.TabIndex = 0;
             // 
             // minimizeButton
             // 
@@ -371,22 +357,22 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
+            this.BackgroundImage = global::App.Properties.Resources.Background;
             this.ClientSize = new System.Drawing.Size(971, 607);
-            this.Controls.Add(this.Background);
+            this.Controls.Add(this.MainPanel);
+            this.Controls.Add(this.minimizeButton);
+            this.Controls.Add(this.exitButton);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainUI";
-            this.Background.ResumeLayout(false);
             this.MainPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel Background;
         private System.Windows.Forms.Panel MainPanel;
         private Guna.UI2.WinForms.Guna2ImageButton wizardButton;
         private Guna.UI2.WinForms.Guna2GradientButton githubButton;
