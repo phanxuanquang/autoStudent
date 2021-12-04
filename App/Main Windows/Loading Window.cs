@@ -20,6 +20,7 @@ namespace App
              @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall",
              @"SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall"
         };
+
         public LoadindWindow()
         {
             InitializeComponent();
@@ -54,7 +55,6 @@ namespace App
             else Program.software_Database = DataAccess.Instance.GetX86();
             isLoaded_Database = true;
         }
-
         private void loadFrom_System()
         {
             GetInstalledSofware(RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, Environment.Is64BitOperatingSystem ? RegistryView.Registry64 : RegistryView.Registry32), keys, Program.software_System);

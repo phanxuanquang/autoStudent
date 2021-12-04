@@ -15,10 +15,12 @@ namespace App
     {
         protected List<Package> softwareList = new List<Package>();
         protected List<Package> selectedSoftwareList = new List<Package>();
+
         public BaseExecutionForm()
         {
             InitializeComponent();
         }
+
         // Anti Flickering
         protected override CreateParams CreateParams
         {
@@ -30,6 +32,7 @@ namespace App
             }
         }
 
+        // Gridview Loading
         protected void loadSoftwareToGridView(List<Package> softwareList)
         {
             softwareGridView.Rows.Clear();
@@ -47,29 +50,8 @@ namespace App
                     softwareGridView.Rows.Add(softwareList[i].Displayname, softwareList[i].Version);
             }
         }
-        protected virtual void exec() { }
-
-        private void selectedSoftwareView_Button_Click(object sender, EventArgs e)
-        {
-            selectedSoftwareView_Button.Tag = "clicked";
-            loadSoftwareToGridView(selectedSoftwareList);
-        }
-        private void allSoftwareView_Button_Click(object sender, EventArgs e)
-        {
-            selectedSoftwareView_Button.Tag = "unclicked";
-            loadSoftwareToGridView(softwareList);
-        }
-
-        private void searchBox_TextChanged(object sender, EventArgs e)
-        {
-            for (int i = 0; i < softwareGridView.RowCount; i++)
-            {
-                if (softwareGridView.Rows[i].Cells[0].Value != null && softwareGridView.Rows[i].Cells[0].Value.ToString().ToLower().Contains(searchBox.Text.ToLower()))
-                    softwareGridView.Rows[i].Visible = true;
-                else softwareGridView.Rows[i].Visible = false;
-            }
-        }
-
+        
+        // Window Button
         private void exitButton_Click(object sender, EventArgs e)
         {
             if (selectedSoftwareList.Count != 0)
@@ -82,28 +64,18 @@ namespace App
             }
             else this.Close();
         }
+        private void BaseExecutionForm_Load(object sender, EventArgs e)
+        {
+            softwareGridView.Rows[0].Selected = false;
+        }
+
+        // Menu Button
         private void menuButton_Click(object sender, EventArgs e)
         {
             if (menuPanel.Width != 300)
                 menuPanel.Width = 300;
             else menuPanel.Width = 78;
         }
-        private void confirmButton_Click(object sender, EventArgs e)
-        {
-            if (selectedSoftwareList.Count != 0)
-            {
-                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn tiếp tục?", "TIẾP TỤC", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    this.Hide();
-                    exec();
-                    selectedSoftwareList.Clear();
-                    this.Refresh();
-                }
-            }
-            else MessageBox.Show("Bạn chưa chọn phần mềm nào");
-        }
-
         private void IT_Button_Click(object sender, EventArgs e)
         {
             loadSoftwareToGridView_Role(softwareList, Role.It);
@@ -120,7 +92,49 @@ namespace App
         {
             loadSoftwareToGridView_Role(softwareList, Role.None);
         }
+        private void ImportSoftwareList_Button_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        // Main Button
+        private void selectedSoftwareView_Button_Click(object sender, EventArgs e)
+        {
+            selectedSoftwareView_Button.Tag = "clicked";
+            loadSoftwareToGridView(selectedSoftwareList);
+        }
+        private void allSoftwareView_Button_Click(object sender, EventArgs e)
+        {
+            selectedSoftwareView_Button.Tag = "unclicked";
+            loadSoftwareToGridView(softwareList);
+        }
+        private void confirmButton_Click(object sender, EventArgs e)
+        {
+            if (selectedSoftwareList.Count != 0)
+            {
+                DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn tiếp tục?", "TIẾP TỤC", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    this.Hide();
+                    exec();
+                    selectedSoftwareList.Clear();
+                    this.Refresh();
+                }
+            }
+            else MessageBox.Show("Bạn chưa chọn phần mềm nào");
+        }
+        protected virtual void exec() { }
+
+        // Data Changing Functions
+        private void searchBox_TextChanged(object sender, EventArgs e)
+        {
+            for (int i = 0; i < softwareGridView.RowCount; i++)
+            {
+                if (softwareGridView.Rows[i].Cells[0].Value != null && softwareGridView.Rows[i].Cells[0].Value.ToString().ToLower().Contains(searchBox.Text.ToLower()))
+                    softwareGridView.Rows[i].Visible = true;
+                else softwareGridView.Rows[i].Visible = false;
+            }
+        }
         private void softwareGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (selectedSoftwareView_Button.Tag.ToString() == "unclicked" && e.RowIndex >= 0)
@@ -152,11 +166,6 @@ namespace App
                     }
                 }
             }
-        }
-
-        private void ImportSoftwareList_Button_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -33,6 +33,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BaseExecutionForm));
             this.softwareGridView = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.softwareName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.softwareVersion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.searchBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.confirmButton = new Guna.UI2.WinForms.Guna2Button();
             this.allSoftwareView_Button = new Guna.UI2.WinForms.Guna2Button();
@@ -45,8 +47,6 @@
             this.Tech_Button = new Guna.UI2.WinForms.Guna2GradientButton();
             this.IT_Button = new Guna.UI2.WinForms.Guna2GradientButton();
             this.exitButton = new Guna.UI2.WinForms.Guna2Button();
-            this.softwareVersion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.softwareName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.softwareGridView)).BeginInit();
             this.menuPanel.SuspendLayout();
             this.SuspendLayout();
@@ -126,6 +126,20 @@
             this.softwareGridView.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.Cyan;
             this.softwareGridView.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
             this.softwareGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.softwareGridView_CellClick);
+            // 
+            // softwareName
+            // 
+            this.softwareName.HeaderText = "PHẦN MỀM";
+            this.softwareName.Name = "softwareName";
+            this.softwareName.ReadOnly = true;
+            this.softwareName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // softwareVersion
+            // 
+            this.softwareVersion.HeaderText = "PHIÊN BẢN";
+            this.softwareVersion.Name = "softwareVersion";
+            this.softwareVersion.ReadOnly = true;
+            this.softwareVersion.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // searchBox
             // 
@@ -467,20 +481,6 @@
             this.exitButton.TabIndex = 23;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
-            // softwareVersion
-            // 
-            this.softwareVersion.HeaderText = "PHIÊN BẢN";
-            this.softwareVersion.Name = "softwareVersion";
-            this.softwareVersion.ReadOnly = true;
-            this.softwareVersion.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // softwareName
-            // 
-            this.softwareName.HeaderText = "PHẦN MỀM";
-            this.softwareName.Name = "softwareName";
-            this.softwareName.ReadOnly = true;
-            this.softwareName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
             // BaseExecutionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -499,6 +499,7 @@
             this.Name = "BaseExecutionForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BaseForm";
+            this.Load += new System.EventHandler(this.BaseExecutionForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.softwareGridView)).EndInit();
             this.menuPanel.ResumeLayout(false);
             this.ResumeLayout(false);

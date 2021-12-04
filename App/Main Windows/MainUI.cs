@@ -21,7 +21,7 @@ namespace App
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
         }
 
-        //Anti Flickering
+        // Anti Flickering
         protected override CreateParams CreateParams
         {
             get
@@ -32,6 +32,7 @@ namespace App
             }
         }
 
+        // Window
         private void exitButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -40,7 +41,6 @@ namespace App
         {
             this.WindowState = FormWindowState.Minimized;
         }
-
         private void wizardButton_Click(object sender, EventArgs e)
         {
             if (MainPanel.Left >= 0)
@@ -57,6 +57,7 @@ namespace App
             }
         }
 
+        // Main Button
         private void installButton_Click(object sender, EventArgs e)
         {
             InstallForm installForm = new InstallForm();
@@ -72,6 +73,7 @@ namespace App
             this.Show();
         }
 
+        // Menu
         private void settingButton_Click(object sender, EventArgs e)
         {
             SettingForm settingForm = new SettingForm();
@@ -83,9 +85,27 @@ namespace App
         {
             Program.setting.RunCleanAction(Program.setting.saveDownloadPath);
         }
-
         private void updateButton_Click(object sender, EventArgs e)
         {
+            DateTime GetLastModifyTime(string url)
+            {
+                WebRequest request = WebRequest.Create(url);
+                request.Credentials = CredentialCache.DefaultNetworkCredentials;
+                request.Method = "HEAD";
+
+                using (WebResponse response = request.GetResponse())
+                {
+                    string lastModifyString = response.Headers.Get("Last-Modified");
+                    DateTime remoteTime;
+                    if (DateTime.TryParse(lastModifyString, out remoteTime))
+                    {
+                        return remoteTime;
+                    }
+
+                    return DateTime.MinValue;
+                }
+            }
+
             try
             {
                 WebClient client = new WebClient();
@@ -109,7 +129,6 @@ namespace App
                 MessageBox.Show("Lỗi không xác định");
             }
         }
-
         private void githubButton_Click(object sender, EventArgs e)
         {
             Process openGitHub = new Process();
@@ -117,25 +136,6 @@ namespace App
             openGitHub.StartInfo.Arguments = "/C start https://github.com/phanxuanquang/autoStudent";
             openGitHub.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
             openGitHub.Start();
-        }
-
-        private DateTime GetLastModifyTime(string url)
-        {
-            WebRequest request = WebRequest.Create(url);
-            request.Credentials = CredentialCache.DefaultNetworkCredentials;
-            request.Method = "HEAD";
-
-            using (WebResponse response = request.GetResponse())
-            {
-                string lastModifyString = response.Headers.Get("Last-Modified");
-                DateTime remoteTime;
-                if (DateTime.TryParse(lastModifyString, out remoteTime))
-                {
-                    return remoteTime;
-                }
-
-                return DateTime.MinValue;
-            }
         }
     }
 }

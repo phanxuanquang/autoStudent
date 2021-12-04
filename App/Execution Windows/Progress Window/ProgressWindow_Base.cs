@@ -70,9 +70,24 @@ namespace App
             }
         }
 
+        //Window
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            if (HasExitTodoTask)
+            {
+                this.Close();
+            }
+            else backgroundRunning_Button_Click(null, null);
+        }
+        private void ProgressWindow_Base_Load(object sender, EventArgs e)
+        {
+            softwareGridView.Rows[0].Selected = false;
+        }
+
         protected virtual void LoadDataGridView() { }
         protected virtual void ToDo() { }
 
+        // Update
         protected void UpdateCompletedAmount(int value)
         {
             if (listSoftware != null && value >= 0)
@@ -95,40 +110,6 @@ namespace App
                 }
             }
         }
-
-        protected Image GetImageStatus(StatusDataGridView status)
-        {
-            string imgPath = @"../../../Design/Icon/ProgressWindow/";
-            Image result = null;
-            switch (status)
-            {
-                case StatusDataGridView.Ready:
-                    result = Image.FromFile(imgPath + "Ready.png");
-                    break;
-                case StatusDataGridView.Downloading:
-                    result = Image.FromFile(imgPath + "Download.png");
-                    break;
-                case StatusDataGridView.Installing:
-                    result = Image.FromFile(imgPath + "Install.png");
-                    break;
-                case StatusDataGridView.Uninstalling:
-                    result = Image.FromFile(imgPath + "Uninstall.png");
-                    break;
-                case StatusDataGridView.Completed:
-                    result = Image.FromFile(imgPath + "Complete.png");
-                    break;
-                case StatusDataGridView.Canceled:
-                    result = Image.FromFile(imgPath + "Cancel.png");
-                    break;
-                case StatusDataGridView.Failed:
-                    result = Image.FromFile(imgPath + "Fail.png");
-                    break;
-                case StatusDataGridView.None:
-                    break;
-            }
-            return result;
-        }
-
         protected void UpdateStatusProcess(int index, StatusDataGridView status)
         {
             UpdateActionButton(index, status);
@@ -170,6 +151,40 @@ namespace App
             }
         }
 
+        protected Image GetImageStatus(StatusDataGridView status)
+        {
+            string imgPath = @"../../../Design/Icon/ProgressWindow/";
+            Image result = null;
+            switch (status)
+            {
+                case StatusDataGridView.Ready:
+                    result = Image.FromFile(imgPath + "Ready.png");
+                    break;
+                case StatusDataGridView.Downloading:
+                    result = Image.FromFile(imgPath + "Download.png");
+                    break;
+                case StatusDataGridView.Installing:
+                    result = Image.FromFile(imgPath + "Install.png");
+                    break;
+                case StatusDataGridView.Uninstalling:
+                    result = Image.FromFile(imgPath + "Uninstall.png");
+                    break;
+                case StatusDataGridView.Completed:
+                    result = Image.FromFile(imgPath + "Complete.png");
+                    break;
+                case StatusDataGridView.Canceled:
+                    result = Image.FromFile(imgPath + "Cancel.png");
+                    break;
+                case StatusDataGridView.Failed:
+                    result = Image.FromFile(imgPath + "Fail.png");
+                    break;
+                case StatusDataGridView.None:
+                    break;
+            }
+            return result;
+        }
+
+        // Gridview
         private void softwareGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex > -1 && e.RowIndex < listSoftware.Count)
@@ -177,7 +192,6 @@ namespace App
                 ActionButton_TextChanged(e.RowIndex, e.ColumnIndex, blackList[e.RowIndex] == ActionProcess.None ? ActionProcess.Canceled : ActionProcess.None);
             }
         }
-
         protected void ActionButton_TextChanged(int row, int column, ActionProcess action)
         {
             if (column == softwareGridView.Columns.Count - 1 && row > -1 && row < listSoftware.Count)
@@ -217,20 +231,11 @@ namespace App
             }
         }
 
-        private void exitButton_Click(object sender, EventArgs e)
-        {
-            if (HasExitTodoTask)
-            {
-                this.Close();
-            }
-            else backgroundRunning_Button_Click(null, null);
-        }
-
+        // Button
         private void detai_Button_Click(object sender, EventArgs e)
         {
             softwareGridView.Visible = !softwareGridView.Visible;
         }
-
         private void cancelAll_Button_Click(object sender, EventArgs e)
         {
             for(int index = 0; index < blackList.Count; index++)
@@ -238,7 +243,6 @@ namespace App
                 ActionButton_TextChanged(index, softwareGridView.Columns.Count - 1, ActionProcess.Canceled);
             }
         }
-
         private void backgroundRunning_Button_Click(object sender, EventArgs e)
         {
             if (runBackground != null)
@@ -246,8 +250,6 @@ namespace App
                 runBackground.EnableRunBackground(Program.setting.timeSetter);
             }
         }
-
-        
     }
 
     /// <summary>
