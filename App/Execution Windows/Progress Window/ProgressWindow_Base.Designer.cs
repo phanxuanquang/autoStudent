@@ -327,9 +327,6 @@
             // ActionButton
             // 
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Cyan;
             this.ActionButton.DefaultCellStyle = dataGridViewCellStyle6;
             this.ActionButton.FillWeight = 40F;
             this.ActionButton.HeaderText = "HÀNH ĐỘNG";
