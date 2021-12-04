@@ -24,8 +24,8 @@ namespace App
             base.flowLayoutPanel1.Controls.RemoveAt(3);
             base.flowLayoutPanel1.Controls.Add(this.label1);
             base.flowLayoutPanel1.Controls.Add(this.ThreadProgressBar);
-            base.flowLayoutPanel1.Controls.Add(this.detai_Button);
-            base.flowLayoutPanel1.Controls.Add(base.detai_Button);
+            base.flowLayoutPanel1.Controls.Add(this.detail_Button);
+            base.flowLayoutPanel1.Controls.Add(base.detail_Button);
             base.flowLayoutPanel1.Controls.Add(base.backgroundRunning_Button);
             base.flowLayoutPanel1.Controls.Add(base.cancelAll_Button);
 

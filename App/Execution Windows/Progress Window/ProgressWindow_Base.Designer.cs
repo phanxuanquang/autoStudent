@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProgressWindow_Base));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -39,7 +38,7 @@
             this.cancelAll_Button = new Guna.UI2.WinForms.Guna2Button();
             this.backgroundRunning_Button = new Guna.UI2.WinForms.Guna2Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.detai_Button = new Guna.UI2.WinForms.Guna2Button();
+            this.detail_Button = new Guna.UI2.WinForms.Guna2Button();
             this.softwareGridView = new Guna.UI2.WinForms.Guna2DataGridView();
             this.NameSoftware = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PercentDownload = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -112,7 +111,7 @@
             this.exitButton.ForeColor = System.Drawing.Color.White;
             this.exitButton.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(57)))), ((int)(((byte)(125)))));
             this.exitButton.HoverState.Parent = this.exitButton;
-            this.exitButton.Image = ((System.Drawing.Image)(resources.GetObject("exitButton.Image")));
+            this.exitButton.Image = Properties.Resources.Exit;
             this.exitButton.Location = new System.Drawing.Point(787, 2);
             this.exitButton.Name = "exitButton";
             this.exitButton.ShadowDecoration.Parent = this.exitButton;
@@ -136,8 +135,8 @@
             this.cancelAll_Button.ForeColor = System.Drawing.Color.Cyan;
             this.cancelAll_Button.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(57)))), ((int)(((byte)(125)))));
             this.cancelAll_Button.HoverState.Parent = this.cancelAll_Button;
-            this.cancelAll_Button.Location = new System.Drawing.Point(489, 41);
-            this.cancelAll_Button.Margin = new System.Windows.Forms.Padding(62, 0, 0, 16);
+            this.cancelAll_Button.Location = new System.Drawing.Point(489, 45);
+            this.cancelAll_Button.Margin = new System.Windows.Forms.Padding(62, 4, 0, 0);
             this.cancelAll_Button.Name = "cancelAll_Button";
             this.cancelAll_Button.ShadowDecoration.Parent = this.cancelAll_Button;
             this.cancelAll_Button.Size = new System.Drawing.Size(120, 35);
@@ -162,8 +161,8 @@
             this.backgroundRunning_Button.ForeColor = System.Drawing.Color.Cyan;
             this.backgroundRunning_Button.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(57)))), ((int)(((byte)(125)))));
             this.backgroundRunning_Button.HoverState.Parent = this.backgroundRunning_Button;
-            this.backgroundRunning_Button.Location = new System.Drawing.Point(307, 41);
-            this.backgroundRunning_Button.Margin = new System.Windows.Forms.Padding(0, 0, 0, 16);
+            this.backgroundRunning_Button.Location = new System.Drawing.Point(307, 45);
+            this.backgroundRunning_Button.Margin = new System.Windows.Forms.Padding(0, 4, 0, 0);
             this.backgroundRunning_Button.Name = "backgroundRunning_Button";
             this.backgroundRunning_Button.ShadowDecoration.Parent = this.backgroundRunning_Button;
             this.backgroundRunning_Button.Size = new System.Drawing.Size(120, 35);
@@ -178,41 +177,42 @@
             this.flowLayoutPanel1.Controls.Add(this.label3);
             this.flowLayoutPanel1.Controls.Add(this.progressBar);
             this.flowLayoutPanel1.Controls.Add(this.completedAmountLabel);
-            this.flowLayoutPanel1.Controls.Add(this.detai_Button);
+            this.flowLayoutPanel1.Controls.Add(this.detail_Button);
             this.flowLayoutPanel1.Controls.Add(this.backgroundRunning_Button);
             this.flowLayoutPanel1.Controls.Add(this.cancelAll_Button);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(60, 25);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(699, 130);
             this.flowLayoutPanel1.TabIndex = 42;
             // 
-            // detai_Button
+            // detail_Button
             // 
-            this.detai_Button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.detai_Button.Animated = true;
-            this.detai_Button.AutoRoundedCorners = true;
-            this.detai_Button.BackColor = System.Drawing.Color.Transparent;
-            this.detai_Button.BorderColor = System.Drawing.Color.Cyan;
-            this.detai_Button.BorderRadius = 16;
-            this.detai_Button.BorderThickness = 2;
-            this.detai_Button.CheckedState.Parent = this.detai_Button;
-            this.detai_Button.CustomImages.Parent = this.detai_Button;
-            this.detai_Button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
-            this.detai_Button.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.detai_Button.ForeColor = System.Drawing.Color.Cyan;
-            this.detai_Button.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(57)))), ((int)(((byte)(125)))));
-            this.detai_Button.HoverState.Parent = this.detai_Button;
-            this.detai_Button.Image = ((System.Drawing.Image)(resources.GetObject("detai_Button.Image")));
-            this.detai_Button.ImageSize = new System.Drawing.Size(18, 18);
-            this.detai_Button.Location = new System.Drawing.Point(125, 41);
-            this.detai_Button.Margin = new System.Windows.Forms.Padding(125, 0, 62, 16);
-            this.detai_Button.Name = "detai_Button";
-            this.detai_Button.ShadowDecoration.Parent = this.detai_Button;
-            this.detai_Button.Size = new System.Drawing.Size(120, 35);
-            this.detai_Button.TabIndex = 41;
-            this.detai_Button.Text = "CHI TIẾT";
-            this.detai_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
-            this.detai_Button.Click += new System.EventHandler(this.detai_Button_Click);
+            this.detail_Button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.detail_Button.Animated = true;
+            this.detail_Button.AutoRoundedCorners = true;
+            this.detail_Button.BackColor = System.Drawing.Color.Transparent;
+            this.detail_Button.BorderColor = System.Drawing.Color.Cyan;
+            this.detail_Button.BorderRadius = 16;
+            this.detail_Button.BorderThickness = 2;
+            this.detail_Button.CheckedState.Parent = this.detail_Button;
+            this.detail_Button.CustomImages.Parent = this.detail_Button;
+            this.detail_Button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
+            this.detail_Button.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.detail_Button.ForeColor = System.Drawing.Color.Cyan;
+            this.detail_Button.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(57)))), ((int)(((byte)(125)))));
+            this.detail_Button.HoverState.Parent = this.detail_Button;
+            this.detail_Button.ImageSize = new System.Drawing.Size(18, 18);
+            this.detail_Button.Location = new System.Drawing.Point(125, 45);
+            this.detail_Button.Margin = new System.Windows.Forms.Padding(125, 4, 62, 0);
+            this.detail_Button.Name = "detail_Button";
+            this.detail_Button.ShadowDecoration.Parent = this.detail_Button;
+            this.detail_Button.Size = new System.Drawing.Size(120, 35);
+            this.detail_Button.TabIndex = 41;
+            this.detail_Button.Text = "CHI TIẾT";
+            this.detail_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.detail_Button.Image = Properties.Resources.Detail;
+            this.detail_Button.Click += new System.EventHandler(this.detai_Button_Click);
             // 
             // softwareGridView
             // 
@@ -250,7 +250,9 @@
             this.softwareGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.softwareGridView.EnableHeadersVisualStyles = false;
             this.softwareGridView.GridColor = System.Drawing.Color.Cyan;
-            this.softwareGridView.Location = new System.Drawing.Point(60, 161);
+            this.softwareGridView.Location = new System.Drawing.Point(60, 155);
+            this.softwareGridView.Margin = new System.Windows.Forms.Padding(0);
+            this.softwareGridView.MultiSelect = false;
             this.softwareGridView.Name = "softwareGridView";
             this.softwareGridView.ReadOnly = true;
             this.softwareGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -260,7 +262,7 @@
             this.softwareGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.softwareGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.softwareGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.softwareGridView.Size = new System.Drawing.Size(699, 279);
+            this.softwareGridView.Size = new System.Drawing.Size(699, 305);
             this.softwareGridView.TabIndex = 44;
             this.softwareGridView.Tag = "unclicked";
             this.softwareGridView.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
@@ -287,6 +289,7 @@
             this.softwareGridView.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
             this.softwareGridView.Visible = false;
             this.softwareGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.softwareGridView_CellContentClick);
+            this.softwareGridView.SelectionChanged += new System.EventHandler(this.softwareGridView_SelectionChanged);
             // 
             // NameSoftware
             // 
@@ -307,6 +310,7 @@
             this.StatusProcess.HeaderText = "TRẠNG THÁI";
             this.StatusProcess.Name = "StatusProcess";
             this.StatusProcess.ReadOnly = true;
+            this.StatusProcess.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             // 
             // ActionButton
             // 
@@ -320,7 +324,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImage = Properties.Resources.Background__SubWindow;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(819, 492);
             this.Controls.Add(this.softwareGridView);
@@ -330,7 +334,6 @@
             this.Name = "ProgressWindow_Base";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ProgressWindow";
-            this.Load += new System.EventHandler(this.ProgressWindow_Base_Load);
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.softwareGridView)).EndInit();
             this.ResumeLayout(false);
@@ -350,6 +353,6 @@
         protected System.Windows.Forms.DataGridViewTextBoxColumn PercentDownload;
         protected System.Windows.Forms.DataGridViewImageColumn StatusProcess;
         protected DataGridViewDisableButtonColumn ActionButton;
-        protected Guna.UI2.WinForms.Guna2Button detai_Button;
+        protected Guna.UI2.WinForms.Guna2Button detail_Button;
     }
 }

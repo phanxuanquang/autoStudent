@@ -64,7 +64,8 @@ namespace App
             }
             else this.Close();
         }
-        private void BaseExecutionForm_Load(object sender, EventArgs e)
+
+        private void softwareGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             softwareGridView.Rows[0].Selected = false;
         }

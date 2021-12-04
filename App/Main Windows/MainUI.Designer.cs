@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainUI));
             this.Background = new System.Windows.Forms.Panel();
             this.minimizeButton = new Guna.UI2.WinForms.Guna2Button();
             this.MainPanel = new System.Windows.Forms.Panel();
@@ -48,7 +47,7 @@
             // 
             // Background
             // 
-            this.Background.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Background.BackgroundImage")));
+            this.Background.BackgroundImage = Properties.Resources.Background;
             this.Background.Controls.Add(this.minimizeButton);
             this.Background.Controls.Add(this.MainPanel);
             this.Background.Controls.Add(this.exitButton);
@@ -71,7 +70,7 @@
             this.minimizeButton.ForeColor = System.Drawing.Color.White;
             this.minimizeButton.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(57)))), ((int)(((byte)(125)))));
             this.minimizeButton.HoverState.Parent = this.minimizeButton;
-            this.minimizeButton.Image = ((System.Drawing.Image)(resources.GetObject("minimizeButton.Image")));
+            this.minimizeButton.Image = Properties.Resources.Minimalize;
             this.minimizeButton.Location = new System.Drawing.Point(896, 12);
             this.minimizeButton.Margin = new System.Windows.Forms.Padding(0);
             this.minimizeButton.Name = "minimizeButton";
@@ -83,7 +82,7 @@
             // MainPanel
             // 
             this.MainPanel.BackColor = System.Drawing.Color.Transparent;
-            this.MainPanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("MainPanel.BackgroundImage")));
+            this.MainPanel.BackgroundImage = Properties.Resources.Main_Panel;
             this.MainPanel.Controls.Add(this.wizardButton);
             this.MainPanel.Controls.Add(this.githubButton);
             this.MainPanel.Controls.Add(this.updateButton);
@@ -104,7 +103,7 @@
             this.wizardButton.CheckedState.Parent = this.wizardButton;
             this.wizardButton.HoverState.ImageSize = new System.Drawing.Size(60, 60);
             this.wizardButton.HoverState.Parent = this.wizardButton;
-            this.wizardButton.Image = ((System.Drawing.Image)(resources.GetObject("wizardButton.Image")));
+            this.wizardButton.Image = Properties.Resources.Wizard;
             this.wizardButton.ImageSize = new System.Drawing.Size(58, 58);
             this.wizardButton.Location = new System.Drawing.Point(846, 273);
             this.wizardButton.Margin = new System.Windows.Forms.Padding(0);
@@ -129,7 +128,7 @@
             this.githubButton.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(16)))), ((int)(((byte)(47)))));
             this.githubButton.HoverState.ForeColor = System.Drawing.Color.Cyan;
             this.githubButton.HoverState.Parent = this.githubButton;
-            this.githubButton.Image = ((System.Drawing.Image)(resources.GetObject("githubButton.Image")));
+            this.githubButton.Image = Properties.Resources.Github;
             this.githubButton.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.githubButton.ImageOffset = new System.Drawing.Point(10, 0);
             this.githubButton.ImageSize = new System.Drawing.Size(30, 30);
@@ -161,7 +160,7 @@
             this.updateButton.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(16)))), ((int)(((byte)(47)))));
             this.updateButton.HoverState.ForeColor = System.Drawing.Color.Cyan;
             this.updateButton.HoverState.Parent = this.updateButton;
-            this.updateButton.Image = ((System.Drawing.Image)(resources.GetObject("updateButton.Image")));
+            this.updateButton.Image = Properties.Resources.Update;
             this.updateButton.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.updateButton.ImageOffset = new System.Drawing.Point(13, 0);
             this.updateButton.ImageSize = new System.Drawing.Size(25, 25);
@@ -193,7 +192,7 @@
             this.cleanButton.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(16)))), ((int)(((byte)(47)))));
             this.cleanButton.HoverState.ForeColor = System.Drawing.Color.Cyan;
             this.cleanButton.HoverState.Parent = this.cleanButton;
-            this.cleanButton.Image = ((System.Drawing.Image)(resources.GetObject("cleanButton.Image")));
+            this.cleanButton.Image = Properties.Resources.Clean;
             this.cleanButton.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.cleanButton.ImageOffset = new System.Drawing.Point(10, 0);
             this.cleanButton.ImageSize = new System.Drawing.Size(30, 30);
@@ -225,7 +224,7 @@
             this.settingButton.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(16)))), ((int)(((byte)(47)))));
             this.settingButton.HoverState.ForeColor = System.Drawing.Color.Cyan;
             this.settingButton.HoverState.Parent = this.settingButton;
-            this.settingButton.Image = ((System.Drawing.Image)(resources.GetObject("settingButton.Image")));
+            this.settingButton.Image = Properties.Resources.Setting;
             this.settingButton.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.settingButton.ImageOffset = new System.Drawing.Point(10, 0);
             this.settingButton.ImageSize = new System.Drawing.Size(30, 30);
@@ -256,7 +255,7 @@
             this.minimizeButton_Above.ForeColor = System.Drawing.Color.White;
             this.minimizeButton_Above.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(57)))), ((int)(((byte)(125)))));
             this.minimizeButton_Above.HoverState.Parent = this.minimizeButton_Above;
-            this.minimizeButton_Above.Image = ((System.Drawing.Image)(resources.GetObject("minimizeButton_Above.Image")));
+            this.minimizeButton_Above.Image = Properties.Resources.Minimalize;
             this.minimizeButton_Above.Location = new System.Drawing.Point(896, 12);
             this.minimizeButton_Above.Margin = new System.Windows.Forms.Padding(0);
             this.minimizeButton_Above.Name = "minimizeButton_Above";
@@ -278,7 +277,7 @@
             this.exitButton_Above.ForeColor = System.Drawing.Color.White;
             this.exitButton_Above.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(57)))), ((int)(((byte)(125)))));
             this.exitButton_Above.HoverState.Parent = this.exitButton_Above;
-            this.exitButton_Above.Image = ((System.Drawing.Image)(resources.GetObject("exitButton_Above.Image")));
+            this.exitButton_Above.Image = Properties.Resources.Exit;
             this.exitButton_Above.Location = new System.Drawing.Point(931, 12);
             this.exitButton_Above.Margin = new System.Windows.Forms.Padding(0);
             this.exitButton_Above.Name = "exitButton_Above";
@@ -350,7 +349,7 @@
             this.exitButton.ForeColor = System.Drawing.Color.White;
             this.exitButton.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(57)))), ((int)(((byte)(125)))));
             this.exitButton.HoverState.Parent = this.exitButton;
-            this.exitButton.Image = ((System.Drawing.Image)(resources.GetObject("exitButton.Image")));
+            this.exitButton.Image = Properties.Resources.Exit;
             this.exitButton.Location = new System.Drawing.Point(931, 12);
             this.exitButton.Margin = new System.Windows.Forms.Padding(0);
             this.exitButton.Name = "exitButton";

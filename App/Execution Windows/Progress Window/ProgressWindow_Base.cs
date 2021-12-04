@@ -79,10 +79,6 @@ namespace App
             }
             else backgroundRunning_Button_Click(null, null);
         }
-        private void ProgressWindow_Base_Load(object sender, EventArgs e)
-        {
-            softwareGridView.Rows[0].Selected = false;
-        }
 
         protected virtual void LoadDataGridView() { }
         protected virtual void ToDo() { }
@@ -153,30 +149,29 @@ namespace App
 
         protected Image GetImageStatus(StatusDataGridView status)
         {
-            string imgPath = @"../../../Design/Icon/ProgressWindow/";
             Image result = null;
             switch (status)
             {
                 case StatusDataGridView.Ready:
-                    result = Image.FromFile(imgPath + "Ready.png");
+                    result = Properties.Resources.Ready;
                     break;
                 case StatusDataGridView.Downloading:
-                    result = Image.FromFile(imgPath + "Download.png");
+                    result = Properties.Resources.Download;
                     break;
                 case StatusDataGridView.Installing:
-                    result = Image.FromFile(imgPath + "Install.png");
+                    result = Properties.Resources.Install;
                     break;
                 case StatusDataGridView.Uninstalling:
-                    result = Image.FromFile(imgPath + "Uninstall.png");
+                    result = Properties.Resources.Uninstall;
                     break;
                 case StatusDataGridView.Completed:
-                    result = Image.FromFile(imgPath + "Complete.png");
+                    result = Properties.Resources.Complete;
                     break;
                 case StatusDataGridView.Canceled:
-                    result = Image.FromFile(imgPath + "Cancel.png");
+                    result = Properties.Resources.Cancel;
                     break;
                 case StatusDataGridView.Failed:
-                    result = Image.FromFile(imgPath + "Fail.png");
+                    result = Properties.Resources.Fail;
                     break;
                 case StatusDataGridView.None:
                     break;
@@ -249,6 +244,11 @@ namespace App
             {
                 runBackground.EnableRunBackground(Program.setting.timeSetter);
             }
+        }
+
+        private void softwareGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            softwareGridView.ClearSelection();
         }
     }
 
