@@ -28,25 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BaseExecutionForm));
             this.softwareGridView = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.softwareName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.softwareVersion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.searchBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.confirmButton = new Guna.UI2.WinForms.Guna2Button();
             this.allSoftwareView_Button = new Guna.UI2.WinForms.Guna2Button();
             this.selectedSoftwareView_Button = new Guna.UI2.WinForms.Guna2Button();
             this.menuPanel = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            this.ImportSoftwareList_Button = new Guna.UI2.WinForms.Guna2GradientButton();
             this.menuButton = new Guna.UI2.WinForms.Guna2ImageButton();
             this.Graphic_Button = new Guna.UI2.WinForms.Guna2GradientButton();
             this.None_Button = new Guna.UI2.WinForms.Guna2GradientButton();
             this.Tech_Button = new Guna.UI2.WinForms.Guna2GradientButton();
             this.IT_Button = new Guna.UI2.WinForms.Guna2GradientButton();
             this.exitButton = new Guna.UI2.WinForms.Guna2Button();
-            this.ImportSoftwareList_Button = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.softwareVersion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.softwareName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.softwareGridView)).BeginInit();
             this.menuPanel.SuspendLayout();
             this.SuspendLayout();
@@ -55,39 +55,39 @@
             // 
             this.softwareGridView.AllowUserToAddRows = false;
             this.softwareGridView.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Cyan;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Cyan;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
-            this.softwareGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Cyan;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Cyan;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
+            this.softwareGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.softwareGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.softwareGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
             this.softwareGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.softwareGridView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.softwareGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Cyan;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Cyan;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.softwareGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Cyan;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Cyan;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.softwareGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.softwareGridView.ColumnHeadersHeight = 30;
             this.softwareGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.softwareGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.softwareName,
             this.softwareVersion});
             this.softwareGridView.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Cyan;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Cyan;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.softwareGridView.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Cyan;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Cyan;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.softwareGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.softwareGridView.EnableHeadersVisualStyles = false;
             this.softwareGridView.GridColor = System.Drawing.Color.Cyan;
             this.softwareGridView.Location = new System.Drawing.Point(147, 108);
@@ -127,20 +127,6 @@
             this.softwareGridView.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
             this.softwareGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.softwareGridView_CellClick);
             // 
-            // softwareName
-            // 
-            this.softwareName.HeaderText = "TÊN PHẦN MỀM";
-            this.softwareName.Name = "softwareName";
-            this.softwareName.ReadOnly = true;
-            this.softwareName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // softwareVersion
-            // 
-            this.softwareVersion.HeaderText = "PHIÊN BẢN PHẦN MỀM";
-            this.softwareVersion.Name = "softwareVersion";
-            this.softwareVersion.ReadOnly = true;
-            this.softwareVersion.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
             // searchBox
             // 
             this.searchBox.Animated = true;
@@ -174,7 +160,7 @@
             this.searchBox.ShadowDecoration.Parent = this.searchBox;
             this.searchBox.Size = new System.Drawing.Size(677, 42);
             this.searchBox.TabIndex = 18;
-            this.searchBox.TextOffset = new System.Drawing.Point(20, 0);
+            this.searchBox.TextOffset = new System.Drawing.Point(10, 0);
             this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
             // 
             // confirmButton
@@ -270,15 +256,49 @@
             this.menuPanel.Size = new System.Drawing.Size(78, 607);
             this.menuPanel.TabIndex = 22;
             // 
+            // ImportSoftwareList_Button
+            // 
+            this.ImportSoftwareList_Button.Animated = true;
+            this.ImportSoftwareList_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
+            this.ImportSoftwareList_Button.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
+            this.ImportSoftwareList_Button.CheckedState.Parent = this.ImportSoftwareList_Button;
+            this.ImportSoftwareList_Button.CustomImages.Parent = this.ImportSoftwareList_Button;
+            this.ImportSoftwareList_Button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
+            this.ImportSoftwareList_Button.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
+            this.ImportSoftwareList_Button.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.ImportSoftwareList_Button.ForeColor = System.Drawing.Color.Cyan;
+            this.ImportSoftwareList_Button.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(57)))), ((int)(((byte)(125)))));
+            this.ImportSoftwareList_Button.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
+            this.ImportSoftwareList_Button.HoverState.ForeColor = System.Drawing.Color.Cyan;
+            this.ImportSoftwareList_Button.HoverState.Parent = this.ImportSoftwareList_Button;
+            this.ImportSoftwareList_Button.Image = ((System.Drawing.Image)(resources.GetObject("ImportSoftwareList_Button.Image")));
+            this.ImportSoftwareList_Button.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.ImportSoftwareList_Button.ImageOffset = new System.Drawing.Point(16, 0);
+            this.ImportSoftwareList_Button.ImageSize = new System.Drawing.Size(25, 25);
+            this.ImportSoftwareList_Button.Location = new System.Drawing.Point(0, 463);
+            this.ImportSoftwareList_Button.Margin = new System.Windows.Forms.Padding(0);
+            this.ImportSoftwareList_Button.Name = "ImportSoftwareList_Button";
+            this.ImportSoftwareList_Button.PressedColor = System.Drawing.Color.Cyan;
+            this.ImportSoftwareList_Button.PressedDepth = 20;
+            this.ImportSoftwareList_Button.ShadowDecoration.BorderRadius = 0;
+            this.ImportSoftwareList_Button.ShadowDecoration.Parent = this.ImportSoftwareList_Button;
+            this.ImportSoftwareList_Button.Size = new System.Drawing.Size(300, 97);
+            this.ImportSoftwareList_Button.TabIndex = 19;
+            this.ImportSoftwareList_Button.Text = "Danh sách bên ngoài";
+            this.ImportSoftwareList_Button.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.ImportSoftwareList_Button.TextOffset = new System.Drawing.Point(40, 0);
+            this.ImportSoftwareList_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.ImportSoftwareList_Button.Click += new System.EventHandler(this.ImportSoftwareList_Button_Click);
+            // 
             // menuButton
             // 
             this.menuButton.BackColor = System.Drawing.Color.Transparent;
             this.menuButton.CheckedState.Parent = this.menuButton;
             this.menuButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.menuButton.HoverState.ImageSize = new System.Drawing.Size(60, 60);
+            this.menuButton.HoverState.ImageSize = new System.Drawing.Size(37, 37);
             this.menuButton.HoverState.Parent = this.menuButton;
             this.menuButton.Image = ((System.Drawing.Image)(resources.GetObject("menuButton.Image")));
-            this.menuButton.ImageSize = new System.Drawing.Size(58, 58);
+            this.menuButton.ImageSize = new System.Drawing.Size(35, 35);
             this.menuButton.Location = new System.Drawing.Point(0, 0);
             this.menuButton.Name = "menuButton";
             this.menuButton.PressedState.ImageSize = new System.Drawing.Size(58, 58);
@@ -306,7 +326,7 @@
             this.Graphic_Button.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.Graphic_Button.ImageOffset = new System.Drawing.Point(16, 0);
             this.Graphic_Button.ImageSize = new System.Drawing.Size(25, 25);
-            this.Graphic_Button.Location = new System.Drawing.Point(0, 303);
+            this.Graphic_Button.Location = new System.Drawing.Point(0, 269);
             this.Graphic_Button.Margin = new System.Windows.Forms.Padding(0);
             this.Graphic_Button.Name = "Graphic_Button";
             this.Graphic_Button.PressedColor = System.Drawing.Color.Cyan;
@@ -341,7 +361,7 @@
             this.None_Button.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.None_Button.ImageOffset = new System.Drawing.Point(16, 0);
             this.None_Button.ImageSize = new System.Drawing.Size(25, 25);
-            this.None_Button.Location = new System.Drawing.Point(0, 400);
+            this.None_Button.Location = new System.Drawing.Point(0, 366);
             this.None_Button.Margin = new System.Windows.Forms.Padding(0);
             this.None_Button.Name = "None_Button";
             this.None_Button.PressedColor = System.Drawing.Color.Cyan;
@@ -375,7 +395,7 @@
             this.Tech_Button.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.Tech_Button.ImageOffset = new System.Drawing.Point(16, 0);
             this.Tech_Button.ImageSize = new System.Drawing.Size(25, 25);
-            this.Tech_Button.Location = new System.Drawing.Point(0, 206);
+            this.Tech_Button.Location = new System.Drawing.Point(0, 172);
             this.Tech_Button.Margin = new System.Windows.Forms.Padding(0);
             this.Tech_Button.Name = "Tech_Button";
             this.Tech_Button.PressedColor = System.Drawing.Color.Cyan;
@@ -410,7 +430,7 @@
             this.IT_Button.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.IT_Button.ImageOffset = new System.Drawing.Point(16, 0);
             this.IT_Button.ImageSize = new System.Drawing.Size(25, 25);
-            this.IT_Button.Location = new System.Drawing.Point(0, 109);
+            this.IT_Button.Location = new System.Drawing.Point(0, 75);
             this.IT_Button.Margin = new System.Windows.Forms.Padding(0);
             this.IT_Button.Name = "IT_Button";
             this.IT_Button.PressedColor = System.Drawing.Color.Cyan;
@@ -447,39 +467,19 @@
             this.exitButton.TabIndex = 23;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
-            // ImportSoftwareList_Button
+            // softwareVersion
             // 
-            this.ImportSoftwareList_Button.Animated = true;
-            this.ImportSoftwareList_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
-            this.ImportSoftwareList_Button.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
-            this.ImportSoftwareList_Button.CheckedState.Parent = this.ImportSoftwareList_Button;
-            this.ImportSoftwareList_Button.CustomImages.Parent = this.ImportSoftwareList_Button;
-            this.ImportSoftwareList_Button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
-            this.ImportSoftwareList_Button.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
-            this.ImportSoftwareList_Button.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.ImportSoftwareList_Button.ForeColor = System.Drawing.Color.Cyan;
-            this.ImportSoftwareList_Button.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(57)))), ((int)(((byte)(125)))));
-            this.ImportSoftwareList_Button.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
-            this.ImportSoftwareList_Button.HoverState.ForeColor = System.Drawing.Color.Cyan;
-            this.ImportSoftwareList_Button.HoverState.Parent = this.ImportSoftwareList_Button;
-            this.ImportSoftwareList_Button.Image = ((System.Drawing.Image)(resources.GetObject("ImportSoftwareList_Button.Image")));
-            this.ImportSoftwareList_Button.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.ImportSoftwareList_Button.ImageOffset = new System.Drawing.Point(16, 0);
-            this.ImportSoftwareList_Button.ImageSize = new System.Drawing.Size(25, 25);
-            this.ImportSoftwareList_Button.Location = new System.Drawing.Point(0, 494);
-            this.ImportSoftwareList_Button.Margin = new System.Windows.Forms.Padding(0);
-            this.ImportSoftwareList_Button.Name = "ImportSoftwareList_Button";
-            this.ImportSoftwareList_Button.PressedColor = System.Drawing.Color.Cyan;
-            this.ImportSoftwareList_Button.PressedDepth = 20;
-            this.ImportSoftwareList_Button.ShadowDecoration.BorderRadius = 0;
-            this.ImportSoftwareList_Button.ShadowDecoration.Parent = this.ImportSoftwareList_Button;
-            this.ImportSoftwareList_Button.Size = new System.Drawing.Size(300, 97);
-            this.ImportSoftwareList_Button.TabIndex = 19;
-            this.ImportSoftwareList_Button.Text = "Danh sách bên ngoài";
-            this.ImportSoftwareList_Button.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.ImportSoftwareList_Button.TextOffset = new System.Drawing.Point(40, 0);
-            this.ImportSoftwareList_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
-            this.ImportSoftwareList_Button.Click += new System.EventHandler(this.ImportSoftwareList_Button_Click);
+            this.softwareVersion.HeaderText = "PHIÊN BẢN";
+            this.softwareVersion.Name = "softwareVersion";
+            this.softwareVersion.ReadOnly = true;
+            this.softwareVersion.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // softwareName
+            // 
+            this.softwareName.HeaderText = "PHẦN MỀM";
+            this.softwareName.Name = "softwareName";
+            this.softwareName.ReadOnly = true;
+            this.softwareName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // BaseExecutionForm
             // 
@@ -518,8 +518,8 @@
         private Guna.UI2.WinForms.Guna2GradientButton Tech_Button;
         private Guna.UI2.WinForms.Guna2GradientButton IT_Button;
         private Guna.UI2.WinForms.Guna2Button exitButton;
+        private Guna.UI2.WinForms.Guna2GradientButton ImportSoftwareList_Button;
         private System.Windows.Forms.DataGridViewTextBoxColumn softwareName;
         private System.Windows.Forms.DataGridViewTextBoxColumn softwareVersion;
-        private Guna.UI2.WinForms.Guna2GradientButton ImportSoftwareList_Button;
     }
 }

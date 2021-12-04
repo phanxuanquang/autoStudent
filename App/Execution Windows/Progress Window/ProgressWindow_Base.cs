@@ -121,10 +121,6 @@ namespace App
             return result;
         }
 
-        private void guna2Button2_Click(object sender, EventArgs e)
-        {
-            softwareGridView.Visible = !softwareGridView.Visible;
-        }
 
         protected void UpdateStatusProcess(int index, StatusDataGridView status)
         {
@@ -237,6 +233,11 @@ namespace App
             {
                 runBackground.EnableRunBackground(Program.setting.timeSetter);
             }
+        }
+
+        private void detail_Button_Click(object sender, EventArgs e)
+        {
+            softwareGridView.Visible = !softwareGridView.Visible;
         }
     }
 

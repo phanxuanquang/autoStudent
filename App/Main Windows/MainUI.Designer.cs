@@ -163,7 +163,7 @@
             this.updateButton.HoverState.Parent = this.updateButton;
             this.updateButton.Image = ((System.Drawing.Image)(resources.GetObject("updateButton.Image")));
             this.updateButton.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.updateButton.ImageOffset = new System.Drawing.Point(10, 0);
+            this.updateButton.ImageOffset = new System.Drawing.Point(13, 0);
             this.updateButton.ImageSize = new System.Drawing.Size(25, 25);
             this.updateButton.Location = new System.Drawing.Point(0, 311);
             this.updateButton.Margin = new System.Windows.Forms.Padding(0);
@@ -196,7 +196,7 @@
             this.cleanButton.Image = ((System.Drawing.Image)(resources.GetObject("cleanButton.Image")));
             this.cleanButton.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.cleanButton.ImageOffset = new System.Drawing.Point(10, 0);
-            this.cleanButton.ImageSize = new System.Drawing.Size(35, 35);
+            this.cleanButton.ImageSize = new System.Drawing.Size(30, 30);
             this.cleanButton.Location = new System.Drawing.Point(0, 221);
             this.cleanButton.Margin = new System.Windows.Forms.Padding(0);
             this.cleanButton.Name = "cleanButton";
