@@ -98,32 +98,35 @@ namespace App
 
         protected Image GetImageStatus(StatusDataGridView status)
         {
+            string imgPath = @"../../../Design/Icon/ProgressWindow/";
             Image result = null;
             switch (status)
             {
                 case StatusDataGridView.Ready:
+                    result = Image.FromFile(imgPath + "Ready.png");
                     break;
                 case StatusDataGridView.Downloading:
+                    result = Image.FromFile(imgPath + "Download.png");
                     break;
                 case StatusDataGridView.Installing:
+                    result = Image.FromFile(imgPath + "Install.png");
                     break;
                 case StatusDataGridView.Uninstalling:
+                    result = Image.FromFile(imgPath + "Uninstall.png");
                     break;
                 case StatusDataGridView.Completed:
+                    result = Image.FromFile(imgPath + "Complete.png");
                     break;
                 case StatusDataGridView.Canceled:
+                    result = Image.FromFile(imgPath + "Cancel.png");
                     break;
                 case StatusDataGridView.Failed:
+                    result = Image.FromFile(imgPath + "Fail.png");
                     break;
                 case StatusDataGridView.None:
                     break;
             }
             return result;
-        }
-
-        private void guna2Button1_Click(object sender, EventArgs e)
-        {
-            softwareGridView.Visible = !softwareGridView.Visible;
         }
 
         protected void UpdateStatusProcess(int index, StatusDataGridView status)
@@ -223,6 +226,11 @@ namespace App
             else backgroundRunning_Button_Click(null, null);
         }
 
+        private void detai_Button_Click(object sender, EventArgs e)
+        {
+            softwareGridView.Visible = !softwareGridView.Visible;
+        }
+
         private void cancelAll_Button_Click(object sender, EventArgs e)
         {
             for(int index = 0; index < blackList.Count; index++)
@@ -238,6 +246,8 @@ namespace App
                 runBackground.EnableRunBackground(Program.setting.timeSetter);
             }
         }
+
+        
     }
 
     /// <summary>

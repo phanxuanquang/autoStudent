@@ -23,9 +23,9 @@ namespace App
             base.flowLayoutPanel1.Controls.RemoveAt(4);
             base.flowLayoutPanel1.Controls.RemoveAt(3);
             base.flowLayoutPanel1.Controls.Add(this.label1);
-            base.flowLayoutPanel1.Controls.Add(this.guna2ProgressBar1);
-            base.flowLayoutPanel1.Controls.Add(this.guna2Button1);
-            base.flowLayoutPanel1.Controls.Add(base.guna2Button1);
+            base.flowLayoutPanel1.Controls.Add(this.ThreadProgressBar);
+            base.flowLayoutPanel1.Controls.Add(this.detai_Button);
+            base.flowLayoutPanel1.Controls.Add(base.detai_Button);
             base.flowLayoutPanel1.Controls.Add(base.backgroundRunning_Button);
             base.flowLayoutPanel1.Controls.Add(base.cancelAll_Button);
 
@@ -68,14 +68,14 @@ namespace App
             {
                 try
                 {
-                    guna2ProgressBar1.Value = Convert.ToInt32(value);
+                    ThreadProgressBar.Value = Convert.ToInt32(value);
                     base.softwareGridView.Rows[index].Cells[1].Value = String.Format("{0}%", Math.Round(value, 2));
                 }
                 catch
                 {
-                    guna2ProgressBar1.BeginInvoke(new Action(() =>
+                    ThreadProgressBar.BeginInvoke(new Action(() =>
                     {
-                        guna2ProgressBar1.Value = Convert.ToInt32(value);
+                        ThreadProgressBar.Value = Convert.ToInt32(value);
                     }));
                     base.softwareGridView.BeginInvoke(new Action(() =>
                     {
