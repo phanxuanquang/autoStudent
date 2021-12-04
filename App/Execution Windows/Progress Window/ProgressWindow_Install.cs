@@ -19,13 +19,15 @@ namespace App
         {
             InitializeComponent();
             this.SuspendLayout();
+            base.flowLayoutPanel1.Controls.RemoveAt(5);
             base.flowLayoutPanel1.Controls.RemoveAt(4);
             base.flowLayoutPanel1.Controls.RemoveAt(3);
             base.flowLayoutPanel1.Controls.Add(this.label1);
             base.flowLayoutPanel1.Controls.Add(this.guna2ProgressBar1);
             base.flowLayoutPanel1.Controls.Add(this.guna2Button1);
-            base.flowLayoutPanel1.Controls.Add(base.cancelAll_Button);
+            base.flowLayoutPanel1.Controls.Add(base.guna2Button1);
             base.flowLayoutPanel1.Controls.Add(base.backgroundRunning_Button);
+            base.flowLayoutPanel1.Controls.Add(base.cancelAll_Button);
 
             base.softwareGridView.Columns.Add(base.NameSoftware);
             base.softwareGridView.Columns.Add(base.PercentDownload);

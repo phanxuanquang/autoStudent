@@ -39,7 +39,7 @@
             this.cancelAll_Button = new Guna.UI2.WinForms.Guna2Button();
             this.backgroundRunning_Button = new Guna.UI2.WinForms.Guna2Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.softwareGridView = new Guna.UI2.WinForms.Guna2DataGridView();
             this.NameSoftware = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PercentDownload = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -132,8 +132,8 @@
             this.cancelAll_Button.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.cancelAll_Button.ForeColor = System.Drawing.Color.Cyan;
             this.cancelAll_Button.HoverState.Parent = this.cancelAll_Button;
-            this.cancelAll_Button.Location = new System.Drawing.Point(150, 41);
-            this.cancelAll_Button.Margin = new System.Windows.Forms.Padding(150, 0, 150, 16);
+            this.cancelAll_Button.Location = new System.Drawing.Point(489, 41);
+            this.cancelAll_Button.Margin = new System.Windows.Forms.Padding(62, 0, 0, 16);
             this.cancelAll_Button.Name = "cancelAll_Button";
             this.cancelAll_Button.ShadowDecoration.Parent = this.cancelAll_Button;
             this.cancelAll_Button.Size = new System.Drawing.Size(120, 35);
@@ -156,7 +156,7 @@
             this.backgroundRunning_Button.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.backgroundRunning_Button.ForeColor = System.Drawing.Color.Cyan;
             this.backgroundRunning_Button.HoverState.Parent = this.backgroundRunning_Button;
-            this.backgroundRunning_Button.Location = new System.Drawing.Point(420, 41);
+            this.backgroundRunning_Button.Location = new System.Drawing.Point(307, 41);
             this.backgroundRunning_Button.Margin = new System.Windows.Forms.Padding(0, 0, 0, 16);
             this.backgroundRunning_Button.Name = "backgroundRunning_Button";
             this.backgroundRunning_Button.ShadowDecoration.Parent = this.backgroundRunning_Button;
@@ -172,30 +172,38 @@
             this.flowLayoutPanel1.Controls.Add(this.label3);
             this.flowLayoutPanel1.Controls.Add(this.progressBar);
             this.flowLayoutPanel1.Controls.Add(this.completedAmountLabel);
-            this.flowLayoutPanel1.Controls.Add(this.cancelAll_Button);
+            this.flowLayoutPanel1.Controls.Add(this.guna2Button1);
             this.flowLayoutPanel1.Controls.Add(this.backgroundRunning_Button);
+            this.flowLayoutPanel1.Controls.Add(this.cancelAll_Button);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(60, 25);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(699, 130);
             this.flowLayoutPanel1.TabIndex = 42;
             // 
-            // guna2Button2
+            // guna2Button1
             // 
-            this.guna2Button2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Button2.CheckedState.Parent = this.guna2Button2;
-            this.guna2Button2.CustomImages.Parent = this.guna2Button2;
-            this.guna2Button2.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2Button2.ForeColor = System.Drawing.Color.White;
-            this.guna2Button2.HoverState.Parent = this.guna2Button2;
-            this.guna2Button2.Image = global::App.Properties.Resources.download_120262;
-            this.guna2Button2.Location = new System.Drawing.Point(60, 161);
-            this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.ShadowDecoration.Parent = this.guna2Button2;
-            this.guna2Button2.Size = new System.Drawing.Size(80, 20);
-            this.guna2Button2.TabIndex = 43;
-            this.guna2Button2.Text = "Chi tiết";
-            this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
+            this.guna2Button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.guna2Button1.AutoRoundedCorners = true;
+            this.guna2Button1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Button1.BorderColor = System.Drawing.Color.Cyan;
+            this.guna2Button1.BorderRadius = 16;
+            this.guna2Button1.BorderThickness = 2;
+            this.guna2Button1.CheckedState.Parent = this.guna2Button1;
+            this.guna2Button1.CustomImages.Parent = this.guna2Button1;
+            this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
+            this.guna2Button1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.guna2Button1.ForeColor = System.Drawing.Color.Cyan;
+            this.guna2Button1.HoverState.Parent = this.guna2Button1;
+            this.guna2Button1.Image = global::App.Properties.Resources.download_120262;
+            this.guna2Button1.Location = new System.Drawing.Point(125, 41);
+            this.guna2Button1.Margin = new System.Windows.Forms.Padding(125, 0, 62, 16);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.ShadowDecoration.Parent = this.guna2Button1;
+            this.guna2Button1.Size = new System.Drawing.Size(120, 35);
+            this.guna2Button1.TabIndex = 41;
+            this.guna2Button1.Text = "CHI TIẾT";
+            this.guna2Button1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
             // softwareGridView
             // 
@@ -233,7 +241,7 @@
             this.softwareGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.softwareGridView.EnableHeadersVisualStyles = false;
             this.softwareGridView.GridColor = System.Drawing.Color.Cyan;
-            this.softwareGridView.Location = new System.Drawing.Point(60, 187);
+            this.softwareGridView.Location = new System.Drawing.Point(60, 161);
             this.softwareGridView.Name = "softwareGridView";
             this.softwareGridView.ReadOnly = true;
             this.softwareGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -307,7 +315,6 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(819, 492);
             this.Controls.Add(this.softwareGridView);
-            this.Controls.Add(this.guna2Button2);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.exitButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -328,11 +335,11 @@
         protected Guna.UI2.WinForms.Guna2Button cancelAll_Button;
         protected Guna.UI2.WinForms.Guna2Button backgroundRunning_Button;
         protected System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private Guna.UI2.WinForms.Guna2Button guna2Button2;
         protected Guna.UI2.WinForms.Guna2DataGridView softwareGridView;
         protected System.Windows.Forms.DataGridViewTextBoxColumn NameSoftware;
         protected System.Windows.Forms.DataGridViewTextBoxColumn PercentDownload;
         protected System.Windows.Forms.DataGridViewImageColumn StatusProcess;
         protected DataGridViewDisableButtonColumn ActionButton;
+        protected Guna.UI2.WinForms.Guna2Button guna2Button1;
     }
 }
