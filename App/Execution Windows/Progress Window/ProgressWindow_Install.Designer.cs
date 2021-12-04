@@ -62,7 +62,7 @@
             this.ThreadProgressBar.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(106)))), ((int)(((byte)(204)))));
             this.ThreadProgressBar.ProgressColor2 = System.Drawing.Color.Cyan;
             this.ThreadProgressBar.ShadowDecoration.Parent = this.ThreadProgressBar;
-            this.ThreadProgressBar.ShowPercentage = true;
+            this.ThreadProgressBar.ShowPercentage = false;
             this.ThreadProgressBar.Size = new System.Drawing.Size(482, 30);
             this.ThreadProgressBar.TabIndex = 42;
             this.ThreadProgressBar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;

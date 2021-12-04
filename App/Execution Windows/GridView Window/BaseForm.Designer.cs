@@ -163,7 +163,7 @@
             this.searchBox.ForeColor = System.Drawing.Color.Cyan;
             this.searchBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.searchBox.HoverState.Parent = this.searchBox;
-            this.searchBox.IconLeft = Properties.Resources.Search;
+            this.searchBox.IconLeft = global::App.Properties.Resources.Search;
             this.searchBox.IconLeftOffset = new System.Drawing.Point(10, 0);
             this.searchBox.Location = new System.Drawing.Point(147, 51);
             this.searchBox.Name = "searchBox";
@@ -286,7 +286,7 @@
             this.ImportSoftwareList_Button.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
             this.ImportSoftwareList_Button.HoverState.ForeColor = System.Drawing.Color.Cyan;
             this.ImportSoftwareList_Button.HoverState.Parent = this.ImportSoftwareList_Button;
-            this.ImportSoftwareList_Button.Image = Properties.Resources.Import;
+            this.ImportSoftwareList_Button.Image = global::App.Properties.Resources.Import;
             this.ImportSoftwareList_Button.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.ImportSoftwareList_Button.ImageOffset = new System.Drawing.Point(16, 0);
             this.ImportSoftwareList_Button.ImageSize = new System.Drawing.Size(25, 25);
@@ -312,7 +312,7 @@
             this.menuButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.menuButton.HoverState.ImageSize = new System.Drawing.Size(37, 37);
             this.menuButton.HoverState.Parent = this.menuButton;
-            this.menuButton.Image = Properties.Resources.Menu;
+            this.menuButton.Image = global::App.Properties.Resources.Menu;
             this.menuButton.ImageSize = new System.Drawing.Size(35, 35);
             this.menuButton.Location = new System.Drawing.Point(0, 0);
             this.menuButton.Name = "menuButton";
@@ -337,7 +337,7 @@
             this.Graphic_Button.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
             this.Graphic_Button.HoverState.ForeColor = System.Drawing.Color.Cyan;
             this.Graphic_Button.HoverState.Parent = this.Graphic_Button;
-            this.Graphic_Button.Image = Properties.Resources.Graphic;
+            this.Graphic_Button.Image = global::App.Properties.Resources.Graphic;
             this.Graphic_Button.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.Graphic_Button.ImageOffset = new System.Drawing.Point(16, 0);
             this.Graphic_Button.ImageSize = new System.Drawing.Size(25, 25);
@@ -372,7 +372,7 @@
             this.None_Button.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
             this.None_Button.HoverState.ForeColor = System.Drawing.Color.Cyan;
             this.None_Button.HoverState.Parent = this.None_Button;
-            this.None_Button.Image = Properties.Resources.None;
+            this.None_Button.Image = global::App.Properties.Resources.None;
             this.None_Button.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.None_Button.ImageOffset = new System.Drawing.Point(16, 0);
             this.None_Button.ImageSize = new System.Drawing.Size(25, 25);
@@ -406,7 +406,7 @@
             this.Tech_Button.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
             this.Tech_Button.HoverState.ForeColor = System.Drawing.Color.Cyan;
             this.Tech_Button.HoverState.Parent = this.Tech_Button;
-            this.Tech_Button.Image = Properties.Resources.Tech;
+            this.Tech_Button.Image = global::App.Properties.Resources.Tech;
             this.Tech_Button.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.Tech_Button.ImageOffset = new System.Drawing.Point(16, 0);
             this.Tech_Button.ImageSize = new System.Drawing.Size(25, 25);
@@ -441,7 +441,7 @@
             this.IT_Button.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
             this.IT_Button.HoverState.ForeColor = System.Drawing.Color.Cyan;
             this.IT_Button.HoverState.Parent = this.IT_Button;
-            this.IT_Button.Image = Properties.Resources.IT;
+            this.IT_Button.Image = global::App.Properties.Resources.IT;
             this.IT_Button.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.IT_Button.ImageOffset = new System.Drawing.Point(16, 0);
             this.IT_Button.ImageSize = new System.Drawing.Size(25, 25);
@@ -474,7 +474,7 @@
             this.exitButton.ForeColor = System.Drawing.Color.White;
             this.exitButton.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(57)))), ((int)(((byte)(125)))));
             this.exitButton.HoverState.Parent = this.exitButton;
-            this.exitButton.Image = Properties.Resources.Exit;
+            this.exitButton.Image = global::App.Properties.Resources.Exit;
             this.exitButton.Location = new System.Drawing.Point(937, 4);
             this.exitButton.Name = "exitButton";
             this.exitButton.ShadowDecoration.Parent = this.exitButton;
@@ -487,7 +487,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
-            this.BackgroundImage = Properties.Resources.Background__SubWindow;
+            this.BackgroundImage = global::App.Properties.Resources.Background__SubWindow;
             this.ClientSize = new System.Drawing.Size(971, 607);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.menuPanel);
@@ -500,6 +500,7 @@
             this.Name = "BaseExecutionForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BaseForm";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DragWindow);
             ((System.ComponentModel.ISupportInitialize)(this.softwareGridView)).EndInit();
             this.menuPanel.ResumeLayout(false);
             this.ResumeLayout(false);

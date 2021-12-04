@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 using System.Drawing.Text;
+using System.Runtime.InteropServices;
 
 namespace App
 {
@@ -20,6 +21,7 @@ namespace App
              @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall",
              @"SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall"
         };
+
 
         public LoadindWindow()
         {
@@ -146,5 +148,7 @@ namespace App
             }
             return tmp;
         }
+
+       
     }
 }

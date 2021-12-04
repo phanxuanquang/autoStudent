@@ -31,6 +31,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProgressWindow_Base));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.progressBar = new Guna.UI2.WinForms.Guna2ProgressBar();
             this.label3 = new System.Windows.Forms.Label();
             this.completedAmountLabel = new System.Windows.Forms.Label();
@@ -63,7 +67,6 @@
             this.progressBar.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(106)))), ((int)(((byte)(204)))));
             this.progressBar.ProgressColor2 = System.Drawing.Color.Cyan;
             this.progressBar.ShadowDecoration.Parent = this.progressBar;
-            this.progressBar.ShowPercentage = true;
             this.progressBar.Size = new System.Drawing.Size(482, 30);
             this.progressBar.TabIndex = 35;
             this.progressBar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
@@ -250,7 +253,7 @@
             this.softwareGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.softwareGridView.EnableHeadersVisualStyles = false;
             this.softwareGridView.GridColor = System.Drawing.Color.Cyan;
-            this.softwareGridView.Location = new System.Drawing.Point(60, 155);
+            this.softwareGridView.Location = new System.Drawing.Point(60, 165);
             this.softwareGridView.Margin = new System.Windows.Forms.Padding(0);
             this.softwareGridView.MultiSelect = false;
             this.softwareGridView.Name = "softwareGridView";
@@ -258,7 +261,7 @@
             this.softwareGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.softwareGridView.RowHeadersVisible = false;
             this.softwareGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.softwareGridView.RowTemplate.Height = 25;
+            this.softwareGridView.RowTemplate.Height = 30;
             this.softwareGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.softwareGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.softwareGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -284,7 +287,7 @@
             this.softwareGridView.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
             this.softwareGridView.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.softwareGridView.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Cyan;
-            this.softwareGridView.ThemeStyle.RowsStyle.Height = 25;
+            this.softwareGridView.ThemeStyle.RowsStyle.Height = 30;
             this.softwareGridView.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.Cyan;
             this.softwareGridView.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
             this.softwareGridView.Visible = false;
@@ -293,19 +296,26 @@
             // 
             // NameSoftware
             // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.NameSoftware.DefaultCellStyle = dataGridViewCellStyle4;
             this.NameSoftware.HeaderText = "PHẦN MỀM";
             this.NameSoftware.Name = "NameSoftware";
             this.NameSoftware.ReadOnly = true;
             // 
             // PercentDownload
             // 
-            this.PercentDownload.FillWeight = 30F;
+            this.PercentDownload.FillWeight = 25F;
             this.PercentDownload.HeaderText = "TIẾN ĐỘ";
             this.PercentDownload.Name = "PercentDownload";
             this.PercentDownload.ReadOnly = true;
             // 
             // StatusProcess
             // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle5.NullValue")));
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(5);
+            this.StatusProcess.DefaultCellStyle = dataGridViewCellStyle5;
             this.StatusProcess.FillWeight = 40F;
             this.StatusProcess.HeaderText = "TRẠNG THÁI";
             this.StatusProcess.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
@@ -314,6 +324,11 @@
             // 
             // ActionButton
             // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Cyan;
+            this.ActionButton.DefaultCellStyle = dataGridViewCellStyle6;
             this.ActionButton.FillWeight = 40F;
             this.ActionButton.HeaderText = "HÀNH ĐỘNG";
             this.ActionButton.Name = "ActionButton";
@@ -334,6 +349,7 @@
             this.Name = "ProgressWindow_Base";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ProgressWindow";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DragWindow);
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.softwareGridView)).EndInit();
             this.ResumeLayout(false);

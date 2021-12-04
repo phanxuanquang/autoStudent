@@ -213,7 +213,7 @@
             this.exitButton.ForeColor = System.Drawing.Color.White;
             this.exitButton.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(57)))), ((int)(((byte)(125)))));
             this.exitButton.HoverState.Parent = this.exitButton;
-            this.exitButton.Image = Properties.Resources.Exit;
+            this.exitButton.Image = global::App.Properties.Resources.Exit;
             this.exitButton.Location = new System.Drawing.Point(774, 4);
             this.exitButton.Name = "exitButton";
             this.exitButton.ShadowDecoration.Parent = this.exitButton;
@@ -418,7 +418,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = Properties.Resources.Background__SubWindow;
+            this.BackgroundImage = global::App.Properties.Resources.Background__SubWindow;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(808, 540);
             this.Controls.Add(this.timeSetter_Switch);
@@ -441,7 +441,7 @@
             this.Name = "SettingForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SettingForm";
-            this.Load += new System.EventHandler(this.SettingForm_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DragWindow);
             this.ResumeLayout(false);
             this.PerformLayout();
 
