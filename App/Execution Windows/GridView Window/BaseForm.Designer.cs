@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -46,6 +47,7 @@
             this.Tech_Button = new Guna.UI2.WinForms.Guna2GradientButton();
             this.IT_Button = new Guna.UI2.WinForms.Guna2GradientButton();
             this.exitButton = new Guna.UI2.WinForms.Guna2Button();
+            this.roundEdge = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.softwareGridView)).BeginInit();
             this.menuPanel.SuspendLayout();
             this.SuspendLayout();
@@ -482,6 +484,11 @@
             this.exitButton.TabIndex = 23;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
+            // roundEdge
+            // 
+            this.roundEdge.BorderRadius = 15;
+            this.roundEdge.TargetControl = this;
+            // 
             // BaseExecutionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -523,5 +530,6 @@
         private Guna.UI2.WinForms.Guna2GradientButton ImportSoftwareList_Button;
         private System.Windows.Forms.DataGridViewTextBoxColumn softwareName;
         private System.Windows.Forms.DataGridViewTextBoxColumn softwareVersion;
+        private Guna.UI2.WinForms.Guna2Elipse roundEdge;
     }
 }

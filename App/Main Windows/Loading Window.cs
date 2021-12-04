@@ -26,6 +26,7 @@ namespace App
         public LoadindWindow()
         {
             InitializeComponent();
+            Guna.UI.Lib.GraphicsHelper.ShadowForm(this);
 
             Program.software_Database = new List<Package>();
             Program.software_System = new List<Package>();

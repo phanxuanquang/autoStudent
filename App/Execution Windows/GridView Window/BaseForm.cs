@@ -20,6 +20,7 @@ namespace App
         public BaseExecutionForm()
         {
             InitializeComponent();
+            Guna.UI.Lib.GraphicsHelper.ShadowForm(this);
         }
 
         // Anti Flickering
@@ -29,7 +30,6 @@ namespace App
             {
                 CreateParams handleParam = base.CreateParams;
                 handleParam.ExStyle |= 0x02000000;
-                handleParam.ClassStyle |= 0x00020000;
                 return handleParam;
             }
         }

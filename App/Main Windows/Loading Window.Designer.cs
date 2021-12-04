@@ -32,6 +32,7 @@ namespace App
             this.components = new System.ComponentModel.Container();
             this.dataLoadingProgressBar = new Guna.UI2.WinForms.Guna2ProgressBar();
             this.dataLoading_clock = new System.Windows.Forms.Timer(this.components);
+            this.roundEdge = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.SuspendLayout();
             // 
             // dataLoadingProgressBar
@@ -53,18 +54,26 @@ namespace App
             this.dataLoading_clock.Interval = 1;
             this.dataLoading_clock.Tick += new System.EventHandler(this.dataLoading_clock_Tick);
             // 
+            // roundEdge
+            // 
+            this.roundEdge.BorderRadius = 15;
+            this.roundEdge.TargetControl = this;
+            // 
             // LoadindWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(15)))), ((int)(((byte)(46)))));
-            this.BackgroundImage = Properties.Resources.Background;
+            this.BackgroundImage = global::App.Properties.Resources.Background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(707, 445);
             this.Controls.Add(this.dataLoadingProgressBar);
+            this.Cursor = System.Windows.Forms.Cursors.AppStarting;
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Icon = Properties.Resources.Icon_app_temporary;
+            this.Icon = global::App.Properties.Resources.Icon_app_temporary;
             this.Name = "LoadindWindow";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "autoStudent";
             this.ResumeLayout(false);
@@ -74,6 +83,7 @@ namespace App
         #endregion
         private Guna.UI2.WinForms.Guna2ProgressBar dataLoadingProgressBar;
         private System.Windows.Forms.Timer dataLoading_clock;
+        private Guna.UI2.WinForms.Guna2Elipse roundEdge;
     }
 }
 

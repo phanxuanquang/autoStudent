@@ -61,6 +61,7 @@ namespace App
         public ProgressWindow_Base()
         {
             InitializeComponent();
+            Guna.UI.Lib.GraphicsHelper.ShadowForm(this);
             this.DoubleBuffered = true;
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             if (runBackground == null)
@@ -76,7 +77,6 @@ namespace App
             {
                 CreateParams handleParam = base.CreateParams;
                 handleParam.ExStyle |= 0x02000000;
-                handleParam.ClassStyle |= 0x00020000;
                 return handleParam;
             }
         }

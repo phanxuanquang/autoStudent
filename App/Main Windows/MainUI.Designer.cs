@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.Background = new System.Windows.Forms.Panel();
             this.minimizeButton = new Guna.UI2.WinForms.Guna2Button();
             this.MainPanel = new System.Windows.Forms.Panel();
@@ -41,6 +42,7 @@
             this.uninstallButton = new Guna.UI2.WinForms.Guna2Button();
             this.installButton = new Guna.UI2.WinForms.Guna2Button();
             this.exitButton = new Guna.UI2.WinForms.Guna2Button();
+            this.roundEdge = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.Background.SuspendLayout();
             this.MainPanel.SuspendLayout();
             this.SuspendLayout();
@@ -359,6 +361,11 @@
             this.exitButton.TabIndex = 4;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
+            // roundEdge
+            // 
+            this.roundEdge.BorderRadius = 15;
+            this.roundEdge.TargetControl = this;
+            // 
             // MainUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -392,5 +399,6 @@
         private Guna.UI2.WinForms.Guna2Button installButton;
         private Guna.UI2.WinForms.Guna2Button minimizeButton;
         private Guna.UI2.WinForms.Guna2Button exitButton;
+        private Guna.UI2.WinForms.Guna2Elipse roundEdge;
     }
 }

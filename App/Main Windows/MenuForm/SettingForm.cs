@@ -17,6 +17,7 @@ namespace App
         public SettingForm()
         {
             InitializeComponent();
+            Guna.UI.Lib.GraphicsHelper.ShadowForm(this);
 
             timeSetter.Value = Program.setting.timeSetter;
             timeSetter.Checked = Program.setting.isSetTime;
@@ -34,7 +35,6 @@ namespace App
             {
                 CreateParams handleParam = base.CreateParams;
                 handleParam.ExStyle |= 0x02000000;
-                handleParam.ClassStyle |= 0x00020000;
                 return handleParam;
             }
         }

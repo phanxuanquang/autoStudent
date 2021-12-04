@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -48,6 +49,7 @@
             this.PercentDownload = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StatusProcess = new System.Windows.Forms.DataGridViewImageColumn();
             this.ActionButton = new App.DataGridViewDisableButtonColumn();
+            this.roundEdge = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.softwareGridView)).BeginInit();
             this.SuspendLayout();
@@ -334,6 +336,11 @@
             this.ActionButton.Name = "ActionButton";
             this.ActionButton.ReadOnly = true;
             // 
+            // roundEdge
+            // 
+            this.roundEdge.BorderRadius = 15;
+            this.roundEdge.TargetControl = this;
+            // 
             // ProgressWindow_Base
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -370,5 +377,6 @@
         protected System.Windows.Forms.DataGridViewImageColumn StatusProcess;
         protected DataGridViewDisableButtonColumn ActionButton;
         protected Guna.UI2.WinForms.Guna2Button detail_Button;
+        private Guna.UI2.WinForms.Guna2Elipse roundEdge;
     }
 }

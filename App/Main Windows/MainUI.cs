@@ -18,6 +18,7 @@ namespace App
         public MainUI()
         {
             InitializeComponent();
+            Guna.UI.Lib.GraphicsHelper.ShadowForm(this);
             DoubleBuffered = true;
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             UpdateStyles();
@@ -30,7 +31,6 @@ namespace App
             {
                 CreateParams handleParam = base.CreateParams;
                 handleParam.ExStyle |= 0x02000000;
-                handleParam.ClassStyle |= 0x00020000;
                 return handleParam;
             }
         }
