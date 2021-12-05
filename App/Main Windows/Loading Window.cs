@@ -150,6 +150,16 @@ namespace App
             return tmp;
         }
 
-       
+       public static void LoadAfterDone()
+        {
+            if (Environment.Is64BitOperatingSystem)
+                Program.software_Database = DataAccess.Instance.GetX64();
+            else Program.software_Database = DataAccess.Instance.GetX86();
+            Program.software_System.Clear();
+            GetInstalledSofware(RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, Environment.Is64BitOperatingSystem ? RegistryView.Registry64 : RegistryView.Registry32), keys, Program.software_System);
+            GetInstalledSofware(RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, Environment.Is64BitOperatingSystem ? RegistryView.Registry64 : RegistryView.Registry32), keys, Program.software_System);
+            Program.software_System = Program.software_System.Where(s => !string.IsNullOrWhiteSpace(s.Displayname)).Distinct().ToList();
+            Program.software_System = GetSupportedSoftwares(Program.software_Database, Program.software_System);
+        }
     }
 }

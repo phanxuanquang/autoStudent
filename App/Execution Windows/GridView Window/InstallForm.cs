@@ -19,8 +19,7 @@ namespace App
         public InstallForm()
         {
             InitializeComponent();
-            softwareList = Program.software_Database;
-            loadSoftwareToGridView(softwareList);
+            init();
         }
 
         protected override void exec()
@@ -28,6 +27,7 @@ namespace App
             ProgressWindow_Install progressWindow_Install = new ProgressWindow_Install(selectedSoftwareList);
             ExportData();
             progressWindow_Install.ShowDialog();
+            init();
             this.Show();
         }
 
@@ -41,6 +41,12 @@ namespace App
 
                 }
             }
+        }
+
+        protected override void init()
+        {
+            softwareList = Program.software_Database;
+            loadSoftwareToGridView(softwareList);
         }
     }
 }
