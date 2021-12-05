@@ -520,16 +520,16 @@
         private Guna.UI2.WinForms.Guna2Button confirmButton;
         private Guna.UI2.WinForms.Guna2Button allSoftwareView_Button;
         private Guna.UI2.WinForms.Guna2Button selectedSoftwareView_Button;
-        private Guna.UI2.WinForms.Guna2CustomGradientPanel menuPanel;
         private Guna.UI2.WinForms.Guna2ImageButton menuButton;
+        private Guna.UI2.WinForms.Guna2Button exitButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn softwareName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn softwareVersion;
+        private Guna.UI2.WinForms.Guna2Elipse roundEdge;
+        protected Guna.UI2.WinForms.Guna2GradientButton ImportSoftwareList_Button;
         private Guna.UI2.WinForms.Guna2GradientButton Graphic_Button;
         private Guna.UI2.WinForms.Guna2GradientButton None_Button;
         private Guna.UI2.WinForms.Guna2GradientButton Tech_Button;
         private Guna.UI2.WinForms.Guna2GradientButton IT_Button;
-        private Guna.UI2.WinForms.Guna2Button exitButton;
-        private Guna.UI2.WinForms.Guna2GradientButton ImportSoftwareList_Button;
-        private System.Windows.Forms.DataGridViewTextBoxColumn softwareName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn softwareVersion;
-        private Guna.UI2.WinForms.Guna2Elipse roundEdge;
+        protected Guna.UI2.WinForms.Guna2CustomGradientPanel menuPanel;
     }
 }

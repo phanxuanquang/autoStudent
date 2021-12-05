@@ -128,7 +128,6 @@ namespace App
                         List<string> names = new List<string>();
                         using (StreamReader sr = File.OpenText(filePath))
                         {
-                            
                             string temp;
                             while ((temp = sr.ReadLine()) != null)
                             {
@@ -136,6 +135,7 @@ namespace App
                             }
                         }
                         selectedSoftwareList = new List<Package>(DataAccess.Instance.GetPackagesOfName(names));
+                        loadSoftwareToGridView(selectedSoftwareList);
                     }
                     catch (IOException)
                     {

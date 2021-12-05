@@ -79,10 +79,28 @@ namespace App
         // Main Button
         private void installButton_Click(object sender, EventArgs e)
         {
-            InstallForm installForm = new InstallForm();
-            this.Hide();
-            installForm.ShowDialog();
-            this.Show();
+            bool isInternetAvailable()
+            {
+                try
+                {
+                    using (var client = new WebClient())
+                    using (client.OpenRead("http://google.com/generate_204"))
+                        return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+            if (isInternetAvailable())
+            {
+                InstallForm installForm = new InstallForm();
+                this.Hide();
+                installForm.ShowDialog();
+                this.Show();
+            }
+            else MessageBox.Show("Không có kết nối mạng, vui lòng thử lại sau");
+           
         }
         private void uninstallButton_Click(object sender, EventArgs e)
         {
@@ -96,13 +114,20 @@ namespace App
         private void settingButton_Click(object sender, EventArgs e)
         {
             SettingForm settingForm = new SettingForm();
-            this.Hide();
             settingForm.ShowDialog();
-            this.Show();
         }
         private void cleanButton_Click(object sender, EventArgs e)
         {
-            Program.setting.RunCleanAction(Program.setting.saveDownloadPath);
+            if (!Program.setting.cleanAfter)
+            {
+                DialogResult dialogResult = MessageBox.Show("Các tệp sẽ bị xóa vĩnh viễn, bạn có muốn tiếp tục?", "DỌN DẸP", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    Program.setting.RunCleanAction(Program.setting.saveDownloadPath);
+                    MessageBox.Show("Dọn dẹp hoàn tất");
+                }
+            }
+            else Program.setting.RunCleanAction(Program.setting.saveDownloadPath);
         }
         private void updateButton_Click(object sender, EventArgs e)
         {

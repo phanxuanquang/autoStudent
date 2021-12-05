@@ -1,7 +1,7 @@
 ﻿
 namespace App
 {
-    partial class LoadindWindow
+    partial class LoadingWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -40,12 +40,12 @@ namespace App
             this.dataLoadingProgressBar.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataLoadingProgressBar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(29)))), ((int)(((byte)(67)))));
             this.dataLoadingProgressBar.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Horizontal;
-            this.dataLoadingProgressBar.Location = new System.Drawing.Point(0, 415);
+            this.dataLoadingProgressBar.Location = new System.Drawing.Point(0, 303);
             this.dataLoadingProgressBar.Name = "dataLoadingProgressBar";
             this.dataLoadingProgressBar.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(106)))), ((int)(((byte)(204)))));
             this.dataLoadingProgressBar.ProgressColor2 = System.Drawing.Color.Cyan;
             this.dataLoadingProgressBar.ShadowDecoration.Parent = this.dataLoadingProgressBar;
-            this.dataLoadingProgressBar.Size = new System.Drawing.Size(707, 30);
+            this.dataLoadingProgressBar.Size = new System.Drawing.Size(524, 30);
             this.dataLoadingProgressBar.TabIndex = 18;
             this.dataLoadingProgressBar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
             // 
@@ -59,20 +59,20 @@ namespace App
             this.roundEdge.BorderRadius = 15;
             this.roundEdge.TargetControl = this;
             // 
-            // LoadindWindow
+            // LoadingWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(15)))), ((int)(((byte)(46)))));
             this.BackgroundImage = global::App.Properties.Resources.Background;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(707, 445);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(524, 333);
             this.Controls.Add(this.dataLoadingProgressBar);
             this.Cursor = System.Windows.Forms.Cursors.AppStarting;
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = global::App.Properties.Resources.Icon_app_temporary;
-            this.Name = "LoadindWindow";
+            this.Name = "LoadingWindow";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "autoStudent";

@@ -107,6 +107,12 @@
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\DataAccess.cs" />
+    <Compile Include="Execution Windows\GridView Window\OverlapForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Execution Windows\GridView Window\OverlapForm.Designer.cs">
+      <DependentUpon>OverlapForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Execution Windows\Progress Window\ProgressWindow_Install.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,6 +178,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Execution Windows\GridView Window\InstallForm.resx">
       <DependentUpon>InstallForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Execution Windows\GridView Window\OverlapForm.resx">
+      <DependentUpon>OverlapForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main Windows\Loading Window.resx">
       <DependentUpon>Loading Window.cs</DependentUpon>

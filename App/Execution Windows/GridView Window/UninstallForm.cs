@@ -16,6 +16,7 @@ namespace App
         public UninstallForm()
         {
             InitializeComponent();
+            base.ImportSoftwareList_Button.Visible = false;
             init();
         }
 

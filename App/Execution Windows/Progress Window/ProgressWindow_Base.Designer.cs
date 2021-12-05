@@ -35,7 +35,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProgressWindow_Base));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.progressBar = new Guna.UI2.WinForms.Guna2ProgressBar();
             this.label3 = new System.Windows.Forms.Label();
             this.completedAmountLabel = new System.Windows.Forms.Label();
@@ -48,8 +47,8 @@
             this.NameSoftware = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PercentDownload = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StatusProcess = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ActionButton = new App.DataGridViewDisableButtonColumn();
             this.roundEdge = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.ActionButton = new App.DataGridViewDisableButtonColumn();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.softwareGridView)).BeginInit();
             this.SuspendLayout();
@@ -324,19 +323,17 @@
             this.StatusProcess.Name = "StatusProcess";
             this.StatusProcess.ReadOnly = true;
             // 
-            // ActionButton
-            // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ActionButton.DefaultCellStyle = dataGridViewCellStyle6;
-            this.ActionButton.FillWeight = 40F;
-            this.ActionButton.HeaderText = "HÀNH ĐỘNG";
-            this.ActionButton.Name = "ActionButton";
-            this.ActionButton.ReadOnly = true;
-            // 
             // roundEdge
             // 
             this.roundEdge.BorderRadius = 15;
             this.roundEdge.TargetControl = this;
+            // 
+            // ActionButton
+            // 
+            this.ActionButton.FillWeight = 40F;
+            this.ActionButton.HeaderText = "HÀNH ĐỘNG";
+            this.ActionButton.Name = "ActionButton";
+            this.ActionButton.ReadOnly = true;
             // 
             // ProgressWindow_Base
             // 

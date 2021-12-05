@@ -14,7 +14,7 @@ using System.Runtime.InteropServices;
 
 namespace App
 {
-    public partial class LoadindWindow : Form
+    public partial class LoadingWindow : Form
     {
         bool isLoaded_Database = false, isLoaded_System = false;
         public static readonly List<string> keys = new List<string>() {
@@ -23,10 +23,9 @@ namespace App
         };
 
 
-        public LoadindWindow()
+        public LoadingWindow()
         {
             InitializeComponent();
-            //Guna.UI.Lib.GraphicsHelper.ShadowForm(this);
 
             Program.software_Database = new List<Package>();
             Program.software_System = new List<Package>();
