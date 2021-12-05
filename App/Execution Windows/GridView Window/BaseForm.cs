@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 using System.Runtime.InteropServices;
+using System.IO;
 
 namespace App
 {
@@ -113,7 +114,43 @@ namespace App
         }
         private void ImportSoftwareList_Button_Click(object sender, EventArgs e)
         {
+            FileDialog dialog = new OpenFileDialog();
+            dialog.Title = "Open AutoStudentDataExport";
+            dialog.Filter = "AS files (*.AS)|*.AS";
 
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = dialog.FileName;
+                if (File.Exists(filePath))
+                {
+                    try
+                    {
+                        List<string> names = new List<string>();
+                        using (StreamReader sr = File.OpenText(filePath))
+                        {
+                            
+                            string temp;
+                            while ((temp = sr.ReadLine()) != null)
+                            {
+                                names.Add(temp);
+                            }
+                        }
+                        selectedSoftwareList = new List<Package>(DataAccess.Instance.GetPackagesOfName(names));
+                    }
+                    catch (IOException)
+                    {
+                        MessageBox.Show("Lỗi đọc file");
+                    }
+                    catch (UnauthorizedAccessException)
+                    {
+                        MessageBox.Show("Không có quyền đọc ở thư mục chọn");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Không tồn tại thư mục");
+                }
+            }
         }
 
         // Main Button

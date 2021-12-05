@@ -178,12 +178,22 @@ namespace App
         {
             if (dataExport && dataList != null)
             {
-                if (!String.IsNullOrEmpty(pathSaveExport) && Directory.Exists(Path.GetDirectoryName(pathSaveExport)))
+                if (Directory.Exists(pathSaveExport))
                 {
-                    string jsonString = JsonConvert.SerializeObject(dataList, Formatting.Indented);
+                    string filePath = pathSaveExport + @"\AutoStudentDataExport.AS";
                     try
                     {
-                        File.WriteAllText(pathSaveExport, jsonString);
+                        if (File.Exists(filePath))
+                        {
+                            File.Delete(filePath);
+                        }
+                        using (StreamWriter sw = File.CreateText(filePath))
+                        {
+                            foreach (var item in dataList)
+                            {
+                                sw.WriteLine(item.Name);
+                            }
+                        }
                         return true;
                     }
                     catch (IOException)

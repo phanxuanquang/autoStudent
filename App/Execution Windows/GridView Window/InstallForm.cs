@@ -26,8 +26,21 @@ namespace App
         protected override void exec()
         {
             ProgressWindow_Install progressWindow_Install = new ProgressWindow_Install(selectedSoftwareList);
+            ExportData();
             progressWindow_Install.ShowDialog();
             this.Show();
+        }
+
+        private void ExportData()
+        {
+            if (Program.setting.dataExport == false) return;
+            {
+                if (Program.setting.RunDataExport(selectedSoftwareList, Program.setting.exportPath) == true)
+                {
+                    MessageBox.Show("Đã EXPORT dữ liệu cài đặt");
+
+                }
+            }
         }
     }
 }

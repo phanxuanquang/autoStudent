@@ -99,6 +99,11 @@ namespace App
             return packages;
         }
 
+        public List<Package> GetPackagesOfName(List<string> names)
+        {
+            return root.Packages.Where(item => names.Any(name => item.Name == name) == true).ToList();
+        }
+
         public string GetFilePath()
         {
             return filePath;

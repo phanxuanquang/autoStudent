@@ -89,10 +89,11 @@ namespace App
         }
         private void exportPath_Button_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            CommonOpenFileDialog destinationPathdlg = new CommonOpenFileDialog();
+            destinationPathdlg.IsFolderPicker = true;
+            if (destinationPathdlg.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                exportPath.Text = saveFileDialog.FileName;
+                exportPath.Text = destinationPathdlg.FileName;
             }
         }
         
