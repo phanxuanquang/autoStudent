@@ -143,7 +143,7 @@ namespace App
             else MessageBox.Show("Bạn chưa chọn phần mềm nào");
         }
         protected virtual void exec() { }
-
+        protected virtual void init() { }
         // Data Changing Functions
         private void searchBox_TextChanged(object sender, EventArgs e)
         {

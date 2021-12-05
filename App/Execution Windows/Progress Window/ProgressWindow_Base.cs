@@ -84,6 +84,7 @@ namespace App
         //Window
         private void exitButton_Click(object sender, EventArgs e)
         {
+            LoadindWindow.LoadAfterDone();
             if (HasExitTodoTask)
             {
                 this.Close();
