@@ -46,6 +46,7 @@
             this.exportPath = new Guna.UI2.WinForms.Guna2TextBox();
             this.timeSetter_Switch = new Guna.UI2.WinForms.Guna2ToggleSwitch();
             this.roundEdge = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.ShadowForm = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
             this.SuspendLayout();
             // 
             // timeSetter
@@ -473,5 +474,6 @@
         private Guna.UI2.WinForms.Guna2TextBox exportPath;
         private Guna.UI2.WinForms.Guna2ToggleSwitch timeSetter_Switch;
         private Guna.UI2.WinForms.Guna2Elipse roundEdge;
+        private Guna.UI2.WinForms.Guna2ShadowForm ShadowForm;
     }
 }

@@ -17,7 +17,6 @@ namespace App
         public SettingForm()
         {
             InitializeComponent();
-            Guna.UI.Lib.GraphicsHelper.ShadowForm(this);
 
             timeSetter.Value = Program.setting.timeSetter;
             timeSetter.Checked = Program.setting.isSetTime;

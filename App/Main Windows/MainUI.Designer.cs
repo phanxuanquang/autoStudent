@@ -129,7 +129,7 @@
             this.githubButton.ShadowDecoration.Parent = this.githubButton;
             this.githubButton.Size = new System.Drawing.Size(200, 75);
             this.githubButton.TabIndex = 7;
-            this.githubButton.Text = "Github";
+            this.githubButton.Text = "Tác giả";
             this.githubButton.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.githubButton.TextOffset = new System.Drawing.Point(40, 0);
             this.githubButton.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
