@@ -83,6 +83,16 @@ namespace App.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Background__SubWindow_2 {
+            get {
+                object obj = ResourceManager.GetObject("Background__SubWindow_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Cancel {
             get {
                 object obj = ResourceManager.GetObject("Cancel", resourceCulture);
@@ -286,6 +296,26 @@ namespace App.Properties {
         internal static System.Drawing.Bitmap Tech {
             get {
                 object obj = ResourceManager.GetObject("Tech", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap toLeft {
+            get {
+                object obj = ResourceManager.GetObject("toLeft", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap toRight {
+            get {
+                object obj = ResourceManager.GetObject("toRight", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

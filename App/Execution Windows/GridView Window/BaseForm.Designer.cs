@@ -63,7 +63,7 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
             this.softwareGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.softwareGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.softwareGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
+            this.softwareGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
             this.softwareGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.softwareGridView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.softwareGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -82,7 +82,7 @@
             this.softwareVersion});
             this.softwareGridView.Cursor = System.Windows.Forms.Cursors.Hand;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Cyan;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Cyan;
@@ -91,7 +91,7 @@
             this.softwareGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.softwareGridView.EnableHeadersVisualStyles = false;
             this.softwareGridView.GridColor = System.Drawing.Color.Cyan;
-            this.softwareGridView.Location = new System.Drawing.Point(147, 108);
+            this.softwareGridView.Location = new System.Drawing.Point(110, 109);
             this.softwareGridView.MultiSelect = false;
             this.softwareGridView.Name = "softwareGridView";
             this.softwareGridView.ReadOnly = true;
@@ -102,7 +102,7 @@
             this.softwareGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.softwareGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.softwareGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.softwareGridView.Size = new System.Drawing.Size(677, 383);
+            this.softwareGridView.Size = new System.Drawing.Size(750, 383);
             this.softwareGridView.TabIndex = 17;
             this.softwareGridView.Tag = "unclicked";
             this.softwareGridView.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
@@ -111,7 +111,7 @@
             this.softwareGridView.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Cyan;
             this.softwareGridView.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Cyan;
             this.softwareGridView.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
-            this.softwareGridView.ThemeStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
+            this.softwareGridView.ThemeStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
             this.softwareGridView.ThemeStyle.GridColor = System.Drawing.Color.Cyan;
             this.softwareGridView.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
             this.softwareGridView.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -120,7 +120,7 @@
             this.softwareGridView.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.softwareGridView.ThemeStyle.HeaderStyle.Height = 30;
             this.softwareGridView.ThemeStyle.ReadOnly = true;
-            this.softwareGridView.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
+            this.softwareGridView.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
             this.softwareGridView.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Single;
             this.softwareGridView.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.softwareGridView.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Cyan;
@@ -167,7 +167,7 @@
             this.searchBox.HoverState.Parent = this.searchBox;
             this.searchBox.IconLeft = global::App.Properties.Resources.Search;
             this.searchBox.IconLeftOffset = new System.Drawing.Point(10, 0);
-            this.searchBox.Location = new System.Drawing.Point(147, 51);
+            this.searchBox.Location = new System.Drawing.Point(110, 43);
             this.searchBox.Name = "searchBox";
             this.searchBox.PasswordChar = '\0';
             this.searchBox.PlaceholderForeColor = System.Drawing.Color.LightCyan;
@@ -175,7 +175,7 @@
             this.searchBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.searchBox.SelectedText = "";
             this.searchBox.ShadowDecoration.Parent = this.searchBox;
-            this.searchBox.Size = new System.Drawing.Size(677, 42);
+            this.searchBox.Size = new System.Drawing.Size(750, 42);
             this.searchBox.TabIndex = 18;
             this.searchBox.TextOffset = new System.Drawing.Point(10, 0);
             this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
@@ -194,7 +194,7 @@
             this.confirmButton.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.confirmButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
             this.confirmButton.HoverState.Parent = this.confirmButton;
-            this.confirmButton.Location = new System.Drawing.Point(604, 506);
+            this.confirmButton.Location = new System.Drawing.Point(604, 516);
             this.confirmButton.Name = "confirmButton";
             this.confirmButton.ShadowDecoration.Parent = this.confirmButton;
             this.confirmButton.Size = new System.Drawing.Size(220, 49);
@@ -217,7 +217,7 @@
             this.allSoftwareView_Button.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.allSoftwareView_Button.ForeColor = System.Drawing.Color.Cyan;
             this.allSoftwareView_Button.HoverState.Parent = this.allSoftwareView_Button;
-            this.allSoftwareView_Button.Location = new System.Drawing.Point(147, 506);
+            this.allSoftwareView_Button.Location = new System.Drawing.Point(147, 516);
             this.allSoftwareView_Button.Name = "allSoftwareView_Button";
             this.allSoftwareView_Button.ShadowDecoration.Parent = this.allSoftwareView_Button;
             this.allSoftwareView_Button.Size = new System.Drawing.Size(220, 49);
@@ -240,7 +240,7 @@
             this.selectedSoftwareView_Button.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.selectedSoftwareView_Button.ForeColor = System.Drawing.Color.Cyan;
             this.selectedSoftwareView_Button.HoverState.Parent = this.selectedSoftwareView_Button;
-            this.selectedSoftwareView_Button.Location = new System.Drawing.Point(375, 506);
+            this.selectedSoftwareView_Button.Location = new System.Drawing.Point(375, 516);
             this.selectedSoftwareView_Button.Name = "selectedSoftwareView_Button";
             this.selectedSoftwareView_Button.ShadowDecoration.Parent = this.selectedSoftwareView_Button;
             this.selectedSoftwareView_Button.Size = new System.Drawing.Size(220, 49);
@@ -494,7 +494,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
-            this.BackgroundImage = global::App.Properties.Resources.Background__SubWindow;
+            this.BackgroundImage = global::App.Properties.Resources.Background__SubWindow_2;
             this.ClientSize = new System.Drawing.Size(971, 607);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.menuPanel);
