@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Net;
@@ -175,11 +174,8 @@ namespace App
         }
         private void githubButton_Click(object sender, EventArgs e)
         {
-            Process openGitHub = new Process();
-            openGitHub.StartInfo.FileName = "CMD.exe";
-            openGitHub.StartInfo.Arguments = "/C start https://github.com/phanxuanquang/autoStudent";
-            openGitHub.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            openGitHub.Start();
+            App.Main_Windows.AboutForm.AboutForm aboutForm = new App.Main_Windows.AboutForm.AboutForm();
+            aboutForm.ShowDialog();
         }
     }
 }

@@ -136,6 +136,18 @@
       <DependentUpon>InstallForm.cs</DependentUpon>
     </Compile>
     <Compile Include="InstallUninstall\TrackingProcess.cs" />
+    <Compile Include="Main Windows\AboutForm\AboutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main Windows\AboutForm\AboutForm.Designer.cs">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main Windows\AboutForm\FeedbackForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main Windows\AboutForm\FeedbackForm.Designer.cs">
+      <DependentUpon>FeedbackForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main Windows\Loading Window.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,6 +193,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Execution Windows\GridView Window\OverlapForm.resx">
       <DependentUpon>OverlapForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main Windows\AboutForm\AboutForm.resx">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main Windows\AboutForm\FeedbackForm.resx">
+      <DependentUpon>FeedbackForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main Windows\Loading Window.resx">
       <DependentUpon>Loading Window.cs</DependentUpon>
@@ -320,6 +338,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\toRight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NameSoftware.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets" Condition="Exists('..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets')" />
