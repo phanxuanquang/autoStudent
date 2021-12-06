@@ -148,6 +148,7 @@
     <Compile Include="Main Windows\AboutForm\FeedbackForm.Designer.cs">
       <DependentUpon>FeedbackForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Main Windows\AboutForm\SendInfo.cs" />
     <Compile Include="Main Windows\Loading Window.cs">
       <SubType>Form</SubType>
     </Compile>

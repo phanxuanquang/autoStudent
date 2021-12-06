@@ -20,6 +20,7 @@ namespace App.Main_Windows.AboutForm
         private void RichTextBox1_SelectionChanged(object sender, EventArgs e)
         {
             this.TextFeedback.SelectionChanged -= RichTextBox1_SelectionChanged;
+            this.TextFeedback.KeyDown -= RichTextBox1_SelectionChanged;
             this.TextFeedback.Clear();
             this.TextFeedback.ForeColor = Color.Cyan;
         }
@@ -27,6 +28,7 @@ namespace App.Main_Windows.AboutForm
         private void FeedbackForm_Shown(object sender, EventArgs e)
         {
             this.TextFeedback.SelectionChanged += RichTextBox1_SelectionChanged;
+            this.TextFeedback.KeyDown += RichTextBox1_SelectionChanged;
         }
 
         private void guna2Button2_Click(object sender, EventArgs e)
@@ -36,7 +38,20 @@ namespace App.Main_Windows.AboutForm
 
         private void Send_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Việc bạn gửi phản hồi sẽ gửi kèm với thông tin bị\nnhư tên thiết bị, phiên bản, .v.v", "Lưu ý!", MessageBoxButtons.YesNo);
+            switch (MessageBox.Show("Việc bạn gửi phản hồi sẽ gửi kèm với thông tin bị\nnhư tên thiết bị, phiên bản, .v.v", "Lưu ý!", MessageBoxButtons.YesNoCancel))
+            {
+                case DialogResult.No:
+                    this.Close();
+                    break;
+                case DialogResult.Yes:
+                    (bool, string) send = App.Main_Windows.AboutForm.SendInfo.SendFeedback(TextFeedback.Text);
+                    if (!send.Item1)
+                    {
+                        MessageBox.Show(String.Format("Không gửi được phản hồi.\nNội dung lỗi: {0}", send.Item2));
+                    }
+                    this.Close();
+                    break;
+            }
         }
     }
 }

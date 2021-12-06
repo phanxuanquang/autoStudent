@@ -38,7 +38,7 @@
             // 
             // TextFeedback
             // 
-            this.TextFeedback.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
+            this.TextFeedback.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(40)))), ((int)(((byte)(80)))));
             this.TextFeedback.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TextFeedback.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextFeedback.ForeColor = System.Drawing.Color.Gray;
@@ -56,7 +56,7 @@
             this.Send.BorderRadius = 19;
             this.Send.CheckedState.Parent = this.Send;
             this.Send.CustomImages.Parent = this.Send;
-            this.Send.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
+            this.Send.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(40)))), ((int)(((byte)(80)))));
             this.Send.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Send.ForeColor = System.Drawing.Color.White;
             this.Send.HoverState.Parent = this.Send;
@@ -77,7 +77,7 @@
             this.Cancel.BorderRadius = 19;
             this.Cancel.CheckedState.Parent = this.Cancel;
             this.Cancel.CustomImages.Parent = this.Cancel;
-            this.Cancel.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
+            this.Cancel.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(40)))), ((int)(((byte)(80)))));
             this.Cancel.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Cancel.ForeColor = System.Drawing.Color.White;
             this.Cancel.HoverState.Parent = this.Cancel;
@@ -100,7 +100,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(40)))), ((int)(((byte)(80)))));
             this.ClientSize = new System.Drawing.Size(349, 260);
             this.Controls.Add(this.Cancel);
             this.Controls.Add(this.Send);
