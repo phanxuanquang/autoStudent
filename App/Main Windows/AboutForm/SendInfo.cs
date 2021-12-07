@@ -35,7 +35,6 @@ namespace App.Main_Windows.AboutForm
 
         public static (bool, string) SendFeedback(string feedback)
         {
-            GetVersionOS();
             try
             {
                 MailMessage message = new MailMessage();
