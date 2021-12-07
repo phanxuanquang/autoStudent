@@ -79,7 +79,6 @@ namespace App
                 DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn thoát?", "THOÁT", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    LoadingWindow.LoadAfterDone();
                     this.Close();
                 }
             }
@@ -223,6 +222,11 @@ namespace App
                     }
                 }
             }
+        }
+
+        private void BaseExecutionForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            LoadingWindow.LoadAfterDone();
         }
     }
 }

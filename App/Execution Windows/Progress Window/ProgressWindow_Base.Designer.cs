@@ -71,6 +71,7 @@
             this.progressBar.Size = new System.Drawing.Size(482, 30);
             this.progressBar.TabIndex = 35;
             this.progressBar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            this.progressBar.ValueChanged += new System.EventHandler(this.progressBar_ValueChanged);
             // 
             // label3
             // 

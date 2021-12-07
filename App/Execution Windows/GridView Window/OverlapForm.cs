@@ -77,6 +77,7 @@ namespace App
             if (selectedSoftwareList.Count > 0)
             {
                 ProgressWindow_Uninstall progressWindow_Uninstall = new ProgressWindow_Uninstall(selectedSoftwareList);
+                progressWindow_Uninstall.isOverlap = true;
                 progressWindow_Uninstall.ShowDialog();
             }
             DeleteSoftware();

@@ -56,7 +56,7 @@
             // 
             this.softwareGridView.AllowUserToAddRows = false;
             this.softwareGridView.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Cyan;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Cyan;
@@ -508,6 +508,7 @@
             this.Name = "BaseExecutionForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BaseForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BaseExecutionForm_FormClosing);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DragWindow);
             ((System.ComponentModel.ISupportInitialize)(this.softwareGridView)).EndInit();
             this.menuPanel.ResumeLayout(false);

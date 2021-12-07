@@ -19,6 +19,7 @@ namespace App
         protected List<ActionProcess> blackList;
         protected int countCompletedAmount;
         protected bool HasExitTodoTask;
+        public bool isOverlap = false;
 
         private static readonly Image Ready = Properties.Resources.Ready;
         private static readonly Image Download = Properties.Resources.Download;
@@ -302,6 +303,12 @@ namespace App
         private void softwareGridView_SelectionChanged(object sender, EventArgs e)
         {
             softwareGridView.ClearSelection();
+        }
+
+        private void progressBar_ValueChanged(object sender, EventArgs e)
+        {
+            if (progressBar.Value == 100 && isOverlap)
+                this.Close();
         }
     }
 

@@ -65,7 +65,6 @@ namespace App
                     blackList[index] = ActionProcess.Done;
                 }
                 HasExitTodoTask = true;
-                this.Close();
             });
         }
     }
