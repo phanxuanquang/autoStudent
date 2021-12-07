@@ -88,9 +88,8 @@ namespace App
             LoadingWindow.LoadAfterDone();
             if (HasExitTodoTask)
             {
-                this.Close();
                 Program.mainUI.ShowInTaskbar = true;
-                Program.mainUI.ShowDialog();
+                this.Close();
             }
             else backgroundRunning_Button_Click(null, null);
         }

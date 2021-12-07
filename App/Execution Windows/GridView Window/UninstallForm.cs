@@ -24,8 +24,7 @@ namespace App
         {
             ProgressWindow_Uninstall progressWindow_Uninstall = new ProgressWindow_Uninstall(selectedSoftwareList);
             progressWindow_Uninstall.ShowDialog();
-            init();
-            this.Show();
+            this.Close();
         }
 
         protected override void init()

@@ -1,4 +1,4 @@
-﻿namespace App.Execution_Windows.GridView_Window
+﻿namespace App
 {
     partial class OverlapForm
     {

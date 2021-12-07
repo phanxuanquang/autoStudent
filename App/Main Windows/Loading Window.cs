@@ -161,5 +161,20 @@ namespace App
             Program.software_System = Program.software_System.Where(s => !string.IsNullOrWhiteSpace(s.Displayname)).Distinct().ToList();
             Program.software_System = GetSupportedSoftwares(Program.software_Database, Program.software_System);
         }
+        public static List<Package> GetOverlapSoftware(List<Package> softwareSystem, List<Package> selectedSoftware)
+        {
+            List<Package> overlap = new List<Package>();
+            for (int i = 0; i < selectedSoftware.Count; i++)
+            {
+                for (int j = 0; j < softwareSystem.Count; j++)
+                {
+                    if (selectedSoftware[i].Displayname == softwareSystem[j].Displayname)
+                    {
+                        overlap.Add(softwareSystem[j]);
+                    }
+                }
+            }
+            return overlap;
+        }
     }
 }
