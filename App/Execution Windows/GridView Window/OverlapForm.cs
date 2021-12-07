@@ -74,29 +74,35 @@ namespace App
         private void confirmButton_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ProgressWindow_Uninstall progressWindow_Uninstall = new ProgressWindow_Uninstall(selectedSoftwareList);
-            progressWindow_Uninstall.ShowDialog();
+            if (selectedSoftwareList.Count > 0)
+            {
+                ProgressWindow_Uninstall progressWindow_Uninstall = new ProgressWindow_Uninstall(selectedSoftwareList);
+                progressWindow_Uninstall.ShowDialog();
+            }
             DeleteSoftware();
-            ProgressWindow_Install progressWindow_Install = new ProgressWindow_Install(softwareList);
-            progressWindow_Install.ShowDialog();
+            if (softwareList.Count > 0)
+            {
+                ProgressWindow_Install progressWindow_Install = new ProgressWindow_Install(softwareList);
+                progressWindow_Install.ShowDialog();
+            }
             this.Close();
         }
         private void DeleteSoftware()
         {
-            if (originalGridView.Rows.Count != 0)
+            if (originalGridView.Rows.Count > 0)
             {
-                for (int i = 0; i < softwareList.Count; i++)
+                for (int j = 0; j < originalGridView.Rows.Count; j++)
                 {
-                    for (int j = 0; j < originalGridView.Rows.Count; j++)
+                    for (int i = 0; i < softwareList.Count; i++)
                     {
-                        if (softwareList[i].Displayname == finalGridView.Rows[j].Cells[0].Value.ToString())
+                        if (softwareList[i].Displayname == originalGridView.Rows[j].Cells[0].Value.ToString())
                         {
                             softwareList.RemoveAt(i);
                             i--;
                         }
                     }
                 }    
-            }    
+            }
         }
 
         private void exitButton_Click(object sender, EventArgs e)
