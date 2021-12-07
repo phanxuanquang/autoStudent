@@ -26,6 +26,7 @@ namespace App
         public LoadingWindow()
         {
             InitializeComponent();
+            this.Icon = Properties.Resources.mainIcon;
 
             Program.software_Database = new List<Package>();
             Program.software_System = new List<Package>();
@@ -44,8 +45,8 @@ namespace App
             {
                 dataLoading_clock.Stop();
                 this.Hide();
-                MainUI mainUI = new MainUI();
-                mainUI.ShowDialog();
+                Program.mainUI = new MainUI();
+                Program.mainUI.ShowDialog();
             }
         }
 

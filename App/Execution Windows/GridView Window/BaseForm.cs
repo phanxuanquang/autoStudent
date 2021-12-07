@@ -21,6 +21,7 @@ namespace App
         public BaseExecutionForm()
         {
             InitializeComponent();
+            this.Icon = Properties.Resources.mainIcon;
             Guna.UI.Lib.GraphicsHelper.ShadowForm(this);
         }
 
@@ -173,14 +174,14 @@ namespace App
                 {
                     this.Hide();
                     exec();
-                    selectedSoftwareList.Clear();
-                    this.Refresh();
+                    this.Close();
                 }
             }
             else MessageBox.Show("Bạn chưa chọn phần mềm nào");
         }
         protected virtual void exec() { }
         protected virtual void init() { }
+
         // Data Changing Functions
         private void searchBox_TextChanged(object sender, EventArgs e)
         {
@@ -222,6 +223,6 @@ namespace App
                     }
                 }
             }
-        } 
+        }
     }
 }

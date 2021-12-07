@@ -18,10 +18,10 @@ namespace App
         public MainUI()
         {
             InitializeComponent();
+            this.Icon = Properties.Resources.mainIcon;
             Guna.UI.Lib.GraphicsHelper.ShadowForm(this);
             DoubleBuffered = true;
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
-            UpdateStyles();
         }
 
         // Anti Flickering
@@ -78,7 +78,7 @@ namespace App
 
         // Main Button
         private void installButton_Click(object sender, EventArgs e)
-        {
+        {;
             bool isInternetAvailable()
             {
                 try

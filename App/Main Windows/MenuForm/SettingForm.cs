@@ -17,6 +17,7 @@ namespace App
         public SettingForm()
         {
             InitializeComponent();
+            this.Icon = Properties.Resources.mainIcon;
             Guna.UI.Lib.GraphicsHelper.ShadowForm(this);
 
             timeSetter.Value = Program.setting.timeSetter;

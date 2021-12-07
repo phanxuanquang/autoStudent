@@ -86,7 +86,7 @@ namespace App
 
                 //notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("guna2Button4.Image")));
                 //Bắt buộc phải dùng icon. Dùng đỡ để test
-                notifyIcon.Icon = Properties.Resources.Icon_app_temporary;
+                notifyIcon.Icon = Properties.Resources.mainIcon;
                 notifyIcon.Text = "autoStudent";
 
                 ExitToolStripMenuItem.Text = "Thoát";
@@ -140,7 +140,7 @@ namespace App
         {
             if (notifyIcon != null)
             {
-                notifyIcon.BalloonTipText = "Việc cài đặt sẽ được bắt đầu sau " + startProcess.ToString("HH:mm:ss dd/MM/yyyy");
+                notifyIcon.BalloonTipText = "Việc cài đặt sẽ được bắt đầu vào " + startProcess.ToString("HH:mm:ss dd/MM/yyyy");
             }
         }
     }

@@ -66,7 +66,7 @@
             this.ThreadProgressBar.Size = new System.Drawing.Size(482, 30);
             this.ThreadProgressBar.TabIndex = 42;
             this.ThreadProgressBar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            this.ThreadProgressBar.AutoRoundedCorners = true;
+            this.ThreadProgressBar.BorderRadius = 12;
             // 
             // CancelButton
             // 

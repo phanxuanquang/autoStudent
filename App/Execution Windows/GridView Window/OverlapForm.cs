@@ -18,6 +18,7 @@ namespace App.Execution_Windows.GridView_Window
         public OverlapForm(List<Package> softList)
         {
             InitializeComponent();
+            this.Icon = Properties.Resources.mainIcon;
             softwareList = softList;
             loadSoftwareToGridView(softList);
         }

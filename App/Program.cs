@@ -16,12 +16,14 @@ namespace App
         [STAThread]
         static void Main()
         {
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoadingWindow());
         }
         static public List<Package> software_Database;
         static public List<Package> software_System;
+        static public MainUI mainUI;
         static public Setting setting = new Setting(DateTime.Now);
     }
 }

@@ -61,6 +61,7 @@ namespace App
         public ProgressWindow_Base()
         {
             InitializeComponent();
+            this.Icon = Properties.Resources.mainIcon;
             Guna.UI.Lib.GraphicsHelper.ShadowForm(this);
             this.DoubleBuffered = true;
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
@@ -88,9 +89,16 @@ namespace App
             if (HasExitTodoTask)
             {
                 this.Close();
+                Program.mainUI.ShowInTaskbar = true;
+                Program.mainUI.ShowDialog();
             }
             else backgroundRunning_Button_Click(null, null);
         }
+        private void minimizeButton_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
         //Drag Window
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
@@ -286,6 +294,8 @@ namespace App
         {
             if (runBackground != null)
             {
+                Program.mainUI.Hide();
+                Program.mainUI.ShowInTaskbar = false;
                 runBackground.EnableRunBackground(Program.setting.timeSetter);
             }
         }
@@ -399,5 +409,5 @@ namespace App
                     cellStyle, advancedBorderStyle, paintParts);
             }
         }
-    }
+    } 
 }

@@ -56,7 +56,7 @@
             // 
             this.softwareGridView.AllowUserToAddRows = false;
             this.softwareGridView.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Cyan;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Cyan;
@@ -253,6 +253,7 @@
             // menuPanel
             // 
             this.menuPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(30)))), ((int)(((byte)(67)))));
+            this.menuPanel.BorderThickness = 2;
             this.menuPanel.Controls.Add(this.ImportSoftwareList_Button);
             this.menuPanel.Controls.Add(this.menuButton);
             this.menuPanel.Controls.Add(this.Graphic_Button);
@@ -312,13 +313,13 @@
             this.menuButton.BackColor = System.Drawing.Color.Transparent;
             this.menuButton.CheckedState.Parent = this.menuButton;
             this.menuButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.menuButton.HoverState.ImageSize = new System.Drawing.Size(37, 37);
+            this.menuButton.HoverState.ImageSize = new System.Drawing.Size(35, 35);
             this.menuButton.HoverState.Parent = this.menuButton;
             this.menuButton.Image = global::App.Properties.Resources.Menu;
             this.menuButton.ImageSize = new System.Drawing.Size(35, 35);
             this.menuButton.Location = new System.Drawing.Point(0, 0);
             this.menuButton.Name = "menuButton";
-            this.menuButton.PressedState.ImageSize = new System.Drawing.Size(58, 58);
+            this.menuButton.PressedState.ImageSize = new System.Drawing.Size(33, 33);
             this.menuButton.PressedState.Parent = this.menuButton;
             this.menuButton.Size = new System.Drawing.Size(78, 78);
             this.menuButton.TabIndex = 18;
