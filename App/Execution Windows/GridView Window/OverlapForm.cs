@@ -19,6 +19,7 @@ namespace App
         public OverlapForm(List<Package> overlapList, List<Package> softwareList)
         {
             InitializeComponent();
+            Guna.UI.Lib.GraphicsHelper.ShadowForm(this);
             this.Icon = Properties.Resources.mainIcon;
             this.overlapList = overlapList;
             this.softwareList = softwareList;
@@ -96,6 +97,11 @@ namespace App
                     }
                 }    
             }    
+        }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

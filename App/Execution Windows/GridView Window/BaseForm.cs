@@ -175,7 +175,6 @@ namespace App
                 {
                     this.Hide();
                     exec();
-                    this.Close();
                 }
             }
             else MessageBox.Show("Bạn chưa chọn phần mềm nào");

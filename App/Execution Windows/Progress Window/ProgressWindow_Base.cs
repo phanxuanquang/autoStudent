@@ -120,7 +120,7 @@ namespace App
         // Update
         protected void UpdateCompletedAmount(int value, float percentOfValue)
         {
-            if (listSoftware != null && value >= 0)
+            if (listSoftware != null && value >= 0 && listSoftware.Count > 0)
             {
                 try
                 {

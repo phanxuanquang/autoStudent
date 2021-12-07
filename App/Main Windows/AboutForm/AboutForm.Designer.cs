@@ -58,7 +58,7 @@
             this.guna2PictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.guna2PictureBox1.FillColor = System.Drawing.Color.Transparent;
             this.guna2PictureBox1.Image = global::App.Properties.Resources.NameSoftware;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(93, 35);
+            this.guna2PictureBox1.Location = new System.Drawing.Point(93, 15);
             this.guna2PictureBox1.Margin = new System.Windows.Forms.Padding(0);
             this.guna2PictureBox1.Name = "guna2PictureBox1";
             this.guna2PictureBox1.ShadowDecoration.Parent = this.guna2PictureBox1;
