@@ -25,13 +25,15 @@ namespace App.Main_Windows.AboutForm
             this.DoubleBuffered = true;
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             defaultFormat = new List<(Point, Color)>();
-            for (int index = 0; index < this.panel1.Controls.Count; index++)
+
+            for (int index = 0; index < this.contentPanel.Controls.Count; index++)
             {
-                defaultFormat.Add((this.panel1.Controls[index].Location, this.panel1.Controls[index].ForeColor));
-                this.panel1.Controls[index].Location = new Point(this.panel1.Controls[index].Location.X, this.panel1.Controls[index].Location.Y + y);
-                this.panel1.Controls[index].ForeColor = Color.FromArgb(34, 40, 87);
+                defaultFormat.Add((this.contentPanel.Controls[index].Location, this.contentPanel.Controls[index].ForeColor));
+                this.contentPanel.Controls[index].Location = new Point(this.contentPanel.Controls[index].Location.X, this.contentPanel.Controls[index].Location.Y + y);
+                this.contentPanel.Controls[index].ForeColor = Color.FromArgb(34, 40, 87);
             }
-            SetDoubleBuffered(this.panel1);
+
+            SetDoubleBuffered(this.contentPanel);
         }
 
         protected override CreateParams CreateParams
@@ -61,32 +63,26 @@ namespace App.Main_Windows.AboutForm
             aProp.SetValue(c, true, null);
         }
 
-        
-        private void guna2Button1_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void Timer_Tick(object sender, EventArgs e)
         {
             timer.Stop();
-            this.panel1.SuspendLayout();
-            if (index < panel1.Controls.Count)
+            this.contentPanel.SuspendLayout();
+            if (index < contentPanel.Controls.Count)
             {
-                if (this.panel1.Controls[index].ForeColor.G < 255)
+                if (this.contentPanel.Controls[index].ForeColor.G < 255)
                 {
-                    this.panel1.Controls[index].Visible = true;
+                    this.contentPanel.Controls[index].Visible = true;
                     if (y > 0)
                     {
                         y--;
-                        panel1.Controls[index].Location = new System.Drawing.Point(panel1.Controls[index].Location.X, panel1.Controls[index].Location.Y - 1);
+                        contentPanel.Controls[index].Location = new System.Drawing.Point(contentPanel.Controls[index].Location.X, contentPanel.Controls[index].Location.Y - 1);
                     }
-                    if (panel1.Controls[index].ForeColor.G < 255)
+                    if (contentPanel.Controls[index].ForeColor.G < 255)
                     {
                         max += 5;
-                        panel1.Controls[index].ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(max)))), ((int)(((byte)(max)))));
+                        contentPanel.Controls[index].ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(max)))), ((int)(((byte)(max)))));
                     }
-                    this.panel1.ResumeLayout(false);
+                    this.contentPanel.ResumeLayout(false);
                 }
                 else
                 {
@@ -107,7 +103,13 @@ namespace App.Main_Windows.AboutForm
             timer.Start();
         }
 
-        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        // Link Label
+        private void FeedbackLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            App.Main_Windows.AboutForm.FeedbackForm feedbackForm = new FeedbackForm();
+            feedbackForm.ShowDialog();
+        }
+        private void GithubLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process openGitHub = new Process();
             openGitHub.StartInfo.FileName = "CMD.exe";
@@ -116,21 +118,20 @@ namespace App.Main_Windows.AboutForm
             openGitHub.Start();
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            App.Main_Windows.AboutForm.FeedbackForm feedbackForm = new FeedbackForm();
-            feedbackForm.ShowDialog();
-        }
-
-        private void panel1_Click(object sender, EventArgs e)
+        private void contentPanel_Paint(object sender, PaintEventArgs e)
         {
             timer.Stop();
-            for(int index = 0; index < this.panel1.Controls.Count; index++)
+            for (int index = 0; index < this.contentPanel.Controls.Count; index++)
             {
-                this.panel1.Controls[index].Location = defaultFormat[index].Item1;
-                this.panel1.Controls[index].ForeColor = defaultFormat[index].Item2;
-                this.panel1.Controls[index].Visible = true;
+                this.contentPanel.Controls[index].Location = defaultFormat[index].Item1;
+                this.contentPanel.Controls[index].ForeColor = defaultFormat[index].Item2;
+                this.contentPanel.Controls[index].Visible = true;
             }
+        }
+
+        private void Exit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

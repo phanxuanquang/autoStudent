@@ -28,11 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.ThreadProgressBar = new Guna.UI2.WinForms.Guna2ProgressBar();
             this.CancelButton = new Guna.UI2.WinForms.Guna2Button();
-            this.Text = "ProgressWindow_Install";
             this.SuspendLayout();
             // 
             // label1
@@ -51,8 +49,9 @@
             // 
             // ThreadProgressBar
             // 
-            this.ThreadProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.ThreadProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ThreadProgressBar.BorderRadius = 12;
             this.ThreadProgressBar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(29)))), ((int)(((byte)(67)))));
             this.ThreadProgressBar.ForeColor = System.Drawing.Color.Cyan;
             this.ThreadProgressBar.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Horizontal;
@@ -62,11 +61,9 @@
             this.ThreadProgressBar.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(106)))), ((int)(((byte)(204)))));
             this.ThreadProgressBar.ProgressColor2 = System.Drawing.Color.Cyan;
             this.ThreadProgressBar.ShadowDecoration.Parent = this.ThreadProgressBar;
-            this.ThreadProgressBar.ShowPercentage = false;
             this.ThreadProgressBar.Size = new System.Drawing.Size(482, 30);
             this.ThreadProgressBar.TabIndex = 42;
             this.ThreadProgressBar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            this.ThreadProgressBar.BorderRadius = 12;
             // 
             // CancelButton
             // 
@@ -90,8 +87,16 @@
             this.CancelButton.TabIndex = 43;
             this.CancelButton.Text = "HỦY";
             this.CancelButton.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
-
+            // 
+            // ProgressWindow_Install
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.ClientSize = new System.Drawing.Size(819, 492);
+            this.Location = new System.Drawing.Point(0, 0);
+            this.Name = "ProgressWindow_Install";
+            this.Text = "autoStudent - Cài đặt phần mềm";
             this.ResumeLayout(false);
+
         }
 
         #endregion

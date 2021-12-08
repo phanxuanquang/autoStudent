@@ -129,9 +129,9 @@
             this.githubButton.ShadowDecoration.Parent = this.githubButton;
             this.githubButton.Size = new System.Drawing.Size(200, 75);
             this.githubButton.TabIndex = 7;
-            this.githubButton.Text = "Tác giả";
+            this.githubButton.Text = "Phần mềm";
             this.githubButton.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.githubButton.TextOffset = new System.Drawing.Point(40, 0);
+            this.githubButton.TextOffset = new System.Drawing.Point(35, 0);
             this.githubButton.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             this.githubButton.Click += new System.EventHandler(this.githubButton_Click);
             // 
@@ -366,7 +366,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MainUI";
+            this.Text = "autoStudent";
             this.MainPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 

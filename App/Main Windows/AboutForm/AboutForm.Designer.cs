@@ -34,7 +34,7 @@
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.Title = new System.Windows.Forms.Label();
             this.Exit = new Guna.UI2.WinForms.Guna2Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.contentPanel = new System.Windows.Forms.Panel();
             this.Version = new System.Windows.Forms.Label();
             this.Framework = new System.Windows.Forms.Label();
             this.Developer = new System.Windows.Forms.Label();
@@ -42,10 +42,10 @@
             this.SubDeveloper2 = new System.Windows.Forms.Label();
             this.SubDeveloper3 = new System.Windows.Forms.Label();
             this.SubDeveloper4 = new System.Windows.Forms.Label();
-            this.Feedback = new System.Windows.Forms.LinkLabel();
-            this.GetSourceCode = new System.Windows.Forms.LinkLabel();
+            this.FeedbackLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.GithubLinkLabel = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.contentPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // roundEdge
@@ -71,14 +71,15 @@
             // 
             this.Title.AutoSize = true;
             this.Title.BackColor = System.Drawing.Color.Transparent;
-            this.Title.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Title.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Title.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.Title.Location = new System.Drawing.Point(5, 5);
+            this.Title.Location = new System.Drawing.Point(48, 5);
             this.Title.Margin = new System.Windows.Forms.Padding(5);
             this.Title.Name = "Title";
-            this.Title.Size = new System.Drawing.Size(203, 13);
+            this.Title.Size = new System.Drawing.Size(357, 15);
             this.Title.TabIndex = 0;
-            this.Title.Text = "Phần mềm hỗ trợ cài đặt chương trình";
+            this.Title.Text = "TỰ ĐỘNG HÓA QUÁ TRÌNH CÀI ĐẶT VÀ GỠ CÀI ĐẶT PHẦN MỀM";
+            this.Title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Title.Visible = false;
             // 
             // Exit
@@ -87,46 +88,46 @@
             this.Exit.AutoRoundedCorners = true;
             this.Exit.BackColor = System.Drawing.Color.Transparent;
             this.Exit.BorderColor = System.Drawing.Color.Transparent;
-            this.Exit.BorderRadius = 14;
+            this.Exit.BorderRadius = 20;
             this.Exit.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
             this.Exit.BorderThickness = 1;
             this.Exit.CheckedState.Parent = this.Exit;
             this.Exit.CustomImages.Parent = this.Exit;
-            this.Exit.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
+            this.Exit.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(57)))), ((int)(((byte)(125)))));
             this.Exit.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Exit.ForeColor = System.Drawing.Color.Cyan;
             this.Exit.HoverState.Parent = this.Exit;
-            this.Exit.Location = new System.Drawing.Point(449, 355);
+            this.Exit.Location = new System.Drawing.Point(252, 344);
             this.Exit.Margin = new System.Windows.Forms.Padding(0);
             this.Exit.Name = "Exit";
             this.Exit.Padding = new System.Windows.Forms.Padding(5);
             this.Exit.PressedColor = System.Drawing.Color.Cyan;
             this.Exit.ShadowDecoration.Parent = this.Exit;
-            this.Exit.Size = new System.Drawing.Size(58, 31);
+            this.Exit.Size = new System.Drawing.Size(97, 42);
             this.Exit.TabIndex = 2;
-            this.Exit.Text = "OK";
+            this.Exit.Text = "THOÁT";
             this.Exit.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
-            this.Exit.Click += new System.EventHandler(this.guna2Button1_Click);
+            this.Exit.Click += new System.EventHandler(this.Exit_Click);
             // 
-            // panel1
+            // contentPanel
             // 
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Controls.Add(this.Title);
-            this.panel1.Controls.Add(this.Version);
-            this.panel1.Controls.Add(this.Framework);
-            this.panel1.Controls.Add(this.Developer);
-            this.panel1.Controls.Add(this.SubDeveloper1);
-            this.panel1.Controls.Add(this.SubDeveloper2);
-            this.panel1.Controls.Add(this.SubDeveloper3);
-            this.panel1.Controls.Add(this.SubDeveloper4);
-            this.panel1.Controls.Add(this.Feedback);
-            this.panel1.Controls.Add(this.GetSourceCode);
-            this.panel1.Location = new System.Drawing.Point(93, 120);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(414, 235);
-            this.panel1.TabIndex = 3;
-            this.panel1.Click += new System.EventHandler(this.panel1_Click);
+            this.contentPanel.BackColor = System.Drawing.Color.Transparent;
+            this.contentPanel.Controls.Add(this.Title);
+            this.contentPanel.Controls.Add(this.Version);
+            this.contentPanel.Controls.Add(this.Framework);
+            this.contentPanel.Controls.Add(this.Developer);
+            this.contentPanel.Controls.Add(this.SubDeveloper1);
+            this.contentPanel.Controls.Add(this.SubDeveloper2);
+            this.contentPanel.Controls.Add(this.SubDeveloper3);
+            this.contentPanel.Controls.Add(this.SubDeveloper4);
+            this.contentPanel.Controls.Add(this.FeedbackLinkLabel);
+            this.contentPanel.Controls.Add(this.GithubLinkLabel);
+            this.contentPanel.Location = new System.Drawing.Point(74, 101);
+            this.contentPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.contentPanel.Name = "contentPanel";
+            this.contentPanel.Size = new System.Drawing.Size(453, 235);
+            this.contentPanel.TabIndex = 3;
+            this.contentPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.contentPanel_Paint);
             // 
             // Version
             // 
@@ -137,9 +138,9 @@
             this.Version.Location = new System.Drawing.Point(5, 28);
             this.Version.Margin = new System.Windows.Forms.Padding(5);
             this.Version.Name = "Version";
-            this.Version.Size = new System.Drawing.Size(80, 13);
+            this.Version.Size = new System.Drawing.Size(87, 13);
             this.Version.TabIndex = 1;
-            this.Version.Text = "Phiên bản: 1.0";
+            this.Version.Text = "• Phiên bản: 1.0";
             this.Version.Visible = false;
             // 
             // Framework
@@ -151,9 +152,9 @@
             this.Framework.Location = new System.Drawing.Point(5, 51);
             this.Framework.Margin = new System.Windows.Forms.Padding(5);
             this.Framework.Name = "Framework";
-            this.Framework.Size = new System.Drawing.Size(258, 13);
+            this.Framework.Size = new System.Drawing.Size(327, 13);
             this.Framework.TabIndex = 2;
-            this.Framework.Text = "Chương trình viết trên nền tảng Windows Forms";
+            this.Framework.Text = "• Chương trình được phát triển trên nền tảng Windows Forms";
             this.Framework.Visible = false;
             // 
             // Developer
@@ -165,9 +166,9 @@
             this.Developer.Location = new System.Drawing.Point(5, 74);
             this.Developer.Margin = new System.Windows.Forms.Padding(5);
             this.Developer.Name = "Developer";
-            this.Developer.Size = new System.Drawing.Size(96, 13);
+            this.Developer.Size = new System.Drawing.Size(102, 13);
             this.Developer.TabIndex = 3;
-            this.Developer.Text = "Người phát triển:";
+            this.Developer.Text = "• Nhóm phát triển:";
             this.Developer.Visible = false;
             // 
             // SubDeveloper1
@@ -176,7 +177,7 @@
             this.SubDeveloper1.BackColor = System.Drawing.Color.Transparent;
             this.SubDeveloper1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SubDeveloper1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.SubDeveloper1.Location = new System.Drawing.Point(50, 97);
+            this.SubDeveloper1.Location = new System.Drawing.Point(69, 97);
             this.SubDeveloper1.Margin = new System.Windows.Forms.Padding(50, 5, 5, 5);
             this.SubDeveloper1.Name = "SubDeveloper1";
             this.SubDeveloper1.Size = new System.Drawing.Size(100, 13);
@@ -190,7 +191,7 @@
             this.SubDeveloper2.BackColor = System.Drawing.Color.Transparent;
             this.SubDeveloper2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SubDeveloper2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.SubDeveloper2.Location = new System.Drawing.Point(50, 120);
+            this.SubDeveloper2.Location = new System.Drawing.Point(69, 120);
             this.SubDeveloper2.Margin = new System.Windows.Forms.Padding(50, 5, 5, 5);
             this.SubDeveloper2.Name = "SubDeveloper2";
             this.SubDeveloper2.Size = new System.Drawing.Size(80, 13);
@@ -204,7 +205,7 @@
             this.SubDeveloper3.BackColor = System.Drawing.Color.Transparent;
             this.SubDeveloper3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SubDeveloper3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.SubDeveloper3.Location = new System.Drawing.Point(50, 143);
+            this.SubDeveloper3.Location = new System.Drawing.Point(69, 143);
             this.SubDeveloper3.Margin = new System.Windows.Forms.Padding(50, 5, 5, 5);
             this.SubDeveloper3.Name = "SubDeveloper3";
             this.SubDeveloper3.Size = new System.Drawing.Size(84, 13);
@@ -218,7 +219,7 @@
             this.SubDeveloper4.BackColor = System.Drawing.Color.Transparent;
             this.SubDeveloper4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SubDeveloper4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.SubDeveloper4.Location = new System.Drawing.Point(50, 166);
+            this.SubDeveloper4.Location = new System.Drawing.Point(69, 166);
             this.SubDeveloper4.Margin = new System.Windows.Forms.Padding(50, 5, 5, 5);
             this.SubDeveloper4.Name = "SubDeveloper4";
             this.SubDeveloper4.Size = new System.Drawing.Size(113, 13);
@@ -226,39 +227,41 @@
             this.SubDeveloper4.Text = "Nguyễn Hoàng Phúc";
             this.SubDeveloper4.Visible = false;
             // 
-            // Feedback
+            // FeedbackLinkLabel
             // 
-            this.Feedback.ActiveLinkColor = System.Drawing.Color.Yellow;
-            this.Feedback.AutoSize = true;
-            this.Feedback.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.Feedback.LinkColor = System.Drawing.Color.Cyan;
-            this.Feedback.Location = new System.Drawing.Point(5, 189);
-            this.Feedback.Margin = new System.Windows.Forms.Padding(5);
-            this.Feedback.Name = "Feedback";
-            this.Feedback.Size = new System.Drawing.Size(174, 13);
-            this.Feedback.TabIndex = 10;
-            this.Feedback.TabStop = true;
-            this.Feedback.Text = "Gửi phản hồi cho nhà phát triển";
-            this.Feedback.Visible = false;
-            this.Feedback.VisitedLinkColor = System.Drawing.Color.Cyan;
-            this.Feedback.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            this.FeedbackLinkLabel.ActiveLinkColor = System.Drawing.Color.Yellow;
+            this.FeedbackLinkLabel.AutoSize = true;
+            this.FeedbackLinkLabel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.FeedbackLinkLabel.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.FeedbackLinkLabel.LinkColor = System.Drawing.Color.Cyan;
+            this.FeedbackLinkLabel.Location = new System.Drawing.Point(5, 189);
+            this.FeedbackLinkLabel.Margin = new System.Windows.Forms.Padding(5);
+            this.FeedbackLinkLabel.Name = "FeedbackLinkLabel";
+            this.FeedbackLinkLabel.Size = new System.Drawing.Size(174, 13);
+            this.FeedbackLinkLabel.TabIndex = 10;
+            this.FeedbackLinkLabel.TabStop = true;
+            this.FeedbackLinkLabel.Text = "Gửi phản hồi cho nhà phát triển";
+            this.FeedbackLinkLabel.Visible = false;
+            this.FeedbackLinkLabel.VisitedLinkColor = System.Drawing.Color.Cyan;
+            this.FeedbackLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.FeedbackLinkLabel_LinkClicked);
             // 
-            // GetSourceCode
+            // GithubLinkLabel
             // 
-            this.GetSourceCode.ActiveLinkColor = System.Drawing.Color.Yellow;
-            this.GetSourceCode.AutoSize = true;
-            this.GetSourceCode.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.GetSourceCode.LinkColor = System.Drawing.Color.Cyan;
-            this.GetSourceCode.Location = new System.Drawing.Point(5, 212);
-            this.GetSourceCode.Margin = new System.Windows.Forms.Padding(5);
-            this.GetSourceCode.Name = "GetSourceCode";
-            this.GetSourceCode.Size = new System.Drawing.Size(67, 13);
-            this.GetSourceCode.TabIndex = 9;
-            this.GetSourceCode.TabStop = true;
-            this.GetSourceCode.Text = "Link Github";
-            this.GetSourceCode.Visible = false;
-            this.GetSourceCode.VisitedLinkColor = System.Drawing.Color.Cyan;
-            this.GetSourceCode.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
+            this.GithubLinkLabel.ActiveLinkColor = System.Drawing.Color.Yellow;
+            this.GithubLinkLabel.AutoSize = true;
+            this.GithubLinkLabel.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.GithubLinkLabel.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.GithubLinkLabel.LinkColor = System.Drawing.Color.Cyan;
+            this.GithubLinkLabel.Location = new System.Drawing.Point(5, 212);
+            this.GithubLinkLabel.Margin = new System.Windows.Forms.Padding(5);
+            this.GithubLinkLabel.Name = "GithubLinkLabel";
+            this.GithubLinkLabel.Size = new System.Drawing.Size(125, 13);
+            this.GithubLinkLabel.TabIndex = 9;
+            this.GithubLinkLabel.TabStop = true;
+            this.GithubLinkLabel.Text = "Mã nguồn trên Github";
+            this.GithubLinkLabel.Visible = false;
+            this.GithubLinkLabel.VisitedLinkColor = System.Drawing.Color.Cyan;
+            this.GithubLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.GithubLinkLabel_LinkClicked);
             // 
             // AboutForm
             // 
@@ -267,18 +270,19 @@
             this.BackgroundImage = global::App.Properties.Resources.Background__SubWindow;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(600, 400);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.contentPanel);
             this.Controls.Add(this.Exit);
             this.Controls.Add(this.guna2PictureBox1);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AboutForm";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AboutForm";
+            this.Text = "autoStudent - Thông tin phần mềm";
             this.Shown += new System.EventHandler(this.AboutForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.contentPanel.ResumeLayout(false);
+            this.contentPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -289,7 +293,7 @@
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
         private System.Windows.Forms.Label Title;
         private Guna.UI2.WinForms.Guna2Button Exit;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel contentPanel;
         private System.Windows.Forms.Label SubDeveloper4;
         private System.Windows.Forms.Label SubDeveloper3;
         private System.Windows.Forms.Label SubDeveloper2;
@@ -297,7 +301,7 @@
         private System.Windows.Forms.Label Developer;
         private System.Windows.Forms.Label Framework;
         private System.Windows.Forms.Label Version;
-        private System.Windows.Forms.LinkLabel Feedback;
-        private System.Windows.Forms.LinkLabel GetSourceCode;
+        private System.Windows.Forms.LinkLabel FeedbackLinkLabel;
+        private System.Windows.Forms.LinkLabel GithubLinkLabel;
     }
 }

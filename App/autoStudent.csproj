@@ -195,6 +195,12 @@
     <EmbeddedResource Include="Execution Windows\GridView Window\OverlapForm.resx">
       <DependentUpon>OverlapForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Execution Windows\Progress Window\ProgressWindow_Install.resx">
+      <DependentUpon>ProgressWindow_Install.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Execution Windows\Progress Window\ProgressWindow_Uninstall.resx">
+      <DependentUpon>ProgressWindow_Uninstall.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main Windows\AboutForm\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>

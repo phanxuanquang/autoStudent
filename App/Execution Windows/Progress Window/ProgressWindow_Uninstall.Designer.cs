@@ -28,8 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.Text = "ProgressWindow_Uninstall";
+            this.SuspendLayout();
+            // 
+            // ProgressWindow_Uninstall
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.ClientSize = new System.Drawing.Size(819, 492);
+            this.Location = new System.Drawing.Point(0, 0);
+            this.Name = "ProgressWindow_Uninstall";
+            this.Text = "autoStudent - Gỡ cài đặt phần mềm";
+            this.ResumeLayout(false);
+
         }
 
         #endregion

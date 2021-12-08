@@ -77,7 +77,7 @@ namespace App
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "autoStudent";
+            this.Text = "autoStudent - Loading Data. . . ";
             this.ResumeLayout(false);
 
         }
