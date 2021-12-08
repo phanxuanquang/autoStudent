@@ -127,7 +127,7 @@
             this.contentPanel.Name = "contentPanel";
             this.contentPanel.Size = new System.Drawing.Size(453, 235);
             this.contentPanel.TabIndex = 3;
-            this.contentPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.contentPanel_Paint);
+            this.contentPanel.Click += new System.EventHandler(this.contentPanel_Click);
             // 
             // Version
             // 

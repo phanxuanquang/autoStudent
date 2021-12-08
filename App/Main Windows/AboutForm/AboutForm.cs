@@ -118,7 +118,13 @@ namespace App.Main_Windows.AboutForm
             openGitHub.Start();
         }
 
-        private void contentPanel_Paint(object sender, PaintEventArgs e)
+
+        private void Exit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void contentPanel_Click(object sender, EventArgs e)
         {
             timer.Stop();
             for (int index = 0; index < this.contentPanel.Controls.Count; index++)
@@ -127,11 +133,6 @@ namespace App.Main_Windows.AboutForm
                 this.contentPanel.Controls[index].ForeColor = defaultFormat[index].Item2;
                 this.contentPanel.Controls[index].Visible = true;
             }
-        }
-
-        private void Exit_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }
