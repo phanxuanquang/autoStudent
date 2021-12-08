@@ -22,11 +22,11 @@ namespace App
              @"SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall"
         };
 
-
         public LoadingWindow()
         {
             InitializeComponent();
             this.Icon = Properties.Resources.mainIcon;
+            Guna.UI.Lib.GraphicsHelper.ShadowForm(this);
 
             Program.software_Database = new List<Package>();
             Program.software_System = new List<Package>();
