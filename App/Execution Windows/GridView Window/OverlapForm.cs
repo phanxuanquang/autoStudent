@@ -74,9 +74,9 @@ namespace App
         private void confirmButton_Click(object sender, EventArgs e)
         {
             this.Hide();
-            if (selectedSoftwareList.Count > 0)
+            if (overlapList.Count > 0)
             {
-                ProgressWindow_Uninstall progressWindow_Uninstall = new ProgressWindow_Uninstall(selectedSoftwareList);
+                ProgressWindow_Uninstall progressWindow_Uninstall = new ProgressWindow_Uninstall(overlapList);
                 progressWindow_Uninstall.isOverlap = true;
                 progressWindow_Uninstall.ShowDialog();
             }
@@ -90,13 +90,13 @@ namespace App
         }
         private void DeleteSoftware()
         {
-            if (originalGridView.Rows.Count > 0)
+            if (finalGridView.Rows.Count > 0)
             {
-                for (int j = 0; j < originalGridView.Rows.Count; j++)
+                for (int j = 0; j < finalGridView.Rows.Count; j++)
                 {
                     for (int i = 0; i < softwareList.Count; i++)
                     {
-                        if (softwareList[i].Displayname == originalGridView.Rows[j].Cells[0].Value.ToString())
+                        if (softwareList[i].Displayname == finalGridView.Rows[j].Cells[0].Value.ToString())
                         {
                             softwareList.RemoveAt(i);
                             i--;
