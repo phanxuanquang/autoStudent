@@ -51,6 +51,7 @@
             this.Send.ForeColor = System.Drawing.Color.Cyan;
             this.Send.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.Send.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
+            this.Send.HoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.Send.HoverState.Parent = this.Send;
             this.Send.Location = new System.Drawing.Point(114, 222);
             this.Send.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
@@ -77,6 +78,7 @@
             this.Cancel.ForeColor = System.Drawing.Color.Cyan;
             this.Cancel.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.Cancel.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
+            this.Cancel.HoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.Cancel.HoverState.Parent = this.Cancel;
             this.Cancel.Location = new System.Drawing.Point(213, 222);
             this.Cancel.Margin = new System.Windows.Forms.Padding(0);
