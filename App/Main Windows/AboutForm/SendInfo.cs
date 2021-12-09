@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -37,11 +38,12 @@ namespace App.Main_Windows.AboutForm
         {
             try
             {
+                string[] account = System.Text.Encoding.UTF8.GetString(Properties.Resources.Feedback).Split('\n');
                 MailMessage message = new MailMessage();
                 SmtpClient smtp = new SmtpClient();
                 string userName = GenerateSHA256(Environment.UserName);
-                message.From = new MailAddress("DariusVirus1122@gmail.com");
-                message.To.Add(new MailAddress("DariusVirus1122@gmail.com"));
+                message.From = new MailAddress(App.Cryptography.Decrypt(account[0], DataAccess.Instance.GetPassCry()));
+                message.To.Add(new MailAddress(App.Cryptography.Decrypt(account[0], DataAccess.Instance.GetPassCry())));
                 message.Subject = String.Format("{0} {1}", "Feedback user:", userName.Substring(0, 8));
                 message.Body = String.Format(
                     "Machine name: {0}\n" +
@@ -63,7 +65,7 @@ namespace App.Main_Windows.AboutForm
                 smtp.EnableSsl = true;
                 smtp.UseDefaultCredentials = false;
                 //Cái này mã hóa trong json chắc được. Đang test thôi
-                smtp.Credentials = new NetworkCredential("DariusVirus1122@gmail.com", "*************");
+                smtp.Credentials = new NetworkCredential(App.Cryptography.Decrypt(account[0], DataAccess.Instance.GetPassCry()), App.Cryptography.Decrypt(account[1], DataAccess.Instance.GetPassCry()));
                 smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                 smtp.Send(message);
             }

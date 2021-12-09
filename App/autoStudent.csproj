@@ -261,6 +261,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Feedback.autostudent" />
     <None Include="Resources\Icon_app_temporary.ico" />
   </ItemGroup>
   <ItemGroup>
