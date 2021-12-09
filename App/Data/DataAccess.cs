@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,7 +17,7 @@ namespace App
         //private constructor to avoid client applications to use constructor
         static DataAccess()
         {
-            filePath = @"../../../Data/MainData.json";
+            filePath = @"../../../Data/MainData.AutoStudent";
             Load();
         }
 
@@ -42,18 +43,32 @@ namespace App
                     root = new Root();
                     using (var stream = File.Create(filePath))
                     {
-                        string jsonString = "";
-                        root = Root.FromJson(jsonString);
+                        string path = @"https://dung-ovl.github.io/MainData.json";
+                        using (WebClient client = new WebClient())
+                        {
+                            Stream streamR = client.OpenRead(path);
+                            string content;
+                            string passDown = DataAccess.Instance.GetPassCry();
+                            using (StreamReader reader = new StreamReader(streamR))
+                            {
+                                content = reader.ReadToEnd();
+                            }
+                            string encrypt = Cryptography.Encrypt(content, passDown);
+                            using (StreamWriter writer = new StreamWriter(stream))
+                            {
+                                writer.Write(encrypt);
+                            }
+                        }
                     }
                 }
-                else
-                {
-                    using (var stream = File.OpenRead(filePath))
-                    {
 
-                        StreamReader reader = new StreamReader(stream);
+                using (var stream = File.OpenRead(filePath))
+                {
+                    using (StreamReader reader = new StreamReader(stream))
+                    {
                         string jsonString = reader.ReadToEnd();
-                        root = Root.FromJson(jsonString);
+                        string data = Cryptography.Decrypt(jsonString, DataAccess.Instance.GetPassCry());
+                        root = Root.FromJson(data);
                     }
                 }
             }
@@ -112,6 +127,16 @@ namespace App
         public DateTime GetUpdateTime()
         {
             return root.UpdateDate;
+        }
+
+        public string GetPassCry()
+        {
+            return "0d481fbe6c3b5349e758fb63a49752c72b4d701de3d2e81ede1713f6471b658e";
+        }
+
+        public void LoadDirect()
+        {
+            Load();
         }
     }
 }

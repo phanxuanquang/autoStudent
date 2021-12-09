@@ -122,6 +122,7 @@ namespace App
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 string filePath = dialog.FileName;
+                string passImport = DataAccess.Instance.GetPassCry();
                 if (File.Exists(filePath))
                 {
                     try
@@ -129,10 +130,15 @@ namespace App
                         List<string> names = new List<string>();
                         using (StreamReader sr = File.OpenText(filePath))
                         {
+                            string dataImport = sr.ReadToEnd();
+                            string decrypt = Cryptography.Decrypt(dataImport, passImport);
                             string temp;
-                            while ((temp = sr.ReadLine()) != null)
+                            using (System.IO.StringReader reader = new System.IO.StringReader(decrypt))
                             {
-                                names.Add(temp);
+                                while ((temp = reader.ReadLine()) != null)
+                                {
+                                    names.Add(temp);
+                                }
                             }
                         }
                         selectedSoftwareList = new List<Package>(DataAccess.Instance.GetPackagesOfName(names));
@@ -145,6 +151,10 @@ namespace App
                     catch (UnauthorizedAccessException)
                     {
                         MessageBox.Show("Không có quyền đọc ở thư mục chọn");
+                    }
+                    catch(Exception)
+                    {
+                        MessageBox.Show("Lỗi không xác định");
                     }
                 }
                 else
