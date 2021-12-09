@@ -180,19 +180,23 @@ namespace App
             {
                 if (Directory.Exists(pathSaveExport))
                 {
+                    string data = "";
                     string filePath = pathSaveExport + @"\AutoStudentDataExport.AS";
+                    string passExport = DataAccess.Instance.GetPassCry();
                     try
                     {
                         if (File.Exists(filePath))
                         {
                             File.Delete(filePath);
                         }
+                        foreach (var item in dataList)
+                        {
+                            data += $"{item.Name}\n";
+                        }
                         using (StreamWriter sw = File.CreateText(filePath))
                         {
-                            foreach (var item in dataList)
-                            {
-                                sw.WriteLine(item.Name);
-                            }
+                            string encrypt = Cryptography.Encrypt(data, passExport);
+                            sw.Write(encrypt);
                         }
                         return true;
                     }

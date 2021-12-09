@@ -51,6 +51,7 @@
             this.IT_Button = new Guna.UI2.WinForms.Guna2GradientButton();
             this.exitButton = new Guna.UI2.WinForms.Guna2Button();
             this.roundEdge = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.toolTipBase = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.softwareGridView)).BeginInit();
             this.menuPanel.SuspendLayout();
             this.SuspendLayout();
@@ -61,11 +62,11 @@
             this.softwareGridView.AllowUserToDeleteRows = false;
             this.softwareGridView.AllowUserToResizeColumns = false;
             this.softwareGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Cyan;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Cyan;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
             this.softwareGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.softwareGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -328,6 +329,7 @@
             this.ImportSoftwareList_Button.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.ImportSoftwareList_Button.TextOffset = new System.Drawing.Point(40, 0);
             this.ImportSoftwareList_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.toolTipBase.SetToolTip(this.ImportSoftwareList_Button, "Danh sách bên ngoài");
             this.ImportSoftwareList_Button.Click += new System.EventHandler(this.ImportSoftwareList_Button_Click);
             // 
             // menuButton
@@ -345,6 +347,7 @@
             this.menuButton.PressedState.Parent = this.menuButton;
             this.menuButton.Size = new System.Drawing.Size(78, 78);
             this.menuButton.TabIndex = 18;
+            this.toolTipBase.SetToolTip(this.menuButton, "Lọc");
             this.menuButton.Click += new System.EventHandler(this.menuButton_Click);
             // 
             // Graphic_Button
@@ -380,6 +383,7 @@
             this.Graphic_Button.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.Graphic_Button.TextOffset = new System.Drawing.Point(40, 0);
             this.Graphic_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.toolTipBase.SetToolTip(this.Graphic_Button, "Đồ họa đa phương tiện");
             this.Graphic_Button.Click += new System.EventHandler(this.Graphic_Button_Click);
             // 
             // None_Button
@@ -414,6 +418,7 @@
             this.None_Button.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.None_Button.TextOffset = new System.Drawing.Point(40, 0);
             this.None_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.toolTipBase.SetToolTip(this.None_Button, "Khác");
             this.None_Button.Click += new System.EventHandler(this.None_Button_Click);
             // 
             // Tech_Button
@@ -449,6 +454,7 @@
             this.Tech_Button.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.Tech_Button.TextOffset = new System.Drawing.Point(40, 0);
             this.Tech_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.toolTipBase.SetToolTip(this.Tech_Button, "Kỹ thuật cơ khí");
             this.Tech_Button.Click += new System.EventHandler(this.Tech_Button_Click);
             // 
             // IT_Button
@@ -484,6 +490,7 @@
             this.IT_Button.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.IT_Button.TextOffset = new System.Drawing.Point(40, 0);
             this.IT_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.toolTipBase.SetToolTip(this.IT_Button, "Công nghệ thông tin");
             this.IT_Button.Click += new System.EventHandler(this.IT_Button_Click);
             // 
             // exitButton
@@ -555,5 +562,6 @@
         protected Guna.UI2.WinForms.Guna2GradientButton IT_Button;
         private System.Windows.Forms.DataGridViewTextBoxColumn softwareName;
         private System.Windows.Forms.DataGridViewTextBoxColumn softwareVersion;
+        private System.Windows.Forms.ToolTip toolTipBase;
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Runtime.InteropServices;
@@ -77,7 +78,8 @@ namespace App
 
         // Main Button
         private void installButton_Click(object sender, EventArgs e)
-        {;
+        {
+            ;
             bool isInternetAvailable()
             {
                 try
@@ -99,7 +101,7 @@ namespace App
                 this.Show();
             }
             else MessageBox.Show("Không có kết nối mạng, vui lòng thử lại sau");
-           
+
         }
         private void uninstallButton_Click(object sender, EventArgs e)
         {
@@ -151,21 +153,35 @@ namespace App
 
             try
             {
-                WebClient client = new WebClient();
                 string path = @"https://dung-ovl.github.io/MainData.json";
                 DateTime modificationFileWeb = GetLastModifyTime(path);
                 DateTime modificationFileSystem = DataAccess.Instance.GetUpdateTime();
 
-                if (modificationFileWeb > modificationFileSystem)
+                if (modificationFileWeb.Date > modificationFileSystem.Date)
                 {
-                    WebClient Client = new WebClient();
-                    client.DownloadFile(path, DataAccess.Instance.GetFilePath());
+
+                    string pathData = DataAccess.Instance.GetFilePath();
+                    if (File.Exists(pathData))
+                    {
+                        File.Delete(pathData);
+                    }
+                    DataAccess.Instance.LoadDirect();
                     /*
                     Code reload data
                     */
                     MessageBox.Show("Đã cập nhập");
                 }
                 else MessageBox.Show("Bạn đang sử dụng phiên bản mới nhất");
+            }
+            catch (WebException we)
+            {
+                // WebException.Status holds useful information
+                MessageBox.Show(we.Message + "\n" + we.Status.ToString());
+            }
+            catch (NotSupportedException ne)
+            {
+                // other errors
+                MessageBox.Show(ne.Message);
             }
             catch (Exception)
             {
