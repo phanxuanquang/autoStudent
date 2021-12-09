@@ -20,7 +20,7 @@ namespace App
             this.Icon = Properties.Resources.mainIcon;
             Guna.UI.Lib.GraphicsHelper.ShadowForm(this);
             DoubleBuffered = true;
-            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true);
         }
 
         // Anti Flickering

@@ -36,6 +36,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.softwareGridView = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.softwareName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.softwareVersion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.searchBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.confirmButton = new Guna.UI2.WinForms.Guna2Button();
             this.allSoftwareView_Button = new Guna.UI2.WinForms.Guna2Button();
@@ -49,8 +51,6 @@
             this.IT_Button = new Guna.UI2.WinForms.Guna2GradientButton();
             this.exitButton = new Guna.UI2.WinForms.Guna2Button();
             this.roundEdge = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.softwareName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.softwareVersion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.softwareGridView)).BeginInit();
             this.menuPanel.SuspendLayout();
             this.SuspendLayout();
@@ -75,7 +75,7 @@
             this.softwareGridView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.softwareGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Cyan;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
@@ -140,6 +140,26 @@
             this.softwareGridView.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
             this.softwareGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.softwareGridView_CellClick);
             this.softwareGridView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.softwareGridView_RowsAdded);
+            // 
+            // softwareName
+            // 
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Cyan;
+            this.softwareName.DefaultCellStyle = dataGridViewCellStyle3;
+            this.softwareName.HeaderText = "PHẦN MỀM";
+            this.softwareName.Name = "softwareName";
+            this.softwareName.ReadOnly = true;
+            this.softwareName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // softwareVersion
+            // 
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Cyan;
+            this.softwareVersion.DefaultCellStyle = dataGridViewCellStyle4;
+            this.softwareVersion.HeaderText = "PHIÊN BẢN";
+            this.softwareVersion.Name = "softwareVersion";
+            this.softwareVersion.ReadOnly = true;
+            this.softwareVersion.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // searchBox
             // 
@@ -491,26 +511,6 @@
             // 
             this.roundEdge.BorderRadius = 15;
             this.roundEdge.TargetControl = this;
-            // 
-            // softwareName
-            // 
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Cyan;
-            this.softwareName.DefaultCellStyle = dataGridViewCellStyle3;
-            this.softwareName.HeaderText = "PHẦN MỀM";
-            this.softwareName.Name = "softwareName";
-            this.softwareName.ReadOnly = true;
-            this.softwareName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // softwareVersion
-            // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Cyan;
-            this.softwareVersion.DefaultCellStyle = dataGridViewCellStyle4;
-            this.softwareVersion.HeaderText = "PHIÊN BẢN";
-            this.softwareVersion.Name = "softwareVersion";
-            this.softwareVersion.ReadOnly = true;
-            this.softwareVersion.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // BaseExecutionForm
             // 
