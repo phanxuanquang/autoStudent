@@ -90,9 +90,11 @@ namespace App
             if (HasExitTodoTask)
             {
                 Program.mainUI.ShowInTaskbar = true;
+                if (!Program.mainUI.Visible)
+                    Program.mainUI.Show();
                 this.Close();
             }
-            else backgroundRunning_Button_Click(null, null);
+            else backgroundRunning_Button_Click(this, null);
         }
         private void minimizeButton_Click(object sender, EventArgs e)
         {
