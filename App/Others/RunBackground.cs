@@ -40,8 +40,11 @@ namespace App
                     SetTime(startProcess[0]);
                 }
                 mainForm.Hide();
-                notifyIcon.ShowBalloonTip(5000);
-                notifyIcon.Visible = true;
+                if (notifyIcon != null)
+                {
+                    notifyIcon.ShowBalloonTip(5000);
+                    notifyIcon.Visible = true;
+                }
             }
         }
         /// <summary>

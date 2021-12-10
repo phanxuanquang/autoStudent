@@ -63,6 +63,7 @@ namespace App
                 blackList.Add(ActionProcess.None);
             }
         }
+
         public ProgressWindow_Base()
         {
             InitializeComponent();
@@ -304,8 +305,7 @@ namespace App
                 Program.mainUI.ShowInTaskbar = false;
                 runBackground.EnableRunBackground(Program.setting.timeSetter);
             }
-            else
-                MessageBox.Show("Run background null");
+            else MessageBox.Show("Run background null");
         }
 
         private void softwareGridView_SelectionChanged(object sender, EventArgs e)

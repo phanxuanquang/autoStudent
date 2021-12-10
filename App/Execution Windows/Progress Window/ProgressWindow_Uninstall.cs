@@ -28,6 +28,11 @@ namespace App
             uninstall = new InstallUninstall.Uninstall();
             uninstall.Start(listSoftware);
 
+            if (runBackground == null)
+            {
+                runBackground = new RunBackground(this, this.components);
+            }
+
             this.Shown += ProgressWindow_Uninstall_Shown;
         }
 

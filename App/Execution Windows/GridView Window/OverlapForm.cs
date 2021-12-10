@@ -26,6 +26,17 @@ namespace App
             loadSoftwareToGridView(overlapList);
         }
 
+        //Anti Flickering
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams handleParam = base.CreateParams;
+                handleParam.ExStyle |= 0x02000000;
+                return handleParam;
+            }
+        }
+
         protected void loadSoftwareToGridView(List<Package> softwareList)
         {
             originalGridView.Rows.Clear();
