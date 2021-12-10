@@ -76,17 +76,10 @@ namespace App
             this.Hide();
             if (overlapList.Count > 0)
             {
-                ProgressWindow_Uninstall progressWindow_Uninstall = new ProgressWindow_Uninstall(overlapList);
+                ProgressWindow_Uninstall progressWindow_Uninstall = new ProgressWindow_Uninstall(overlapList, this);
                 progressWindow_Uninstall.isOverlap = true;
                 progressWindow_Uninstall.ShowDialog();
             }
-            DeleteSoftware();
-            if (softwareList.Count > 0)
-            {
-                ProgressWindow_Install progressWindow_Install = new ProgressWindow_Install(softwareList);
-                progressWindow_Install.ShowDialog();
-            }
-            this.Close();
         }
         private void DeleteSoftware()
         {
@@ -107,6 +100,10 @@ namespace App
         }
 
         private void exitButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        public void CloseForm()
         {
             this.Close();
         }

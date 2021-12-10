@@ -14,7 +14,7 @@ namespace App
     public partial class ProgressWindow_Uninstall : ProgressWindow_Base
     {
         private InstallUninstall.BaseProcess uninstall;
-        public ProgressWindow_Uninstall(List<Package> listSoftware) : base(listSoftware)
+        public ProgressWindow_Uninstall(List<Package> listSoftware, OverlapForm overlapForm) : base(listSoftware, overlapForm)
         {
             InitializeComponent();
 
@@ -24,6 +24,7 @@ namespace App
 
             LoadDataGridView();
 
+            runBackground = new RunBackground(this, this.components);
             uninstall = new InstallUninstall.Uninstall();
             uninstall.Start(listSoftware);
 

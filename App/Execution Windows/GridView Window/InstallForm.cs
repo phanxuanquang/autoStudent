@@ -31,11 +31,9 @@ namespace App
                 OverlapForm overlapForm = new OverlapForm(overlapList, selectedSoftwareList);
                 overlapForm.ShowDialog();
             }
-            else
             {
-                ProgressWindow_Install progressWindow_Install = new ProgressWindow_Install(selectedSoftwareList);
+                ProgressWindow_Install progressWindow_Install = new ProgressWindow_Install(selectedSoftwareList, null);
                 progressWindow_Install.ShowDialog();
-                this.Close();
             }
         }
 

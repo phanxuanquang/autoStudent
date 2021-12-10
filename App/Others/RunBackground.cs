@@ -8,7 +8,7 @@ using System.ComponentModel;
 
 namespace App
 {
-    class RunBackground
+    public class RunBackground
     {
         private static bool isSetted = false;
         private NotifyIcon notifyIcon;
