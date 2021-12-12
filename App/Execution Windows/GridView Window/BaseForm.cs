@@ -203,32 +203,26 @@ namespace App
         }
         private void softwareGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (selectedSoftwareView_Button.Tag.ToString() == "unclicked" && e.RowIndex >= 0)
+            if (e.RowIndex >= 0)
             {
                 for (int i = 0; i < softwareList.Count; i++)
                 {
                     if (softwareList[i].Displayname == softwareGridView.Rows[e.RowIndex].Cells[0].Value.ToString())
                     {
                         selectedSoftwareList.Add(softwareList[i]);
+                        softwareGridView.Rows.RemoveAt(e.RowIndex);
                         softwareList.RemoveAt(i);
-                        loadSoftwareToGridView(softwareList);
                         return;
                     }
                 }
-            }
-            else if (selectedSoftwareView_Button.Tag.ToString() == "clicked" && e.RowIndex >= 0)
-            {
+                for (int i = 0; i < selectedSoftwareList.Count; i++)
                 {
-                    for (int i = 0; i < selectedSoftwareList.Count; i++)
+                    if (selectedSoftwareList[i].Displayname == softwareGridView.Rows[e.RowIndex].Cells[0].Value.ToString())
                     {
-                        if (selectedSoftwareList[i].Displayname == softwareGridView.Rows[e.RowIndex].Cells[0].Value.ToString())
-                        {
-                            softwareList.Add(selectedSoftwareList[i]);
-                            selectedSoftwareList.RemoveAt(i);
-                            softwareGridView.Rows.Remove(softwareGridView.Rows[e.RowIndex]);
-                            loadSoftwareToGridView(selectedSoftwareList);
-                            return;
-                        }
+                        softwareList.Add(selectedSoftwareList[i]);
+                        softwareGridView.Rows.RemoveAt(e.RowIndex);
+                        selectedSoftwareList.RemoveAt(i);
+                        return;
                     }
                 }
             }

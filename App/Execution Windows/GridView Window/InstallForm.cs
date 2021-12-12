@@ -24,9 +24,14 @@ namespace App
 
         protected override void exec()
         {
+            if (!Directory.Exists(Program.setting.saveDownloadPath))
+            {
+                Directory.CreateDirectory(Program.setting.saveDownloadPath);
+            }
             ExportData();
             List<Package> overlapList = LoadingWindow.GetOverlapSoftware(Program.software_System, selectedSoftwareList);
             ProgressWindow_Install progressWindow_Install = new ProgressWindow_Install(selectedSoftwareList, null);
+
             progressWindow_Install.FormClosing += (sender, e) =>
             {
                 this.Close();

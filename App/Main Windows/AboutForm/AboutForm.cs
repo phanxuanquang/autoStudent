@@ -36,16 +36,6 @@ namespace App.Main_Windows.AboutForm
             SetDoubleBuffered(this.contentPanel);
         }
 
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams handleParam = base.CreateParams;
-                handleParam.ExStyle |= 0x02000000;
-                return handleParam;
-            }
-        }
-
         public static void SetDoubleBuffered(System.Windows.Forms.Control c)
         {
             //Taxes: Remote Desktop Connection and painting
