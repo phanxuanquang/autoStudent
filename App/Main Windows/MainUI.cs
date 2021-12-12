@@ -76,23 +76,24 @@ namespace App
             }
         }
 
+        private bool isInternetAvailable()
+        {
+            try
+            {
+                using (var client = new WebClient())
+                using (client.OpenRead("http://google.com/generate_204"))
+                    return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         // Main Button
         private void installButton_Click(object sender, EventArgs e)
         {
-            ;
-            bool isInternetAvailable()
-            {
-                try
-                {
-                    using (var client = new WebClient())
-                    using (client.OpenRead("http://google.com/generate_204"))
-                        return true;
-                }
-                catch
-                {
-                    return false;
-                }
-            }
+            
             if (isInternetAvailable())
             {
                 InstallForm installForm = new InstallForm();
@@ -132,6 +133,11 @@ namespace App
         }
         private void updateButton_Click(object sender, EventArgs e)
         {
+            if (!isInternetAvailable())
+            {
+                MessageBox.Show("Không có kết nối mạng, vui lòng thử lại sau");
+                return;
+            }
             DateTime GetLastModifyTime(string url)
             {
                 WebRequest request = WebRequest.Create(url);
@@ -166,9 +172,9 @@ namespace App
                         File.Delete(pathData);
                     }
                     DataAccess.Instance.LoadDirect();
-                    /*
-                    Code reload data
-                    */
+                    if (Environment.Is64BitOperatingSystem)
+                        Program.software_Database = DataAccess.Instance.GetX64();
+                    else Program.software_Database = DataAccess.Instance.GetX86();
                     MessageBox.Show("Đã cập nhập");
                 }
                 else MessageBox.Show("Bạn đang sử dụng phiên bản mới nhất");
