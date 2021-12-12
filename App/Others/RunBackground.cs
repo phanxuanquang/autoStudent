@@ -8,7 +8,7 @@ using System.ComponentModel;
 
 namespace App
 {
-    class RunBackground
+    public class RunBackground
     {
         private static bool isSetted = false;
         private NotifyIcon notifyIcon;
@@ -40,8 +40,11 @@ namespace App
                     SetTime(startProcess[0]);
                 }
                 mainForm.Hide();
-                notifyIcon.ShowBalloonTip(5000);
-                notifyIcon.Visible = true;
+                if (notifyIcon != null)
+                {
+                    notifyIcon.ShowBalloonTip(5000);
+                    notifyIcon.Visible = true;
+                }
             }
         }
         /// <summary>

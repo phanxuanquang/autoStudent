@@ -14,7 +14,8 @@ namespace App
 {
     public partial class ProgressWindow_Base : Form
     {
-        private static RunBackground runBackground;
+        protected static RunBackground runBackground;
+        protected OverlapForm overlapForm;
         protected List<Package> listSoftware;
         protected List<ActionProcess> blackList;
         protected int countCompletedAmount;
@@ -47,11 +48,14 @@ namespace App
             None
         }
 
-        public ProgressWindow_Base(List<Package> listSoftware) : this()
+        public ProgressWindow_Base(List<Package> listSoftware, OverlapForm overlapForm) : this()
         {
             this.listSoftware = listSoftware;
             countCompletedAmount = 0;
             UpdateCompletedAmount(countCompletedAmount, 0);
+
+            if (overlapForm != null)
+                this.overlapForm = overlapForm;
 
             blackList = new List<ActionProcess>();
             for (int index = 0; index < this.listSoftware.Count; index++)
@@ -59,6 +63,7 @@ namespace App
                 blackList.Add(ActionProcess.None);
             }
         }
+
         public ProgressWindow_Base()
         {
             InitializeComponent();
@@ -90,9 +95,11 @@ namespace App
             if (HasExitTodoTask)
             {
                 Program.mainUI.ShowInTaskbar = true;
+                if (!Program.mainUI.Visible)
+                    Program.mainUI.Show();
                 this.Close();
             }
-            else backgroundRunning_Button_Click(null, null);
+            else backgroundRunning_Button_Click(this, null);
         }
         private void minimizeButton_Click(object sender, EventArgs e)
         {
@@ -298,6 +305,7 @@ namespace App
                 Program.mainUI.ShowInTaskbar = false;
                 runBackground.EnableRunBackground(Program.setting.timeSetter);
             }
+            else MessageBox.Show("Run background null");
         }
 
         private void softwareGridView_SelectionChanged(object sender, EventArgs e)
@@ -305,10 +313,16 @@ namespace App
             softwareGridView.ClearSelection();
         }
 
-        private void progressBar_ValueChanged(object sender, EventArgs e)
+        private void completedAmountLabel_TextChanged(object sender, EventArgs e)
         {
-            if (progressBar.Value == 100 && isOverlap)
-                this.Close();
+            if (completedAmountLabel.Text == String.Format("{0}/{1}", listSoftware.Count, listSoftware.Count) && isOverlap)
+            {
+                if (overlapForm != null)
+                {
+                    this.Close();
+                    overlapForm.Close();
+                }    
+            }
         }
     }
 

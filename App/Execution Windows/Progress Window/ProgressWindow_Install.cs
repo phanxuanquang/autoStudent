@@ -15,7 +15,7 @@ namespace App
     {
         private App.InstallUninstall.BaseProcess install;
         private App.InstallUninstall.Download download;
-        public ProgressWindow_Install(List<Package> listSoftware) : base(listSoftware)
+        public ProgressWindow_Install(List<Package> listSoftware, OverlapForm overlapForm) : base(listSoftware, overlapForm)
         {
             InitializeComponent();
             this.SuspendLayout();
@@ -37,6 +37,7 @@ namespace App
             LoadDataGridView();
             this.ResumeLayout(false);
 
+            runBackground = new RunBackground(this, this.components);
             install = new InstallUninstall.Install();
             download = new InstallUninstall.Download();
             ((InstallUninstall.Install)install).Start(listSoftware, Program.setting.saveDownloadPath);

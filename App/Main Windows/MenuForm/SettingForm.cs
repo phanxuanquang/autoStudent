@@ -109,6 +109,7 @@ namespace App
             if (destinationPathdlg.ShowDialog() == CommonFileDialogResult.Ok)
             {
                 saveDownload.Text = destinationPathdlg.FileName;
+                saveDownload.Text += @"\autoStudent";
             }
         }
 
@@ -120,10 +121,8 @@ namespace App
             dataExportAfterCompleted_Switch.Checked = false;
 
             timeSetter.Value = Program.setting.timeSetter = DateTime.Now;
-            exportPath.Text = saveDownload.Text = @"C:\";
+            exportPath.Text = saveDownload.Text = @"C:\autoStudent";
         }
-
-        
     }
 }
 

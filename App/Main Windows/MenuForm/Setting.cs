@@ -115,7 +115,7 @@ namespace App
             this._afterAction = AfterAction.None;
             this._cleanAfter = false;
             this._dataExport = false;
-            this._saveDownloadPath = @"C:\";
+            this._saveDownloadPath = @"C:\autoStudent";
             this._exportPath = String.Empty;
         }
 
