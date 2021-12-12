@@ -45,12 +45,25 @@ namespace App
             this.Shown += ProgressWindow_Install_Shown;
         }
 
+        public void _SetListSoftware(List<Package> listSoftware)
+        {
+            base.SetListSoftware(listSoftware);
+            base.softwareGridView.Rows.Clear();
+
+            this.SuspendLayout();
+            LoadDataGridView();
+            this.ResumeLayout(false);
+        }
+
         private void ProgressWindow_Install_Shown(object sender, EventArgs e)
         {
             this.Shown -= ProgressWindow_Install_Shown;
-            if (runBackground != null && wasRunBackground && isOverlap)
+            if (wasRunBackground)
             {
-                runBackground.EnableRunBackground(Program.setting.timeSetter);
+                if (runBackground != null && isOverlap)
+                {
+                    runBackground.EnableRunBackground(Program.setting.timeSetter);
+                }
             }
             ToDo();
         }

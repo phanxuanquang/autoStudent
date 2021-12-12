@@ -51,12 +51,16 @@ namespace App
 
         public ProgressWindow_Base(List<Package> listSoftware, OverlapForm overlapForm) : this()
         {
+            if (overlapForm != null)
+                this.overlapForm = overlapForm;
+            SetListSoftware(listSoftware);
+        }
+
+        public void SetListSoftware(List<Package> listSoftware)
+        {
             this.listSoftware = listSoftware;
             countCompletedAmount = 0;
             UpdateCompletedAmount(countCompletedAmount, 0);
-
-            if (overlapForm != null)
-                this.overlapForm = overlapForm;
 
             blackList = new List<ActionProcess>();
             for (int index = 0; index < this.listSoftware.Count; index++)
@@ -301,10 +305,7 @@ namespace App
         {
             if (runBackground != null)
             {
-                if (isOverlap)
-                {
-                    wasRunBackground = true;
-                }
+                wasRunBackground = runBackground.Visible;
                 runBackground.EnableRunBackground(Program.setting.timeSetter);
             }
             else MessageBox.Show("Run background null");
@@ -321,6 +322,7 @@ namespace App
             {
                 if (overlapForm != null)
                 {
+                    wasRunBackground = runBackground.Visible;
                     if (wasRunBackground)
                     {
                         runBackground.OverrideNotify();
