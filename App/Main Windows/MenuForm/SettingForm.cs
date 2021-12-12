@@ -24,6 +24,7 @@ namespace App
             timeSetter.Checked = Program.setting.isSetTime;
             activatedAction.SelectedIndex = ((int)Program.setting.afterAction);
             cleanAfterCompleted_Switch.Checked = Program.setting.cleanAfter;
+            timeSetter_Switch.Checked = Program.setting.isSetTime;
             saveDownload.Text = Program.setting.saveDownloadPath;
             exportPath.Visible = exportPath_Button.Visible = dataExportAfterCompleted_Switch.Checked = Program.setting.dataExport;
             exportPath.Text = Program.setting.exportPath;
@@ -58,12 +59,14 @@ namespace App
 
         private void exitButton_Click(object sender, EventArgs e)
         {
+            Program.setting.exportSetting();
             this.Close();
         }
 
         private void timeSetter_Switch_CheckedChanged(object sender, EventArgs e)
         {
-            timeSetter.Visible = Program.setting.isSetTime = timeSetter_Switch.Checked;
+            Program.setting.isSetTime = timeSetter_Switch.Checked;
+            timeSetter.Visible = timeSetter_Switch.Checked;
         }
         private void timeSetter_ValueChanged(object sender, EventArgs e)
         {

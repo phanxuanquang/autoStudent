@@ -30,6 +30,7 @@ namespace App
         private bool _isSetTime;
         private string _saveDownloadPath;
         private string _exportPath;
+        private string _settingFilePath;
         public DateTime timeSetter
         {
             get
@@ -107,16 +108,34 @@ namespace App
                 _exportPath = value;
             }
         }
-
+        public string settingFilePath
+        {
+            get
+            {
+                return _settingFilePath;
+            }
+            set
+            {
+                _settingFilePath = value;
+            }
+        }
         public Setting(DateTime dateTime)
         {
-            //importSetting();
+            settingFilePath = @"../../../Setting/Setting.setting";
             _timeSetter = dateTime;
-            this._afterAction = AfterAction.None;
-            this._cleanAfter = false;
-            this._dataExport = false;
-            this._saveDownloadPath = @"C:\autoStudent";
-            this._exportPath = String.Empty;
+            importSetting();
+            
+        }
+
+        public Setting()
+        {
+            _timeSetter = DateTime.Now;
+            _afterAction = AfterAction.None;
+            _cleanAfter = false;
+            _isSetTime = false;
+            _dataExport = false;
+            _saveDownloadPath = @"C:\autoStudent";
+            _exportPath = @"C:\";
         }
 
         // For Lock
@@ -181,7 +200,7 @@ namespace App
                 if (Directory.Exists(pathSaveExport))
                 {
                     string data = "";
-                    
+
                     string passExport = DataAccess.Instance.GetPassCry();
                     try
                     {
@@ -189,7 +208,7 @@ namespace App
                         string filePath;
                         do
                         {
-                              filePath = pathSaveExport + @"\AutoStudentDataExport"+ count++ + ".as";
+                            filePath = pathSaveExport + @"\AutoStudentDataExport" + count++ + ".as";
                         } while (File.Exists(filePath));
                         foreach (var item in dataList)
                         {
@@ -217,5 +236,79 @@ namespace App
             return false;
         }
 
+        public void importSetting()
+        {
+            try
+            {
+                if (!File.Exists(settingFilePath))
+                {
+                    var setting = new Setting();
+                    using (var stream = File.Create(settingFilePath))
+                    {
+                        string content = JsonConvert.SerializeObject(setting);
+                        using (StreamWriter writer = new StreamWriter(stream))
+                        {
+                            writer.Write(Cryptography.Encrypt(content, DataAccess.Instance.GetPassCry()));
+                        }
+                    }
+                }
+
+
+                using (var stream = File.OpenRead(settingFilePath))
+                {
+                    using (StreamReader reader = new StreamReader(stream))
+                    {
+                        string data = reader.ReadToEnd();
+                        Setting info = JsonConvert.DeserializeObject<Setting>(Cryptography.Decrypt(data, DataAccess.Instance.GetPassCry()));
+                        this._timeSetter = info.timeSetter;
+                        this._afterAction = info.afterAction;
+                        this._cleanAfter = info.cleanAfter;
+                        this._isSetTime = info.isSetTime;
+                        this._dataExport = info.dataExport;
+                        this._saveDownloadPath = info.saveDownloadPath;
+                        this._exportPath = info.exportPath;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+
+                MessageBox.Show(e.ToString());
+            }
+
+        }
+
+        public void exportSetting()
+        {
+            try
+            {
+                if (!File.Exists(settingFilePath))
+                {
+                    using (var stream = File.Create(settingFilePath))
+                    {
+                        string content = JsonConvert.SerializeObject(this);
+                        using (StreamWriter writer = new StreamWriter(stream))
+                        {
+                            writer.Write(Cryptography.Encrypt(content, DataAccess.Instance.GetPassCry()));
+                        }
+                    }
+                }
+                else
+                {
+                    using (StreamWriter writer = new StreamWriter(settingFilePath))
+                    {
+                        string content = JsonConvert.SerializeObject(this);
+                        writer.Write(Cryptography.Encrypt(content, DataAccess.Instance.GetPassCry()));
+                    }
+                }
+                    
+            }
+            catch (Exception e)
+            {
+
+                MessageBox.Show(e.ToString());
+            }
+
+        }
     }
 }
