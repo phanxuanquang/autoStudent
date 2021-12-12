@@ -16,6 +16,7 @@ namespace App
 {
     public partial class LoadingWindow : Form
     {
+        public bool isDone { get; private set; }
         bool isLoaded_Database = false, isLoaded_System = false;
         public static readonly List<string> keys = new List<string>() {
              @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall",
@@ -44,9 +45,8 @@ namespace App
             if (dataLoadingProgressBar.Value >= dataLoadingProgressBar.Maximum && isLoaded_Database && isLoaded_System)
             {
                 dataLoading_clock.Stop();
-                this.Hide();
-                Program.mainUI = new MainUI();
-                Program.mainUI.ShowDialog();
+                isDone = true;
+                this.Close();
             }
         }
 

@@ -34,6 +34,7 @@ namespace App
 
             progressWindow_Install.FormClosing += (sender, e) =>
             {
+                LoadingWindow.LoadAfterDone();
                 this.Close();
             };
             if (overlapList != null && overlapList.Count > 0)

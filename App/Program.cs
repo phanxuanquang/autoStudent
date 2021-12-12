@@ -19,7 +19,13 @@ namespace App
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoadingWindow());
+            LoadingWindow loading = new LoadingWindow();
+            Application.Run(loading);
+            if (loading.isDone)
+            {
+                mainUI = new MainUI();
+                Application.Run(mainUI);
+            }    
         }
         static public List<Package> software_Database;
         static public List<Package> software_System;
