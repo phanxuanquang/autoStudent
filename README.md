@@ -7,7 +7,7 @@
 | 3 | 20521768 | Nguyễn Hoàng Phúc | KTPM2020 | Member |
 | 4 | 20521205 | Dín Hiền Dũng | KTPM2020 | Member |
 ## 2. SYSTEM REQUIREMENTS
-| No. | Requirement | Minimum | Recommended |
+| No. |  | Minimum | Recommended |
 | --- | --- | --- | --- |
 | 1 | Operating system | Windows 7 | Windows 10 |
 | 2 | RAM | 2 GB | 8 GB or more |
