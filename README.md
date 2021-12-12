@@ -10,7 +10,7 @@
 ## 2. SYSTEM REQUIREMENTS
 | No. |  | Minimum | Recommended |
 | --- | --- | --- | --- |
-| 1 | Operating system | Windows 7 | Windows 10 |
-| 2 | RAM | 2 GB | 8 GB or more |
-| 3 | Hard disk space | 3 GB for installation only | As much as possible| 
+| 1 | Operating system | Windows 7 32-bit | Windows 10 64-bit or later |
+| 2 | RAM | 2 GB | 4 GB or more |
+| 3 | Hard disk space | 100MB for this installation only | 100MB for this installation only | 
 | 4 | Internet | Required for installation | Required for installation |
