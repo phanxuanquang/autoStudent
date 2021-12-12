@@ -157,7 +157,7 @@ namespace App
                 DateTime modificationFileWeb = GetLastModifyTime(path);
                 DateTime modificationFileSystem = DataAccess.Instance.GetUpdateTime();
 
-                if (modificationFileWeb.Date > modificationFileSystem.Date)
+                if (modificationFileWeb > modificationFileSystem)
                 {
 
                     string pathData = DataAccess.Instance.GetFilePath();

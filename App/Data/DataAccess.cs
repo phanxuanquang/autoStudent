@@ -17,7 +17,7 @@ namespace App
         //private constructor to avoid client applications to use constructor
         static DataAccess()
         {
-            filePath = @"../../../Data/MainData.AutoStudent";
+            filePath = @"../../../Data/MainData.autostudent";
             Load();
         }
 

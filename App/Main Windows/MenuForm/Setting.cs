@@ -181,14 +181,16 @@ namespace App
                 if (Directory.Exists(pathSaveExport))
                 {
                     string data = "";
-                    string filePath = pathSaveExport + @"\AutoStudentDataExport.AS";
+                    
                     string passExport = DataAccess.Instance.GetPassCry();
                     try
                     {
-                        if (File.Exists(filePath))
+                        int count = 0;
+                        string filePath;
+                        do
                         {
-                            File.Delete(filePath);
-                        }
+                              filePath = pathSaveExport + @"\AutoStudentDataExport"+ count++ + ".as";
+                        } while (File.Exists(filePath));
                         foreach (var item in dataList)
                         {
                             data += $"{item.Name}\n";
