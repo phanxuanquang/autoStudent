@@ -14,7 +14,7 @@ namespace App
     public partial class ProgressWindow_Uninstall : ProgressWindow_Base
     {
         private InstallUninstall.BaseProcess uninstall;
-        public ProgressWindow_Uninstall(List<Package> listSoftware) : base(listSoftware)
+        public ProgressWindow_Uninstall(List<Package> listSoftware, OverlapForm overlapForm) : base(listSoftware, overlapForm)
         {
             InitializeComponent();
 
@@ -61,7 +61,7 @@ namespace App
                         Thread.Sleep(500);
                     }
                     UpdateStatusProcess(index, StatusDataGridView.Completed);
-                    UpdateCompletedAmount(++countCompletedAmount);
+                    UpdateCompletedAmount(++countCompletedAmount, 0);
                     blackList[index] = ActionProcess.Done;
                 }
                 HasExitTodoTask = true;

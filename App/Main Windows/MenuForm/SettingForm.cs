@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,7 +17,19 @@ namespace App
         public SettingForm()
         {
             InitializeComponent();
+            this.Icon = Properties.Resources.mainIcon;
+            Guna.UI.Lib.GraphicsHelper.ShadowForm(this);
+
+            timeSetter.Value = Program.setting.timeSetter;
+            timeSetter.Checked = Program.setting.isSetTime;
+            activatedAction.SelectedIndex = ((int)Program.setting.afterAction);
+            cleanAfterCompleted_Switch.Checked = Program.setting.cleanAfter;
+            timeSetter_Switch.Checked = Program.setting.isSetTime;
+            saveDownload.Text = Program.setting.saveDownloadPath;
+            exportPath.Visible = exportPath_Button.Visible = dataExportAfterCompleted_Switch.Checked = Program.setting.dataExport;
+            exportPath.Text = Program.setting.exportPath;
         }
+
         // Anti Flickering
         protected override CreateParams CreateParams
         {
@@ -28,25 +41,32 @@ namespace App
             }
         }
 
-        private void SettingForm_Load(object sender, EventArgs e)
+        //Drag Window
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+        [DllImportAttribute("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [DllImportAttribute("user32.dll")]
+        public static extern bool ReleaseCapture();
+        private void DragWindow(object sender, MouseEventArgs e)
         {
-            timeSetter.Value = Program.setting.timeSetter;
-            timeSetter.Checked = Program.setting.isSetTime;
-            activatedAction.SelectedIndex = ((int)Program.setting.afterAction);
-            cleanAfterCompleted_Switch.Checked = Program.setting.cleanAfter;
-            saveDownload.Text = Program.setting.saveDownloadPath;
-            exportPath.Visible = exportPath_Button.Visible = dataExportAfterCompleted_Switch.Checked = Program.setting.dataExport;
-            exportPath.Text = Program.setting.exportPath;
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
         }
 
         private void exitButton_Click(object sender, EventArgs e)
         {
+            Program.setting.exportSetting();
             this.Close();
         }
 
         private void timeSetter_Switch_CheckedChanged(object sender, EventArgs e)
         {
-            timeSetter.Visible = Program.setting.isSetTime = timeSetter_Switch.Checked;
+            Program.setting.isSetTime = timeSetter_Switch.Checked;
+            timeSetter.Visible = timeSetter_Switch.Checked;
         }
         private void timeSetter_ValueChanged(object sender, EventArgs e)
         {
@@ -73,10 +93,11 @@ namespace App
         }
         private void exportPath_Button_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            CommonOpenFileDialog destinationPathdlg = new CommonOpenFileDialog();
+            destinationPathdlg.IsFolderPicker = true;
+            if (destinationPathdlg.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                exportPath.Text = saveFileDialog.FileName;
+                exportPath.Text = destinationPathdlg.FileName;
             }
         }
         
@@ -90,7 +111,7 @@ namespace App
             destinationPathdlg.IsFolderPicker = true;
             if (destinationPathdlg.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                saveDownload.Text = destinationPathdlg.FileName;
+                saveDownload.Text = destinationPathdlg.FileName + @"\autoStudent";
             }
         }
 
@@ -101,8 +122,8 @@ namespace App
             timeSetter_Switch.Checked = false;
             dataExportAfterCompleted_Switch.Checked = false;
 
-            timeSetter.Value = Program.setting.timeSetter = DateTime.Now;
-            Program.setting.exportPath = exportPath.Text = saveDownload.Text = @"C:\";
+            timeSetter.Value = DateTime.Now;
+            saveDownload.Text = @"C:\autoStudent";
         }
     }
 }

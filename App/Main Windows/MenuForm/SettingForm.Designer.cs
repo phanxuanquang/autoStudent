@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingForm));
+            this.components = new System.ComponentModel.Container();
             this.timeSetter = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -45,6 +45,8 @@
             this.exportPath_Button = new Guna.UI2.WinForms.Guna2Button();
             this.exportPath = new Guna.UI2.WinForms.Guna2TextBox();
             this.timeSetter_Switch = new Guna.UI2.WinForms.Guna2ToggleSwitch();
+            this.roundEdge = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.ShadowForm = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
             this.SuspendLayout();
             // 
             // timeSetter
@@ -214,7 +216,7 @@
             this.exitButton.ForeColor = System.Drawing.Color.White;
             this.exitButton.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(57)))), ((int)(((byte)(125)))));
             this.exitButton.HoverState.Parent = this.exitButton;
-            this.exitButton.Image = ((System.Drawing.Image)(resources.GetObject("exitButton.Image")));
+            this.exitButton.Image = global::App.Properties.Resources.Exit;
             this.exitButton.Location = new System.Drawing.Point(774, 4);
             this.exitButton.Name = "exitButton";
             this.exitButton.ShadowDecoration.Parent = this.exitButton;
@@ -415,11 +417,16 @@
             this.timeSetter_Switch.UncheckedState.Parent = this.timeSetter_Switch;
             this.timeSetter_Switch.CheckedChanged += new System.EventHandler(this.timeSetter_Switch_CheckedChanged);
             // 
+            // roundEdge
+            // 
+            this.roundEdge.BorderRadius = 15;
+            this.roundEdge.TargetControl = this;
+            // 
             // SettingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImage = global::App.Properties.Resources.Background__SubWindow;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(808, 540);
             this.Controls.Add(this.timeSetter_Switch);
@@ -442,7 +449,7 @@
             this.Name = "SettingForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SettingForm";
-            this.Load += new System.EventHandler(this.SettingForm_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DragWindow);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -466,5 +473,7 @@
         private Guna.UI2.WinForms.Guna2Button exportPath_Button;
         private Guna.UI2.WinForms.Guna2TextBox exportPath;
         private Guna.UI2.WinForms.Guna2ToggleSwitch timeSetter_Switch;
+        private Guna.UI2.WinForms.Guna2Elipse roundEdge;
+        private Guna.UI2.WinForms.Guna2ShadowForm ShadowForm;
     }
 }

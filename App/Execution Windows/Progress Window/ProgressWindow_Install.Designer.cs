@@ -28,11 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
-            this.guna2ProgressBar1 = new Guna.UI2.WinForms.Guna2ProgressBar();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.Text = "ProgressWindow_Install";
+            this.ThreadProgressBar = new Guna.UI2.WinForms.Guna2ProgressBar();
+            this.CancelButton = new Guna.UI2.WinForms.Guna2Button();
             this.SuspendLayout();
             // 
             // label1
@@ -49,53 +47,60 @@
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label1.UseCompatibleTextRendering = true;
             // 
-            // guna2ProgressBar1
+            // ThreadProgressBar
             // 
-            this.guna2ProgressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.ThreadProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2ProgressBar1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(29)))), ((int)(((byte)(67)))));
-            this.guna2ProgressBar1.ForeColor = System.Drawing.Color.Cyan;
-            this.guna2ProgressBar1.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Horizontal;
-            this.guna2ProgressBar1.Location = new System.Drawing.Point(125, 46);
-            this.guna2ProgressBar1.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.guna2ProgressBar1.Name = "guna2ProgressBar1";
-            this.guna2ProgressBar1.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(106)))), ((int)(((byte)(204)))));
-            this.guna2ProgressBar1.ProgressColor2 = System.Drawing.Color.Cyan;
-            this.guna2ProgressBar1.ShadowDecoration.Parent = this.guna2ProgressBar1;
-            this.guna2ProgressBar1.ShowPercentage = true;
-            this.guna2ProgressBar1.Size = new System.Drawing.Size(482, 30);
-            this.guna2ProgressBar1.TabIndex = 42;
-            this.guna2ProgressBar1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+            this.ThreadProgressBar.BorderRadius = 12;
+            this.ThreadProgressBar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(29)))), ((int)(((byte)(67)))));
+            this.ThreadProgressBar.ForeColor = System.Drawing.Color.Cyan;
+            this.ThreadProgressBar.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Horizontal;
+            this.ThreadProgressBar.Location = new System.Drawing.Point(125, 46);
+            this.ThreadProgressBar.Margin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.ThreadProgressBar.Name = "ThreadProgressBar";
+            this.ThreadProgressBar.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(106)))), ((int)(((byte)(204)))));
+            this.ThreadProgressBar.ProgressColor2 = System.Drawing.Color.Cyan;
+            this.ThreadProgressBar.ShadowDecoration.Parent = this.ThreadProgressBar;
+            this.ThreadProgressBar.Size = new System.Drawing.Size(482, 30);
+            this.ThreadProgressBar.TabIndex = 42;
+            this.ThreadProgressBar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
             // 
-            // guna2Button1
+            // CancelButton
             // 
-            this.guna2Button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.guna2Button1.AutoRoundedCorners = true;
-            this.guna2Button1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Button1.BorderColor = System.Drawing.Color.Cyan;
-            this.guna2Button1.BorderRadius = 15;
-            this.guna2Button1.BorderThickness = 2;
-            this.guna2Button1.CheckedState.Parent = this.guna2Button1;
-            this.guna2Button1.CustomImages.Parent = this.guna2Button1;
-            this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
-            this.guna2Button1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.guna2Button1.ForeColor = System.Drawing.Color.Cyan;
-            this.guna2Button1.HoverState.Parent = this.guna2Button1;
-            this.guna2Button1.Location = new System.Drawing.Point(615, 44);
-            this.guna2Button1.Margin = new System.Windows.Forms.Padding(8, 3, 3, 8);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.ShadowDecoration.Parent = this.guna2Button1;
-            this.guna2Button1.Size = new System.Drawing.Size(65, 32);
-            this.guna2Button1.TabIndex = 43;
-            this.guna2Button1.Text = "HỦY";
-            this.guna2Button1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
-
+            this.CancelButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.CancelButton.AutoRoundedCorners = true;
+            this.CancelButton.BackColor = System.Drawing.Color.Transparent;
+            this.CancelButton.BorderColor = System.Drawing.Color.Cyan;
+            this.CancelButton.BorderRadius = 15;
+            this.CancelButton.BorderThickness = 2;
+            this.CancelButton.CheckedState.Parent = this.CancelButton;
+            this.CancelButton.CustomImages.Parent = this.CancelButton;
+            this.CancelButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
+            this.CancelButton.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.CancelButton.ForeColor = System.Drawing.Color.Cyan;
+            this.CancelButton.HoverState.Parent = this.CancelButton;
+            this.CancelButton.Location = new System.Drawing.Point(615, 44);
+            this.CancelButton.Margin = new System.Windows.Forms.Padding(8, 3, 3, 8);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.ShadowDecoration.Parent = this.CancelButton;
+            this.CancelButton.Size = new System.Drawing.Size(65, 32);
+            this.CancelButton.TabIndex = 43;
+            this.CancelButton.Text = "HỦY";
+            this.CancelButton.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            // 
+            // ProgressWindow_Install
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.ClientSize = new System.Drawing.Size(819, 492);
+            this.Name = "ProgressWindow_Install";
+            this.Text = "autoStudent - Cài đặt phần mềm";
             this.ResumeLayout(false);
+
         }
 
         #endregion
         private System.Windows.Forms.Label label1;
-        private Guna.UI2.WinForms.Guna2ProgressBar guna2ProgressBar1;
-        protected Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2ProgressBar ThreadProgressBar;
+        protected Guna.UI2.WinForms.Guna2Button CancelButton;
     }
 }

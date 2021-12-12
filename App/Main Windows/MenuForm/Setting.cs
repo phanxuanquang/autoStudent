@@ -30,6 +30,7 @@ namespace App
         private bool _isSetTime;
         private string _saveDownloadPath;
         private string _exportPath;
+        private string _settingFilePath;
         public DateTime timeSetter
         {
             get
@@ -107,24 +108,34 @@ namespace App
                 _exportPath = value;
             }
         }
-
-        public Setting()
+        public string settingFilePath
         {
-            this._timeSetter = Program.setting.timeSetter;
-            this._afterAction = AfterAction.None;
-            this._cleanAfter = false;
-            this._dataExport = false;
-            this._saveDownloadPath = @"C:\";
-            this._exportPath = String.Empty;
+            get
+            {
+                return _settingFilePath;
+            }
+            set
+            {
+                _settingFilePath = value;
+            }
         }
         public Setting(DateTime dateTime)
         {
+            settingFilePath = @"../../../Setting/Setting.setting";
             _timeSetter = dateTime;
-            this._afterAction = AfterAction.None;
-            this._cleanAfter = false;
-            this._dataExport = false;
-            this._saveDownloadPath = @"C:\";
-            this._exportPath = String.Empty;
+            importSetting();
+            
+        }
+
+        public Setting()
+        {
+            _timeSetter = DateTime.Now;
+            _afterAction = AfterAction.None;
+            _cleanAfter = false;
+            _isSetTime = false;
+            _dataExport = false;
+            _saveDownloadPath = @"C:\autoStudent";
+            _exportPath = @"C:\";
         }
 
         // For Lock
@@ -157,41 +168,32 @@ namespace App
             }
         }
 
-        public bool RunCleanAction(string downloadFolderPath)
-        {
-            if (cleanAfter)
-            {
-                if (Directory.Exists(downloadFolderPath))
-                {
-                    try
-                    {
-                        Directory.Delete(downloadFolderPath);
-                        return true;
-                    }
-                    catch (UnauthorizedAccessException)
-                    {
-                        MessageBox.Show("Không có quyền xóa thư mục tạm thời");
-                    }
-                    catch (IOException)
-                    {
-                        MessageBox.Show("Lỗi xóa thư mục tạm thời");
-                    }
-                    catch { }
-                }
-            }
-            return false;
-        }
-
         public bool RunDataExport(List<Package> dataList, string pathSaveExport)
         {
             if (dataExport && dataList != null)
             {
-                if (!String.IsNullOrEmpty(pathSaveExport) && Directory.Exists(Path.GetDirectoryName(pathSaveExport)))
+                if (Directory.Exists(pathSaveExport))
                 {
-                    string jsonString = JsonConvert.SerializeObject(dataList, Formatting.Indented);
+                    string data = "";
+
+                    string passExport = DataAccess.Instance.GetPassCry();
                     try
                     {
-                        File.WriteAllText(pathSaveExport, jsonString);
+                        int count = 0;
+                        string filePath;
+                        do
+                        {
+                            filePath = pathSaveExport + @"\AutoStudentDataExport" + count++ + ".as";
+                        } while (File.Exists(filePath));
+                        foreach (var item in dataList)
+                        {
+                            data += $"{item.Name}\n";
+                        }
+                        using (StreamWriter sw = File.CreateText(filePath))
+                        {
+                            string encrypt = Cryptography.Encrypt(data, passExport);
+                            sw.Write(encrypt);
+                        }
                         return true;
                     }
                     catch (IOException)
@@ -207,6 +209,110 @@ namespace App
             }
             else MessageBox.Show("Chưa có gì để export");
             return false;
+        }
+
+        public void importSetting()
+        {
+            try
+            {
+                if (!File.Exists(settingFilePath))
+                {
+                    var setting = new Setting();
+                    using (var stream = File.Create(settingFilePath))
+                    {
+                        string content = JsonConvert.SerializeObject(setting);
+                        using (StreamWriter writer = new StreamWriter(stream))
+                        {
+                            writer.Write(Cryptography.Encrypt(content, DataAccess.Instance.GetPassCry()));
+                        }
+                    }
+                }
+
+
+                using (var stream = File.OpenRead(settingFilePath))
+                {
+                    using (StreamReader reader = new StreamReader(stream))
+                    {
+                        string data = reader.ReadToEnd();
+                        Setting info = JsonConvert.DeserializeObject<Setting>(Cryptography.Decrypt(data, DataAccess.Instance.GetPassCry()));
+                        this._timeSetter = info.timeSetter;
+                        this._afterAction = info.afterAction;
+                        this._cleanAfter = info.cleanAfter;
+                        this._isSetTime = info.isSetTime;
+                        this._dataExport = info.dataExport;
+                        this._saveDownloadPath = info.saveDownloadPath;
+                        this._exportPath = info.exportPath;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+
+                MessageBox.Show(e.ToString());
+            }
+
+        }
+
+        public void exportSetting()
+        {
+            try
+            {
+                if (!File.Exists(settingFilePath))
+                {
+                    using (var stream = File.Create(settingFilePath))
+                    {
+                        string content = JsonConvert.SerializeObject(this);
+                        using (StreamWriter writer = new StreamWriter(stream))
+                        {
+                            writer.Write(Cryptography.Encrypt(content, DataAccess.Instance.GetPassCry()));
+                        }
+                    }
+                }
+                else
+                {
+                    using (StreamWriter writer = new StreamWriter(settingFilePath))
+                    {
+                        string content = JsonConvert.SerializeObject(this);
+                        writer.Write(Cryptography.Encrypt(content, DataAccess.Instance.GetPassCry()));
+                    }
+                }
+                    
+            }
+            catch (Exception e)
+            {
+
+                MessageBox.Show(e.ToString());
+            }
+
+        }
+        public void cleanComputer()
+        {
+            void deleteFileIn(string path)
+            {
+                DirectoryInfo di = new DirectoryInfo(path);
+                foreach (FileInfo file in di.EnumerateFiles())
+                {
+                    file.Delete();
+                }
+                foreach (DirectoryInfo dir in di.EnumerateDirectories())
+                {
+                    dir.Delete(true);
+                }
+            }
+            try
+            {
+                deleteFileIn(Program.setting.saveDownloadPath);
+                deleteFileIn(@"C:\Windows\prefetch");
+            }
+            catch (UnauthorizedAccessException)
+            {
+                MessageBox.Show("Không có quyền xóa thư mục tạm thời");
+            }
+            catch (IOException)
+            {
+                MessageBox.Show("Lỗi xóa thư mục tạm thời");
+            }
+            catch { }
         }
     }
 }

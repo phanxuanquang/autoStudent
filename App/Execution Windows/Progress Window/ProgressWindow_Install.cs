@@ -15,17 +15,19 @@ namespace App
     {
         private App.InstallUninstall.BaseProcess install;
         private App.InstallUninstall.Download download;
-        public ProgressWindow_Install(List<Package> listSoftware) : base(listSoftware)
+        public ProgressWindow_Install(List<Package> listSoftware, OverlapForm overlapForm) : base(listSoftware, overlapForm)
         {
             InitializeComponent();
             this.SuspendLayout();
+            base.flowLayoutPanel1.Controls.RemoveAt(5);
             base.flowLayoutPanel1.Controls.RemoveAt(4);
             base.flowLayoutPanel1.Controls.RemoveAt(3);
             base.flowLayoutPanel1.Controls.Add(this.label1);
-            base.flowLayoutPanel1.Controls.Add(this.guna2ProgressBar1);
-            base.flowLayoutPanel1.Controls.Add(this.guna2Button1);
-            base.flowLayoutPanel1.Controls.Add(base.cancelAll_Button);
+            base.flowLayoutPanel1.Controls.Add(this.ThreadProgressBar);
+            base.flowLayoutPanel1.Controls.Add(this.detail_Button);
+            base.flowLayoutPanel1.Controls.Add(base.detail_Button);
             base.flowLayoutPanel1.Controls.Add(base.backgroundRunning_Button);
+            base.flowLayoutPanel1.Controls.Add(base.cancelAll_Button);
 
             base.softwareGridView.Columns.Add(base.NameSoftware);
             base.softwareGridView.Columns.Add(base.PercentDownload);
@@ -43,9 +45,26 @@ namespace App
             this.Shown += ProgressWindow_Install_Shown;
         }
 
+        public void _SetListSoftware(List<Package> listSoftware)
+        {
+            base.SetListSoftware(listSoftware);
+            base.softwareGridView.Rows.Clear();
+
+            this.SuspendLayout();
+            LoadDataGridView();
+            this.ResumeLayout(false);
+        }
+
         private void ProgressWindow_Install_Shown(object sender, EventArgs e)
         {
             this.Shown -= ProgressWindow_Install_Shown;
+            if (wasRunBackground)
+            {
+                if (runBackground != null && isOverlap)
+                {
+                    runBackground.EnableRunBackground(Program.setting.timeSetter);
+                }
+            }
             ToDo();
         }
 
@@ -62,23 +81,27 @@ namespace App
 
         private void UpdatePercentProcess(int index, float value)
         {
-            if (listSoftware != null && index > -1 && index < listSoftware.Count)
+            if (listSoftware != null && listSoftware.Count > 0 && index > -1 && index < listSoftware.Count)
             {
                 try
                 {
-                    guna2ProgressBar1.Value = Convert.ToInt32(value);
+                    ThreadProgressBar.Value = Convert.ToInt32(value);
                     base.softwareGridView.Rows[index].Cells[1].Value = String.Format("{0}%", Math.Round(value, 2));
                 }
                 catch
                 {
-                    guna2ProgressBar1.BeginInvoke(new Action(() =>
+                    try
                     {
-                        guna2ProgressBar1.Value = Convert.ToInt32(value);
-                    }));
-                    base.softwareGridView.BeginInvoke(new Action(() =>
-                    {
-                        base.softwareGridView.Rows[index].Cells[1].Value = String.Format("{0}%", Math.Round(value, 2));
-                    }));
+                        ThreadProgressBar.BeginInvoke(new Action(() =>
+                        {
+                            ThreadProgressBar.Value = Convert.ToInt32(value);
+                        }));
+                        base.softwareGridView.BeginInvoke(new Action(() =>
+                        {
+                            base.softwareGridView.Rows[index].Cells[1].Value = String.Format("{0}%", Math.Round(value, 2));
+                        }));
+                    }
+                    catch { }
                 }
             }
         }
@@ -96,7 +119,8 @@ namespace App
                     while (!download.isCompleted)
                     {
                         UpdatePercentProcess(index, download.GetPercentDownload);
-                        Thread.Sleep(500);
+                        UpdateCompletedAmount(countCompletedAmount, download.GetPercentDownload);
+                        Thread.Sleep(250);
                     }
                     if (blackList[index] == ActionProcess.Canceled)
                     {
@@ -109,21 +133,21 @@ namespace App
                         ActionButton_TextChanged(index, base.softwareGridView.Columns.Count - 1, ActionProcess.Canceled);
                         continue;
                     }
-                    UpdatePercentProcess(index, 100.0f);
+                    UpdatePercentProcess(index, 90.0f);
+                    UpdateCompletedAmount(countCompletedAmount, 90.0f);
                     UpdateStatusProcess(index, StatusDataGridView.Installing);
                     install.RunProcess(index);
                     while (!install.isCompleted)
                     {
                         Thread.Sleep(1000);
                     }
+                    UpdatePercentProcess(index, 100.0f);
                     UpdateStatusProcess(index, StatusDataGridView.Completed);
-                    UpdateCompletedAmount(++countCompletedAmount);
+                    UpdateCompletedAmount(++countCompletedAmount, 0);
                     blackList[index] = ActionProcess.Done;
                 }
                 HasExitTodoTask = true;
             });
         }
-
-        
     }
 }

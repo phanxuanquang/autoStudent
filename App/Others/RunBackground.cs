@@ -8,12 +8,23 @@ using System.ComponentModel;
 
 namespace App
 {
-    class RunBackground
+    public class RunBackground
     {
-        private static bool isSetted = false;
+        private bool isSetted = false;
         private NotifyIcon notifyIcon;
         private Form mainForm;
         private IContainer components;
+        public bool Visible
+        {
+            get
+            {
+                if (notifyIcon != null)
+                {
+                    return notifyIcon.Visible;
+                }
+                else return false;
+            }
+        }
         /// <summary>
         /// Tạo đối tượng
         /// Ví dụ: RunBackground test = new RunBackground(this, this.components);
@@ -40,8 +51,11 @@ namespace App
                     SetTime(startProcess[0]);
                 }
                 mainForm.Hide();
-                notifyIcon.ShowBalloonTip(5000);
-                notifyIcon.Visible = true;
+                if (notifyIcon != null)
+                {
+                    notifyIcon.ShowBalloonTip(5000);
+                    notifyIcon.Visible = true;
+                }
             }
         }
         /// <summary>
@@ -60,11 +74,18 @@ namespace App
             isSetted = false;
         }
 
+        public void OverrideNotify()
+        {
+            if (notifyIcon != null)
+            {
+                notifyIcon.Visible = !notifyIcon.Visible;
+            }
+        }
+
         private void SetNotify(Form mainForm, IContainer components)
         {
             if (!isSetted)
             {
-                System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainUI));
                 ContextMenuStrip contextMenuStrip;
                 ToolStripMenuItem ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
                 ToolStripMenuItem AbortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -86,7 +107,7 @@ namespace App
 
                 //notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("guna2Button4.Image")));
                 //Bắt buộc phải dùng icon. Dùng đỡ để test
-                notifyIcon.Icon = System.Drawing.Icon.ExtractAssociatedIcon(@"..\..\..\download_120262.ico");
+                notifyIcon.Icon = Properties.Resources.mainIcon;
                 notifyIcon.Text = "autoStudent";
 
                 ExitToolStripMenuItem.Text = "Thoát";
@@ -116,14 +137,20 @@ namespace App
         {
             if (e.Button == MouseButtons.Left)
             {
-                mainForm.Show();
+                if (mainForm != null)
+                {
+                    mainForm.Show();
+                }
                 notifyIcon.Visible = false;
             }
         }
 
         private void NotifyIcon1_BalloonTipClicked(object sender, EventArgs e)
         {
-            mainForm.Show();
+            if (mainForm != null)
+            {
+                mainForm.Show();
+            }
             notifyIcon.Visible = false;
         }
 
@@ -131,6 +158,7 @@ namespace App
         {
             Application.Exit();
         }
+
         private void AbortToolStripMenuItem_Clicked(object sender, EventArgs e)
         {
             throw new NotImplementedException("Chưa cài đặt cho hủy cài đặt");
@@ -140,7 +168,7 @@ namespace App
         {
             if (notifyIcon != null)
             {
-                notifyIcon.BalloonTipText = "Việc cài đặt sẽ được bắt đầu sau " + startProcess.ToString("HH:mm:ss dd/MM/yyyy");
+                notifyIcon.BalloonTipText = "Việc cài đặt sẽ được bắt đầu vào " + startProcess.ToString("HH:mm:ss dd/MM/yyyy");
             }
         }
     }

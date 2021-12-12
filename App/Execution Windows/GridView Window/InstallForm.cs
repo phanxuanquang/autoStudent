@@ -19,15 +19,64 @@ namespace App
         public InstallForm()
         {
             InitializeComponent();
-            softwareList = Program.software_Database;
-            loadSoftwareToGridView(softwareList);
+            init();
         }
 
         protected override void exec()
         {
-            ProgressWindow_Install progressWindow_Install = new ProgressWindow_Install(selectedSoftwareList);
-            progressWindow_Install.ShowDialog();
-            this.Show();
+            if (!Directory.Exists(Program.setting.saveDownloadPath))
+            {
+                Directory.CreateDirectory(Program.setting.saveDownloadPath);
+            }
+            ExportData();
+            List<Package> overlapList = LoadingWindow.GetOverlapSoftware(Program.software_System, selectedSoftwareList);
+            ProgressWindow_Install progressWindow_Install = new ProgressWindow_Install(selectedSoftwareList, null);
+
+            progressWindow_Install.FormClosing += (sender, e) =>
+            {
+                LoadingWindow.LoadAfterDone();
+                this.Close();
+            };
+            if (overlapList != null && overlapList.Count > 0)
+            {
+                OverlapForm overlapForm = new OverlapForm(overlapList, selectedSoftwareList);
+                overlapForm.FormClosing += (sender, e) =>
+                {
+                    if (!overlapForm.isExitByButton)
+                    {
+                        List<Package> packages = overlapForm.DeleteSoftware();
+                        if (packages.Count > 0)
+                        {
+                            progressWindow_Install._SetListSoftware(packages);
+                            progressWindow_Install.isOverlap = true;
+                            progressWindow_Install.Show();
+                        }
+                        else this.Close();
+                    }
+                };
+                overlapForm.Show();
+            }
+            else
+            {
+                progressWindow_Install.Show();
+            }
+        }
+
+        private void ExportData()
+        {
+            if (Program.setting.dataExport == false) return;
+            {
+                if (Program.setting.RunDataExport(selectedSoftwareList, Program.setting.exportPath) == true)
+                {
+                    MessageBox.Show("Đã EXPORT dữ liệu cài đặt");
+                }
+            }
+        }
+
+        protected override void init()
+        {
+            softwareList = Program.software_Database;
+            loadSoftwareToGridView(softwareList);
         }
     }
 }

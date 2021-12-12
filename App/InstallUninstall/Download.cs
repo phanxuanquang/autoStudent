@@ -104,7 +104,7 @@ namespace App.InstallUninstall
                                                     totalRead += read;
                                                     stepSegment += 1;
 
-                                                    percentDownload = totalRead * 100.0f / totalSize;
+                                                    percentDownload = totalRead * 90.0f / totalSize;
                                                 }
                                                 if (blackList != null && blackList[index] == ProgressWindow_Base.ActionProcess.Canceled) break;
                                             }

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,11 +14,23 @@ namespace App
 {
     public partial class ProgressWindow_Base : Form
     {
-        private static RunBackground runBackground;
+        protected RunBackground runBackground;
+        protected OverlapForm overlapForm;
         protected List<Package> listSoftware;
         protected List<ActionProcess> blackList;
         protected int countCompletedAmount;
         protected bool HasExitTodoTask;
+        public bool isOverlap = false;
+        protected static bool wasRunBackground = false;
+
+        private static readonly Image Ready = Properties.Resources.Ready;
+        private static readonly Image Download = Properties.Resources.Download;
+        private static readonly Image Install = Properties.Resources.Install;
+        private static readonly Image Uninstall = Properties.Resources.Uninstall;
+        private static readonly Image Complete = Properties.Resources.Complete;
+        private static readonly Image Cancel = Properties.Resources.Cancel;
+        private static readonly Image Fail = Properties.Resources.Fail;
+
         public enum StatusDataGridView
         {
             None,
@@ -36,11 +49,18 @@ namespace App
             None
         }
 
-        public ProgressWindow_Base(List<Package> listSoftware) : this()
+        public ProgressWindow_Base(List<Package> listSoftware, OverlapForm overlapForm) : this()
+        {
+            if (overlapForm != null)
+                this.overlapForm = overlapForm;
+            SetListSoftware(listSoftware);
+        }
+
+        public void SetListSoftware(List<Package> listSoftware)
         {
             this.listSoftware = listSoftware;
             countCompletedAmount = 0;
-            UpdateCompletedAmount(countCompletedAmount);
+            UpdateCompletedAmount(countCompletedAmount, 0);
 
             blackList = new List<ActionProcess>();
             for (int index = 0; index < this.listSoftware.Count; index++)
@@ -48,16 +68,17 @@ namespace App
                 blackList.Add(ActionProcess.None);
             }
         }
+
         public ProgressWindow_Base()
         {
             InitializeComponent();
+            this.Icon = Properties.Resources.mainIcon;
+            Guna.UI.Lib.GraphicsHelper.ShadowForm(this);
             this.DoubleBuffered = true;
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
-            if (runBackground == null)
-            {
-                runBackground = new RunBackground(this, this.components);
-            }
+            this.runBackground = new RunBackground(this, this.components);
         }
+
         //Anti Flickering
         protected override CreateParams CreateParams
         {
@@ -69,28 +90,116 @@ namespace App
             }
         }
 
+        //Window
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            LoadingWindow.LoadAfterDone();
+            if (HasExitTodoTask)
+            {
+                /*Program.mainUI.ShowInTaskbar = true;
+                if (!Program.mainUI.Visible)
+                    Program.mainUI.Show();*/
+                this.Close();
+            }
+            else backgroundRunning_Button_Click(this, null);
+        }
+        private void minimizeButton_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        //Drag Window
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+        [DllImportAttribute("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [DllImportAttribute("user32.dll")]
+        public static extern bool ReleaseCapture();
+        private void DragWindow(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
+
         protected virtual void LoadDataGridView() { }
         protected virtual void ToDo() { }
 
-        protected void UpdateCompletedAmount(int value)
+        // Update
+        protected void UpdateCompletedAmount(int value, float percentOfValue)
         {
-            if (listSoftware != null && value >= 0)
+            if (listSoftware != null && listSoftware.Count > 0 && value >= 0 && listSoftware.Count > 0)
             {
                 try
                 {
-                    progressBar.Value = Convert.ToInt32(value * 100.0f / listSoftware.Count);
+                    progressBar.Value = Convert.ToInt32((value * 100.0f + percentOfValue) / listSoftware.Count);
                     completedAmountLabel.Text = String.Format("{0}/{1}", value, listSoftware.Count);
                 }
                 catch
                 {
-                    progressBar.BeginInvoke(new Action(() =>
+                    try
                     {
-                        progressBar.Value = Convert.ToInt32(value * 100.0f / listSoftware.Count);
-                    }));
-                    completedAmountLabel.BeginInvoke(new Action(() =>
+                        progressBar.BeginInvoke(new Action(() =>
+                        {
+                            progressBar.Value = Convert.ToInt32(value * 100.0f / listSoftware.Count);
+                        }));
+                        completedAmountLabel.BeginInvoke(new Action(() =>
+                        {
+                            completedAmountLabel.Text = String.Format("{0}/{1}", value, listSoftware.Count);
+                        }));
+                    }
+                    catch { }
+                }
+            }
+        }
+
+        protected void UpdateStatusProcess(int index, StatusDataGridView status)
+        {
+            UpdateActionButton(index, status);
+            if (listSoftware != null && listSoftware.Count > 0 && index > -1 && index < listSoftware.Count)
+            {
+                try
+                {
+                    softwareGridView.Rows[index].Cells[softwareGridView.Columns.Count - 2].Value = GetImageStatus(status);
+                }
+                catch
+                {
+                    try
                     {
-                        completedAmountLabel.Text = String.Format("{0}/{1}", value, listSoftware.Count);
-                    }));
+                        softwareGridView.BeginInvoke(new Action(() =>
+                        {
+                            softwareGridView.Rows[index].Cells[softwareGridView.Columns.Count - 2].Value = GetImageStatus(status);
+                        }));
+                    }
+                    catch { }
+                }
+            }
+        }
+        protected void UpdateActionButton(int index, StatusDataGridView status)
+        {
+            if (status == StatusDataGridView.Uninstalling || status == StatusDataGridView.Installing)
+            {
+                if (listSoftware != null && listSoftware.Count > 0 && index > -1 && index < listSoftware.Count)
+                {
+                    try
+                    {
+                        ((DataGridViewDisableButtonCell)softwareGridView.Rows[index].Cells[softwareGridView.Columns.Count - 1]).Enabled = false;
+                        softwareGridView.Refresh();
+                    }
+                    catch
+                    {
+                        try
+                        {
+                            softwareGridView.BeginInvoke(new Action(() =>
+                            {
+                                ((DataGridViewDisableButtonCell)softwareGridView.Rows[index].Cells[softwareGridView.Columns.Count - 1]).Enabled = false;
+                                softwareGridView.Refresh();
+                            }));
+                        }
+                        catch { }
+                    }
                 }
             }
         }
@@ -101,18 +210,25 @@ namespace App
             switch (status)
             {
                 case StatusDataGridView.Ready:
+                    result = Ready;
                     break;
                 case StatusDataGridView.Downloading:
+                    result = Download;
                     break;
                 case StatusDataGridView.Installing:
+                    result = Install;
                     break;
                 case StatusDataGridView.Uninstalling:
+                    result = Uninstall;
                     break;
                 case StatusDataGridView.Completed:
+                    result = Complete;
                     break;
                 case StatusDataGridView.Canceled:
+                    result = Cancel;
                     break;
                 case StatusDataGridView.Failed:
+                    result = Fail;
                     break;
                 case StatusDataGridView.None:
                     break;
@@ -120,52 +236,7 @@ namespace App
             return result;
         }
 
-        private void guna2Button2_Click(object sender, EventArgs e)
-        {
-            softwareGridView.Visible = !softwareGridView.Visible;
-        }
-
-        protected void UpdateStatusProcess(int index, StatusDataGridView status)
-        {
-            UpdateActionButton(index, status);
-            if (listSoftware != null && index > -1 && index < listSoftware.Count)
-            {
-                try
-                {
-                    softwareGridView.Rows[index].Cells[softwareGridView.Columns.Count - 2].Value = GetImageStatus(status);
-                }
-                catch
-                {
-                    softwareGridView.BeginInvoke(new Action(() =>
-                    {
-                        softwareGridView.Rows[index].Cells[softwareGridView.Columns.Count - 2].Value = GetImageStatus(status);
-                    }));
-                }
-            }
-        }
-        protected void UpdateActionButton(int index, StatusDataGridView status)
-        {
-            if (status == StatusDataGridView.Uninstalling || status == StatusDataGridView.Installing)
-            {
-                if (listSoftware != null && index > -1 && index < listSoftware.Count)
-                {
-                    try
-                    {
-                        ((DataGridViewDisableButtonCell)softwareGridView.Rows[index].Cells[softwareGridView.Columns.Count - 1]).Enabled = false;
-                        softwareGridView.Refresh();
-                    }
-                    catch
-                    {
-                        softwareGridView.BeginInvoke(new Action(() =>
-                        {
-                            ((DataGridViewDisableButtonCell)softwareGridView.Rows[index].Cells[softwareGridView.Columns.Count - 1]).Enabled = false;
-                            softwareGridView.Refresh();
-                        }));
-                    }
-                }
-            }
-        }
-
+        // Gridview
         private void softwareGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex > -1 && e.RowIndex < listSoftware.Count)
@@ -173,7 +244,6 @@ namespace App
                 ActionButton_TextChanged(e.RowIndex, e.ColumnIndex, blackList[e.RowIndex] == ActionProcess.None ? ActionProcess.Canceled : ActionProcess.None);
             }
         }
-
         protected void ActionButton_TextChanged(int row, int column, ActionProcess action)
         {
             if (column == softwareGridView.Columns.Count - 1 && row > -1 && row < listSoftware.Count)
@@ -199,10 +269,14 @@ namespace App
                     }
                     catch
                     {
-                        softwareGridView.BeginInvoke(new Action(() =>
+                        try
                         {
-                            softwareGridView.Rows[row].Cells[softwareGridView.Columns.Count - 1].Value = value;
-                        }));
+                            softwareGridView.BeginInvoke(new Action(() =>
+                            {
+                                softwareGridView.Rows[row].Cells[softwareGridView.Columns.Count - 1].Value = value;
+                            }));
+                        }
+                        catch { }
                     }
                     blackList[row] = action;
                     if (blackList[row] == ActionProcess.None && HasExitTodoTask)
@@ -213,13 +287,10 @@ namespace App
             }
         }
 
-        private void exitButton_Click(object sender, EventArgs e)
+        // Button
+        private void detai_Button_Click(object sender, EventArgs e)
         {
-            if (HasExitTodoTask)
-            {
-                this.Close();
-            }
-            else backgroundRunning_Button_Click(null, null);
+            softwareGridView.Visible = !softwareGridView.Visible;
         }
 
         private void cancelAll_Button_Click(object sender, EventArgs e)
@@ -234,7 +305,31 @@ namespace App
         {
             if (runBackground != null)
             {
+                wasRunBackground = runBackground.Visible;
                 runBackground.EnableRunBackground(Program.setting.timeSetter);
+            }
+            else MessageBox.Show("Run background null");
+        }
+
+        private void softwareGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            softwareGridView.ClearSelection();
+        }
+
+        private void completedAmountLabel_TextChanged(object sender, EventArgs e)
+        {
+            if (isOverlap && completedAmountLabel.Text == String.Format("{0}/{1}", listSoftware.Count, listSoftware.Count))
+            {
+                if (overlapForm != null)
+                {
+                    wasRunBackground = runBackground.Visible;
+                    if (wasRunBackground)
+                    {
+                        runBackground.OverrideNotify();
+                    }
+                    overlapForm.Close();
+                    this.Close();
+                }
             }
         }
     }
@@ -342,5 +437,5 @@ namespace App
                     cellStyle, advancedBorderStyle, paintParts);
             }
         }
-    }
+    } 
 }

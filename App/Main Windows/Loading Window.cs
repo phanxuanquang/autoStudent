@@ -10,19 +10,24 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 using System.Drawing.Text;
+using System.Runtime.InteropServices;
 
 namespace App
 {
-    public partial class LoadindWindow : Form
+    public partial class LoadingWindow : Form
     {
+        public bool isDone { get; private set; }
         bool isLoaded_Database = false, isLoaded_System = false;
         public static readonly List<string> keys = new List<string>() {
              @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall",
              @"SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall"
         };
-        public LoadindWindow()
+
+        public LoadingWindow()
         {
             InitializeComponent();
+            this.Icon = Properties.Resources.mainIcon;
+            Guna.UI.Lib.GraphicsHelper.ShadowForm(this);
 
             Program.software_Database = new List<Package>();
             Program.software_System = new List<Package>();
@@ -40,9 +45,8 @@ namespace App
             if (dataLoadingProgressBar.Value >= dataLoadingProgressBar.Maximum && isLoaded_Database && isLoaded_System)
             {
                 dataLoading_clock.Stop();
-                this.Hide();
-                MainUI mainUI = new MainUI();
-                mainUI.ShowDialog();
+                isDone = true;
+                this.Close();
             }
         }
 
@@ -54,7 +58,6 @@ namespace App
             else Program.software_Database = DataAccess.Instance.GetX86();
             isLoaded_Database = true;
         }
-
         private void loadFrom_System()
         {
             GetInstalledSofware(RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, Environment.Is64BitOperatingSystem ? RegistryView.Registry64 : RegistryView.Registry32), keys, Program.software_System);
@@ -145,6 +148,33 @@ namespace App
                 }
             }
             return tmp;
+        }
+
+       public static void LoadAfterDone()
+        {
+            if (Environment.Is64BitOperatingSystem)
+                Program.software_Database = DataAccess.Instance.GetX64();
+            else Program.software_Database = DataAccess.Instance.GetX86();
+            Program.software_System.Clear();
+            GetInstalledSofware(RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, Environment.Is64BitOperatingSystem ? RegistryView.Registry64 : RegistryView.Registry32), keys, Program.software_System);
+            GetInstalledSofware(RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, Environment.Is64BitOperatingSystem ? RegistryView.Registry64 : RegistryView.Registry32), keys, Program.software_System);
+            Program.software_System = Program.software_System.Where(s => !string.IsNullOrWhiteSpace(s.Displayname)).Distinct().ToList();
+            Program.software_System = GetSupportedSoftwares(Program.software_Database, Program.software_System);
+        }
+        public static List<Package> GetOverlapSoftware(List<Package> softwareSystem, List<Package> selectedSoftware)
+        {
+            List<Package> overlap = new List<Package>();
+            for (int i = 0; i < selectedSoftware.Count; i++)
+            {
+                for (int j = 0; j < softwareSystem.Count; j++)
+                {
+                    if (selectedSoftware[i].Displayname == softwareSystem[j].Displayname)
+                    {
+                        overlap.Add(softwareSystem[j]);
+                    }
+                }
+            }
+            return overlap;
         }
     }
 }

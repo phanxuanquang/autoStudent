@@ -16,15 +16,25 @@ namespace App
         public UninstallForm()
         {
             InitializeComponent();
-            softwareList = Program.software_System;
-            loadSoftwareToGridView(softwareList);
+            base.ImportSoftwareList_Button.Visible = false;
+            init();
         }
 
         protected override void exec()
         {
-            ProgressWindow_Uninstall progressWindow_Uninstall = new ProgressWindow_Uninstall(selectedSoftwareList);
-            progressWindow_Uninstall.ShowDialog();
-            this.Show();
+            ProgressWindow_Uninstall progressWindow_Uninstall = new ProgressWindow_Uninstall(selectedSoftwareList, null);
+            progressWindow_Uninstall.FormClosing += (sender, e) =>
+            {
+                LoadingWindow.LoadAfterDone();
+                this.Close();
+            };
+            progressWindow_Uninstall.Show();
+        }
+
+        protected override void init()
+        {
+            softwareList = Program.software_System;
+            loadSoftwareToGridView(softwareList);
         }
     }
 }
