@@ -15,6 +15,7 @@ namespace App
         List<Package> overlapList;
         List<Package> softwareList;
         List<Package> selectedSoftwareList = new List<Package>();
+        public bool isExitByButton = true;
 
         public OverlapForm(List<Package> overlapList, List<Package> softwareList)
         {
@@ -85,6 +86,7 @@ namespace App
         private void confirmButton_Click(object sender, EventArgs e)
         {
             this.Hide();
+            isExitByButton = false;
             if (overlapList.Count > 0)
             {
                 ProgressWindow_Uninstall progressWindow_Uninstall = new ProgressWindow_Uninstall(overlapList, this);
@@ -93,7 +95,7 @@ namespace App
             }
         }
 
-        private void DeleteSoftware()
+        public List<Package> DeleteSoftware()
         {
             if (finalGridView.Rows.Count > 0)
             {
@@ -109,10 +111,12 @@ namespace App
                     }
                 }    
             }
+            return softwareList;
         }
 
         private void exitButton_Click(object sender, EventArgs e)
         {
+            isExitByButton = true;
             this.Close();
         }
     }

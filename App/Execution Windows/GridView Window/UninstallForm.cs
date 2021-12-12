@@ -25,6 +25,7 @@ namespace App
             ProgressWindow_Uninstall progressWindow_Uninstall = new ProgressWindow_Uninstall(selectedSoftwareList, null);
             progressWindow_Uninstall.FormClosing += (sender, e) =>
             {
+                LoadingWindow.LoadAfterDone();
                 this.Close();
             };
             progressWindow_Uninstall.Show();

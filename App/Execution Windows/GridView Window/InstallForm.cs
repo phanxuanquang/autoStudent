@@ -34,6 +34,7 @@ namespace App
 
             progressWindow_Install.FormClosing += (sender, e) =>
             {
+                LoadingWindow.LoadAfterDone();
                 this.Close();
             };
             if (overlapList != null && overlapList.Count > 0)
@@ -41,8 +42,17 @@ namespace App
                 OverlapForm overlapForm = new OverlapForm(overlapList, selectedSoftwareList);
                 overlapForm.FormClosing += (sender, e) =>
                 {
-                    progressWindow_Install.isOverlap = true;
-                    progressWindow_Install.Show();
+                    if (!overlapForm.isExitByButton)
+                    {
+                        List<Package> packages = overlapForm.DeleteSoftware();
+                        if (packages.Count > 0)
+                        {
+                            progressWindow_Install._SetListSoftware(packages);
+                            progressWindow_Install.isOverlap = true;
+                            progressWindow_Install.Show();
+                        }
+                        else this.Close();
+                    }
                 };
                 overlapForm.Show();
             }

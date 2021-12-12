@@ -124,16 +124,12 @@ namespace App
         }
         private void cleanButton_Click(object sender, EventArgs e)
         {
-            if (!Program.setting.cleanAfter)
+            DialogResult dialogResult = MessageBox.Show("Các tệp sẽ bị xóa vĩnh viễn, bạn có muốn tiếp tục?", "DỌN DẸP", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-                DialogResult dialogResult = MessageBox.Show("Các tệp sẽ bị xóa vĩnh viễn, bạn có muốn tiếp tục?", "DỌN DẸP", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    Program.setting.RunCleanAction(Program.setting.saveDownloadPath);
-                    MessageBox.Show("Dọn dẹp hoàn tất");
-                }
+                Program.setting.cleanComputer();
+                MessageBox.Show("Dọn dẹp hoàn tất");
             }
-            else Program.setting.RunCleanAction(Program.setting.saveDownloadPath);
         }
         private void updateButton_Click(object sender, EventArgs e)
         {
