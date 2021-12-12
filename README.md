@@ -1,5 +1,6 @@
 # # IT008.M11 - VISUAL PROGRAMMING
 © 2021 University of Information Technology / autoStudent Project
+Note: This program is used for Vietnamese speaker only.
 ## 1. MEMBER LIST:
 | No. | Student ID | Full name | Class | Role |
 | --- | --- | --- | --- | --- |
