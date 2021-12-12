@@ -149,31 +149,6 @@ namespace App
             }
         }
 
-        public bool RunCleanAction(string downloadFolderPath)
-        {
-            if (cleanAfter)
-            {
-                if (Directory.Exists(downloadFolderPath))
-                {
-                    try
-                    {
-                        Directory.Delete(downloadFolderPath);
-                        return true;
-                    }
-                    catch (UnauthorizedAccessException)
-                    {
-                        MessageBox.Show("Không có quyền xóa thư mục tạm thời");
-                    }
-                    catch (IOException)
-                    {
-                        MessageBox.Show("Lỗi xóa thư mục tạm thời");
-                    }
-                    catch { }
-                }
-            }
-            return false;
-        }
-
         public bool RunDataExport(List<Package> dataList, string pathSaveExport)
         {
             if (dataExport && dataList != null)
@@ -217,5 +192,34 @@ namespace App
             return false;
         }
 
+        public void cleanComputer()
+        {
+            void deleteFileIn(string path)
+            {
+                DirectoryInfo di = new DirectoryInfo(path);
+                foreach (FileInfo file in di.EnumerateFiles())
+                {
+                    file.Delete();
+                }
+                foreach (DirectoryInfo dir in di.EnumerateDirectories())
+                {
+                    dir.Delete(true);
+                }
+            }
+            try
+            {
+                deleteFileIn(Program.setting.saveDownloadPath);
+                deleteFileIn(@"C:\Windows\prefetch");
+            }
+            catch (UnauthorizedAccessException)
+            {
+                MessageBox.Show("Không có quyền xóa thư mục tạm thời");
+            }
+            catch (IOException)
+            {
+                MessageBox.Show("Lỗi xóa thư mục tạm thời");
+            }
+            catch { }
+        }
     }
 }
