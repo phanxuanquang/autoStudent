@@ -89,9 +89,10 @@ namespace App
             {
                 ProgressWindow_Uninstall progressWindow_Uninstall = new ProgressWindow_Uninstall(overlapList, this);
                 progressWindow_Uninstall.isOverlap = true;
-                progressWindow_Uninstall.ShowDialog();
+                progressWindow_Uninstall.Show();
             }
         }
+
         private void DeleteSoftware()
         {
             if (finalGridView.Rows.Count > 0)
@@ -111,10 +112,6 @@ namespace App
         }
 
         private void exitButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-        public void CloseForm()
         {
             this.Close();
         }

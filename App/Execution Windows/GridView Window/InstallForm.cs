@@ -26,14 +26,24 @@ namespace App
         {
             ExportData();
             List<Package> overlapList = LoadingWindow.GetOverlapSoftware(Program.software_System, selectedSoftwareList);
-            if (overlapList.Count != 0)
+            ProgressWindow_Install progressWindow_Install = new ProgressWindow_Install(selectedSoftwareList, null);
+            progressWindow_Install.FormClosing += (sender, e) =>
+            {
+                this.Close();
+            };
+            if (overlapList != null && overlapList.Count > 0)
             {
                 OverlapForm overlapForm = new OverlapForm(overlapList, selectedSoftwareList);
-                overlapForm.ShowDialog();
+                overlapForm.FormClosing += (sender, e) =>
+                {
+                    progressWindow_Install.isOverlap = true;
+                    progressWindow_Install.Show();
+                };
+                overlapForm.Show();
             }
+            else
             {
-                ProgressWindow_Install progressWindow_Install = new ProgressWindow_Install(selectedSoftwareList, null);
-                progressWindow_Install.ShowDialog();
+                progressWindow_Install.Show();
             }
         }
 

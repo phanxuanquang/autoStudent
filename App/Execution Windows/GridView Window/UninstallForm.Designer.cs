@@ -122,7 +122,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(971, 607);
-            this.Location = new System.Drawing.Point(0, 0);
             this.Name = "UninstallForm";
             this.Text = "autoStudent";
             this.menuPanel.ResumeLayout(false);

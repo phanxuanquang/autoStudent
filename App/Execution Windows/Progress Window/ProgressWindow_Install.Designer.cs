@@ -92,7 +92,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(819, 492);
-            this.Location = new System.Drawing.Point(0, 0);
             this.Name = "ProgressWindow_Install";
             this.Text = "autoStudent - Cài đặt phần mềm";
             this.ResumeLayout(false);

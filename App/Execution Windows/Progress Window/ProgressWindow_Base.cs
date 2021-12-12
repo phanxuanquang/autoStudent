@@ -14,13 +14,14 @@ namespace App
 {
     public partial class ProgressWindow_Base : Form
     {
-        protected static RunBackground runBackground;
+        protected RunBackground runBackground;
         protected OverlapForm overlapForm;
         protected List<Package> listSoftware;
         protected List<ActionProcess> blackList;
         protected int countCompletedAmount;
         protected bool HasExitTodoTask;
         public bool isOverlap = false;
+        protected static bool wasRunBackground = false;
 
         private static readonly Image Ready = Properties.Resources.Ready;
         private static readonly Image Download = Properties.Resources.Download;
@@ -71,10 +72,7 @@ namespace App
             Guna.UI.Lib.GraphicsHelper.ShadowForm(this);
             this.DoubleBuffered = true;
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
-            if (runBackground == null)
-            {
-                runBackground = new RunBackground(this, this.components);
-            }
+            this.runBackground = new RunBackground(this, this.components);
         }
 
         //Anti Flickering
@@ -94,9 +92,9 @@ namespace App
             LoadingWindow.LoadAfterDone();
             if (HasExitTodoTask)
             {
-                Program.mainUI.ShowInTaskbar = true;
+                /*Program.mainUI.ShowInTaskbar = true;
                 if (!Program.mainUI.Visible)
-                    Program.mainUI.Show();
+                    Program.mainUI.Show();*/
                 this.Close();
             }
             else backgroundRunning_Button_Click(this, null);
@@ -128,7 +126,7 @@ namespace App
         // Update
         protected void UpdateCompletedAmount(int value, float percentOfValue)
         {
-            if (listSoftware != null && value >= 0 && listSoftware.Count > 0)
+            if (listSoftware != null && listSoftware.Count > 0 && value >= 0 && listSoftware.Count > 0)
             {
                 try
                 {
@@ -156,7 +154,7 @@ namespace App
         protected void UpdateStatusProcess(int index, StatusDataGridView status)
         {
             UpdateActionButton(index, status);
-            if (listSoftware != null && index > -1 && index < listSoftware.Count)
+            if (listSoftware != null && listSoftware.Count > 0 && index > -1 && index < listSoftware.Count)
             {
                 try
                 {
@@ -179,7 +177,7 @@ namespace App
         {
             if (status == StatusDataGridView.Uninstalling || status == StatusDataGridView.Installing)
             {
-                if (listSoftware != null && index > -1 && index < listSoftware.Count)
+                if (listSoftware != null && listSoftware.Count > 0 && index > -1 && index < listSoftware.Count)
                 {
                     try
                     {
@@ -290,6 +288,7 @@ namespace App
         {
             softwareGridView.Visible = !softwareGridView.Visible;
         }
+
         private void cancelAll_Button_Click(object sender, EventArgs e)
         {
             for(int index = 0; index < blackList.Count; index++)
@@ -297,12 +296,15 @@ namespace App
                 ActionButton_TextChanged(index, softwareGridView.Columns.Count - 1, ActionProcess.Canceled);
             }
         }
+
         private void backgroundRunning_Button_Click(object sender, EventArgs e)
         {
             if (runBackground != null)
             {
-                Program.mainUI.Hide();
-                Program.mainUI.ShowInTaskbar = false;
+                if (isOverlap)
+                {
+                    wasRunBackground = true;
+                }
                 runBackground.EnableRunBackground(Program.setting.timeSetter);
             }
             else MessageBox.Show("Run background null");
@@ -315,13 +317,17 @@ namespace App
 
         private void completedAmountLabel_TextChanged(object sender, EventArgs e)
         {
-            if (completedAmountLabel.Text == String.Format("{0}/{1}", listSoftware.Count, listSoftware.Count) && isOverlap)
+            if (isOverlap && completedAmountLabel.Text == String.Format("{0}/{1}", listSoftware.Count, listSoftware.Count))
             {
                 if (overlapForm != null)
                 {
-                    this.Close();
+                    if (wasRunBackground)
+                    {
+                        runBackground.OverrideNotify();
+                    }
                     overlapForm.Close();
-                }    
+                    this.Close();
+                }
             }
         }
     }

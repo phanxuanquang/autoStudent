@@ -72,7 +72,7 @@ namespace App
             this.Cursor = System.Windows.Forms.Cursors.AppStarting;
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Icon = global::App.Properties.Resources.Icon_app_temporary;
+            this.Icon = global::App.Properties.Resources.mainIcon;
             this.Name = "LoadingWindow";
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;

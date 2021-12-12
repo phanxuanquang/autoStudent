@@ -10,10 +10,21 @@ namespace App
 {
     public class RunBackground
     {
-        private static bool isSetted = false;
+        private bool isSetted = false;
         private NotifyIcon notifyIcon;
         private Form mainForm;
         private IContainer components;
+        public bool Visible
+        {
+            get
+            {
+                if (notifyIcon != null)
+                {
+                    return notifyIcon.Visible;
+                }
+                else return false;
+            }
+        }
         /// <summary>
         /// Tạo đối tượng
         /// Ví dụ: RunBackground test = new RunBackground(this, this.components);
@@ -63,11 +74,18 @@ namespace App
             isSetted = false;
         }
 
+        public void OverrideNotify()
+        {
+            if (notifyIcon != null)
+            {
+                notifyIcon.Visible = !notifyIcon.Visible;
+            }
+        }
+
         private void SetNotify(Form mainForm, IContainer components)
         {
             if (!isSetted)
             {
-                System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainUI));
                 ContextMenuStrip contextMenuStrip;
                 ToolStripMenuItem ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
                 ToolStripMenuItem AbortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -119,14 +137,20 @@ namespace App
         {
             if (e.Button == MouseButtons.Left)
             {
-                mainForm.Show();
+                if (mainForm != null)
+                {
+                    mainForm.Show();
+                }
                 notifyIcon.Visible = false;
             }
         }
 
         private void NotifyIcon1_BalloonTipClicked(object sender, EventArgs e)
         {
-            mainForm.Show();
+            if (mainForm != null)
+            {
+                mainForm.Show();
+            }
             notifyIcon.Visible = false;
         }
 
@@ -134,6 +158,7 @@ namespace App
         {
             Application.Exit();
         }
+
         private void AbortToolStripMenuItem_Clicked(object sender, EventArgs e)
         {
             throw new NotImplementedException("Chưa cài đặt cho hủy cài đặt");

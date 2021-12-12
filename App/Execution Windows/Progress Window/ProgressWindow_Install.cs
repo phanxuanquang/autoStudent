@@ -37,7 +37,6 @@ namespace App
             LoadDataGridView();
             this.ResumeLayout(false);
 
-            runBackground = new RunBackground(this, this.components);
             install = new InstallUninstall.Install();
             download = new InstallUninstall.Download();
             ((InstallUninstall.Install)install).Start(listSoftware, Program.setting.saveDownloadPath);
@@ -49,6 +48,10 @@ namespace App
         private void ProgressWindow_Install_Shown(object sender, EventArgs e)
         {
             this.Shown -= ProgressWindow_Install_Shown;
+            if (runBackground != null && wasRunBackground && isOverlap)
+            {
+                runBackground.EnableRunBackground(Program.setting.timeSetter);
+            }
             ToDo();
         }
 
@@ -65,7 +68,7 @@ namespace App
 
         private void UpdatePercentProcess(int index, float value)
         {
-            if (listSoftware != null && index > -1 && index < listSoftware.Count)
+            if (listSoftware != null && listSoftware.Count > 0 && index > -1 && index < listSoftware.Count)
             {
                 try
                 {

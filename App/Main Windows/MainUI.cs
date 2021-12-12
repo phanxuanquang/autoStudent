@@ -93,23 +93,27 @@ namespace App
         // Main Button
         private void installButton_Click(object sender, EventArgs e)
         {
-            
             if (isInternetAvailable())
             {
                 InstallForm installForm = new InstallForm();
                 this.Hide();
-                installForm.ShowDialog();
-                this.Show();
+                installForm.FormClosing += (sender, e) =>
+                {
+                    this.Show();
+                };
+                installForm.Show();
             }
             else MessageBox.Show("Không có kết nối mạng, vui lòng thử lại sau");
-
         }
         private void uninstallButton_Click(object sender, EventArgs e)
         {
             UninstallForm unInstallForm = new UninstallForm();
             this.Hide();
-            unInstallForm.ShowDialog();
-            this.Show();
+            unInstallForm.FormClosing += (sender, e) =>
+            {
+                this.Show();
+            };
+            unInstallForm.Show();
         }
 
         // Menu
