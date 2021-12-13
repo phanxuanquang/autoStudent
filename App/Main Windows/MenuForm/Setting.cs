@@ -121,7 +121,7 @@ namespace App
         }
         public Setting(DateTime dateTime)
         {
-            settingFilePath = @"../../../Setting/Setting.setting";
+            settingFilePath = @"../../../SettingAS/Setting.setting";
             _timeSetter = dateTime;
             importSetting();
             
