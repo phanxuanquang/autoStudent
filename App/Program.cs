@@ -19,16 +19,16 @@ namespace App
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
             AppDomain.CurrentDomain.ProcessExit += CurrentDomain_ProcessExit;
+            LoadingWindow loading = new LoadingWindow();
+            Application.Run(loading);
+
             (bool, List<Package>, List<Package>) checkLastRun = Startup.ReadSchedule();
             if (checkLastRun.Item1)
             {
                 //Đã có tên chương trình chạy từ trước, install đã đưa vào checkLastRun.Item2, uninstall đã đưa vào checkLastRun.Item3
             }
 
-            LoadingWindow loading = new LoadingWindow();
-            Application.Run(loading);
             if (loading.isDone)
             {
                 mainUI = new MainUI();

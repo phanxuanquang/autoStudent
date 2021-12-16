@@ -102,37 +102,34 @@ namespace App
         {
             DeleteSoftware();
             isExitByButton = false;
+            DeleteSoftware();
+            ProgressWindow_Install progressWindow_Install = new ProgressWindow_Install(softwareList);
             if (overlapList.Count > 0)
             {
                 ProgressWindow_Uninstall progressWindow_Uninstall = new ProgressWindow_Uninstall(overlapList);
+                progressWindow_Install.isOverlap = true;
+                progressWindow_Uninstall.isOverlap = true;
                 progressWindow_Uninstall.FormClosing += (sender, e) =>
                 {
-                    SubFunctionForConfirm();
+                    progressWindow_Install.FormClosing += (sender, e) =>
+                    {
+                        Program.mainUI.Show();
+                    };
+                    progressWindow_Install.Show();
                 };
                 Program.mainUI.Controls.Remove(this);
+                progressWindow_Uninstall.ExportData();
+                progressWindow_Install.ExportData();
                 progressWindow_Uninstall.Show();
-                progressWindow_Uninstall.isOverlap = true;
             }
             else
             {
-                SubFunctionForConfirm();
-            }
-        }
-
-        private void SubFunctionForConfirm()
-        {
-            List<Package> package = softwareList;
-            if (package != null && package.Count > 0)
-            {
-                ProgressWindow_Install progressWindow_Install = new ProgressWindow_Install(package);
                 progressWindow_Install.FormClosing += (sender, e) =>
                 {
                     Program.mainUI.Show();
                 };
-                progressWindow_Install.isOverlap = true;
                 progressWindow_Install.Show();
             }
-            else Program.mainUI.Controls.Remove(this);
         }
         #endregion
     }
