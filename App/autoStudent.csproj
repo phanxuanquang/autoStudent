@@ -107,19 +107,7 @@
       <DependentUpon>BaseTab.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\Cryptography.cs" />
-    <Compile Include="Execution Windows\GridView Window\BaseForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Execution Windows\GridView Window\BaseForm.Designer.cs">
-      <DependentUpon>BaseForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Data\DataAccess.cs" />
-    <Compile Include="Execution Windows\GridView Window\OverlapForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Execution Windows\GridView Window\OverlapForm.Designer.cs">
-      <DependentUpon>OverlapForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Execution Windows\Progress Window\ProgressWindow_Install.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,12 +130,6 @@
     <Compile Include="InstallUninstall\Download.cs" />
     <Compile Include="InstallUninstall\GetPath.cs" />
     <Compile Include="InstallUninstall\Install.cs" />
-    <Compile Include="Execution Windows\GridView Window\InstallForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Execution Windows\GridView Window\InstallForm.Designer.cs">
-      <DependentUpon>InstallForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="InstallUninstall\TrackingProcess.cs" />
     <Compile Include="Main Windows\AboutForm\AboutForm.cs">
       <SubType>Form</SubType>
@@ -191,12 +173,6 @@
     <Compile Include="Others\RunBackground.cs" />
     <Compile Include="Data\Package.cs" />
     <Compile Include="InstallUninstall\Uninstall.cs" />
-    <Compile Include="Execution Windows\GridView Window\UninstallForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Execution Windows\GridView Window\UninstallForm.Designer.cs">
-      <DependentUpon>UninstallForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Main Windows\MenuForm\Setting.cs" />
     <Compile Include="Main Windows\MenuForm\SettingForm.cs">
       <SubType>Form</SubType>
@@ -213,15 +189,6 @@
     </Compile>
     <EmbeddedResource Include="Tab View\DataGridView\BaseTab.resx">
       <DependentUpon>BaseTab.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Execution Windows\GridView Window\BaseForm.resx">
-      <DependentUpon>BaseForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Execution Windows\GridView Window\InstallForm.resx">
-      <DependentUpon>InstallForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Execution Windows\GridView Window\OverlapForm.resx">
-      <DependentUpon>OverlapForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Execution Windows\Progress Window\ProgressWindow_Install.resx">
       <DependentUpon>ProgressWindow_Install.cs</DependentUpon>
@@ -257,9 +224,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Execution Windows\GridView Window\UninstallForm.resx">
-      <DependentUpon>UninstallForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Main Windows\MenuForm\SettingForm.resx">
       <DependentUpon>SettingForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -36,22 +36,8 @@ namespace App
             };
             if (overlapList != null && overlapList.Count > 0)
             {
-                OverlapForm overlapForm = new OverlapForm(overlapList, selectedSoftwareList);
-                overlapForm.FormClosing += (sender, e) =>
-                {
-                    if (!overlapForm.isExitByButton)
-                    {
-                        List<Package> packages = overlapForm.DeleteSoftware();
-                        if (packages.Count > 0)
-                        {
-                            progressWindow_Install._SetListSoftware(packages);
-                            progressWindow_Install.isOverlap = true;
-                            progressWindow_Install.Show();
-                        }
-                        this.Parent.Controls.Remove(this);
-                    }
-                };
-                overlapForm.Show();
+                OverlapTab overlapTab = new OverlapTab(overlapList, selectedSoftwareList);
+                Program.mainUI.loadTab(overlapTab);
             }
             else
             {
