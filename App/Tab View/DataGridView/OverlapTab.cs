@@ -37,12 +37,12 @@ namespace App
         {
             if (finalGridView.Rows.Count > 0)
             {
-                for (int j = 0; j < finalGridView.Rows.Count; j++)
+                for (int j = 0; j < selectedSoftwareList.Count; j++)
                 {
                     for (int i = 0; i < softwareList.Count; i++)
                     {
-                        MessageBox.Show(softwareList[i].Displayname + "\n" + finalGridView.Rows[j].Cells[0].Value.ToString());
-                        if (softwareList[i].Displayname == finalGridView.Rows[j].Cells[0].Value.ToString())
+                        //MessageBox.Show(softwareList[i].Displayname + "\n" + finalGridView.Rows[j].Cells[0].Value.ToString());
+                        if (softwareList[i].Name == selectedSoftwareList[j].Name)
                         {
                             softwareList.RemoveAt(i);
                             i--;
@@ -100,6 +100,7 @@ namespace App
 
         private void confirmButton_Click(object sender, EventArgs e)
         {
+            DeleteSoftware();
             isExitByButton = false;
             if (overlapList.Count > 0)
             {
@@ -120,7 +121,7 @@ namespace App
 
         private void SubFunctionForConfirm()
         {
-            List<Package> package = DeleteSoftware();
+            List<Package> package = softwareList;
             if (package != null && package.Count > 0)
             {
                 ProgressWindow_Install progressWindow_Install = new ProgressWindow_Install(package);
