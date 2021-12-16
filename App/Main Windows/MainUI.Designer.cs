@@ -313,6 +313,7 @@
             this.Name = "MainUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "autoStudent";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainUI_FormClosing);
             this.SizeChanged += new System.EventHandler(this.MainUI_SizeChanged);
             this.ResumeLayout(false);
 

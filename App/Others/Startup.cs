@@ -11,37 +11,63 @@ namespace App
 {
     class Startup
     {
-        public readonly static string saveHistory = Application.StartupPath + @"\schedule.csv";
+        public readonly static string saveHistory = Application.StartupPath + @"\schedule.as";
 
-        public static void WriteSchedule(List<Package> softwares)
+        public static void WriteSchedule(List<string> installSoftwares, List<string> uninstallSoftwares)
         {
             if (HasScheduled())
             {
                 File.Delete(saveHistory);
             }
-            else
-            {
-                File.Create(saveHistory);
-            }
+            string dataPackage = GetData(installSoftwares, "INSTALL") + GetData(uninstallSoftwares, "UNINSTALL");
+            File.WriteAllText(saveHistory, dataPackage, Encoding.UTF8);
             SetStartupEnviroment();
         }
 
-        public static List<Package> ReadSchedule()
+        public static (bool, List<Package>, List<Package>) ReadSchedule()
         {
+            List<string> install = null;
+            List<string> uninstall = null;
             if (HasScheduled())
             {
-                List<Package> extractFile = new List<Package>();
-                Package temp = new Package();
                 string[] listSoftware = File.ReadAllLines(saveHistory);
-                for (int index = 0; index < listSoftware.Count(); index++)
+                int indexInstall = Array.IndexOf(listSoftware, "INSTALL");
+                int indexUninstall = Array.IndexOf(listSoftware, "UNINSTALL");
+                if (indexUninstall - indexInstall > 1)
                 {
-
+                    install = new List<string>();
+                    for (int index = indexInstall + 1; index < indexUninstall; index++)
+                    {
+                        install.Add(listSoftware[index]);
+                    }
+                }
+                if (listSoftware.Length - indexUninstall > 1)
+                {
+                    uninstall = new List<string>();
+                    for (int index = indexUninstall + 1; index < listSoftware.Length; index++)
+                    {
+                        uninstall.Add(listSoftware[index]);
+                    }
                 }
                 File.Delete(saveHistory);
                 RemoveStartupEnviroment();
-                return extractFile;
             }
-            return null;
+            if (install == null && uninstall == null) return (false, null, null);
+            return (true, install.Count > 0 ? DataAccess.Instance.GetPackagesOfName(install) : null, uninstall.Count > 0 ? DataAccess.Instance.GetPackagesOfName(uninstall) : null);
+        }
+
+        private static string GetData(List<string> packages, string nameField)
+        {
+            if (packages != null)
+            {
+                string data = nameField + "\n";
+                for (int index = 0; index < packages.Count; index++)
+                {
+                    data += packages[index] + "\n";
+                }
+                return data;
+            }
+            return nameField + "\n";
         }
 
         private static bool HasScheduled()

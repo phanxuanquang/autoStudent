@@ -275,9 +275,10 @@ namespace App
         #endregion
 
         #region Main Buttons
-        private void detai_Button_Click(object sender, EventArgs e)
+
+        public void SetRefresh()
         {
-            softwareGridView.Visible = !softwareGridView.Visible;
+            detail_Button_Click(null, null);
         }
 
         private void cancelAll_Button_Click(object sender, EventArgs e)
@@ -314,7 +315,26 @@ namespace App
                     {
                         runBackground.OverrideNotify();
                     }
-                    this.Close();
+                    Task.Factory.StartNew(() =>
+                    {
+                        while (Program.SetStartup == Program.ExitRunBackground.Waiting) ;
+                        if (Program.SetStartup == Program.ExitRunBackground.Startup) return;
+                        try
+                        {
+                            this.Close();
+                        }
+                        catch
+                        {
+                            try
+                            {
+                                this.BeginInvoke(new Action(() =>
+                                {
+                                    this.Close();
+                                }));
+                            }
+                            catch { }
+                        }
+                    });
                 }
             }
         }

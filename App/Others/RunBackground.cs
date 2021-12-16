@@ -88,7 +88,8 @@ namespace App
             {
                 ContextMenuStrip contextMenuStrip;
                 ToolStripMenuItem ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-                ToolStripMenuItem AbortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+                ToolStripMenuItem ShowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+                ToolStripMenuItem SettingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 
                 if (components != null)
                 {
@@ -105,20 +106,22 @@ namespace App
                 notifyIcon.BalloonTipTitle = "autoStudent";
                 notifyIcon.BalloonTipText = "autoStudent đang chạy ngầm";
 
-                //notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("guna2Button4.Image")));
-                //Bắt buộc phải dùng icon. Dùng đỡ để test
                 notifyIcon.Icon = Properties.Resources.mainIcon;
                 notifyIcon.Text = "autoStudent";
 
                 ExitToolStripMenuItem.Text = "Thoát";
                 ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Clicked);
 
-                AbortToolStripMenuItem.Text = "Hủy cài đặt";
-                AbortToolStripMenuItem.Click += new System.EventHandler(this.AbortToolStripMenuItem_Clicked);
+                ShowToolStripMenuItem.Text = "Bảng điều khiển";
+                ShowToolStripMenuItem.Click += new System.EventHandler(this.ShowToolStripMenuItem_Clicked);
 
-                contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { 
-                    ExitToolStripMenuItem, 
-                    AbortToolStripMenuItem 
+                SettingToolStripMenuItem.Text = "Bảng thiết lập";
+                SettingToolStripMenuItem.Click += new System.EventHandler(this.SettingToolStripMenuItem_Clicked);
+
+                contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+                    ShowToolStripMenuItem,
+                    SettingToolStripMenuItem,
+                    ExitToolStripMenuItem
                 });
                 contextMenuStrip.Name = "contextMenuStrip";
                 contextMenuStrip.AutoSize = true;
@@ -128,9 +131,24 @@ namespace App
 
                 notifyIcon.MouseClick += new System.Windows.Forms.MouseEventHandler(notifyIcon_MouseClick);
                 notifyIcon.BalloonTipClicked += new System.EventHandler(NotifyIcon1_BalloonTipClicked);
-                
+
                 isSetted = true;
             }
+        }
+
+        private void ShowToolStripMenuItem_Clicked(object sender, EventArgs e)
+        {
+            if (mainForm != null)
+            {
+                mainForm.Show();
+            }
+            notifyIcon.Visible = false;
+        }
+
+        private void SettingToolStripMenuItem_Clicked(object sender, EventArgs e)
+        {
+            App.SettingForm settingForm = new SettingForm();
+            settingForm.Show();
         }
 
         private void notifyIcon_MouseClick(object sender, MouseEventArgs e)
@@ -140,6 +158,10 @@ namespace App
                 if (mainForm != null)
                 {
                     mainForm.Show();
+                    if(mainForm is ProgressWindow_Base)
+                    {
+                        ((ProgressWindow_Base)mainForm).SetRefresh();
+                    }
                 }
                 notifyIcon.Visible = false;
             }
@@ -156,12 +178,7 @@ namespace App
 
         private void ExitToolStripMenuItem_Clicked(object sender, EventArgs e)
         {
-            Application.Exit();
-        }
-
-        private void AbortToolStripMenuItem_Clicked(object sender, EventArgs e)
-        {
-            throw new NotImplementedException("Chưa cài đặt cho hủy cài đặt");
+            Program.mainUI.Close();
         }
 
         private void SetTime(DateTime startProcess)

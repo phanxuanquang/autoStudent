@@ -133,7 +133,7 @@ namespace App
             {
                 for (int j = 0; j < softwareSystem.Count; j++)
                 {
-                    if (selectedSoftware[i].Displayname == softwareSystem[j].Displayname)
+                    if (softwareSystem[j].Displayname.Contains(selectedSoftware[i].Displayname))
                     {
                         overlap.Add(softwareSystem[j]);
                     }

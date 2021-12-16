@@ -19,6 +19,14 @@ namespace App
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            AppDomain.CurrentDomain.ProcessExit += CurrentDomain_ProcessExit;
+            (bool, List<Package>, List<Package>) checkLastRun = Startup.ReadSchedule();
+            if (checkLastRun.Item1)
+            {
+                //Đã có tên chương trình chạy từ trước, install đã đưa vào checkLastRun.Item2, uninstall đã đưa vào checkLastRun.Item3
+            }
+
             LoadingWindow loading = new LoadingWindow();
             Application.Run(loading);
             if (loading.isDone)
@@ -27,10 +35,28 @@ namespace App
                 Application.Run(mainUI);
             }    
         }
+
+        private static void CurrentDomain_ProcessExit(object sender, EventArgs e)
+        {
+            if (setting.isSetTime && SetStartup == ExitRunBackground.Startup)
+            {
+                Startup.WriteSchedule(installName, uninstallName);
+            }
+        }
+
         static public List<Package> software_Database;
         static public List<Package> software_System;
         static public MainUI mainUI;
         static public Setting setting;
+        public enum ExitRunBackground
+        {
+            Startup,
+            Waiting,
+            None
+        };
+        public static ExitRunBackground SetStartup = ExitRunBackground.None;
+        public static List<string> installName;
+        public static List<string> uninstallName;
 
         public static void SetDoubleBuffered(System.Windows.Forms.Control c)
         {

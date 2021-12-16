@@ -33,7 +33,7 @@ namespace App
                 originalGridView.Rows.Add(softwareList[i].Displayname);
             }
         }
-        public List<Package> DeleteSoftware()
+        private List<Package> DeleteSoftware()
         {
             if (finalGridView.Rows.Count > 0)
             {
@@ -41,6 +41,7 @@ namespace App
                 {
                     for (int i = 0; i < softwareList.Count; i++)
                     {
+                        MessageBox.Show(softwareList[i].Displayname + "\n" + finalGridView.Rows[j].Cells[0].Value.ToString());
                         if (softwareList[i].Displayname == finalGridView.Rows[j].Cells[0].Value.ToString())
                         {
                             softwareList.RemoveAt(i);
@@ -103,19 +104,34 @@ namespace App
             if (overlapList.Count > 0)
             {
                 ProgressWindow_Uninstall progressWindow_Uninstall = new ProgressWindow_Uninstall(overlapList);
-                progressWindow_Uninstall.FormClosing += (sender, e) => {
-                    DeleteSoftware();
-                    ProgressWindow_Install progressWindow_Install = new ProgressWindow_Install(softwareList);
-                    progressWindow_Install.FormClosing += (sender, e) =>
-                    {
-                        Program.mainUI.Show();
-                    };
-                        progressWindow_Install.Show();
+                progressWindow_Uninstall.FormClosing += (sender, e) =>
+                {
+                    SubFunctionForConfirm();
                 };
                 Program.mainUI.Controls.Remove(this);
                 progressWindow_Uninstall.Show();
                 progressWindow_Uninstall.isOverlap = true;
             }
+            else
+            {
+                SubFunctionForConfirm();
+            }
+        }
+
+        private void SubFunctionForConfirm()
+        {
+            List<Package> package = DeleteSoftware();
+            if (package != null && package.Count > 0)
+            {
+                ProgressWindow_Install progressWindow_Install = new ProgressWindow_Install(package);
+                progressWindow_Install.FormClosing += (sender, e) =>
+                {
+                    Program.mainUI.Show();
+                };
+                progressWindow_Install.isOverlap = true;
+                progressWindow_Install.Show();
+            }
+            else Program.mainUI.Controls.Remove(this);
         }
         #endregion
     }

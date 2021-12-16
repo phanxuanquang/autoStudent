@@ -187,5 +187,45 @@ namespace App
             tab.Dock = DockStyle.Fill;
             tab.BringToFront();
         }
+
+        private static int WM_QUERYENDSESSION = 0x11;
+        private static bool systemShutdown = false;
+        /// <summary>
+        /// https://docs.microsoft.com/en-us/dotnet/api/microsoft.win32.systemevents.sessionending?redirectedfrom=MSDN&view=dotnet-plat-ext-6.0
+        /// </summary>
+        /// <param name="m"></param>
+        protected override void WndProc(ref System.Windows.Forms.Message m)
+        {
+            if (m.Msg == WM_QUERYENDSESSION)
+            {
+                systemShutdown = true;
+            }
+            base.WndProc(ref m);
+        }
+
+        private void MainUI_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Program.SetStartup = Program.ExitRunBackground.Waiting;
+            if (systemShutdown || Program.setting.isSetTime)
+            {
+                systemShutdown = false;
+                switch (MessageBox.Show("Bạn có đặt lịch hoặc đang cài đặt.\nBạn có muốn quay lại trạng thái ở phiên khởi động tiếp theo?", "autoStudent", MessageBoxButtons.YesNoCancel))
+                {
+                    case DialogResult.Yes:
+                        e.Cancel = false;
+                        Program.SetStartup = Program.ExitRunBackground.Startup;
+                        break;
+                    case DialogResult.No:
+                        e.Cancel = false;
+                        Program.SetStartup = Program.ExitRunBackground.None;
+                        break;
+                    case DialogResult.Cancel:
+                        e.Cancel = true;
+                        Program.SetStartup = Program.ExitRunBackground.None;
+                        break;
+                }
+            }
+            else e.Cancel = false;
+        }
     }
 }
