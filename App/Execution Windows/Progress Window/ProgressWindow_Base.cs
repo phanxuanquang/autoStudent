@@ -54,13 +54,13 @@ namespace App
         public ProgressWindow_Base(List<Package> listSoftware) : this()
         {
             SetListSoftware(listSoftware);
-            Program.SetDoubleBuffered(processContainPanel);
-            Program.SetDoubleBuffered(this);
         }
 
         public ProgressWindow_Base()
         {
             InitializeComponent();
+            Guna.UI.Lib.GraphicsHelper.ShadowForm(this);
+            Program.mainUI.Hide();
             this.Icon = Properties.Resources.mainIcon;
             Guna.UI.Lib.GraphicsHelper.ShadowForm(this);
             this.DoubleBuffered = true;
@@ -89,6 +89,7 @@ namespace App
                 this.Close();
             }
             else backgroundRunning_Button_Click(this, null);
+            Program.mainUI.Show();
         }
         private void minimizeButton_Click(object sender, EventArgs e)
         {

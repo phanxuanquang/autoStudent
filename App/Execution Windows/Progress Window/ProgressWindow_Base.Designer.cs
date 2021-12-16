@@ -48,7 +48,9 @@
             this.StatusProcess = new System.Windows.Forms.DataGridViewImageColumn();
             this.roundEdge = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.minimizeButton = new Guna.UI2.WinForms.Guna2Button();
+            this.DragControl = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.ActionButton = new App.DataGridViewDisableButtonColumn();
+            this.Shadow = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
             this.processContainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.softwareGridView)).BeginInit();
             this.SuspendLayout();
@@ -352,6 +354,10 @@
             this.minimizeButton.TabIndex = 45;
             this.minimizeButton.Click += new System.EventHandler(this.minimizeButton_Click);
             // 
+            // DragControl
+            // 
+            this.DragControl.TargetControl = this;
+            // 
             // ActionButton
             // 
             this.ActionButton.FillWeight = 40F;
@@ -398,5 +404,7 @@
         protected Guna.UI2.WinForms.Guna2Button detail_Button;
         private Guna.UI2.WinForms.Guna2Elipse roundEdge;
         private Guna.UI2.WinForms.Guna2Button minimizeButton;
+        private Guna.UI2.WinForms.Guna2DragControl DragControl;
+        private Guna.UI2.WinForms.Guna2ShadowForm Shadow;
     }
 }
