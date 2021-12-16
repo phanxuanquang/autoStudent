@@ -103,6 +103,15 @@ namespace App
             if (overlapList.Count > 0)
             {
                 ProgressWindow_Uninstall progressWindow_Uninstall = new ProgressWindow_Uninstall(overlapList);
+                progressWindow_Uninstall.FormClosing += (sender, e) => {
+                    DeleteSoftware();
+                    ProgressWindow_Install progressWindow_Install = new ProgressWindow_Install(softwareList);
+                    progressWindow_Install.FormClosing += (sender, e) =>
+                    {
+                        Program.mainUI.Show();
+                    };
+                        progressWindow_Install.Show();
+                };
                 Program.mainUI.Controls.Remove(this);
                 progressWindow_Uninstall.Show();
                 progressWindow_Uninstall.isOverlap = true;
