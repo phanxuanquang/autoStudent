@@ -36,6 +36,7 @@ namespace App
 
             loadFrom_Database();
             loadFrom_System();
+            Program.setting = new Setting(DateTime.Now);
         }
 
         // Progress Bar
@@ -164,9 +165,9 @@ namespace App
             {
                 for (int j = 0; j < packages.Count; j++)
                 {
-                    if (installed[i].Displayname.Contains(packages[j].Displayname))
+                    if (installed[i].Displayname.Contains(packages[j].Displayname) && !supportedsSoftwares.Any(item => item.Displayname == installed[i].Displayname))
                     {
-                        Package temp = packages[j];
+                        Package temp = new Package(packages[j]);
                         temp.Displayname = installed[i].Displayname;
                         temp.Version = installed[i].Version;
                         temp.UninstallString = installed[i].UninstallString;
