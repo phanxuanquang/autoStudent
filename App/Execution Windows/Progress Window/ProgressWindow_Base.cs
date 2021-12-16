@@ -16,7 +16,6 @@ namespace App
     {
         #region Declaration
         protected RunBackground runBackground;
-        protected OverlapTab overlapTab;
         protected List<Package> listSoftware;
         protected List<ActionProcess> blackList;
         protected int countCompletedAmount;
@@ -31,6 +30,7 @@ namespace App
         private static readonly Image Complete = Properties.Resources.Complete;
         private static readonly Image Cancel = Properties.Resources.Cancel;
         private static readonly Image Fail = Properties.Resources.Fail;
+        private bool PressedActionAll;
 
         public enum StatusDataGridView
         {
@@ -51,11 +51,11 @@ namespace App
         }
         #endregion
 
-        public ProgressWindow_Base(List<Package> listSoftware, OverlapTab overlapTab) : this()
+        public ProgressWindow_Base(List<Package> listSoftware) : this()
         {
-            if (overlapTab != null)
-                this.overlapTab = overlapTab;
             SetListSoftware(listSoftware);
+            Program.SetDoubleBuffered(processContainPanel);
+            Program.SetDoubleBuffered(this);
         }
 
         public ProgressWindow_Base()
@@ -304,18 +304,56 @@ namespace App
 
         private void completedAmountLabel_TextChanged(object sender, EventArgs e)
         {
-            if (isOverlap && completedAmountLabel.Text == String.Format("{0}/{1}", listSoftware.Count, listSoftware.Count))
+            if (completedAmountLabel.Text == String.Format("{0}/{1}", listSoftware.Count, listSoftware.Count))
             {
-                if (overlapTab != null)
+                if (isOverlap)
                 {
                     wasRunBackground = runBackground.Visible;
                     if (wasRunBackground)
                     {
                         runBackground.OverrideNotify();
                     }
-                    overlapTab.Parent.Controls.Remove(overlapTab);
                     this.Close();
                 }
+            }
+        }
+        
+        private void detail_Button_Click(object sender, EventArgs e)
+        {
+            this.SuspendLayout();
+            this.processContainPanel.SuspendLayout();
+            if (softwareGridView.Visible)
+            {
+                this.ClientSize = new System.Drawing.Size(819, 195);
+            }
+            else this.ClientSize = new System.Drawing.Size(819, 492);
+            softwareGridView.Visible = !softwareGridView.Visible;
+            Application.DoEvents();
+            this.processContainPanel.ResumeLayout(true);
+            this.ResumeLayout(true);
+        }
+
+        private void ActionAll_Button_Click(object sender, EventArgs e)
+        {
+            PressedActionAll = !PressedActionAll;
+            for (int index = 0; index < blackList.Count; index++)
+            {
+                ActionButton_TextChanged(index, softwareGridView.Columns.Count - 1, PressedActionAll ? ActionProcess.Canceled : ActionProcess.None);
+            }
+            try
+            {
+                ActionAll_Button.Text = PressedActionAll ? "KHÔI PHỤC TB" : "HỦY TOÀN BỘ";
+            }
+            catch
+            {
+                try
+                {
+                    ActionAll_Button.BeginInvoke(new Action(() =>
+                    {
+                        ActionAll_Button.Text = PressedActionAll ? "KHÔI PHỤC TB" : "HỦY TOÀN BỘ";
+                    }));
+                }
+                catch { }
             }
         }
         #endregion

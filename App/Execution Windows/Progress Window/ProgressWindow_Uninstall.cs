@@ -14,7 +14,7 @@ namespace App
     public partial class ProgressWindow_Uninstall : ProgressWindow_Base
     {
         private InstallUninstall.BaseProcess uninstall;
-        public ProgressWindow_Uninstall(List<Package> listSoftware, OverlapTab overlapTab) : base(listSoftware, overlapTab)
+        public ProgressWindow_Uninstall(List<Package> listSoftware) : base(listSoftware)
         {
             InitializeComponent();
 

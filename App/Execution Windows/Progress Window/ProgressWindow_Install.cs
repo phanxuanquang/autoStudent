@@ -16,7 +16,7 @@ namespace App
         private App.InstallUninstall.BaseProcess install;
         private App.InstallUninstall.Download download;
 
-        public ProgressWindow_Install(List<Package> listSoftware, OverlapTab overlapTab) : base(listSoftware, overlapTab)
+        public ProgressWindow_Install(List<Package> listSoftware) : base(listSoftware)
         {
             InitializeComponent();
             this.SuspendLayout();
@@ -28,7 +28,7 @@ namespace App
             base.processContainPanel.Controls.Add(this.detail_Button);
             base.processContainPanel.Controls.Add(base.detail_Button);
             base.processContainPanel.Controls.Add(base.backgroundRunning_Button);
-            base.processContainPanel.Controls.Add(base.cancelAll_Button);
+            base.processContainPanel.Controls.Add(base.ActionAll_Button);
 
             base.softwareGridView.Columns.Add(base.NameSoftware);
             base.softwareGridView.Columns.Add(base.PercentDownload);

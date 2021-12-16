@@ -99,13 +99,13 @@ namespace App
 
         private void confirmButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
             isExitByButton = false;
             if (overlapList.Count > 0)
             {
-                ProgressWindow_Uninstall progressWindow_Uninstall = new ProgressWindow_Uninstall(overlapList, this);
-                progressWindow_Uninstall.isOverlap = true;
+                ProgressWindow_Uninstall progressWindow_Uninstall = new ProgressWindow_Uninstall(overlapList);
+                Program.mainUI.Controls.Remove(this);
                 progressWindow_Uninstall.Show();
+                progressWindow_Uninstall.isOverlap = true;
             }
         }
         #endregion

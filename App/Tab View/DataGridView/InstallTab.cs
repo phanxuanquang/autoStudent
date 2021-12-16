@@ -27,7 +27,7 @@ namespace App
             }
             ExportData();
             List<Package> overlapList = LoadingWindow.GetOverlapSoftware(Program.software_System, selectedSoftwareList);
-            ProgressWindow_Install progressWindow_Install = new ProgressWindow_Install(selectedSoftwareList, null);
+            ProgressWindow_Install progressWindow_Install = new ProgressWindow_Install(selectedSoftwareList);
 
             progressWindow_Install.FormClosing += (sender, e) =>
             {
