@@ -100,7 +100,6 @@ namespace App
 
         private void confirmButton_Click(object sender, EventArgs e)
         {
-            DeleteSoftware();
             isExitByButton = false;
             DeleteSoftware();
             ProgressWindow_Install progressWindow_Install = new ProgressWindow_Install(softwareList);
