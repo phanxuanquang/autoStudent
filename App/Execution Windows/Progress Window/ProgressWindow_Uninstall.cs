@@ -14,7 +14,7 @@ namespace App
     public partial class ProgressWindow_Uninstall : ProgressWindow_Base
     {
         private InstallUninstall.BaseProcess uninstall;
-        public ProgressWindow_Uninstall(List<Package> listSoftware, OverlapForm overlapForm) : base(listSoftware, overlapForm)
+        public ProgressWindow_Uninstall(List<Package> listSoftware, OverlapTab overlapTab) : base(listSoftware, overlapTab)
         {
             InitializeComponent();
 
@@ -36,6 +36,7 @@ namespace App
             ToDo();
         }
 
+        #region Overrided Functions
         protected override void LoadDataGridView()
         {
             if (base.listSoftware != null)
@@ -67,5 +68,6 @@ namespace App
                 HasExitTodoTask = true;
             });
         }
+        #endregion
     }
 }

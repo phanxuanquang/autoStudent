@@ -32,8 +32,8 @@ namespace App
             this.components = new System.ComponentModel.Container();
             this.dataLoadingProgressBar = new Guna.UI2.WinForms.Guna2ProgressBar();
             this.dataLoading_clock = new System.Windows.Forms.Timer(this.components);
-            this.roundEdge = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2ShadowForm = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
+            this.roundEdge = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.SuspendLayout();
             // 
             // dataLoadingProgressBar
@@ -85,8 +85,8 @@ namespace App
         #endregion
         private Guna.UI2.WinForms.Guna2ProgressBar dataLoadingProgressBar;
         private System.Windows.Forms.Timer dataLoading_clock;
-        private Guna.UI2.WinForms.Guna2Elipse roundEdge;
         private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm;
+        private Guna.UI2.WinForms.Guna2Elipse roundEdge;
     }
 }
 

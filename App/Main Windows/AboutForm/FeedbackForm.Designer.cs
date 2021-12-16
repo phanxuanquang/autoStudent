@@ -144,6 +144,7 @@
             this.Controls.Add(this.TextFeedback);
             this.Controls.Add(this.Cancel);
             this.Controls.Add(this.Send);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.Name = "FeedbackForm";

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -20,60 +21,10 @@ namespace App
             InitializeComponent();
             this.Icon = Properties.Resources.mainIcon;
             Guna.UI.Lib.GraphicsHelper.ShadowForm(this);
-            DoubleBuffered = true;
-            SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true);
-        }
-
-        // Anti Flickering
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams handleParam = base.CreateParams;
-                handleParam.ExStyle |= 0x02000000;
-                return handleParam;
-            }
-        }
-
-        // Window
-        private void exitButton_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-        private void minimizeButton_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-        private void wizardButton_Click(object sender, EventArgs e)
-        {
-            if (MainPanel.Left >= 0)
-            {
-                exitButton_Above.Hide();
-                minimizeButton_Above.Hide();
-                MainPanel.Left -= 831;
-            }
-            else
-            {
-                exitButton_Above.Show();
-                minimizeButton_Above.Show();
-                MainPanel.Left += 831;
-            }
-        }
-
-        //Drag Window
-        public const int WM_NCLBUTTONDOWN = 0xA1;
-        public const int HT_CAPTION = 0x2;
-        [DllImportAttribute("user32.dll")]
-        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        [DllImportAttribute("user32.dll")]
-        public static extern bool ReleaseCapture();
-        private void DragWindow(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-            }
+            this.SetStyle(ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint | ControlStyles.SupportsTransparentBackColor, true);
+            
+            for(int i = 0; i < this.Controls.Count; i++)
+                Program.SetDoubleBuffered(this.Controls[i]);
         }
 
         private bool isInternetAvailable()
@@ -90,33 +41,40 @@ namespace App
             }
         }
 
-        // Main Button
-        private void installButton_Click(object sender, EventArgs e)
+        #region Windows State
+        // Anti Flickering
+        protected override CreateParams CreateParams
         {
-            if (isInternetAvailable())
+            get
             {
-                InstallForm installForm = new InstallForm();
-                this.Hide();
-                installForm.FormClosing += (sender, e) =>
-                {
-                    this.Show();
-                };
-                installForm.Show();
+                CreateParams handleParam = base.CreateParams;
+                handleParam.ExStyle |= 0x02000000;
+                return handleParam;
             }
-            else MessageBox.Show("Không có kết nối mạng, vui lòng thử lại sau");
         }
-        private void uninstallButton_Click(object sender, EventArgs e)
+        private void MainUI_SizeChanged(object sender, EventArgs e)
         {
-            UninstallForm unInstallForm = new UninstallForm();
-            this.Hide();
-            unInstallForm.FormClosing += (sender, e) =>
-            {
-                this.Show();
-            };
-            unInstallForm.Show();
+            Program.SetDoubleBuffered(this);
         }
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+        private void minimizeButton_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+        private void wizardButton_Click(object sender, EventArgs e)
+        {
+            Process openGitHub = new Process();
+            openGitHub.StartInfo.FileName = "CMD.exe";
+            openGitHub.StartInfo.Arguments = "/C start https://github.com/phanxuanquang/autoStudent";
+            openGitHub.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            openGitHub.Start();
+        }
+        #endregion
 
-        // Menu
+        #region Menu
         private void settingButton_Click(object sender, EventArgs e)
         {
             SettingForm settingForm = new SettingForm();
@@ -138,6 +96,7 @@ namespace App
                 MessageBox.Show("Không có kết nối mạng, vui lòng thử lại sau");
                 return;
             }
+
             DateTime GetLastModifyTime(string url)
             {
                 WebRequest request = WebRequest.Create(url);
@@ -198,6 +157,35 @@ namespace App
         {
             App.Main_Windows.AboutForm.AboutForm aboutForm = new App.Main_Windows.AboutForm.AboutForm();
             aboutForm.ShowDialog();
+        }
+        #endregion
+
+        #region Main Buttons
+        private void installButton_Click(object sender, EventArgs e)
+        {
+            BaseTab installTab = new InstallTab();
+            loadTab(installTab);
+        }
+        private void uninstallButton_Click(object sender, EventArgs e)
+        {
+            //UninstallForm unInstallForm = new UninstallForm();
+            //this.Hide();
+            //unInstallForm.FormClosing += (sender, e) =>
+            //{
+            //    this.Show();
+            //};
+            //unInstallForm.Show();
+
+            BaseTab uninstallTab = new UninstallTab();
+            loadTab(uninstallTab);
+        }
+        #endregion
+
+        public void loadTab(UserControl tab)
+        {
+            this.Controls.Add(tab);
+            tab.Dock = DockStyle.Fill;
+            tab.BringToFront();
         }
     }
 }

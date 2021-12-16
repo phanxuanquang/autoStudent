@@ -41,7 +41,7 @@
             this.exitButton = new Guna.UI2.WinForms.Guna2Button();
             this.cancelAll_Button = new Guna.UI2.WinForms.Guna2Button();
             this.backgroundRunning_Button = new Guna.UI2.WinForms.Guna2Button();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.processContainPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.detail_Button = new Guna.UI2.WinForms.Guna2Button();
             this.softwareGridView = new Guna.UI2.WinForms.Guna2DataGridView();
             this.NameSoftware = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,7 +50,8 @@
             this.roundEdge = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.minimizeButton = new Guna.UI2.WinForms.Guna2Button();
             this.ActionButton = new App.DataGridViewDisableButtonColumn();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.DragControl = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.processContainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.softwareGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -177,20 +178,21 @@
             this.backgroundRunning_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             this.backgroundRunning_Button.Click += new System.EventHandler(this.backgroundRunning_Button_Click);
             // 
-            // flowLayoutPanel1
+            // processContainPanel
             // 
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.flowLayoutPanel1.Controls.Add(this.label3);
-            this.flowLayoutPanel1.Controls.Add(this.progressBar);
-            this.flowLayoutPanel1.Controls.Add(this.completedAmountLabel);
-            this.flowLayoutPanel1.Controls.Add(this.detail_Button);
-            this.flowLayoutPanel1.Controls.Add(this.backgroundRunning_Button);
-            this.flowLayoutPanel1.Controls.Add(this.cancelAll_Button);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(60, 33);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(699, 130);
-            this.flowLayoutPanel1.TabIndex = 42;
+            this.processContainPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.processContainPanel.BackColor = System.Drawing.Color.Transparent;
+            this.processContainPanel.Controls.Add(this.label3);
+            this.processContainPanel.Controls.Add(this.progressBar);
+            this.processContainPanel.Controls.Add(this.completedAmountLabel);
+            this.processContainPanel.Controls.Add(this.detail_Button);
+            this.processContainPanel.Controls.Add(this.backgroundRunning_Button);
+            this.processContainPanel.Controls.Add(this.cancelAll_Button);
+            this.processContainPanel.Location = new System.Drawing.Point(60, 33);
+            this.processContainPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.processContainPanel.Name = "processContainPanel";
+            this.processContainPanel.Size = new System.Drawing.Size(699, 130);
+            this.processContainPanel.TabIndex = 42;
             // 
             // detail_Button
             // 
@@ -230,6 +232,7 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Cyan;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
             this.softwareGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.softwareGridView.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.softwareGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.softwareGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
             this.softwareGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -360,6 +363,10 @@
             this.ActionButton.Name = "ActionButton";
             this.ActionButton.ReadOnly = true;
             // 
+            // DragControl
+            // 
+            this.DragControl.TargetControl = this;
+            // 
             // ProgressWindow_Base
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -370,14 +377,14 @@
             this.ClientSize = new System.Drawing.Size(819, 492);
             this.Controls.Add(this.minimizeButton);
             this.Controls.Add(this.softwareGridView);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.processContainPanel);
             this.Controls.Add(this.exitButton);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ProgressWindow_Base";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ProgressWindow";
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DragWindow);
-            this.flowLayoutPanel1.ResumeLayout(false);
+            this.processContainPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.softwareGridView)).EndInit();
             this.ResumeLayout(false);
 
@@ -390,7 +397,7 @@
         private Guna.UI2.WinForms.Guna2Button exitButton;
         protected Guna.UI2.WinForms.Guna2Button cancelAll_Button;
         protected Guna.UI2.WinForms.Guna2Button backgroundRunning_Button;
-        protected System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        protected System.Windows.Forms.FlowLayoutPanel processContainPanel;
         protected Guna.UI2.WinForms.Guna2DataGridView softwareGridView;
         protected System.Windows.Forms.DataGridViewTextBoxColumn NameSoftware;
         protected System.Windows.Forms.DataGridViewTextBoxColumn PercentDownload;
@@ -399,5 +406,6 @@
         protected Guna.UI2.WinForms.Guna2Button detail_Button;
         private Guna.UI2.WinForms.Guna2Elipse roundEdge;
         private Guna.UI2.WinForms.Guna2Button minimizeButton;
+        private Guna.UI2.WinForms.Guna2DragControl DragControl;
     }
 }

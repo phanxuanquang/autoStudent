@@ -1,6 +1,6 @@
 ﻿namespace App
 {
-    partial class BaseExecutionForm
+    partial class BaseTab
     {
         /// <summary>
         /// Required designer variable.
@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.softwareGridView = new Guna.UI2.WinForms.Guna2DataGridView();
             this.softwareName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.softwareVersion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,9 +49,10 @@
             this.None_Button = new Guna.UI2.WinForms.Guna2GradientButton();
             this.Tech_Button = new Guna.UI2.WinForms.Guna2GradientButton();
             this.IT_Button = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.exitButton = new Guna.UI2.WinForms.Guna2Button();
             this.roundEdge = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.toolTipBase = new System.Windows.Forms.ToolTip(this.components);
+            this.exitButton = new Guna.UI2.WinForms.Guna2Button();
+            this.DragWindow = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.softwareGridView)).BeginInit();
             this.menuPanel.SuspendLayout();
             this.SuspendLayout();
@@ -62,12 +63,12 @@
             this.softwareGridView.AllowUserToDeleteRows = false;
             this.softwareGridView.AllowUserToResizeColumns = false;
             this.softwareGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.Cyan;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.Cyan;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
-            this.softwareGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Cyan;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Cyan;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
+            this.softwareGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.softwareGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.softwareGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -75,28 +76,28 @@
             this.softwareGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.softwareGridView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.softwareGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.Cyan;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.Cyan;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.softwareGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Cyan;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Cyan;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.softwareGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.softwareGridView.ColumnHeadersHeight = 35;
             this.softwareGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.softwareGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.softwareName,
             this.softwareVersion});
             this.softwareGridView.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle23.ForeColor = System.Drawing.Color.Cyan;
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.Cyan;
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.softwareGridView.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Cyan;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Cyan;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.softwareGridView.DefaultCellStyle = dataGridViewCellStyle5;
             this.softwareGridView.EnableHeadersVisualStyles = false;
             this.softwareGridView.GridColor = System.Drawing.Color.Cyan;
             this.softwareGridView.Location = new System.Drawing.Point(110, 109);
@@ -106,9 +107,9 @@
             this.softwareGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.softwareGridView.RowHeadersVisible = false;
             this.softwareGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
-            dataGridViewCellStyle24.ForeColor = System.Drawing.Color.Cyan;
-            this.softwareGridView.RowsDefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Cyan;
+            this.softwareGridView.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.softwareGridView.RowTemplate.ErrorText = "<Phần mềm bị lỗi>";
             this.softwareGridView.RowTemplate.Height = 25;
             this.softwareGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -144,9 +145,9 @@
             // 
             // softwareName
             // 
-            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
-            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.Cyan;
-            this.softwareName.DefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Cyan;
+            this.softwareName.DefaultCellStyle = dataGridViewCellStyle3;
             this.softwareName.HeaderText = "PHẦN MỀM";
             this.softwareName.Name = "softwareName";
             this.softwareName.ReadOnly = true;
@@ -154,9 +155,9 @@
             // 
             // softwareVersion
             // 
-            dataGridViewCellStyle22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
-            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.Cyan;
-            this.softwareVersion.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Cyan;
+            this.softwareVersion.DefaultCellStyle = dataGridViewCellStyle4;
             this.softwareVersion.HeaderText = "PHIÊN BẢN";
             this.softwareVersion.Name = "softwareVersion";
             this.softwareVersion.ReadOnly = true;
@@ -493,6 +494,11 @@
             this.toolTipBase.SetToolTip(this.IT_Button, "Công nghệ thông tin");
             this.IT_Button.Click += new System.EventHandler(this.IT_Button_Click);
             // 
+            // roundEdge
+            // 
+            this.roundEdge.BorderRadius = 15;
+            this.roundEdge.TargetControl = this;
+            // 
             // exitButton
             // 
             this.exitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -507,25 +513,24 @@
             this.exitButton.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(57)))), ((int)(((byte)(125)))));
             this.exitButton.HoverState.Parent = this.exitButton;
             this.exitButton.Image = global::App.Properties.Resources.Exit;
-            this.exitButton.Location = new System.Drawing.Point(937, 4);
+            this.exitButton.Location = new System.Drawing.Point(931, 12);
+            this.exitButton.Margin = new System.Windows.Forms.Padding(0);
             this.exitButton.Name = "exitButton";
             this.exitButton.ShadowDecoration.Parent = this.exitButton;
             this.exitButton.Size = new System.Drawing.Size(30, 30);
-            this.exitButton.TabIndex = 23;
+            this.exitButton.TabIndex = 20;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
-            // roundEdge
+            // DragWindow
             // 
-            this.roundEdge.BorderRadius = 15;
-            this.roundEdge.TargetControl = this;
+            this.DragWindow.TargetControl = this;
             // 
-            // BaseExecutionForm
+            // BaseTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
             this.BackgroundImage = global::App.Properties.Resources.Background__SubWindow_2;
-            this.ClientSize = new System.Drawing.Size(971, 607);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.menuPanel);
             this.Controls.Add(this.selectedSoftwareView_Button);
@@ -533,12 +538,10 @@
             this.Controls.Add(this.confirmButton);
             this.Controls.Add(this.searchBox);
             this.Controls.Add(this.softwareGridView);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "BaseExecutionForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "BaseForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BaseExecutionForm_FormClosing);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DragWindow);
+            this.DoubleBuffered = true;
+            this.Name = "BaseTab";
+            this.Size = new System.Drawing.Size(971, 607);
+            this.Leave += new System.EventHandler(this.BaseTab_Leave);
             ((System.ComponentModel.ISupportInitialize)(this.softwareGridView)).EndInit();
             this.menuPanel.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -552,7 +555,6 @@
         private Guna.UI2.WinForms.Guna2Button allSoftwareView_Button;
         private Guna.UI2.WinForms.Guna2Button selectedSoftwareView_Button;
         private Guna.UI2.WinForms.Guna2ImageButton menuButton;
-        private Guna.UI2.WinForms.Guna2Button exitButton;
         private Guna.UI2.WinForms.Guna2Elipse roundEdge;
         protected Guna.UI2.WinForms.Guna2GradientButton ImportSoftwareList_Button;
         protected Guna.UI2.WinForms.Guna2CustomGradientPanel menuPanel;
@@ -563,5 +565,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn softwareName;
         private System.Windows.Forms.DataGridViewTextBoxColumn softwareVersion;
         private System.Windows.Forms.ToolTip toolTipBase;
+        private Guna.UI2.WinForms.Guna2Button exitButton;
+        private Guna.UI2.WinForms.Guna2DragControl DragWindow;
     }
 }

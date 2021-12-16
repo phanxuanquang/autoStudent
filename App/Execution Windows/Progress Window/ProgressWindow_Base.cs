@@ -14,8 +14,9 @@ namespace App
 {
     public partial class ProgressWindow_Base : Form
     {
+        #region Declaration
         protected RunBackground runBackground;
-        protected OverlapForm overlapForm;
+        protected OverlapTab overlapTab;
         protected List<Package> listSoftware;
         protected List<ActionProcess> blackList;
         protected int countCompletedAmount;
@@ -48,14 +49,54 @@ namespace App
             Canceled,
             None
         }
+        #endregion
 
-        public ProgressWindow_Base(List<Package> listSoftware, OverlapForm overlapForm) : this()
+        public ProgressWindow_Base(List<Package> listSoftware, OverlapTab overlapTab) : this()
         {
-            if (overlapForm != null)
-                this.overlapForm = overlapForm;
+            if (overlapTab != null)
+                this.overlapTab = overlapTab;
             SetListSoftware(listSoftware);
         }
 
+        public ProgressWindow_Base()
+        {
+            InitializeComponent();
+            this.Icon = Properties.Resources.mainIcon;
+            Guna.UI.Lib.GraphicsHelper.ShadowForm(this);
+            this.DoubleBuffered = true;
+            this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            this.runBackground = new RunBackground(this, this.components);
+            Program.SetDoubleBuffered(processContainPanel);
+            Program.SetDoubleBuffered(this);
+        }
+
+        #region Windows State
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams handleParam = base.CreateParams;
+                handleParam.ExStyle |= 0x02000000;
+                return handleParam;
+            }
+        }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            LoadingWindow.LoadAfterDone();
+            if (HasExitTodoTask)
+            {
+                this.Close();
+            }
+            else backgroundRunning_Button_Click(this, null);
+        }
+        private void minimizeButton_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+        #endregion
+
+        #region Functions
         public void SetListSoftware(List<Package> listSoftware)
         {
             this.listSoftware = listSoftware;
@@ -68,66 +109,42 @@ namespace App
                 blackList.Add(ActionProcess.None);
             }
         }
-
-        public ProgressWindow_Base()
+        protected Image GetImageStatus(StatusDataGridView status)
         {
-            InitializeComponent();
-            this.Icon = Properties.Resources.mainIcon;
-            Guna.UI.Lib.GraphicsHelper.ShadowForm(this);
-            this.DoubleBuffered = true;
-            this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
-            this.runBackground = new RunBackground(this, this.components);
-        }
-
-        //Anti Flickering
-        protected override CreateParams CreateParams
-        {
-            get
+            Image result = null;
+            switch (status)
             {
-                CreateParams handleParam = base.CreateParams;
-                handleParam.ExStyle |= 0x02000000;
-                return handleParam;
+                case StatusDataGridView.Ready:
+                    result = Ready;
+                    break;
+                case StatusDataGridView.Downloading:
+                    result = Download;
+                    break;
+                case StatusDataGridView.Installing:
+                    result = Install;
+                    break;
+                case StatusDataGridView.Uninstalling:
+                    result = Uninstall;
+                    break;
+                case StatusDataGridView.Completed:
+                    result = Complete;
+                    break;
+                case StatusDataGridView.Canceled:
+                    result = Cancel;
+                    break;
+                case StatusDataGridView.Failed:
+                    result = Fail;
+                    break;
+                case StatusDataGridView.None:
+                    break;
             }
+            return result;
         }
-
-        //Window
-        private void exitButton_Click(object sender, EventArgs e)
-        {
-            LoadingWindow.LoadAfterDone();
-            if (HasExitTodoTask)
-            {
-                /*Program.mainUI.ShowInTaskbar = true;
-                if (!Program.mainUI.Visible)
-                    Program.mainUI.Show();*/
-                this.Close();
-            }
-            else backgroundRunning_Button_Click(this, null);
-        }
-        private void minimizeButton_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
-        //Drag Window
-        public const int WM_NCLBUTTONDOWN = 0xA1;
-        public const int HT_CAPTION = 0x2;
-        [DllImportAttribute("user32.dll")]
-        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        [DllImportAttribute("user32.dll")]
-        public static extern bool ReleaseCapture();
-        private void DragWindow(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-            }
-        }
-
         protected virtual void LoadDataGridView() { }
         protected virtual void ToDo() { }
+        #endregion
 
-        // Update
+        #region Update
         protected void UpdateCompletedAmount(int value, float percentOfValue)
         {
             if (listSoftware != null && listSoftware.Count > 0 && value >= 0 && listSoftware.Count > 0)
@@ -154,7 +171,6 @@ namespace App
                 }
             }
         }
-
         protected void UpdateStatusProcess(int index, StatusDataGridView status)
         {
             UpdateActionButton(index, status);
@@ -203,40 +219,9 @@ namespace App
                 }
             }
         }
+        #endregion
 
-        protected Image GetImageStatus(StatusDataGridView status)
-        {
-            Image result = null;
-            switch (status)
-            {
-                case StatusDataGridView.Ready:
-                    result = Ready;
-                    break;
-                case StatusDataGridView.Downloading:
-                    result = Download;
-                    break;
-                case StatusDataGridView.Installing:
-                    result = Install;
-                    break;
-                case StatusDataGridView.Uninstalling:
-                    result = Uninstall;
-                    break;
-                case StatusDataGridView.Completed:
-                    result = Complete;
-                    break;
-                case StatusDataGridView.Canceled:
-                    result = Cancel;
-                    break;
-                case StatusDataGridView.Failed:
-                    result = Fail;
-                    break;
-                case StatusDataGridView.None:
-                    break;
-            }
-            return result;
-        }
-
-        // Gridview
+        #region GridView
         private void softwareGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex > -1 && e.RowIndex < listSoftware.Count)
@@ -286,8 +271,9 @@ namespace App
                 }
             }
         }
+        #endregion
 
-        // Button
+        #region Main Buttons
         private void detai_Button_Click(object sender, EventArgs e)
         {
             softwareGridView.Visible = !softwareGridView.Visible;
@@ -295,7 +281,7 @@ namespace App
 
         private void cancelAll_Button_Click(object sender, EventArgs e)
         {
-            for(int index = 0; index < blackList.Count; index++)
+            for (int index = 0; index < blackList.Count; index++)
             {
                 ActionButton_TextChanged(index, softwareGridView.Columns.Count - 1, ActionProcess.Canceled);
             }
@@ -320,20 +306,22 @@ namespace App
         {
             if (isOverlap && completedAmountLabel.Text == String.Format("{0}/{1}", listSoftware.Count, listSoftware.Count))
             {
-                if (overlapForm != null)
+                if (overlapTab != null)
                 {
                     wasRunBackground = runBackground.Visible;
                     if (wasRunBackground)
                     {
                         runBackground.OverrideNotify();
                     }
-                    overlapForm.Close();
+                    overlapTab.Parent.Controls.Remove(overlapTab);
                     this.Close();
                 }
             }
         }
+        #endregion
     }
 
+    #region Other Classes
     /// <summary>
     /// Disable button data grid view
     /// link: https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/disable-buttons-in-a-button-column-in-the-datagrid?view=netframeworkdesktop-4.8
@@ -437,5 +425,6 @@ namespace App
                     cellStyle, advancedBorderStyle, paintParts);
             }
         }
-    } 
+    }
+    #endregion
 }

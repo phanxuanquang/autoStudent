@@ -33,24 +33,7 @@ namespace App.Main_Windows.AboutForm
                 this.contentPanel.Controls[index].ForeColor = Color.FromArgb(34, 40, 87);
             }
 
-            SetDoubleBuffered(this.contentPanel);
-        }
-
-        public static void SetDoubleBuffered(System.Windows.Forms.Control c)
-        {
-            //Taxes: Remote Desktop Connection and painting
-            //http://blogs.msdn.com/oldnewthing/archive/2006/01/03/508694.aspx
-            //https://stackoverflow.com/questions/76993/how-to-double-buffer-net-controls-on-a-form/77233#77233
-            if (System.Windows.Forms.SystemInformation.TerminalServerSession)
-                return;
-
-            System.Reflection.PropertyInfo aProp =
-                  typeof(System.Windows.Forms.Control).GetProperty(
-                        "DoubleBuffered",
-                        System.Reflection.BindingFlags.NonPublic |
-                        System.Reflection.BindingFlags.Instance);
-
-            aProp.SetValue(c, true, null);
+            Program.SetDoubleBuffered(contentPanel);
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -85,6 +68,17 @@ namespace App.Main_Windows.AboutForm
             timer.Start();
         }
 
+        #region Windows 
+        // Anti Flickering
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams handleParam = base.CreateParams;
+                handleParam.ExStyle |= 0x02000000;
+                return handleParam;
+            }
+        }
         private void AboutForm_Shown(object sender, EventArgs e)
         {
             timer = new Timer();
@@ -92,8 +86,23 @@ namespace App.Main_Windows.AboutForm
             timer.Tick += Timer_Tick;
             timer.Start();
         }
+        private void Exit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        private void contentPanel_Click(object sender, EventArgs e)
+        {
+            timer.Stop();
+            for (int index = 0; index < this.contentPanel.Controls.Count; index++)
+            {
+                this.contentPanel.Controls[index].Location = defaultFormat[index].Item1;
+                this.contentPanel.Controls[index].ForeColor = defaultFormat[index].Item2;
+                this.contentPanel.Controls[index].Visible = true;
+            }
+        }
+        #endregion
 
-        // Link Label
+        #region Link Labels
         private void FeedbackLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             App.Main_Windows.AboutForm.FeedbackForm feedbackForm = new FeedbackForm();
@@ -107,22 +116,6 @@ namespace App.Main_Windows.AboutForm
             openGitHub.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
             openGitHub.Start();
         }
-
-
-        private void Exit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void contentPanel_Click(object sender, EventArgs e)
-        {
-            timer.Stop();
-            for (int index = 0; index < this.contentPanel.Controls.Count; index++)
-            {
-                this.contentPanel.Controls[index].Location = defaultFormat[index].Item1;
-                this.contentPanel.Controls[index].ForeColor = defaultFormat[index].Item2;
-                this.contentPanel.Controls[index].Visible = true;
-            }
-        }
+        #endregion
     }
 }

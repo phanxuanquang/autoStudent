@@ -47,6 +47,7 @@
             this.timeSetter_Switch = new Guna.UI2.WinForms.Guna2ToggleSwitch();
             this.roundEdge = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.ShadowForm = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
+            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.SuspendLayout();
             // 
             // timeSetter
@@ -422,6 +423,10 @@
             this.roundEdge.BorderRadius = 15;
             this.roundEdge.TargetControl = this;
             // 
+            // guna2DragControl1
+            // 
+            this.guna2DragControl1.TargetControl = this;
+            // 
             // SettingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -445,11 +450,11 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.timeSetter);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SettingForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SettingForm";
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DragWindow);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -475,5 +480,6 @@
         private Guna.UI2.WinForms.Guna2ToggleSwitch timeSetter_Switch;
         private Guna.UI2.WinForms.Guna2Elipse roundEdge;
         private Guna.UI2.WinForms.Guna2ShadowForm ShadowForm;
+        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
     }
 }

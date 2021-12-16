@@ -100,6 +100,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Tab View\DataGridView\BaseTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Tab View\DataGridView\BaseTab.Designer.cs">
+      <DependentUpon>BaseTab.cs</DependentUpon>
+    </Compile>
     <Compile Include="Data\Cryptography.cs" />
     <Compile Include="Execution Windows\GridView Window\BaseForm.cs">
       <SubType>Form</SubType>
@@ -125,6 +131,12 @@
     </Compile>
     <Compile Include="Execution Windows\Progress Window\ProgressWindow_Uninstall.Designer.cs">
       <DependentUpon>ProgressWindow_Uninstall.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tab View\DataGridView\InstallTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Tab View\DataGridView\InstallTab.Designer.cs">
+      <DependentUpon>InstallTab.cs</DependentUpon>
     </Compile>
     <Compile Include="InstallUninstall\BaseProcess.cs" />
     <Compile Include="InstallUninstall\Download.cs" />
@@ -162,6 +174,12 @@
     <Compile Include="Main Windows\MainUI.Designer.cs">
       <DependentUpon>MainUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tab View\DataGridView\OverlapTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Tab View\DataGridView\OverlapTab.Designer.cs">
+      <DependentUpon>OverlapTab.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Execution Windows\Progress Window\ProgressWindow_Base.cs">
       <SubType>Form</SubType>
@@ -187,6 +205,15 @@
       <DependentUpon>SettingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Others\Startup.cs" />
+    <Compile Include="Tab View\DataGridView\UninstallTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Tab View\DataGridView\UninstallTab.Designer.cs">
+      <DependentUpon>UninstallTab.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Tab View\DataGridView\BaseTab.resx">
+      <DependentUpon>BaseTab.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Execution Windows\GridView Window\BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -216,6 +243,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Execution Windows\Progress Window\ProgressWindow_Base.resx">
       <DependentUpon>ProgressWindow_Base.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tab View\DataGridView\OverlapTab.resx">
+      <DependentUpon>OverlapTab.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -349,6 +379,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\NameSoftware.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Background Main UI.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets" Condition="Exists('..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets')" />

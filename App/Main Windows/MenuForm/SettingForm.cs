@@ -41,28 +41,7 @@ namespace App
             }
         }
 
-        //Drag Window
-        public const int WM_NCLBUTTONDOWN = 0xA1;
-        public const int HT_CAPTION = 0x2;
-        [DllImportAttribute("user32.dll")]
-        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        [DllImportAttribute("user32.dll")]
-        public static extern bool ReleaseCapture();
-        private void DragWindow(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-            }
-        }
-
-        private void exitButton_Click(object sender, EventArgs e)
-        {
-            Program.setting.exportSetting();
-            this.Close();
-        }
-
+        #region Setting Options
         private void timeSetter_Switch_CheckedChanged(object sender, EventArgs e)
         {
             Program.setting.isSetTime = timeSetter_Switch.Checked;
@@ -81,7 +60,7 @@ namespace App
         {
             Program.setting.cleanAfter = cleanAfterCompleted_Switch.Checked;
         }
-        
+
         private void dataExportAfterCompleted_Switch_CheckedChanged(object sender, EventArgs e)
         {
             Program.setting.dataExport = dataExportAfterCompleted_Switch.Checked;
@@ -100,7 +79,7 @@ namespace App
                 exportPath.Text = destinationPathdlg.FileName;
             }
         }
-        
+
         private void saveDownload_TextChanged(object sender, EventArgs e)
         {
             Program.setting.saveDownloadPath = saveDownload.Text;
@@ -114,7 +93,14 @@ namespace App
                 saveDownload.Text = destinationPathdlg.FileName + @"\autoStudent";
             }
         }
+        #endregion
 
+        #region Buttons
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            Program.setting.exportSetting();
+            this.Close();
+        }
         private void defaultSetting_Button_Click(object sender, EventArgs e)
         {
             cleanAfterCompleted_Switch.Checked = false;
@@ -125,6 +111,7 @@ namespace App
             timeSetter.Value = DateTime.Now;
             saveDownload.Text = @"C:\autoStudent";
         }
+        #endregion
     }
 }
 

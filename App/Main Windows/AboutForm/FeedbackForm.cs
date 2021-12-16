@@ -17,8 +17,21 @@ namespace App.Main_Windows.AboutForm
             InitializeComponent();
             this.Icon = Properties.Resources.mainIcon;
             Guna.UI.Lib.GraphicsHelper.ShadowForm(this);
+            Program.SetDoubleBuffered(this);
         }
 
+        // Anti Flickering
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams handleParam = base.CreateParams;
+                handleParam.ExStyle |= 0x02000000;
+                return handleParam;
+            }
+        }
+
+        #region Buttons
         private void Send_Click(object sender, EventArgs e)
         {
             switch (MessageBox.Show("Phản hồi của bạn sẽ được tự động đính kèm thông tin về thiết bị máy tính đang sử dụng.\nBạn có chắc chắn muốn gửi phản hồi?", "Lưu ý!", MessageBoxButtons.YesNoCancel))
@@ -49,5 +62,6 @@ namespace App.Main_Windows.AboutForm
             }
             else this.Close();
         }
+        #endregion
     }
 }

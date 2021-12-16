@@ -14,6 +14,7 @@ namespace App
 {
     class Setting
     {
+        #region Variables Declaration
         public enum AfterAction
         {
             Shutdown = 5,
@@ -119,6 +120,8 @@ namespace App
                 _settingFilePath = value;
             }
         }
+        #endregion
+
         public Setting(DateTime dateTime)
         {
             settingFilePath = @"../../../Setting/Setting.setting";
@@ -138,6 +141,7 @@ namespace App
             _exportPath = @"C:\";
         }
 
+        #region Actions
         // For Lock
         [DllImport("user32")]
         public static extern void LockWorkStation();
@@ -211,6 +215,38 @@ namespace App
             return false;
         }
 
+        public void cleanComputer()
+        {
+            void deleteFileIn(string path)
+            {
+                DirectoryInfo di = new DirectoryInfo(path);
+                foreach (FileInfo file in di.EnumerateFiles())
+                {
+                    file.Delete();
+                }
+                foreach (DirectoryInfo dir in di.EnumerateDirectories())
+                {
+                    dir.Delete(true);
+                }
+            }
+            try
+            {
+                deleteFileIn(Program.setting.saveDownloadPath);
+                deleteFileIn(@"C:\Windows\prefetch");
+            }
+            catch (UnauthorizedAccessException)
+            {
+                MessageBox.Show("Không có quyền xóa thư mục tạm thời");
+            }
+            catch (IOException)
+            {
+                MessageBox.Show("Lỗi xóa thư mục tạm thời");
+            }
+            catch { }
+        }
+        #endregion
+
+        #region Setting Data
         public void importSetting()
         {
             try
@@ -276,7 +312,7 @@ namespace App
                         writer.Write(Cryptography.Encrypt(content, DataAccess.Instance.GetPassCry()));
                     }
                 }
-                    
+
             }
             catch (Exception e)
             {
@@ -285,34 +321,6 @@ namespace App
             }
 
         }
-        public void cleanComputer()
-        {
-            void deleteFileIn(string path)
-            {
-                DirectoryInfo di = new DirectoryInfo(path);
-                foreach (FileInfo file in di.EnumerateFiles())
-                {
-                    file.Delete();
-                }
-                foreach (DirectoryInfo dir in di.EnumerateDirectories())
-                {
-                    dir.Delete(true);
-                }
-            }
-            try
-            {
-                deleteFileIn(Program.setting.saveDownloadPath);
-                deleteFileIn(@"C:\Windows\prefetch");
-            }
-            catch (UnauthorizedAccessException)
-            {
-                MessageBox.Show("Không có quyền xóa thư mục tạm thời");
-            }
-            catch (IOException)
-            {
-                MessageBox.Show("Lỗi xóa thư mục tạm thời");
-            }
-            catch { }
-        }
+        #endregion
     }
 }
