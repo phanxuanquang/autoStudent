@@ -40,6 +40,19 @@ namespace App
         public List<string> UninstallArgument { get; set; }
 
         public string UninstallString { get; set; }
+
+        public Package() { }
+
+        public Package(Package package)
+        {
+            this.Name = package.Name;
+            this.Installer = package.Installer;
+            this.Version = package.Version;
+            this.Displayname = package.Displayname;
+            this.Role = package.Role;
+            this.UninstallArgument = package.UninstallArgument;
+            this.UninstallString = package.UninstallString;
+        }
     }
 
     public partial class Installer
