@@ -53,7 +53,7 @@ namespace App
                 RemoveStartupEnviroment();
             }
             if (install == null && uninstall == null) return (false, null, null);
-            return (true, install.Count > 0 ? DataAccess.Instance.GetPackagesOfName(install) : null, uninstall.Count > 0 ? DataAccess.Instance.GetPackagesOfName(uninstall) : null);
+            return (true, install == null ? null : DataAccess.Instance.GetPackagesOfName(install), uninstall == null ? null : DataAccess.Instance.GetPackagesOfName(uninstall));
         }
 
         private static string GetData(List<string> packages, string nameField)

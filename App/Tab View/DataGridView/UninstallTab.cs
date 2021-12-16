@@ -22,6 +22,7 @@ namespace App
         protected override void exec()
         {
             ProgressWindow_Uninstall progressWindow_Uninstall = new ProgressWindow_Uninstall(selectedSoftwareList);
+            progressWindow_Uninstall.ExportData();
             progressWindow_Uninstall.FormClosing += (sender, e) =>
             {
                 LoadingWindow.LoadAfterDone();

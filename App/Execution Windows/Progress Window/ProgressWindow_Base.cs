@@ -91,6 +91,7 @@ namespace App
             else backgroundRunning_Button_Click(this, null);
             Program.mainUI.Show();
         }
+
         private void minimizeButton_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
@@ -110,6 +111,34 @@ namespace App
                 blackList.Add(ActionProcess.None);
             }
         }
+
+        public void ExportData()
+        {
+            if (this.listSoftware != null)
+            {
+                if (this is ProgressWindow_Install)
+                {
+                    if (Program.installName == null) Program.installName = new List<string>();
+                    else Program.installName.Clear();
+                    if (!isOverlap && Program.uninstallName != null) Program.uninstallName.Clear();
+                    for (int index = 0; index < this.listSoftware.Count; index++)
+                    {
+                        Program.installName.Add(this.listSoftware[index].Name);
+                    }
+                }
+                else if (this is ProgressWindow_Uninstall)
+                {
+                    if (Program.uninstallName == null) Program.uninstallName = new List<string>();
+                    else Program.uninstallName.Clear();
+                    if (!isOverlap && Program.installName != null) Program.installName.Clear();
+                    for (int index = 0; index < this.listSoftware.Count; index++)
+                    {
+                        Program.uninstallName.Add(this.listSoftware[index].Name);
+                    }
+                }
+            }
+        }
+
         protected Image GetImageStatus(StatusDataGridView status)
         {
             Image result = null;
