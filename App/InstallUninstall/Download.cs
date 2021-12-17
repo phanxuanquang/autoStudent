@@ -73,79 +73,85 @@ namespace App.InstallUninstall
                     string fileName = GetPath.GetFileName(listSoftware[index]);
                     string URL = GetPath.GetURL(listSoftware[index]);
                     string pathFile = Path.Combine(this.directoryFolderDownload, fileName);
-                    if (!File.Exists(pathFile))
+                    try
                     {
-                        try
+                        using (HttpResponseMessage response = client.GetAsync(new Uri(URL), HttpCompletionOption.ResponseHeadersRead).Result)
                         {
-                            using (HttpResponseMessage response = client.GetAsync(new Uri(URL), HttpCompletionOption.ResponseHeadersRead).Result)
+                            HttpResponseMessage httpRequestMessage = response.EnsureSuccessStatusCode();
+                            if (httpRequestMessage.IsSuccessStatusCode && long.TryParse(response.Content.Headers.SingleOrDefault(h => h.Key.Equals("Content-Length")).Value.First(), out long totalSize))
                             {
-                                HttpResponseMessage httpRequestMessage = response.EnsureSuccessStatusCode();
-                                if (httpRequestMessage.IsSuccessStatusCode && long.TryParse(response.Content.Headers.SingleOrDefault(h => h.Key.Equals("Content-Length")).Value.First(), out long totalSize))
+                                FileInfo checkExistsFile = new FileInfo(pathFile);
+                                if (checkExistsFile.Exists)
                                 {
-                                    try
+                                    if (checkExistsFile.Length == totalSize)
                                     {
-                                        using (Stream contentStream = await response.Content.ReadAsStreamAsync(), fileStream = new FileStream(pathFile, FileMode.Create, FileAccess.Write, FileShare.None, 8192, true))
-                                        {
-                                            var totalRead = 0L;
-                                            var stepSegment = 0L;
-                                            var buffer = new byte[8192];
-                                            var isMoreToRead = true;
-                                            do
-                                            {
-                                                var read = await contentStream.ReadAsync(buffer, 0, buffer.Length);
-                                                if (read == 0)
-                                                {
-                                                    isMoreToRead = false;
-                                                }
-                                                else
-                                                {
-                                                    await fileStream.WriteAsync(buffer, 0, read);
-
-                                                    totalRead += read;
-                                                    stepSegment += 1;
-
-                                                    percentDownload = totalRead * 90.0f / totalSize;
-                                                }
-                                                if (blackList != null && blackList[index] == ProgressWindow_Base.ActionProcess.Canceled) break;
-                                            }
-                                            while (isMoreToRead);
-                                            exception = false;
-                                        }
-                                        if (blackList != null && blackList[index] == ProgressWindow_Base.ActionProcess.Canceled)
-                                        {
-                                            if (File.Exists(pathFile))
-                                            {
-                                                File.Delete(pathFile);
-                                            }
-                                            MessageBox.Show("Đã hủy");
-                                        }
-                                        else
-                                        {
-                                            MessageBox.Show("Tải hoàn tất" + index.ToString());
-                                        }
+                                        statusDownload = true;
+                                        percentDownload = 100.0f;
+                                        exception = false;
+                                        return;
                                     }
-                                    catch (IOException)
+                                    else
                                     {
-                                        MessageBox.Show("Bộ nhớ đầy");
+                                        File.Delete(pathFile);
                                     }
-                                    catch (UnauthorizedAccessException)
-                                    {
-                                        MessageBox.Show("Không truy cập được");
-                                    }
-                                    statusDownload = true;
                                 }
+                                try
+                                {
+                                    using (Stream contentStream = await response.Content.ReadAsStreamAsync(), fileStream = new FileStream(pathFile, FileMode.Create, FileAccess.Write, FileShare.None, 8192, true))
+                                    {
+                                        var totalRead = 0L;
+                                        var stepSegment = 0L;
+                                        var buffer = new byte[8192];
+                                        var isMoreToRead = true;
+                                        do
+                                        {
+                                            var read = await contentStream.ReadAsync(buffer, 0, buffer.Length);
+                                            if (read == 0)
+                                            {
+                                                isMoreToRead = false;
+                                            }
+                                            else
+                                            {
+                                                await fileStream.WriteAsync(buffer, 0, read);
+
+                                                totalRead += read;
+                                                stepSegment += 1;
+
+                                                percentDownload = totalRead * 90.0f / totalSize;
+                                            }
+                                            if (blackList != null && blackList[index] == ProgressWindow_Base.ActionProcess.Canceled) break;
+                                        }
+                                        while (isMoreToRead);
+                                        exception = false;
+                                    }
+                                    if (blackList != null && blackList[index] == ProgressWindow_Base.ActionProcess.Canceled)
+                                    {
+                                        if (File.Exists(pathFile))
+                                        {
+                                            File.Delete(pathFile);
+                                        }
+                                        MessageBox.Show("Đã hủy");
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Tải hoàn tất" + index.ToString());
+                                    }
+                                }
+                                catch (IOException)
+                                {
+                                    MessageBox.Show("Bộ nhớ đầy");
+                                }
+                                catch (UnauthorizedAccessException)
+                                {
+                                    MessageBox.Show("Không truy cập được");
+                                }
+                                statusDownload = true;
                             }
                         }
-                        catch
-                        {
-                            statusDownload = true;
-                        }
                     }
-                    else
+                    catch
                     {
                         statusDownload = true;
-                        percentDownload = 100.0f;
-                        exception = false;
                     }
                 }
             }
