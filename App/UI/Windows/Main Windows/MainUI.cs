@@ -113,7 +113,8 @@ namespace App
         }
         private void MainUI_SizeChanged(object sender, EventArgs e)
         {
-            Program.SetDoubleBuffered(this);
+            for (int i = 0; i < this.Controls.Count; i++)
+                Program.SetDoubleBuffered(this.Controls[i]);
         }
         private void exitButton_Click(object sender, EventArgs e)
         {
@@ -152,7 +153,7 @@ namespace App
         {
             if (!isInternetAvailable())
             {
-                MessageBox.Show("Không có kết nối mạng, vui lòng thử lại sau");
+                MessageBox.Show("Không có kết nối mạng, vui lòng thử lại sau.");
                 return;
             }
 
@@ -193,9 +194,9 @@ namespace App
                     if (Environment.Is64BitOperatingSystem)
                         Program.software_Database = DataAccess.Instance.GetX64();
                     else Program.software_Database = DataAccess.Instance.GetX86();
-                    MessageBox.Show("Đã cập nhập");
+                    MessageBox.Show("Cập nhật dữ liệu hoàn tất.");
                 }
-                else MessageBox.Show("Bạn đang sử dụng phiên bản mới nhất");
+                else MessageBox.Show("Bạn đang sử dụng phiên bản mới nhất.");
             }
             catch (WebException we)
             {
@@ -209,7 +210,7 @@ namespace App
             }
             catch (Exception)
             {
-                MessageBox.Show("Lỗi không xác định");
+                MessageBox.Show("Lỗi không xác định.");
             }
         }
         private void githubButton_Click(object sender, EventArgs e)
@@ -222,19 +223,17 @@ namespace App
         #region Main Buttons
         private void installButton_Click(object sender, EventArgs e)
         {
+            if (!isInternetAvailable())
+            {
+                MessageBox.Show("Không có kết nối mạng, vui lòng thử lại sau.");
+                return;
+            }
+
             BaseTab installTab = new InstallTab();
             loadTab(installTab);
         }
         private void uninstallButton_Click(object sender, EventArgs e)
         {
-            //UninstallForm unInstallForm = new UninstallForm();
-            //this.Hide();
-            //unInstallForm.FormClosing += (sender, e) =>
-            //{
-            //    this.Show();
-            //};
-            //unInstallForm.Show();
-
             BaseTab uninstallTab = new UninstallTab();
             loadTab(uninstallTab);
         }

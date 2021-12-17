@@ -16,7 +16,6 @@ namespace App
         [STAThread]
         static void Main()
         {
-            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             AppDomain.CurrentDomain.ProcessExit += CurrentDomain_ProcessExit;
@@ -37,15 +36,7 @@ namespace App
             }    
         }
 
-        private static void CurrentDomain_ProcessExit(object sender, EventArgs e)
-        {
-            if ((setting.isSetTime && SetStartup == ExitRunBackground.Startup && DateTime.Now.Subtract(setting.timeSetter).TotalSeconds <= 0)
-                || (Program.installName != null && Program.installName.Count > 0) || (Program.uninstallName != null && Program.uninstallName.Count > 0))
-            {
-                Startup.WriteSchedule(installName, uninstallName);
-            }
-        }
-
+        #region Declaration
         static public List<Package> software_Database;
         static public List<Package> software_System;
         static public MainUI mainUI;
@@ -61,6 +52,16 @@ namespace App
         public static List<string> uninstallName;
         public static List<Package> installSchedule;
         public static List<Package> uninstallSchedule;
+        #endregion
+
+        private static void CurrentDomain_ProcessExit(object sender, EventArgs e)
+        {
+            if ((setting.isSetTime && SetStartup == ExitRunBackground.Startup && DateTime.Now.Subtract(setting.timeSetter).TotalSeconds <= 0)
+                || (Program.installName != null && Program.installName.Count > 0) || (Program.uninstallName != null && Program.uninstallName.Count > 0))
+            {
+                Startup.WriteSchedule(installName, uninstallName);
+            }
+        }
 
         public static void SetDoubleBuffered(System.Windows.Forms.Control c)
         {

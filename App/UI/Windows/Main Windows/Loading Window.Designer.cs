@@ -46,7 +46,7 @@ namespace App
             this.dataLoadingProgressBar.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(106)))), ((int)(((byte)(204)))));
             this.dataLoadingProgressBar.ProgressColor2 = System.Drawing.Color.Cyan;
             this.dataLoadingProgressBar.ShadowDecoration.Parent = this.dataLoadingProgressBar;
-            this.dataLoadingProgressBar.Size = new System.Drawing.Size(524, 30);
+            this.dataLoadingProgressBar.Size = new System.Drawing.Size(539, 30);
             this.dataLoadingProgressBar.TabIndex = 18;
             this.dataLoadingProgressBar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
             // 
@@ -67,7 +67,7 @@ namespace App
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(15)))), ((int)(((byte)(46)))));
             this.BackgroundImage = global::App.Properties.Resources.Background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(524, 333);
+            this.ClientSize = new System.Drawing.Size(539, 333);
             this.Controls.Add(this.dataLoadingProgressBar);
             this.Cursor = System.Windows.Forms.Cursors.AppStarting;
             this.DoubleBuffered = true;

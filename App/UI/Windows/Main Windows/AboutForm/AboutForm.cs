@@ -34,6 +34,7 @@ namespace App.Main_Windows.AboutForm
             }
 
             Program.SetDoubleBuffered(contentPanel);
+            Guna.UI.Lib.GraphicsHelper.ShadowForm(this);
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -104,9 +105,11 @@ namespace App.Main_Windows.AboutForm
 
         #region Link Labels
         private void FeedbackLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            App.Main_Windows.AboutForm.FeedbackForm feedbackForm = new FeedbackForm();
-            feedbackForm.ShowDialog();
+        { 
+            FeedbackTab feedbackTab = new FeedbackTab();
+            this.Controls.Add(feedbackTab);
+            feedbackTab.Dock = DockStyle.Fill;
+            feedbackTab.BringToFront();
         }
         private void GithubLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {

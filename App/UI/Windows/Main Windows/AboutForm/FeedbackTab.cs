@@ -1,23 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace App.Main_Windows.AboutForm
+namespace App
 {
-    public partial class FeedbackForm : Form
+    public partial class FeedbackTab : UserControl
     {
-        public FeedbackForm()
+        public FeedbackTab()
         {
             InitializeComponent();
-            this.Icon = Properties.Resources.mainIcon;
-            Guna.UI.Lib.GraphicsHelper.ShadowForm(this);
-            Program.SetDoubleBuffered(this);
+            Program.SetDoubleBuffered(this.TextFeedback);
         }
 
         // Anti Flickering
@@ -37,7 +35,7 @@ namespace App.Main_Windows.AboutForm
             switch (MessageBox.Show("Phản hồi của bạn sẽ được tự động đính kèm thông tin về thiết bị máy tính đang sử dụng.\nBạn có chắc chắn muốn gửi phản hồi?", "Lưu ý!", MessageBoxButtons.YesNoCancel))
             {
                 case DialogResult.No:
-                    this.Close();
+                    this.Parent.Controls.Remove(this);
                     break;
                 case DialogResult.Yes:
                     (bool, string) send = App.Main_Windows.AboutForm.SendInfo.SendFeedback(TextFeedback.Text);
@@ -45,7 +43,7 @@ namespace App.Main_Windows.AboutForm
                     {
                         MessageBox.Show(String.Format("Không thể gửi phản hồi.\nNội dung lỗi: {0}", send.Item2));
                     }
-                    this.Close();
+                    this.Parent.Controls.Remove(this);
                     break;
             }
         }
@@ -57,10 +55,10 @@ namespace App.Main_Windows.AboutForm
                 DialogResult dialogResult = MessageBox.Show("Phản hồi chưa hoàn tất, bạn có chắc chắn muốn hủy bỏ phản hồi?", "HỦY", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    this.Close();
+                    this.Parent.Controls.Remove(this);
                 }
             }
-            else this.Close();
+            else this.Parent.Controls.Remove(this);
         }
         #endregion
     }

@@ -1,13 +1,13 @@
-﻿namespace App.Main_Windows.AboutForm
+﻿namespace App
 {
-    partial class FeedbackForm
+    partial class FeedbackTab
     {
-        /// <summary>
+        /// <summary> 
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
+        /// <summary> 
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -31,10 +31,9 @@
             this.components = new System.ComponentModel.Container();
             this.Send = new Guna.UI2.WinForms.Guna2Button();
             this.Cancel = new Guna.UI2.WinForms.Guna2Button();
-            this.roundEdge = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.shadowForm = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
             this.TextFeedback = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2DragControl = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Send
@@ -53,7 +52,7 @@
             this.Send.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
             this.Send.HoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.Send.HoverState.Parent = this.Send;
-            this.Send.Location = new System.Drawing.Point(114, 222);
+            this.Send.Location = new System.Drawing.Point(215, 341);
             this.Send.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.Send.Name = "Send";
             this.Send.PressedColor = System.Drawing.Color.Cyan;
@@ -80,7 +79,7 @@
             this.Cancel.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
             this.Cancel.HoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.Cancel.HoverState.Parent = this.Cancel;
-            this.Cancel.Location = new System.Drawing.Point(213, 222);
+            this.Cancel.Location = new System.Drawing.Point(314, 341);
             this.Cancel.Margin = new System.Windows.Forms.Padding(0);
             this.Cancel.Name = "Cancel";
             this.Cancel.PressedColor = System.Drawing.Color.Cyan;
@@ -90,11 +89,6 @@
             this.Cancel.Text = "HỦY";
             this.Cancel.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
             this.Cancel.Click += new System.EventHandler(this.Cancel_Click);
-            // 
-            // roundEdge
-            // 
-            this.roundEdge.BorderRadius = 15;
-            this.roundEdge.TargetControl = this;
             // 
             // TextFeedback
             // 
@@ -117,15 +111,15 @@
             this.TextFeedback.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.TextFeedback.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
             this.TextFeedback.HoverState.Parent = this.TextFeedback;
-            this.TextFeedback.Location = new System.Drawing.Point(37, 18);
+            this.TextFeedback.Location = new System.Drawing.Point(37, 63);
             this.TextFeedback.Multiline = true;
             this.TextFeedback.Name = "TextFeedback";
             this.TextFeedback.PasswordChar = '\0';
             this.TextFeedback.PlaceholderForeColor = System.Drawing.Color.Cyan;
-            this.TextFeedback.PlaceholderText = " Gửi phản hồi để giúp sản phẩm ngày càng hoàn thiện";
+            this.TextFeedback.PlaceholderText = "";
             this.TextFeedback.SelectedText = "";
             this.TextFeedback.ShadowDecoration.Parent = this.TextFeedback;
-            this.TextFeedback.Size = new System.Drawing.Size(324, 189);
+            this.TextFeedback.Size = new System.Drawing.Size(531, 256);
             this.TextFeedback.TabIndex = 3;
             this.TextFeedback.TextOffset = new System.Drawing.Point(5, 5);
             // 
@@ -133,23 +127,35 @@
             // 
             this.guna2DragControl.TargetControl = this;
             // 
-            // FeedbackForm
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label3.ForeColor = System.Drawing.Color.Cyan;
+            this.label3.Location = new System.Drawing.Point(37, 8);
+            this.label3.Margin = new System.Windows.Forms.Padding(0, 8, 0, 8);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(531, 51);
+            this.label3.TabIndex = 40;
+            this.label3.Text = "PHẢN HỒI CỦA NGƯỜI DÙNG";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label3.UseCompatibleTextRendering = true;
+            // 
+            // FeedbackTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
             this.BackgroundImage = global::App.Properties.Resources.Background__SubWindow_2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(398, 282);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.TextFeedback);
             this.Controls.Add(this.Cancel);
             this.Controls.Add(this.Send);
             this.DoubleBuffered = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MaximizeBox = false;
-            this.Name = "FeedbackForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Phản hồi";
+            this.Name = "FeedbackTab";
+            this.Size = new System.Drawing.Size(600, 400);
             this.ResumeLayout(false);
 
         }
@@ -157,9 +163,8 @@
         #endregion
         private Guna.UI2.WinForms.Guna2Button Send;
         private Guna.UI2.WinForms.Guna2Button Cancel;
-        private Guna.UI2.WinForms.Guna2Elipse roundEdge;
-        private Guna.UI2.WinForms.Guna2ShadowForm shadowForm;
         private Guna.UI2.WinForms.Guna2TextBox TextFeedback;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl;
+        private System.Windows.Forms.Label label3;
     }
 }

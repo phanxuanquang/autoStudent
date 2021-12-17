@@ -44,6 +44,7 @@
             this.SubDeveloper4 = new System.Windows.Forms.Label();
             this.FeedbackLinkLabel = new System.Windows.Forms.LinkLabel();
             this.GithubLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.DragControl = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.contentPanel.SuspendLayout();
             this.SuspendLayout();
@@ -265,6 +266,10 @@
             this.GithubLinkLabel.VisitedLinkColor = System.Drawing.Color.Cyan;
             this.GithubLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.GithubLinkLabel_LinkClicked);
             // 
+            // DragControl
+            // 
+            this.DragControl.TargetControl = this;
+            // 
             // AboutForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -305,5 +310,6 @@
         private System.Windows.Forms.Label Version;
         private System.Windows.Forms.LinkLabel FeedbackLinkLabel;
         private System.Windows.Forms.LinkLabel GithubLinkLabel;
+        private Guna.UI2.WinForms.Guna2DragControl DragControl;
     }
 }
