@@ -17,7 +17,7 @@ namespace App
         //private constructor to avoid client applications to use constructor
         static DataAccess()
         {
-            filePath = @"../../../Data/MainData.autostudent";
+            filePath = Application.StartupPath + @"/Data/MainData.autostudent";
             Load();
         }
 
@@ -38,6 +38,10 @@ namespace App
         {
             try
             {
+                if (!Directory.Exists(Path.GetDirectoryName(filePath)))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(filePath));
+                }
                 if (!File.Exists(filePath))
                 {
                     root = new Root();

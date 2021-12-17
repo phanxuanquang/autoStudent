@@ -31,6 +31,20 @@ namespace App
                 checkLastRun = Program.setting.RunDataImport(saveHistory);
                 File.Delete(saveHistory);
                 RemoveStartupEnviroment();
+
+                if (checkLastRun.Item1 && checkLastRun.Item3 != null)
+                {
+                    List<Package> packages = new List<Package>();
+                    for (int index = 0; index < checkLastRun.Item3.Count; index++)
+                    {
+                        Package item = Program.software_System.FirstOrDefault(items => items.Name == checkLastRun.Item3[index].Name);
+                        if (item != null)
+                        {
+                            packages.Add(item);
+                        }
+                    }
+                    checkLastRun.Item3 = packages;
+                }
             }
             return checkLastRun;
         }

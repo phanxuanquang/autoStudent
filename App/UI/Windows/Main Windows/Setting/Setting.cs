@@ -125,7 +125,7 @@ namespace App
 
         public Setting(DateTime dateTime)
         {
-            settingFilePath = @"../../../Setting/Setting.setting";
+            settingFilePath = Application.StartupPath + @"/Setting/Setting.setting";
             _timeSetter = dateTime;
             importSetting();
             
@@ -244,6 +244,7 @@ namespace App
                             }
                         }
                     }
+
                     if (install == null && uninstall == null) return (false, null, null);
                     return (true, install == null ? null : DataAccess.Instance.GetPackagesOfName(install),
                         uninstall == null ? null : DataAccess.Instance.GetPackagesOfName(uninstall));
@@ -360,6 +361,10 @@ namespace App
         {
             try
             {
+                if (!Directory.Exists(Path.GetDirectoryName(settingFilePath)))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(settingFilePath));
+                }
                 if (!File.Exists(settingFilePath))
                 {
                     var setting = new Setting();
@@ -372,8 +377,6 @@ namespace App
                         }
                     }
                 }
-
-
                 using (var stream = File.OpenRead(settingFilePath))
                 {
                     using (StreamReader reader = new StreamReader(stream))
@@ -402,6 +405,10 @@ namespace App
         {
             try
             {
+                if (!Directory.Exists(Path.GetDirectoryName(settingFilePath)))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(settingFilePath));
+                }
                 if (!File.Exists(settingFilePath))
                 {
                     using (var stream = File.Create(settingFilePath))
