@@ -72,9 +72,10 @@ namespace App
         }
         private void exportPath_Button_Click(object sender, EventArgs e)
         {
-            CommonOpenFileDialog destinationPathdlg = new CommonOpenFileDialog();
-            destinationPathdlg.IsFolderPicker = true;
-            if (destinationPathdlg.ShowDialog() == CommonFileDialogResult.Ok)
+            SaveFileDialog destinationPathdlg = new SaveFileDialog();
+            destinationPathdlg.Title = "Save AutoStudentDataExport";
+            destinationPathdlg.Filter = "AS files (*.as)|*.as";
+            if (destinationPathdlg.ShowDialog() == DialogResult.OK)
             {
                 exportPath.Text = destinationPathdlg.FileName;
             }

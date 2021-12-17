@@ -61,7 +61,6 @@ namespace App
         {
             InitializeComponent();
             Guna.UI.Lib.GraphicsHelper.ShadowForm(this);
-            Program.mainUI.Hide();
             this.Icon = Properties.Resources.mainIcon;
             Guna.UI.Lib.GraphicsHelper.ShadowForm(this);
             this.DoubleBuffered = true;
@@ -69,11 +68,18 @@ namespace App
             this.runBackground = new RunBackground(this, this.components);
             Program.SetDoubleBuffered(processContainPanel);
             Program.SetDoubleBuffered(this);
+            if (Program.mainUI != null)
+            {
+                Program.mainUI.Hide();
+            }
         }
 
-        private void ProgressWindow_Base_Load(object sender, EventArgs e)
+        private void ProgressWindow_Base_Shown(object sender, EventArgs e)
         {
-            Program.setting.isSetTime = false;
+            if (Program.setting != null)
+            {
+                Program.setting.isSetTime = false;
+            }
         }
 
         #region Windows State
@@ -92,7 +98,10 @@ namespace App
             if (HasExitTodoTask)
             {
                 LoadingWindow.LoadAfterDone();
-                Program.mainUI.Show();
+                if (Program.mainUI != null)
+                {
+                    Program.mainUI.Show();
+                }
                 if (PressedActionAll)
                 {
                     if (this is ProgressWindow_Install)
@@ -352,13 +361,14 @@ namespace App
                         }
                     });
                 }
-
-                System.Media.SoundPlayer completeSound = new System.Media.SoundPlayer(Properties.Resources.Complete_Sound);
-                completeSound.Play();
-
-                Program.setting.RunAfterAction();
-                if (Program.setting.cleanAfter)
-                    Program.setting.cleanComputer();
+                else
+                {
+                    if (Program.setting.cleanAfter)
+                        Program.setting.cleanComputer();
+                    System.Media.SoundPlayer completeSound = new System.Media.SoundPlayer(Properties.Resources.Complete_Sound);
+                    completeSound.Play();
+                    Program.setting.RunAfterAction();
+                }
             }
         }
          
@@ -401,7 +411,6 @@ namespace App
             }
         }
         #endregion
-
     }
 
     #region Other Classes

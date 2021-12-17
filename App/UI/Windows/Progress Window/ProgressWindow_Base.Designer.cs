@@ -382,7 +382,7 @@
             this.Name = "ProgressWindow_Base";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ProgressWindow";
-            this.Load += new System.EventHandler(this.ProgressWindow_Base_Load);
+            this.Shown += new System.EventHandler(this.ProgressWindow_Base_Shown);
             this.processContainPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.softwareGridView)).EndInit();
             this.ResumeLayout(false);

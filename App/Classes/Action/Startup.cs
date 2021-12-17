@@ -19,55 +19,20 @@ namespace App
             {
                 File.Delete(saveHistory);
             }
-            string dataPackage = GetData(installSoftwares, "INSTALL") + GetData(uninstallSoftwares, "UNINSTALL");
-            File.WriteAllText(saveHistory, dataPackage, Encoding.UTF8);
+            Program.setting.RunDataExport(installSoftwares, uninstallSoftwares, saveHistory);
             SetStartupEnviroment();
         }
 
         public static (bool, List<Package>, List<Package>) ReadSchedule()
         {
-            List<string> install = null;
-            List<string> uninstall = null;
+            (bool, List<Package>, List<Package>) checkLastRun = (false, null, null);
             if (HasScheduled())
             {
-                string[] listSoftware = File.ReadAllLines(saveHistory);
-                int indexInstall = Array.IndexOf(listSoftware, "INSTALL");
-                int indexUninstall = Array.IndexOf(listSoftware, "UNINSTALL");
-                if (indexUninstall - indexInstall > 1)
-                {
-                    install = new List<string>();
-                    for (int index = indexInstall + 1; index < indexUninstall; index++)
-                    {
-                        install.Add(listSoftware[index]);
-                    }
-                }
-                if (listSoftware.Length - indexUninstall > 1)
-                {
-                    uninstall = new List<string>();
-                    for (int index = indexUninstall + 1; index < listSoftware.Length; index++)
-                    {
-                        uninstall.Add(listSoftware[index]);
-                    }
-                }
+                checkLastRun = Program.setting.RunDataImport(saveHistory);
                 File.Delete(saveHistory);
                 RemoveStartupEnviroment();
             }
-            if (install == null && uninstall == null) return (false, null, null);
-            return (true, install == null ? null : DataAccess.Instance.GetPackagesOfName(install), uninstall == null ? null : DataAccess.Instance.GetPackagesOfName(uninstall));
-        }
-
-        private static string GetData(List<string> packages, string nameField)
-        {
-            if (packages != null)
-            {
-                string data = nameField + "\n";
-                for (int index = 0; index < packages.Count; index++)
-                {
-                    data += packages[index] + "\n";
-                }
-                return data;
-            }
-            return nameField + "\n";
+            return checkLastRun;
         }
 
         private static bool HasScheduled()

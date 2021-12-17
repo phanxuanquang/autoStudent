@@ -156,7 +156,10 @@ namespace App
             switch (afterAction)
             {
                 case AfterAction.Exit:
-                    Application.Exit();
+                    if (Program.mainUI != null)
+                    {
+                        Program.mainUI.Close();
+                    }
                     break;
                 case AfterAction.Shutdown:
                     Process.Start("shutdown", "/s /t 0");
@@ -175,47 +178,109 @@ namespace App
             }
         }
 
-        public bool RunDataExport(List<Package> dataList, string pathSaveExport)
+        public bool RunDataExport(List<string> installSoftwares, List<string> uninstallSoftwares, string filePath)
         {
-            if (dataExport && dataList != null)
+            try
             {
-                if (Directory.Exists(pathSaveExport))
+                if (File.Exists(filePath))
                 {
-                    string data = "";
-
-                    string passExport = DataAccess.Instance.GetPassCry();
-                    try
-                    {
-                        int count = 0;
-                        string filePath;
-                        do
-                        {
-                            filePath = pathSaveExport + @"\AutoStudentDataExport" + count++ + ".as";
-                        } while (File.Exists(filePath));
-                        foreach (var item in dataList)
-                        {
-                            data += $"{item.Name}\n";
-                        }
-                        using (StreamWriter sw = File.CreateText(filePath))
-                        {
-                            string encrypt = Cryptography.Encrypt(data, passExport);
-                            sw.Write(encrypt);
-                        }
-                        return true;
-                    }
-                    catch (IOException)
-                    {
-                        MessageBox.Show("Lỗi lưu file");
-                    }
-                    catch (UnauthorizedAccessException)
-                    {
-                        MessageBox.Show("Không có quyền lưu ở thư mục chọn");
-                    }
+                    File.Delete(filePath);
                 }
-                else MessageBox.Show("Lỗi đường dẫn lưu file");
+                string passExport = DataAccess.Instance.GetPassCry();
+                try
+                {
+                    using (StreamWriter sw = File.CreateText(filePath))
+                    {
+                        string encrypt = Cryptography.Encrypt(GetData(installSoftwares, "INSTALL") + GetData(uninstallSoftwares, "UNINSTALL"), passExport);
+                        sw.Write(encrypt);
+                    }
+                    return true;
+                }
+                catch (IOException)
+                {
+                    MessageBox.Show("Lỗi lưu file");
+                }
+                catch (UnauthorizedAccessException)
+                {
+                    MessageBox.Show("Không có quyền lưu ở thư mục chọn");
+                }
             }
-            else MessageBox.Show("Chưa có gì để export");
+            catch
+            {
+                MessageBox.Show("Unknown Error");
+            }
             return false;
+        }
+
+        public (bool, List<Package>, List<Package>) RunDataImport(string filePath)
+        {
+            string passImport = DataAccess.Instance.GetPassCry();
+            if (File.Exists(filePath))
+            {
+                try
+                {
+                    List<string> install = null;
+                    List<string> uninstall = null;
+                    using (StreamReader sr = File.OpenText(filePath))
+                    {
+                        string dataImport = sr.ReadToEnd();
+                        string[] decrypt = Cryptography.Decrypt(dataImport, passImport).Split('\n');
+                        int indexInstall = Array.IndexOf(decrypt, "INSTALL");
+                        int indexUninstall = Array.IndexOf(decrypt, "UNINSTALL");
+                        if (indexUninstall - indexInstall > 1)
+                        {
+                            install = new List<string>();
+                            for (int index = indexInstall + 1; index < indexUninstall; index++)
+                            {
+                                install.Add(decrypt[index]);
+                            }
+                        }
+                        if (decrypt.Length - indexUninstall > 1)
+                        {
+                            uninstall = new List<string>();
+                            for (int index = indexUninstall + 1; index < decrypt.Length; index++)
+                            {
+                                uninstall.Add(decrypt[index]);
+                            }
+                        }
+                    }
+                    if (install == null && uninstall == null) return (false, null, null);
+                    return (true, install == null ? null : DataAccess.Instance.GetPackagesOfName(install),
+                        uninstall == null ? null : DataAccess.Instance.GetPackagesOfName(uninstall));
+
+                }
+                catch (IOException)
+                {
+                    MessageBox.Show("Lỗi đọc file");
+                }
+                catch (UnauthorizedAccessException)
+                {
+                    MessageBox.Show("Không có quyền đọc ở thư mục chọn");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Lỗi không xác định");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Không tồn tại thư mục");
+            }
+            return (false, null, null);
+        }
+
+        private string GetData(List<string> packages, string nameField)
+        {
+            if (packages != null)
+            {
+                string data = nameField + "\n";
+                for (int index = 0; index < packages.Count; index++)
+                {
+                    data += packages[index] + "\n";
+                }
+                return data;
+            }
+            return nameField + "\n";
         }
 
         public void cleanComputer()

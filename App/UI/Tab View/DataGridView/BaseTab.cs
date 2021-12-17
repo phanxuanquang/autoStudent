@@ -124,50 +124,17 @@ namespace App
         {
             FileDialog dialog = new OpenFileDialog();
             dialog.Title = "Open AutoStudentDataExport";
-            dialog.Filter = "AS files (*.AS)|*.AS";
+            dialog.Filter = "AS files (*.as)|*.as";
 
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 string filePath = dialog.FileName;
-                string passImport = DataAccess.Instance.GetPassCry();
-                if (File.Exists(filePath))
+                (bool, List<Package>, List<Package>) importData = Program.setting.RunDataImport(filePath);
+                if (importData.Item1)
                 {
-                    try
-                    {
-                        List<string> names = new List<string>();
-                        using (StreamReader sr = File.OpenText(filePath))
-                        {
-                            string dataImport = sr.ReadToEnd();
-                            string decrypt = Cryptography.Decrypt(dataImport, passImport);
-                            string temp;
-                            using (System.IO.StringReader reader = new System.IO.StringReader(decrypt))
-                            {
-                                while ((temp = reader.ReadLine()) != null)
-                                {
-                                    names.Add(temp);
-                                }
-                            }
-                        }
-                        selectedSoftwareList = new List<Package>(DataAccess.Instance.GetPackagesOfName(names));
-                        loadSoftwareToGridView(selectedSoftwareList);
-                    }
-                    catch (IOException)
-                    {
-                        MessageBox.Show("Lỗi đọc file");
-                    }
-                    catch (UnauthorizedAccessException)
-                    {
-                        MessageBox.Show("Không có quyền đọc ở thư mục chọn");
-                    }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("Lỗi không xác định");
-                    }
+                    selectedSoftwareList = importData.Item2;
                 }
-                else
-                {
-                    MessageBox.Show("Không tồn tại thư mục");
-                }
+                loadSoftwareToGridView(selectedSoftwareList);
             }
         }
         #endregion

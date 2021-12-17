@@ -36,6 +36,7 @@ namespace App
             else
             {
                 ProgressWindow_Install progressWindow_Install = new ProgressWindow_Install(selectedSoftwareList);
+                progressWindow_Install.ExportData();
                 Program.setting.CheckTimeOut(progressWindow_Install);
             }
         }

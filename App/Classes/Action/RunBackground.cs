@@ -47,7 +47,7 @@ namespace App
             {
                 SetNotify(mainForm, components);
                 SetTime();
-                mainForm.Hide();
+                SetVisibleMainForm(false);
                 if (notifyIcon != null)
                 {
                     notifyIcon.ShowBalloonTip(5000);
@@ -137,7 +137,7 @@ namespace App
         {
             if (mainForm != null)
             {
-                mainForm.Show();
+                SetVisibleMainForm(true);
             }
             notifyIcon.Visible = false;
         }
@@ -154,8 +154,8 @@ namespace App
             {
                 if (mainForm != null)
                 {
-                    mainForm.Show();
-                    if(mainForm is ProgressWindow_Base)
+                    SetVisibleMainForm(true);
+                    if (mainForm is ProgressWindow_Base)
                     {
                         ((ProgressWindow_Base)mainForm).SetRefresh();
                     }
@@ -168,7 +168,7 @@ namespace App
         {
             if (mainForm != null)
             {
-                mainForm.Show();
+                SetVisibleMainForm(true);
             }
             notifyIcon.Visible = false;
         }
@@ -186,6 +186,46 @@ namespace App
                 if (Program.setting.isSetTime && (timeout = DateTime.Now.Subtract(Program.setting.timeSetter)).TotalSeconds <= 0)
                 {
                     notifyIcon.BalloonTipText = "Việc cài đặt sẽ được bắt đầu sau " + timeout.ToString(@"dd\.hh\:mm\:ss");
+                }
+            }
+        }
+
+        private void SetVisibleMainForm(bool visible)
+        {
+            if (visible)
+            {
+                try
+                {
+                    mainForm.Show();
+                }
+                catch
+                {
+                    try
+                    {
+                        mainForm.BeginInvoke(new Action(() =>
+                        {
+                            mainForm.Show();
+                        }));
+                    }
+                    catch { }
+                }
+            }
+            else
+            {
+                try
+                {
+                    mainForm.Hide();
+                }
+                catch
+                {
+                    try
+                    {
+                        mainForm.BeginInvoke(new Action(() =>
+                        {
+                            mainForm.Hide();
+                        }));
+                    }
+                    catch { }
                 }
             }
         }

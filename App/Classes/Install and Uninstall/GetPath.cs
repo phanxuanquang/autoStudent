@@ -123,7 +123,7 @@ namespace App.InstallUninstall
         public static NewProcess CommandUninstall(Package package)
         {
             if (package == null || String.IsNullOrEmpty(package.UninstallString)) return null;
-            string pathUninstaller = UninstallString2PathFile(package.UninstallString);
+            string pathUninstaller = UninstallString2PathFile(package.UninstallString, package.Installer.Kind);
             NewProcess newProcess = new NewProcess();
             if (newProcess != null)
             {
@@ -182,10 +182,14 @@ namespace App.InstallUninstall
             return newProcess;
         }
 
-        private static string UninstallString2PathFile(string uninstallString)
+        private static string UninstallString2PathFile(string uninstallString, Kind kind)
         {
-            Match regex = Regex.Match(uninstallString, @"\{.*?\}", RegexOptions.Compiled | RegexOptions.IgnoreCase);
-            if (regex.Success) return regex.Value;
+            Match regex = null;
+            if (kind != Kind.Custom)
+            {
+                Regex.Match(uninstallString, @"\{.*?\}", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+                if (regex.Success) return regex.Value;
+            }
             regex = Regex.Match(uninstallString, "\\\"(.*?)\\\"", RegexOptions.Compiled | RegexOptions.IgnoreCase);
             if (regex.Success) return regex.Value;
             return uninstallString.Split(' ')[0];
