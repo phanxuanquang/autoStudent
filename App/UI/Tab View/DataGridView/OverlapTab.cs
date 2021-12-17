@@ -118,6 +118,10 @@ namespace App
                 Program.mainUI.Controls.Remove(this);
                 progressWindow_Uninstall.ExportData();
                 progressWindow_Install.ExportData();
+                if (Program.setting.dataExport)
+                {
+                    Program.setting.RunDataExport(Program.installName, null, Program.setting.exportPath);
+                }
                 Program.setting.CheckTimeOut(progressWindow_Uninstall);
             }
             else

@@ -33,7 +33,7 @@ namespace App
             {
                 mainUI = new MainUI();
                 Application.Run(mainUI);
-            }    
+            }
         }
 
         #region Declaration

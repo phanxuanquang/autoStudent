@@ -102,6 +102,7 @@ namespace App
             Program.setting.exportSetting();
             this.Close();
         }
+
         private void defaultSetting_Button_Click(object sender, EventArgs e)
         {
             cleanAfterCompleted_Switch.Checked = false;
@@ -110,7 +111,8 @@ namespace App
             dataExportAfterCompleted_Switch.Checked = false;
 
             timeSetter.Value = DateTime.Now;
-            saveDownload.Text = @"C:\autoStudent";
+            saveDownload.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\autoStudent";
+            exportPath.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\AutoStudentDataExport.as";
         }
         #endregion
     }

@@ -138,8 +138,8 @@ namespace App
             _cleanAfter = false;
             _isSetTime = false;
             _dataExport = false;
-            _saveDownloadPath = @"C:\autoStudent";
-            _exportPath = @"C:\";
+            _saveDownloadPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\autoStudent";
+            _exportPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\AutoStudentDataExport.as";
         }
 
         #region Actions
@@ -301,7 +301,6 @@ namespace App
             try
             {
                 deleteFileIn(Program.setting.saveDownloadPath);
-                deleteFileIn(@"C:\Windows\prefetch");
             }
             catch (UnauthorizedAccessException)
             {
