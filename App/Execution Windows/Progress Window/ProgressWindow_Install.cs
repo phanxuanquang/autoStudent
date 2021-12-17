@@ -55,9 +55,10 @@ namespace App
             {
                 if (runBackground != null && isOverlap)
                 {
-                    runBackground.EnableRunBackground(Program.setting.timeSetter);
+                    runBackground.EnableRunBackground();
                 }
             }
+            isOverlap = false;
             ToDo();
         }
 
@@ -81,6 +82,11 @@ namespace App
                 int index = -1;
                 while ((index = blackList.IndexOf(ActionProcess.None)) != -1)
                 {
+                    while (Program.SetStartup == Program.ExitRunBackground.Waiting)
+                    {
+                        Thread.Sleep(1000);
+                    }
+                    if (Program.SetStartup == Program.ExitRunBackground.Startup) return;
                     download.DownloadsNext(index, blackList);
                     UpdateStatusProcess(index, StatusDataGridView.Downloading);
                     while (!download.isCompleted)
@@ -103,6 +109,7 @@ namespace App
                     UpdatePercentProcess(index, 90.0f);
                     UpdateCompletedAmount(countCompletedAmount, 90.0f);
                     UpdateStatusProcess(index, StatusDataGridView.Installing);
+                    PopExportData(listSoftware[index].Name);
                     install.RunProcess(index);
                     while (!install.isCompleted)
                     {
@@ -116,6 +123,32 @@ namespace App
                 HasExitTodoTask = true;
             });
         }
+
+        public override void ExportData()
+        {
+            if (base.listSoftware != null && this is ProgressWindow_Install)
+            {
+                if (Program.installName == null) Program.installName = new List<string>();
+                else Program.installName.Clear();
+                if (!isOverlap && Program.uninstallName != null) Program.uninstallName.Clear();
+                for (int index = 0; index < this.listSoftware.Count; index++)
+                {
+                    Program.installName.Add(this.listSoftware[index].Name);
+                }
+            }
+        }
+
+        protected override void PopExportData(string namePackage)
+        {
+            if (base.listSoftware != null && this is ProgressWindow_Install)
+            {
+                if (Program.installName != null)
+                {
+                    Program.installName.Remove(namePackage);
+                }
+            }
+        }
+
         #endregion
 
         public void _SetListSoftware(List<Package> listSoftware)

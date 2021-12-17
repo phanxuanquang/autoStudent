@@ -27,6 +27,61 @@ namespace App
                 Program.SetDoubleBuffered(this.Controls[i]);
         }
 
+        private void MainUI_Shown(object sender, EventArgs e)
+        {
+            if (Program.installSchedule != null || Program.uninstallSchedule != null)
+            {
+                switch (MessageBox.Show(
+                    String.Format(
+                        "Bạn đang còn {0} phần mềm cần xử lý.\nBạn có muốn lưu lại trạng thái và tiếp tục vào phiên khởi động tiếp theo?",
+                        (Program.installSchedule == null ? 0 : Program.installSchedule.Count) + (Program.uninstallSchedule == null ? 0 : Program.uninstallSchedule.Count)),
+                    "autoStudent",
+                    MessageBoxButtons.YesNo))
+                {
+                    case DialogResult.Yes:
+                        ProgressWindow_Install progressWindow_Install = null;
+                        ProgressWindow_Uninstall progressWindow_Uninstall = null;
+                        if (Program.installSchedule != null)
+                        {
+                            progressWindow_Install = new ProgressWindow_Install(Program.installSchedule);
+                            if (Program.uninstallSchedule != null)
+                            {
+                                progressWindow_Uninstall = new ProgressWindow_Uninstall(Program.uninstallSchedule);
+                                progressWindow_Install.isOverlap = true;
+                                progressWindow_Uninstall.isOverlap = true;
+                                progressWindow_Uninstall.FormClosing += (sender, e) =>
+                                {
+                                    progressWindow_Install.FormClosing += (sender, e) =>
+                                    {
+                                        Program.mainUI.Show();
+                                    };
+                                    progressWindow_Install.Show();
+                                };
+                                progressWindow_Uninstall.ExportData();
+                                progressWindow_Install.ExportData();
+                                Program.setting.CheckTimeOut(progressWindow_Uninstall);
+                            }
+                            else
+                            {
+                                progressWindow_Install.ExportData();
+                                Program.setting.CheckTimeOut(progressWindow_Install);
+                            }
+                        }
+                        else
+                        {
+                            progressWindow_Uninstall = new ProgressWindow_Uninstall(Program.uninstallSchedule);
+                            progressWindow_Uninstall.ExportData();
+                            Program.setting.CheckTimeOut(progressWindow_Uninstall);
+                        }
+                        break;
+                    case DialogResult.No:
+                        Program.installSchedule = null;
+                        Program.uninstallSchedule = null;
+                        break;
+                }
+            }
+        }
+
         private bool isInternetAvailable()
         {
             try
@@ -206,10 +261,23 @@ namespace App
         private void MainUI_FormClosing(object sender, FormClosingEventArgs e)
         {
             Program.SetStartup = Program.ExitRunBackground.Waiting;
-            if (systemShutdown || Program.setting.isSetTime)
+            string textMessageBox = "";
+            if (Program.setting.isSetTime && DateTime.Now.Subtract(Program.setting.timeSetter).TotalSeconds <= 0)
+            {
+                textMessageBox = String.Format(
+                    "Bạn có đặt lịch cài đặt vào lúc {0}.\nBạn có muốn lưu lại trạng thái và tiếp tục vào phiên khởi động tiếp theo?",
+                    Program.setting.timeSetter.ToString("HH:mm:ss dd/MM/yyyy"));
+            }
+            else if ((Program.installName != null && Program.installName.Count > 0) || (Program.uninstallName != null && Program.uninstallName.Count > 0))
+            {
+                textMessageBox = String.Format(
+                    "Bạn đang còn {0} phần mềm cần xử lý.\nBạn có muốn lưu lại trạng thái và tiếp tục vào phiên khởi động tiếp theo?",
+                    (Program.installName == null ? 0 : Program.installName.Count) + (Program.uninstallName == null ? 0 : Program.uninstallName.Count));
+            }
+            if (!String.IsNullOrEmpty(textMessageBox))
             {
                 systemShutdown = false;
-                switch (MessageBox.Show("Bạn có đặt lịch hoặc đang cài đặt.\nBạn có muốn quay lại trạng thái ở phiên khởi động tiếp theo?", "autoStudent", MessageBoxButtons.YesNoCancel))
+                switch (MessageBox.Show(textMessageBox, "autoStudent", MessageBoxButtons.YesNoCancel))
                 {
                     case DialogResult.Yes:
                         e.Cancel = false;

@@ -26,7 +26,8 @@ namespace App
             (bool, List<Package>, List<Package>) checkLastRun = Startup.ReadSchedule();
             if (checkLastRun.Item1)
             {
-                //Đã có tên chương trình chạy từ trước, install đã đưa vào checkLastRun.Item2, uninstall đã đưa vào checkLastRun.Item3
+                installSchedule = checkLastRun.Item2;
+                uninstallSchedule = checkLastRun.Item3;
             }
 
             if (loading.isDone)
@@ -38,7 +39,8 @@ namespace App
 
         private static void CurrentDomain_ProcessExit(object sender, EventArgs e)
         {
-            if (setting.isSetTime && SetStartup == ExitRunBackground.Startup)
+            if ((setting.isSetTime && SetStartup == ExitRunBackground.Startup && DateTime.Now.Subtract(setting.timeSetter).TotalSeconds <= 0)
+                || (Program.installName != null && Program.installName.Count > 0) || (Program.uninstallName != null && Program.uninstallName.Count > 0))
             {
                 Startup.WriteSchedule(installName, uninstallName);
             }
@@ -57,6 +59,8 @@ namespace App
         public static ExitRunBackground SetStartup = ExitRunBackground.None;
         public static List<string> installName;
         public static List<string> uninstallName;
+        public static List<Package> installSchedule;
+        public static List<Package> uninstallSchedule;
 
         public static void SetDoubleBuffered(System.Windows.Forms.Control c)
         {

@@ -41,7 +41,6 @@ namespace App
                 {
                     for (int i = 0; i < softwareList.Count; i++)
                     {
-                        //MessageBox.Show(softwareList[i].Displayname + "\n" + finalGridView.Rows[j].Cells[0].Value.ToString());
                         if (softwareList[i].Name == selectedSoftwareList[j].Name)
                         {
                             softwareList.RemoveAt(i);
@@ -119,7 +118,7 @@ namespace App
                 Program.mainUI.Controls.Remove(this);
                 progressWindow_Uninstall.ExportData();
                 progressWindow_Install.ExportData();
-                progressWindow_Uninstall.Show();
+                Program.setting.CheckTimeOut(progressWindow_Uninstall);
             }
             else
             {
@@ -127,7 +126,7 @@ namespace App
                 {
                     Program.mainUI.Show();
                 };
-                progressWindow_Install.Show();
+                Program.setting.CheckTimeOut(progressWindow_Install);
             }
         }
         #endregion

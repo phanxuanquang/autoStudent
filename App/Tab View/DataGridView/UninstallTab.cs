@@ -23,12 +23,7 @@ namespace App
         {
             ProgressWindow_Uninstall progressWindow_Uninstall = new ProgressWindow_Uninstall(selectedSoftwareList);
             progressWindow_Uninstall.ExportData();
-            progressWindow_Uninstall.FormClosing += (sender, e) =>
-            {
-                LoadingWindow.LoadAfterDone();
-                this.Parent.Controls.Remove(this);
-            };
-            progressWindow_Uninstall.Show();
+            Program.setting.CheckTimeOut(progressWindow_Uninstall);
         }
 
         protected override void init()

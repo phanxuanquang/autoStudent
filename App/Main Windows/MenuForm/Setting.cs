@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Text.Json;
 using Newtonsoft.Json;
 using System.IO;
+using System.Threading;
 
 namespace App
 {
@@ -243,6 +244,47 @@ namespace App
                 MessageBox.Show("Lỗi xóa thư mục tạm thời");
             }
             catch { }
+        }
+
+        public void CheckTimeOut(ProgressWindow_Base action)
+        {
+            if (action != null)
+            {
+                if((Program.setting.isSetTime && DateTime.Now.Subtract(Program.setting.timeSetter).TotalSeconds >= 0) || !Program.setting.isSetTime)
+                {
+                    action.Show();
+                }
+                else
+                {
+                    action.backgroundRunning_Button_Click(null, null);
+                    Task.Factory.StartNew(() =>
+                    {
+                        while (Program.setting.isSetTime && DateTime.Now.Subtract(Program.setting.timeSetter).TotalSeconds <= 0)
+                        {
+                            Thread.Sleep(1000);
+                        }
+                        if (action != null && !action.Visible)
+                        {
+                            try
+                            {
+                                action.Show();
+                            }
+                            catch
+                            {
+                                try
+                                {
+                                    action.BeginInvoke(new Action(() =>
+                                    {
+                                        action.Show();
+                                    }));
+                                }
+                                catch { }
+                            }
+                            action.backgroundRunning_Button_Click(null, null);
+                        }
+                    });
+                }
+            }
         }
         #endregion
 

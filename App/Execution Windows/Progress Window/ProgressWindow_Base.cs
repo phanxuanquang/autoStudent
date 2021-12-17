@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
@@ -70,6 +71,11 @@ namespace App
             Program.SetDoubleBuffered(this);
         }
 
+        private void ProgressWindow_Base_Load(object sender, EventArgs e)
+        {
+            Program.setting.isSetTime = false;
+        }
+
         #region Windows State
         protected override CreateParams CreateParams
         {
@@ -84,12 +90,23 @@ namespace App
         private void exitButton_Click(object sender, EventArgs e)
         {
             LoadingWindow.LoadAfterDone();
+            if (PressedActionAll)
+            {
+                if (this is ProgressWindow_Install)
+                {
+                    if (Program.installName != null) Program.installName.Clear();
+                }
+                if (this is ProgressWindow_Uninstall)
+                {
+                    if (Program.uninstallName != null) Program.uninstallName.Clear();
+                }
+            }
             if (HasExitTodoTask)
             {
+                Program.mainUI.Show();
                 this.Close();
             }
             else backgroundRunning_Button_Click(this, null);
-            Program.mainUI.Show();
         }
 
         private void minimizeButton_Click(object sender, EventArgs e)
@@ -112,32 +129,9 @@ namespace App
             }
         }
 
-        public void ExportData()
-        {
-            if (this.listSoftware != null)
-            {
-                if (this is ProgressWindow_Install)
-                {
-                    if (Program.installName == null) Program.installName = new List<string>();
-                    else Program.installName.Clear();
-                    if (!isOverlap && Program.uninstallName != null) Program.uninstallName.Clear();
-                    for (int index = 0; index < this.listSoftware.Count; index++)
-                    {
-                        Program.installName.Add(this.listSoftware[index].Name);
-                    }
-                }
-                else if (this is ProgressWindow_Uninstall)
-                {
-                    if (Program.uninstallName == null) Program.uninstallName = new List<string>();
-                    else Program.uninstallName.Clear();
-                    if (!isOverlap && Program.installName != null) Program.installName.Clear();
-                    for (int index = 0; index < this.listSoftware.Count; index++)
-                    {
-                        Program.uninstallName.Add(this.listSoftware[index].Name);
-                    }
-                }
-            }
-        }
+        public virtual void ExportData() { }
+
+        protected virtual void PopExportData(string namePackage) { }
 
         protected Image GetImageStatus(StatusDataGridView status)
         {
@@ -310,20 +304,12 @@ namespace App
             detail_Button_Click(null, null);
         }
 
-        private void cancelAll_Button_Click(object sender, EventArgs e)
-        {
-            for (int index = 0; index < blackList.Count; index++)
-            {
-                ActionButton_TextChanged(index, softwareGridView.Columns.Count - 1, ActionProcess.Canceled);
-            }
-        }
-
-        private void backgroundRunning_Button_Click(object sender, EventArgs e)
+        public void backgroundRunning_Button_Click(object sender, EventArgs e)
         {
             if (runBackground != null)
             {
                 wasRunBackground = runBackground.Visible;
-                runBackground.EnableRunBackground(Program.setting.timeSetter);
+                runBackground.EnableRunBackground();
             }
             else MessageBox.Show("Run background null");
         }

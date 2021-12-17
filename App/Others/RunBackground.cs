@@ -41,15 +41,12 @@ namespace App
         /// Ẩn form hiện tại đi và để nó xuất hiện ở taskbar.
         /// </summary>
         /// <param name="startProcess">Nếu là hẹn giờ thì đưa vào thời gian còn lại đến khi bắt đầu, không có thì thôi.</param>
-        public void EnableRunBackground(params DateTime[] startProcess)
+        public void EnableRunBackground()
         {
             if (mainForm != null)
             {
                 SetNotify(mainForm, components);
-                if (startProcess.Length > 0)
-                {
-                    SetTime(startProcess[0]);
-                }
+                SetTime();
                 mainForm.Hide();
                 if (notifyIcon != null)
                 {
@@ -181,11 +178,15 @@ namespace App
             Program.mainUI.Close();
         }
 
-        private void SetTime(DateTime startProcess)
+        private void SetTime()
         {
             if (notifyIcon != null)
             {
-                notifyIcon.BalloonTipText = "Việc cài đặt sẽ được bắt đầu vào " + startProcess.ToString("HH:mm:ss dd/MM/yyyy");
+                TimeSpan timeout = TimeSpan.Zero;
+                if (Program.setting.isSetTime && (timeout = DateTime.Now.Subtract(Program.setting.timeSetter)).TotalSeconds <= 0)
+                {
+                    notifyIcon.BalloonTipText = "Việc cài đặt sẽ được bắt đầu sau " + timeout.ToString(@"dd\.hh\:mm\:ss");
+                }
             }
         }
     }
