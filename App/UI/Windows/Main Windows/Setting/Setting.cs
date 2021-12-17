@@ -170,6 +170,8 @@ namespace App
                 case AfterAction.Sleep:
                     SetSuspendState(false, true, true);
                     break;
+                default:
+                    return;
             }
         }
 

@@ -25,29 +25,18 @@ namespace App
             {
                 Directory.CreateDirectory(Program.setting.saveDownloadPath);
             }
-            ExportData();
+
             List<Package> overlapList = LoadingWindow.GetOverlapSoftware(Program.software_System, selectedSoftwareList);
             if (overlapList != null && overlapList.Count > 0)
             {
                 OverlapTab overlapTab = new OverlapTab(overlapList, selectedSoftwareList);
                 Program.mainUI.loadTab(overlapTab);
             }
+
             else
             {
                 ProgressWindow_Install progressWindow_Install = new ProgressWindow_Install(selectedSoftwareList);
-                progressWindow_Install.ExportData();
                 Program.setting.CheckTimeOut(progressWindow_Install);
-            }
-        }
-
-        private void ExportData()
-        {
-            if (Program.setting.dataExport == false) return;
-            {
-                if (Program.setting.RunDataExport(selectedSoftwareList, Program.setting.exportPath) == true)
-                {
-                    MessageBox.Show("Đã EXPORT dữ liệu cài đặt");
-                }
             }
         }
 

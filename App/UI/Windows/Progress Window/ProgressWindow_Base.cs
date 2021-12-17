@@ -355,6 +355,10 @@ namespace App
 
                 System.Media.SoundPlayer completeSound = new System.Media.SoundPlayer(Properties.Resources.Complete_Sound);
                 completeSound.Play();
+
+                Program.setting.RunAfterAction();
+                if (Program.setting.cleanAfter)
+                    Program.setting.cleanComputer();
             }
         }
          
