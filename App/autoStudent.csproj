@@ -347,6 +347,9 @@
   <ItemGroup>
     <None Include="Resources\Background Main UI.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Complete Sound.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets" Condition="Exists('..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

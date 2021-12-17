@@ -330,6 +330,7 @@ namespace App
                     {
                         runBackground.OverrideNotify();
                     }
+
                     Task.Factory.StartNew(() =>
                     {
                         while (Program.SetStartup == Program.ExitRunBackground.Waiting) ;
@@ -351,6 +352,9 @@ namespace App
                         }
                     });
                 }
+
+                System.Media.SoundPlayer completeSound = new System.Media.SoundPlayer(Properties.Resources.Complete_Sound);
+                completeSound.Play();
             }
         }
         
@@ -393,6 +397,7 @@ namespace App
             }
         }
         #endregion
+
     }
 
     #region Other Classes
