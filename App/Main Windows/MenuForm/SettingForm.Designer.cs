@@ -60,7 +60,7 @@
             this.timeSetter.CausesValidation = false;
             this.timeSetter.Checked = false;
             this.timeSetter.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.timeSetter.CustomFormat = "    dd/MM/yyyy   HH:mm tt";
+            this.timeSetter.CustomFormat = "    dd/MM/yyyy   hh:mm:ss tt";
             this.timeSetter.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.timeSetter.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.timeSetter.Location = new System.Drawing.Point(415, 198);

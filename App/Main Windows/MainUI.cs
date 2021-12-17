@@ -33,7 +33,7 @@ namespace App
             {
                 switch (MessageBox.Show(
                     String.Format(
-                        "Bạn đang còn {0} phần mềm cần xử lý.\nBạn có muốn lưu lại trạng thái và tiếp tục vào phiên khởi động tiếp theo?",
+                        "Bạn đang còn {0} phần mềm ở phiên trước.\nBạn có muốn tiếp tục công việc ở phiên làm việc trước?",
                         (Program.installSchedule == null ? 0 : Program.installSchedule.Count) + (Program.uninstallSchedule == null ? 0 : Program.uninstallSchedule.Count)),
                     "autoStudent",
                     MessageBoxButtons.YesNo))
@@ -44,6 +44,10 @@ namespace App
                         if (Program.installSchedule != null)
                         {
                             progressWindow_Install = new ProgressWindow_Install(Program.installSchedule);
+                            if (!Directory.Exists(Program.setting.saveDownloadPath))
+                            {
+                                Directory.CreateDirectory(Program.setting.saveDownloadPath);
+                            }
                             if (Program.uninstallSchedule != null)
                             {
                                 progressWindow_Uninstall = new ProgressWindow_Uninstall(Program.uninstallSchedule);

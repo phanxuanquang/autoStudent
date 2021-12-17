@@ -89,21 +89,21 @@ namespace App
 
         private void exitButton_Click(object sender, EventArgs e)
         {
-            LoadingWindow.LoadAfterDone();
-            if (PressedActionAll)
-            {
-                if (this is ProgressWindow_Install)
-                {
-                    if (Program.installName != null) Program.installName.Clear();
-                }
-                if (this is ProgressWindow_Uninstall)
-                {
-                    if (Program.uninstallName != null) Program.uninstallName.Clear();
-                }
-            }
             if (HasExitTodoTask)
             {
+                LoadingWindow.LoadAfterDone();
                 Program.mainUI.Show();
+                if (PressedActionAll)
+                {
+                    if (this is ProgressWindow_Install)
+                    {
+                        if (Program.installName != null) Program.installName.Clear();
+                    }
+                    if (this is ProgressWindow_Uninstall)
+                    {
+                        if (Program.uninstallName != null) Program.uninstallName.Clear();
+                    }
+                }
                 this.Close();
             }
             else backgroundRunning_Button_Click(this, null);
