@@ -357,7 +357,7 @@ namespace App
                 completeSound.Play();
             }
         }
-        
+         
         private void detail_Button_Click(object sender, EventArgs e)
         {
             this.SuspendLayout();
