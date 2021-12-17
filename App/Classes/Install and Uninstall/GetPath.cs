@@ -187,7 +187,7 @@ namespace App.InstallUninstall
             Match regex = null;
             if (kind != Kind.Custom)
             {
-                Regex.Match(uninstallString, @"\{.*?\}", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+                regex = Regex.Match(uninstallString, @"\{.*?\}", RegexOptions.Compiled | RegexOptions.IgnoreCase);
                 if (regex.Success) return regex.Value;
             }
             regex = Regex.Match(uninstallString, "\\\"(.*?)\\\"", RegexOptions.Compiled | RegexOptions.IgnoreCase);
