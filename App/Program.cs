@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
+using System.Management;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,12 +15,25 @@ namespace App
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
+        [DllImport("user32.dll")]
+        public static extern bool SetForegroundWindow(IntPtr hWnd);
         [STAThread]
+        
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            (bool, uint) checkCurrentRunning = CheckProcessExists();
+            if (checkCurrentRunning.Item1)
+            {
+                MessageBox.Show("Bạn đang mở một cửa số khác.\nVui lòng quay lại cửa sổ trước", "autoStudent. Đã chạy chương trình rồi!", MessageBoxButtons.OK);
+                SetForegroundWindow(Process.GetProcessById(Convert.ToInt32(checkCurrentRunning.Item2)).MainWindowHandle);
+                return;
+            }
+
             AppDomain.CurrentDomain.ProcessExit += CurrentDomain_ProcessExit;
+
             LoadingWindow loading = new LoadingWindow();
             Application.Run(loading);
 
@@ -61,6 +76,33 @@ namespace App
             {
                 Startup.WriteSchedule(installName, uninstallName);
             }
+        }
+
+        private static (bool, uint) CheckProcessExists()
+        {
+            string query = "SELECT ProcessID, ExecutablePath FROM Win32_Process";
+            using (ManagementObjectSearcher seacher = new ManagementObjectSearcher(query))
+            using (ManagementObjectCollection collection = seacher.Get())
+            {
+                if (collection != null && collection.Count > 0)
+                {
+                    uint PIDExists = 0;
+                    uint thisPID = Convert.ToUInt32(Process.GetCurrentProcess().Id);
+                    foreach (var item in collection)
+                    {
+                        if (Application.ExecutablePath == (string)item.GetPropertyValue("ExecutablePath"))
+                        {
+                            if (thisPID != (uint)item.GetPropertyValue("ProcessID"))
+                            {
+                                PIDExists = (uint)item.GetPropertyValue("ProcessID");
+                                break;
+                            }
+                        }
+                    }
+                    return PIDExists > 0 ? (true, PIDExists) : (false, 0);
+                }
+            }
+            return (false, 0);
         }
 
         public static void SetDoubleBuffered(System.Windows.Forms.Control c)

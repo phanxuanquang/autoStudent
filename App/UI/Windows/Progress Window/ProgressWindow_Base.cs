@@ -31,7 +31,7 @@ namespace App
         private static readonly Image Complete = Properties.Resources.Complete;
         private static readonly Image Cancel = Properties.Resources.Cancel;
         private static readonly Image Fail = Properties.Resources.Fail;
-        private bool PressedActionAll;
+        public bool PressedActionAll;
 
         public enum StatusDataGridView
         {

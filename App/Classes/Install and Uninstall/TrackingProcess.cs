@@ -65,7 +65,7 @@ namespace App.InstallUninstall
                     SearchPID(ref _pid, this.pidNewProcess);
                     SearchPID(ref _pid, Process.GetCurrentProcess().Id);
                     Analyst();
-                    Thread.Sleep(500);
+                    Thread.Sleep(100);
                 }
             });
         }
@@ -74,11 +74,11 @@ namespace App.InstallUninstall
         {
             if (PID > 0)
             {
-                string query = "SELECT * FROM Win32_Process WHERE ParentProcessId = " + PID;
+                string query = "SELECT ProcessID FROM Win32_Process WHERE ParentProcessId = " + PID;
                 using (ManagementObjectSearcher seacher = new ManagementObjectSearcher(query))
                 using (ManagementObjectCollection collection = seacher.Get())
                 {
-                    if (collection.Count > 0)
+                    if (collection != null && collection.Count > 0)
                     {
                         foreach (var item in collection)
                         {

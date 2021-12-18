@@ -55,11 +55,14 @@ namespace App
                                 progressWindow_Uninstall.isOverlap = true;
                                 progressWindow_Uninstall.FormClosing += (sender, e) =>
                                 {
-                                    progressWindow_Install.FormClosing += (sender, e) =>
+                                    if (!progressWindow_Uninstall.PressedActionAll)
                                     {
-                                        Program.mainUI.Show();
-                                    };
-                                    progressWindow_Install.Show();
+                                        progressWindow_Install.FormClosing += (sender, e) =>
+                                        {
+                                            Program.mainUI.Show();
+                                        };
+                                        progressWindow_Install.Show();
+                                    }
                                 };
                                 progressWindow_Uninstall.ExportData();
                                 progressWindow_Install.ExportData();
