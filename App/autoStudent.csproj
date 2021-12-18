@@ -7,11 +7,14 @@
     <ProjectGuid>{FDBCC2A9-8CE2-4C49-8254-A3D10FAE1E41}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>App</RootNamespace>
-    <AssemblyName>App</AssemblyName>
+    <AssemblyName>autoStudent</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,11 +27,8 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -54,12 +54,15 @@
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\autoStudent.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Guna.UI">
-      <HintPath>..\..\..\..\..\..\Downloads\Compressed\Guna UI Framework Ultimate 2.0.0.1\Guna UI Framework Ultimate v2.0.0.1 Lib-Master\Guna.UI WinForms\.net 4.0\Guna.UI.dll</HintPath>
+      <HintPath>..\packages\Guna.UI.dll</HintPath>
     </Reference>
     <Reference Include="Guna.UI2">
-      <HintPath>..\..\..\..\..\..\Downloads\Compressed\Guna UI Framework Ultimate 2.0.0.1\Guna UI Framework Ultimate v2.0.0.1 Lib-Master\Guna.UI2 WinForms\.net 4.0\Guna.UI2.dll</HintPath>
+      <HintPath>..\packages\Guna.UI2.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -100,137 +103,131 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\Cryptography.cs" />
-    <Compile Include="Execution Windows\GridView Window\BaseForm.cs">
+    <Compile Include="UI\Windows\Main Windows\AboutForm\AboutForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Execution Windows\GridView Window\BaseForm.Designer.cs">
-      <DependentUpon>BaseForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Data\DataAccess.cs" />
-    <Compile Include="Execution Windows\GridView Window\OverlapForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Execution Windows\GridView Window\OverlapForm.Designer.cs">
-      <DependentUpon>OverlapForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Execution Windows\Progress Window\ProgressWindow_Install.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Execution Windows\Progress Window\ProgressWindow_Install.Designer.cs">
-      <DependentUpon>ProgressWindow_Install.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Execution Windows\Progress Window\ProgressWindow_Uninstall.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Execution Windows\Progress Window\ProgressWindow_Uninstall.Designer.cs">
-      <DependentUpon>ProgressWindow_Uninstall.cs</DependentUpon>
-    </Compile>
-    <Compile Include="InstallUninstall\BaseProcess.cs" />
-    <Compile Include="InstallUninstall\Download.cs" />
-    <Compile Include="InstallUninstall\GetPath.cs" />
-    <Compile Include="InstallUninstall\Install.cs" />
-    <Compile Include="Execution Windows\GridView Window\InstallForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Execution Windows\GridView Window\InstallForm.Designer.cs">
-      <DependentUpon>InstallForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="InstallUninstall\TrackingProcess.cs" />
-    <Compile Include="Main Windows\AboutForm\AboutForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Main Windows\AboutForm\AboutForm.Designer.cs">
+    <Compile Include="UI\Windows\Main Windows\AboutForm\AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main Windows\AboutForm\FeedbackForm.cs">
+    <Compile Include="UI\Windows\Main Windows\AboutForm\FeedbackTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Windows\Main Windows\AboutForm\FeedbackTab.Designer.cs">
+      <DependentUpon>FeedbackTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Tab View\DataGridView\BaseTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Tab View\DataGridView\BaseTab.Designer.cs">
+      <DependentUpon>BaseTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Data Manipulation\Cryptography.cs" />
+    <Compile Include="Classes\Data Manipulation\DataAccess.cs" />
+    <Compile Include="UI\Windows\Progress Window\ProgressWindow_Install.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main Windows\AboutForm\FeedbackForm.Designer.cs">
-      <DependentUpon>FeedbackForm.cs</DependentUpon>
+    <Compile Include="UI\Windows\Progress Window\ProgressWindow_Install.Designer.cs">
+      <DependentUpon>ProgressWindow_Install.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main Windows\AboutForm\SendInfo.cs" />
-    <Compile Include="Main Windows\Loading Window.cs">
+    <Compile Include="UI\Windows\Progress Window\ProgressWindow_Uninstall.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main Windows\Loading Window.Designer.cs">
+    <Compile Include="UI\Windows\Progress Window\ProgressWindow_Uninstall.Designer.cs">
+      <DependentUpon>ProgressWindow_Uninstall.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Tab View\DataGridView\InstallTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Tab View\DataGridView\InstallTab.Designer.cs">
+      <DependentUpon>InstallTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Install and Uninstall\BaseProcess.cs" />
+    <Compile Include="Classes\Install and Uninstall\Download.cs" />
+    <Compile Include="Classes\Install and Uninstall\GetPath.cs" />
+    <Compile Include="Classes\Install and Uninstall\Install.cs" />
+    <Compile Include="Classes\Install and Uninstall\TrackingProcess.cs" />
+    <Compile Include="UI\Windows\Main Windows\AboutForm\SendInfo.cs" />
+    <Compile Include="UI\Windows\Main Windows\Loading Window.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Windows\Main Windows\Loading Window.Designer.cs">
       <DependentUpon>Loading Window.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main Windows\MainUI.cs">
+    <Compile Include="UI\Windows\Main Windows\MainUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main Windows\MainUI.Designer.cs">
+    <Compile Include="UI\Windows\Main Windows\MainUI.Designer.cs">
       <DependentUpon>MainUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Tab View\DataGridView\OverlapTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Tab View\DataGridView\OverlapTab.Designer.cs">
+      <DependentUpon>OverlapTab.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="Execution Windows\Progress Window\ProgressWindow_Base.cs">
+    <Compile Include="UI\Windows\Progress Window\ProgressWindow_Base.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Execution Windows\Progress Window\ProgressWindow_Base.Designer.cs">
+    <Compile Include="UI\Windows\Progress Window\ProgressWindow_Base.Designer.cs">
       <DependentUpon>ProgressWindow_Base.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Others\RunBackground.cs" />
-    <Compile Include="Data\Package.cs" />
-    <Compile Include="InstallUninstall\Uninstall.cs" />
-    <Compile Include="Execution Windows\GridView Window\UninstallForm.cs">
+    <Compile Include="Classes\Action\RunBackground.cs" />
+    <Compile Include="Classes\Data Manipulation\Package.cs" />
+    <Compile Include="Classes\Install and Uninstall\Uninstall.cs" />
+    <Compile Include="UI\Windows\Main Windows\Setting\Setting.cs" />
+    <Compile Include="UI\Windows\Main Windows\Setting\SettingForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Execution Windows\GridView Window\UninstallForm.Designer.cs">
-      <DependentUpon>UninstallForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Main Windows\MenuForm\Setting.cs" />
-    <Compile Include="Main Windows\MenuForm\SettingForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Main Windows\MenuForm\SettingForm.Designer.cs">
+    <Compile Include="UI\Windows\Main Windows\Setting\SettingForm.Designer.cs">
       <DependentUpon>SettingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Others\Startup.cs" />
-    <EmbeddedResource Include="Execution Windows\GridView Window\BaseForm.resx">
-      <DependentUpon>BaseForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Execution Windows\GridView Window\InstallForm.resx">
-      <DependentUpon>InstallForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Execution Windows\GridView Window\OverlapForm.resx">
-      <DependentUpon>OverlapForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Execution Windows\Progress Window\ProgressWindow_Install.resx">
-      <DependentUpon>ProgressWindow_Install.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Execution Windows\Progress Window\ProgressWindow_Uninstall.resx">
-      <DependentUpon>ProgressWindow_Uninstall.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main Windows\AboutForm\AboutForm.resx">
+    <Compile Include="Classes\Action\Startup.cs" />
+    <Compile Include="UI\Tab View\DataGridView\UninstallTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Tab View\DataGridView\UninstallTab.Designer.cs">
+      <DependentUpon>UninstallTab.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UI\Windows\Main Windows\AboutForm\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main Windows\AboutForm\FeedbackForm.resx">
-      <DependentUpon>FeedbackForm.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Windows\Main Windows\AboutForm\FeedbackTab.resx">
+      <DependentUpon>FeedbackTab.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main Windows\Loading Window.resx">
+    <EmbeddedResource Include="UI\Tab View\DataGridView\BaseTab.resx">
+      <DependentUpon>BaseTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Windows\Progress Window\ProgressWindow_Install.resx">
+      <DependentUpon>ProgressWindow_Install.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Windows\Progress Window\ProgressWindow_Uninstall.resx">
+      <DependentUpon>ProgressWindow_Uninstall.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Windows\Main Windows\Loading Window.resx">
       <DependentUpon>Loading Window.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main Windows\MainUI.resx">
+    <EmbeddedResource Include="UI\Windows\Main Windows\MainUI.resx">
       <DependentUpon>MainUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Execution Windows\Progress Window\ProgressWindow_Base.resx">
+    <EmbeddedResource Include="UI\Windows\Progress Window\ProgressWindow_Base.resx">
       <DependentUpon>ProgressWindow_Base.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Tab View\DataGridView\OverlapTab.resx">
+      <DependentUpon>OverlapTab.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <EmbeddedResource Include="Execution Windows\GridView Window\UninstallForm.resx">
-      <DependentUpon>UninstallForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main Windows\MenuForm\SettingForm.resx">
+    <EmbeddedResource Include="UI\Windows\Main Windows\Setting\SettingForm.resx">
       <DependentUpon>SettingForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
@@ -333,22 +330,22 @@
     <None Include="Resources\Background  SubWindow.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Background.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Main Panel.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Background  SubWindow 2.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\toLeft.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\toRight.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\NameSoftware.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Background Main UI.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Complete Sound.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\autoStudent.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets" Condition="Exists('..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets')" />
