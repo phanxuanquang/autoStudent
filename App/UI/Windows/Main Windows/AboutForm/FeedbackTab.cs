@@ -41,8 +41,9 @@ namespace App
                     (bool, string) send = App.Main_Windows.AboutForm.SendInfo.SendFeedback(TextFeedback.Text);
                     if (!send.Item1)
                     {
-                        MessageBox.Show(String.Format("Không thể gửi phản hồi.\nNội dung lỗi: {0}", send.Item2));
+                        MessageBox.Show(String.Format("Không thể gửi phản hồi.\nNội dung lỗi: {0}.", send.Item2));
                     }
+                    else MessageBox.Show("Phản hồi thành công!");
                     this.Parent.Controls.Remove(this);
                     break;
             }

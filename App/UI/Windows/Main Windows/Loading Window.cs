@@ -26,7 +26,6 @@ namespace App
         public LoadingWindow()
         {
             InitializeComponent();
-            this.Icon = Properties.Resources.mainIcon;
             Guna.UI.Lib.GraphicsHelper.ShadowForm(this);
 
             Program.software_Database = new List<Package>();

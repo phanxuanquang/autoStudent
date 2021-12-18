@@ -79,7 +79,7 @@ namespace App
             catch (Exception e)
             {
 
-                MessageBox.Show(e.ToString());
+                MessageBox.Show(String.Format("Lỗi truy xuất. Mã lỗi: {0}.", e.ToString()));
             }
         }
 

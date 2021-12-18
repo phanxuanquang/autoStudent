@@ -117,7 +117,6 @@
             this.softwareGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.softwareGridView.Size = new System.Drawing.Size(750, 383);
             this.softwareGridView.TabIndex = 17;
-            this.softwareGridView.Tag = "unclicked";
             this.softwareGridView.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.softwareGridView.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
             this.softwareGridView.ThemeStyle.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -269,7 +268,6 @@
             this.selectedSoftwareView_Button.ShadowDecoration.Parent = this.selectedSoftwareView_Button;
             this.selectedSoftwareView_Button.Size = new System.Drawing.Size(220, 49);
             this.selectedSoftwareView_Button.TabIndex = 21;
-            this.selectedSoftwareView_Button.Tag = "unclicked";
             this.selectedSoftwareView_Button.Text = "Phần mềm đã chọn";
             this.selectedSoftwareView_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             this.selectedSoftwareView_Button.Click += new System.EventHandler(this.selectedSoftwareView_Button_Click);

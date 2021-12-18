@@ -130,20 +130,15 @@ namespace App.InstallUninstall
                                         {
                                             File.Delete(pathFile);
                                         }
-                                        MessageBox.Show("Đã hủy");
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("Tải hoàn tất" + index.ToString());
                                     }
                                 }
                                 catch (IOException)
                                 {
-                                    MessageBox.Show("Bộ nhớ đầy");
+                                    MessageBox.Show("Không đủ dung lượng hệ thống.");
                                 }
                                 catch (UnauthorizedAccessException)
                                 {
-                                    MessageBox.Show("Không truy cập được");
+                                    MessageBox.Show("Không có quyền truy cập vào thư mục lưu trình cài đặt.");
                                 }
                                 statusDownload = true;
                             }

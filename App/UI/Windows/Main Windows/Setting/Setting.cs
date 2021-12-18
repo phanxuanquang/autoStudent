@@ -198,16 +198,16 @@ namespace App
                 }
                 catch (IOException)
                 {
-                    MessageBox.Show("Lỗi lưu file");
+                    MessageBox.Show("Lỗi lưu tệp tin.");
                 }
                 catch (UnauthorizedAccessException)
                 {
-                    MessageBox.Show("Không có quyền lưu ở thư mục chọn");
+                    MessageBox.Show("Không có quyền lưu thư mục được chọn.");
                 }
             }
             catch
             {
-                MessageBox.Show("Unknown Error");
+                MessageBox.Show("Lỗi không xác định.");
             }
             return false;
         }
@@ -252,20 +252,20 @@ namespace App
                 }
                 catch (IOException)
                 {
-                    MessageBox.Show("Lỗi đọc file");
+                    MessageBox.Show("Lỗi đọc tệp tin.");
                 }
                 catch (UnauthorizedAccessException)
                 {
-                    MessageBox.Show("Không có quyền đọc ở thư mục chọn");
+                    MessageBox.Show("Không có quyền đọc thư mục được chọn.");
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Lỗi không xác định");
+                    MessageBox.Show("Lỗi không xác định.");
                 }
             }
             else
             {
-                MessageBox.Show("Không tồn tại thư mục");
+                MessageBox.Show("Không tồn tại thư mục.");
             }
             return (false, null, null);
         }
@@ -304,11 +304,11 @@ namespace App
             }
             catch (UnauthorizedAccessException)
             {
-                MessageBox.Show("Không có quyền xóa thư mục tạm thời");
+                MessageBox.Show("Không có quyền xóa thư mục tạm thời.");
             }
             catch (IOException)
             {
-                MessageBox.Show("Lỗi xóa thư mục tạm thời");
+                MessageBox.Show("Lỗi xóa thư mục tạm thời.");
             }
             catch { }
         }
@@ -395,7 +395,7 @@ namespace App
             catch (Exception e)
             {
 
-                MessageBox.Show(e.ToString());
+                MessageBox.Show(String.Format("Lỗi không xác định. Nội dung lỗi: {0}.", e.ToString()));
             }
 
         }
@@ -432,7 +432,7 @@ namespace App
             catch (Exception e)
             {
 
-                MessageBox.Show(e.ToString());
+                MessageBox.Show(String.Format("Lỗi không xác định. Nội dung lỗi: {0}.", e.ToString()));
             }
 
         }

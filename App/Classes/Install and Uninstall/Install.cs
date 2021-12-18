@@ -25,7 +25,6 @@ namespace App.InstallUninstall
             base.statusProcess = false;
             if (listSoftware != null && index > -1)
             {
-                MessageBox.Show(index.ToString());
                 if (listSoftware.Count > index)
                 {
                     if (CreateProcess(GetPath.CommandInstall(directoryFolderDownload, listSoftware[index])))

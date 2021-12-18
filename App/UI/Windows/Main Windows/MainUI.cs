@@ -19,7 +19,6 @@ namespace App
         public MainUI()
         {
             InitializeComponent();
-            this.Icon = Properties.Resources.mainIcon;
             Guna.UI.Lib.GraphicsHelper.ShadowForm(this);
             this.SetStyle(ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint | ControlStyles.SupportsTransparentBackColor, true);
             
@@ -41,14 +40,14 @@ namespace App
                     case DialogResult.Yes:
                         ProgressWindow_Install progressWindow_Install = null;
                         ProgressWindow_Uninstall progressWindow_Uninstall = null;
-                        if (Program.installSchedule != null)
+                        if (Program.installSchedule != null && Program.installSchedule.Count > 0)
                         {
                             progressWindow_Install = new ProgressWindow_Install(Program.installSchedule);
                             if (!Directory.Exists(Program.setting.saveDownloadPath))
                             {
                                 Directory.CreateDirectory(Program.setting.saveDownloadPath);
                             }
-                            if (Program.uninstallSchedule != null)
+                            if (Program.uninstallSchedule != null && Program.uninstallSchedule.Count > 0)
                             {
                                 progressWindow_Uninstall = new ProgressWindow_Uninstall(Program.uninstallSchedule);
                                 progressWindow_Install.isOverlap = true;
@@ -76,9 +75,12 @@ namespace App
                         }
                         else
                         {
-                            progressWindow_Uninstall = new ProgressWindow_Uninstall(Program.uninstallSchedule);
-                            progressWindow_Uninstall.ExportData();
-                            Program.setting.CheckTimeOut(progressWindow_Uninstall);
+                            if (Program.uninstallSchedule != null && Program.uninstallSchedule.Count > 0)
+                            {
+                                progressWindow_Uninstall = new ProgressWindow_Uninstall(Program.uninstallSchedule);
+                                progressWindow_Uninstall.ExportData();
+                                Program.setting.CheckTimeOut(progressWindow_Uninstall);
+                            }
                         }
                         break;
                     case DialogResult.No:
@@ -149,7 +151,7 @@ namespace App
             if (dialogResult == DialogResult.Yes)
             {
                 Program.setting.cleanComputer();
-                MessageBox.Show("Dọn dẹp hoàn tất");
+                MessageBox.Show("Dọn dẹp hoàn tất.");
             }
         }
         private void updateButton_Click(object sender, EventArgs e)
@@ -204,12 +206,12 @@ namespace App
             catch (WebException we)
             {
                 // WebException.Status holds useful information
-                MessageBox.Show(we.Message + "\n" + we.Status.ToString());
+                MessageBox.Show(String.Format("Lỗi đường truyền. Nội dung: {0}. \nMã lỗi: {1}.", we.Message, we.Status.ToString()));
             }
             catch (NotSupportedException ne)
             {
                 // other errors
-                MessageBox.Show(ne.Message);
+                MessageBox.Show(String.Format("Lỗi đường truyền. Nội dung: {0}.", ne.Message));
             }
             catch (Exception)
             {

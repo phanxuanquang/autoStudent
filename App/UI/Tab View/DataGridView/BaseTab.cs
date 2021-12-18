@@ -142,14 +142,14 @@ namespace App
         #region Main Buttons
         private void selectedSoftwareView_Button_Click(object sender, EventArgs e)
         {
-            selectedSoftwareView_Button.Tag = "clicked";
             loadSoftwareToGridView(selectedSoftwareList);
         }
+
         private void allSoftwareView_Button_Click(object sender, EventArgs e)
         {
-            selectedSoftwareView_Button.Tag = "unclicked";
             loadSoftwareToGridView(softwareList);
         }
+
         private void confirmButton_Click(object sender, EventArgs e)
         {
             if (selectedSoftwareList.Count != 0)
@@ -161,7 +161,7 @@ namespace App
                     exec();
                 }
             }
-            else MessageBox.Show("Bạn chưa chọn phần mềm nào");
+            else MessageBox.Show("Bạn chưa chọn phần mềm nào.");
         }
         protected virtual void exec() { }
         protected virtual void init() { }

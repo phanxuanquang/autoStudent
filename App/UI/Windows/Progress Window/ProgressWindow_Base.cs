@@ -20,7 +20,22 @@ namespace App
         protected List<Package> listSoftware;
         protected List<ActionProcess> blackList;
         protected int countCompletedAmount;
-        protected bool HasExitTodoTask;
+        private bool _HasExitTodoTask;
+        protected bool HasExitTodoTask
+        {
+            get
+            {
+                return _HasExitTodoTask;
+            }
+            set
+            {
+                _HasExitTodoTask = value;
+                if (_HasExitTodoTask && !isOverlap)
+                {
+                    ActionCompleted();
+                }
+            }
+        }
         public bool isOverlap = false;
         protected static bool wasRunBackground = false;
 
@@ -61,7 +76,6 @@ namespace App
         {
             InitializeComponent();
             Guna.UI.Lib.GraphicsHelper.ShadowForm(this);
-            this.Icon = Properties.Resources.mainIcon;
             Guna.UI.Lib.GraphicsHelper.ShadowForm(this);
             this.DoubleBuffered = true;
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
@@ -320,7 +334,7 @@ namespace App
                 wasRunBackground = runBackground.Visible;
                 runBackground.EnableRunBackground();
             }
-            else MessageBox.Show("Run background null");
+            else MessageBox.Show("Không thể chạy ngầm!");
         }
 
         private void softwareGridView_SelectionChanged(object sender, EventArgs e)
@@ -363,13 +377,24 @@ namespace App
                 }
                 else
                 {
-                    if (Program.setting.cleanAfter)
-                        Program.setting.cleanComputer();
-                    System.Media.SoundPlayer completeSound = new System.Media.SoundPlayer(Properties.Resources.Complete_Sound);
-                    completeSound.Play();
-                    Program.setting.RunAfterAction();
+                    ActionCompleted();
                 }
             }
+        }
+
+        private void ActionCompleted()
+        {
+            if (Program.setting.cleanAfter)
+                Program.setting.cleanComputer();
+            System.Media.SoundPlayer completeSound = new System.Media.SoundPlayer(Properties.Resources.Complete_Sound);
+            completeSound.Play();
+            if (Program.setting.afterAction != Setting.AfterAction.None && Program.setting.afterAction != Setting.AfterAction.Sleep)
+            {
+                if (Program.installName != null) Program.installName.Clear();
+                if (Program.uninstallName != null) Program.uninstallName.Clear();
+            }
+            Program.setting.RunAfterAction();
+            MessageBox.Show("Hoàn thành!");
         }
          
         private void detail_Button_Click(object sender, EventArgs e)
