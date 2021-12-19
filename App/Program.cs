@@ -32,8 +32,6 @@ namespace App
                 return;
             }
 
-            AppDomain.CurrentDomain.ProcessExit += CurrentDomain_ProcessExit;
-
             LoadingWindow loading = new LoadingWindow();
             Application.Run(loading);
 
@@ -69,7 +67,7 @@ namespace App
         public static List<Package> uninstallSchedule;
         #endregion
 
-        private static void CurrentDomain_ProcessExit(object sender, EventArgs e)
+        public static void CurrentDomain_ProcessExit(object sender, EventArgs e)
         {
             if ((setting.isSetTime && SetStartup == ExitRunBackground.Startup && DateTime.Now.Subtract(setting.timeSetter).TotalSeconds <= 0)
                 || (Program.installName != null && Program.installName.Count > 0) || (Program.uninstallName != null && Program.uninstallName.Count > 0))

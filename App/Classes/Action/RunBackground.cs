@@ -103,6 +103,7 @@ namespace App
                 notifyIcon.BalloonTipTitle = "autoStudent";
                 notifyIcon.BalloonTipText = "autoStudent đang chạy ngầm";
 
+                notifyIcon.Icon = Properties.Resources.autoStudent;
                 notifyIcon.Text = "autoStudent";
 
                 ExitToolStripMenuItem.Text = "Thoát";
