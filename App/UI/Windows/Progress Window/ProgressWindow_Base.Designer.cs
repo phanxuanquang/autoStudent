@@ -216,7 +216,7 @@
             this.detail_Button.ForeColor = System.Drawing.Color.Cyan;
             this.detail_Button.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(57)))), ((int)(((byte)(125)))));
             this.detail_Button.HoverState.Parent = this.detail_Button;
-            this.detail_Button.Image = global::App.Properties.Resources.Detail;
+            this.detail_Button.Image = global::App.Properties.Resources.Detail_2;
             this.detail_Button.ImageSize = new System.Drawing.Size(18, 18);
             this.detail_Button.Location = new System.Drawing.Point(125, 45);
             this.detail_Button.Margin = new System.Windows.Forms.Padding(125, 4, 61, 0);
@@ -276,7 +276,7 @@
             this.softwareGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.softwareGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.softwareGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.softwareGridView.Size = new System.Drawing.Size(699, 273);
+            this.softwareGridView.Size = new System.Drawing.Size(699, 290);
             this.softwareGridView.TabIndex = 44;
             this.softwareGridView.Tag = "unclicked";
             this.softwareGridView.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
@@ -387,7 +387,7 @@
             this.SettingToolStripMenuItem,
             this.AboutToolStripMenuItem,
             this.ExitToolStripMenuItem});
-            this.ButtonToolStripDropDown.Image = global::App.Properties.Resources.Detail;
+            this.ButtonToolStripDropDown.Image = global::App.Properties.Resources.Wizard;
             this.ButtonToolStripDropDown.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ButtonToolStripDropDown.Margin = new System.Windows.Forms.Padding(5, 0, 10, 5);
             this.ButtonToolStripDropDown.Name = "ButtonToolStripDropDown";
@@ -452,6 +452,7 @@
             this.Controls.Add(this.processContainPanel);
             this.Controls.Add(this.exitButton);
             this.DoubleBuffered = true;
+            this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ProgressWindow_Base";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

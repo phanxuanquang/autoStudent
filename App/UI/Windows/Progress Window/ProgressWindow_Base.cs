@@ -82,8 +82,10 @@ namespace App
             this.DoubleBuffered = true;
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             this.runBackground = new RunBackground(this, this.components);
-            Program.SetDoubleBuffered(processContainPanel);
-            Program.SetDoubleBuffered(this);
+            foreach(Control control in this.Controls)
+            {
+                Program.SetDoubleBuffered(control);
+            }
             if (Program.mainUI != null)
             {
                 Program.mainUI.Hide();
@@ -403,12 +405,18 @@ namespace App
             if (softwareGridView.Visible)
             {
                 this.ClientSize = new System.Drawing.Size(819, 195);
+                detail_Button.Image = App.Properties.Resources.Detail_2;
             }
-            else this.ClientSize = new System.Drawing.Size(819, 492);
+            else
+            {
+                this.ClientSize = new System.Drawing.Size(819, 492);
+                detail_Button.Image = App.Properties.Resources.Detail;
+            }
             softwareGridView.Visible = !softwareGridView.Visible;
             Application.DoEvents();
             this.processContainPanel.ResumeLayout(true);
             this.ResumeLayout(true);
+            
         }
 
         private void ActionAll_Button_Click(object sender, EventArgs e)
@@ -464,6 +472,7 @@ namespace App
         }
 
         #endregion
+
     }
 
     #region Other Classes
