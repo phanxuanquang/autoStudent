@@ -183,8 +183,19 @@ namespace App
 
             try
             {
+                string content;
                 string path = @"https://dung-ovl.github.io/MainData.json";
-                DateTime modificationFileWeb = GetLastModifyTime(path);
+                using (WebClient client = new WebClient())
+                {
+                    Stream streamR = client.OpenRead(path);
+
+
+                    using (StreamReader reader = new StreamReader(streamR))
+                    {
+                        content = reader.ReadToEnd();
+                    }
+                }
+                DateTime modificationFileWeb = Root.FromJson(content).UpdateDate;
                 DateTime modificationFileSystem = DataAccess.Instance.GetUpdateTime();
 
                 if (modificationFileWeb > modificationFileSystem)
