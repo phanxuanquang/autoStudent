@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.progressBar = new Guna.UI2.WinForms.Guna2ProgressBar();
             this.label3 = new System.Windows.Forms.Label();
             this.completedAmountLabel = new System.Windows.Forms.Label();
@@ -232,36 +232,36 @@
             // 
             this.softwareGridView.AllowUserToAddRows = false;
             this.softwareGridView.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Cyan;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Cyan;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
-            this.softwareGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Cyan;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Cyan;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
+            this.softwareGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.softwareGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.softwareGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
             this.softwareGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.softwareGridView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.softwareGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Cyan;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Cyan;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.softwareGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Cyan;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Cyan;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.softwareGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.softwareGridView.ColumnHeadersHeight = 30;
             this.softwareGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.softwareGridView.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Cyan;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Cyan;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.softwareGridView.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Cyan;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Cyan;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(35)))), ((int)(((byte)(77)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.softwareGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.softwareGridView.EnableHeadersVisualStyles = false;
             this.softwareGridView.GridColor = System.Drawing.Color.Cyan;
             this.softwareGridView.Location = new System.Drawing.Point(60, 170);
@@ -307,9 +307,9 @@
             // 
             // NameSoftware
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.NameSoftware.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.NameSoftware.DefaultCellStyle = dataGridViewCellStyle4;
             this.NameSoftware.HeaderText = "PHẦN MỀM";
             this.NameSoftware.Name = "NameSoftware";
             this.NameSoftware.ReadOnly = true;
@@ -323,10 +323,10 @@
             // 
             // StatusProcess
             // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.NullValue = null;
-            dataGridViewCellStyle10.Padding = new System.Windows.Forms.Padding(5);
-            this.StatusProcess.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.NullValue = null;
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(5);
+            this.StatusProcess.DefaultCellStyle = dataGridViewCellStyle5;
             this.StatusProcess.FillWeight = 40F;
             this.StatusProcess.HeaderText = "TRẠNG THÁI";
             this.StatusProcess.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
@@ -371,33 +371,37 @@
             this.StatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ButtonToolStripDropDown,
             this.StatusDoing});
-            this.StatusStrip.Location = new System.Drawing.Point(0, 173);
+            this.StatusStrip.Location = new System.Drawing.Point(0, 170);
             this.StatusStrip.Name = "StatusStrip";
-            this.StatusStrip.Size = new System.Drawing.Size(819, 22);
+            this.StatusStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.StatusStrip.Size = new System.Drawing.Size(819, 25);
+            this.StatusStrip.SizingGrip = false;
             this.StatusStrip.TabIndex = 46;
-            this.StatusStrip.Text = "statusStrip1";
             // 
             // ButtonToolStripDropDown
             // 
+            this.ButtonToolStripDropDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
             this.ButtonToolStripDropDown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ButtonToolStripDropDown.DropDownDirection = System.Windows.Forms.ToolStripDropDownDirection.AboveLeft;
             this.ButtonToolStripDropDown.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.SettingToolStripMenuItem,
             this.AboutToolStripMenuItem,
             this.ExitToolStripMenuItem});
             this.ButtonToolStripDropDown.Image = global::App.Properties.Resources.Detail;
             this.ButtonToolStripDropDown.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ButtonToolStripDropDown.Margin = new System.Windows.Forms.Padding(5, 0, 10, 5);
             this.ButtonToolStripDropDown.Name = "ButtonToolStripDropDown";
+            this.ButtonToolStripDropDown.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.ButtonToolStripDropDown.ShowDropDownArrow = false;
             this.ButtonToolStripDropDown.Size = new System.Drawing.Size(20, 20);
-            this.ButtonToolStripDropDown.Text = "toolStripDropDownButton1";
             this.ButtonToolStripDropDown.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
-            this.ButtonToolStripDropDown.ToolTipText = "ButtonToolStripDropDown";
+            this.ButtonToolStripDropDown.ToolTipText = "Mở rộng";
             // 
             // SettingToolStripMenuItem
             // 
             this.SettingToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
             this.SettingToolStripMenuItem.Name = "SettingToolStripMenuItem";
-            this.SettingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.SettingToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.SettingToolStripMenuItem.Text = "Bảng thiết lập";
             this.SettingToolStripMenuItem.Click += new System.EventHandler(this.SettingToolStripMenuItem_Click);
             // 
@@ -405,7 +409,7 @@
             // 
             this.AboutToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
             this.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem";
-            this.AboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.AboutToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.AboutToolStripMenuItem.Text = "Về chúng tôi";
             this.AboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
@@ -413,15 +417,20 @@
             // 
             this.ExitToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.ExitToolStripMenuItem.Text = "Thoát";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // StatusDoing
             // 
+            this.StatusDoing.AutoSize = false;
+            this.StatusDoing.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StatusDoing.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.StatusDoing.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.StatusDoing.Name = "StatusDoing";
-            this.StatusDoing.Size = new System.Drawing.Size(0, 17);
+            this.StatusDoing.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.StatusDoing.Size = new System.Drawing.Size(775, 20);
+            this.StatusDoing.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ActionButton
             // 

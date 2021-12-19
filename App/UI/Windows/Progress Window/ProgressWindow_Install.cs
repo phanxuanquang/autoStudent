@@ -93,7 +93,7 @@ namespace App
                     {
                         UpdatePercentProcess(index, download.GetPercentDownload);
                         UpdateCompletedAmount(countCompletedAmount, download.GetPercentDownload);
-                        UpdateStatusStrip(String.Format("Downloading: {0} ({1}%)", App.InstallUninstall.GetPath.GetURL(base.listSoftware[index]), download.GetPercentDownload));
+                        UpdateStatusStrip(String.Format("Đang tải: {0} ({1}%)", App.InstallUninstall.GetPath.GetURL(base.listSoftware[index]), download.GetPercentDownload));
                         Thread.Sleep(250);
                     }
                     if (blackList[index] == ActionProcess.Canceled)
@@ -112,7 +112,7 @@ namespace App
                     UpdateStatusProcess(index, StatusDataGridView.Installing);
                     PopExportData(listSoftware[index].Name);
                     install.RunProcess(index);
-                    UpdateStatusStrip(String.Format("Install: {0}", App.InstallUninstall.GetPath.GetFileName(base.listSoftware[index])));
+                    UpdateStatusStrip(String.Format("Đang cài đặt: {0}", App.InstallUninstall.GetPath.GetFileName(base.listSoftware[index])));
                     while (!install.isCompleted)
                     {
                         Thread.Sleep(1000);
@@ -121,6 +121,7 @@ namespace App
                     UpdateStatusProcess(index, StatusDataGridView.Completed);
                     UpdateCompletedAmount(++countCompletedAmount, 0);
                     blackList[index] = ActionProcess.Done;
+                    UpdateStatusStrip("");
                 }
                 HasExitTodoTask = true;
             });
