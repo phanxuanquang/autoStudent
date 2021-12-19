@@ -91,8 +91,8 @@ namespace App
                     UpdateStatusProcess(index, StatusDataGridView.Downloading);
                     while (!download.isCompleted)
                     {
-                        UpdatePercentProcess(index, download.GetPercentDownload);
-                        UpdateCompletedAmount(countCompletedAmount, download.GetPercentDownload);
+                        UpdatePercentProcess(index, download.GetPercentDownload * 0.9f);
+                        UpdateCompletedAmount(countCompletedAmount, download.GetPercentDownload * 0.9f);
                         UpdateStatusStrip(String.Format("Đang tải: {0} ({1}%)", App.InstallUninstall.GetPath.GetURL(base.listSoftware[index]), download.GetPercentDownload));
                         Thread.Sleep(250);
                     }
