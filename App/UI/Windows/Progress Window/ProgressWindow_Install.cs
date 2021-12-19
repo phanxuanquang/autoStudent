@@ -121,8 +121,8 @@ namespace App
                     UpdateStatusProcess(index, StatusDataGridView.Completed);
                     UpdateCompletedAmount(++countCompletedAmount, 0);
                     blackList[index] = ActionProcess.Done;
-                    UpdateStatusStrip("");
                 }
+                UpdateStatusStrip("Hoàn thành");
                 HasExitTodoTask = true;
             });
         }
