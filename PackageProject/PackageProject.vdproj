@@ -136,12 +136,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_993D61ACE1F00FCBA1BC506B93928EA4"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_2A8053F9D5EE4E3D97CAC0D51A825B11"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -205,6 +199,12 @@
         "OwnerKey" = "8:_360875D981C391981DAB7BBD7BE89869"
         "MsmSig" = "8:_UNDEFINED"
         }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_993D61ACE1F00FCBA1BC506B93928EA4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -223,6 +223,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -239,6 +247,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -703,7 +719,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:Automate the process of installing and uninstalling softwares."
         "ARPURLINFOABOUT" = "8:https://github.com/phanxuanquang/autoStudent"
-        "ARPPRODUCTICON" = "8:"
+        "ARPPRODUCTICON" = "8:_10B9904E0E5043C3999F1097F76EBABF"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"

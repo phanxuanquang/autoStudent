@@ -30,7 +30,9 @@ namespace App
             set
             {
                 _HasExitTodoTask = value;
-                if (_HasExitTodoTask && !isOverlap)
+                if (_HasExitTodoTask
+                    && !isOverlap 
+                    && completedAmountLabel.Text != String.Format("{0}/{1}", listSoftware.Count, listSoftware.Count))
                 {
                     ActionCompleted();
                 }
@@ -118,14 +120,8 @@ namespace App
                 }
                 if (PressedActionAll)
                 {
-                    if (this is ProgressWindow_Install)
-                    {
-                        if (Program.installName != null) Program.installName.Clear();
-                    }
-                    if (this is ProgressWindow_Uninstall)
-                    {
-                        if (Program.uninstallName != null) Program.uninstallName.Clear();
-                    }
+                    if (Program.installName != null) Program.installName.Clear();
+                    if (Program.uninstallName != null) Program.uninstallName.Clear();
                 }
                 this.Close();
             }
@@ -218,6 +214,7 @@ namespace App
                 }
             }
         }
+
         protected void UpdateStatusProcess(int index, StatusDataGridView status)
         {
             UpdateActionButton(index, status);
@@ -240,6 +237,7 @@ namespace App
                 }
             }
         }
+
         protected void UpdateActionButton(int index, StatusDataGridView status)
         {
             if (status == StatusDataGridView.Uninstalling || status == StatusDataGridView.Installing)
@@ -276,6 +274,7 @@ namespace App
                 ActionButton_TextChanged(e.RowIndex, e.ColumnIndex, blackList[e.RowIndex] == ActionProcess.None ? ActionProcess.Canceled : ActionProcess.None);
             }
         }
+
         protected void ActionButton_TextChanged(int row, int column, ActionProcess action)
         {
             if (column == softwareGridView.Columns.Count - 1 && row > -1 && row < listSoftware.Count)
@@ -435,6 +434,35 @@ namespace App
                 catch { }
             }
         }
+        #endregion
+
+        #region StatusStrip
+
+        protected void UpdateStatusStrip(string actionDoing)
+        {
+            if (!String.IsNullOrEmpty(actionDoing))
+            {
+                StatusDoing.Text = actionDoing;
+            }
+        }
+
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Program.mainUI.Close();
+        }
+
+        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            App.Main_Windows.AboutForm.AboutForm aboutForm = new Main_Windows.AboutForm.AboutForm();
+            aboutForm.ShowDialog();
+        }
+
+        private void SettingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            App.SettingForm settingForm = new SettingForm();
+            settingForm.ShowDialog();
+        }
+
         #endregion
     }
 

@@ -63,9 +63,10 @@ namespace App
                     uninstall.RunProcess(index);
                     UpdateStatusProcess(index, StatusDataGridView.Uninstalling);
                     PopExportData(listSoftware[index].Name);
+                    UpdateStatusStrip(String.Format("Uninstall: {0}", base.listSoftware[index].Displayname));
                     while (!uninstall.isCompleted)
                     {
-                        Thread.Sleep(500);
+                        Thread.Sleep(1000);
                     }
                     UpdateStatusProcess(index, StatusDataGridView.Completed);
                     UpdateCompletedAmount(++countCompletedAmount, 0);
