@@ -155,6 +155,7 @@ namespace App
                 MessageBox.Show("Dọn dẹp hoàn tất.");
             }
         }
+
         private void updateButton_Click(object sender, EventArgs e)
         {
             if (!isInternetAvailable())
