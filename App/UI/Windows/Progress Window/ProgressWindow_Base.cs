@@ -30,12 +30,16 @@ namespace App
             set
             {
                 _HasExitTodoTask = value;
-                if (_HasExitTodoTask
-                    && !isOverlap 
-                    && completedAmountLabel.Text != String.Format("{0}/{1}", listSoftware.Count, listSoftware.Count))
+                try
                 {
-                    ActionCompleted();
+                    if (_HasExitTodoTask
+                    && !isOverlap
+                    && completedAmountLabel.Text != String.Format("{0}/{1}", listSoftware.Count, listSoftware.Count))
+                    {
+                        ActionCompleted();
+                    }
                 }
+                catch (Exception) { }
             }
         }
         public bool isOverlap = false;
@@ -78,7 +82,7 @@ namespace App
         {
             InitializeComponent();
             Guna.UI.Lib.GraphicsHelper.ShadowForm(this);
-            Guna.UI.Lib.GraphicsHelper.ShadowForm(this);
+            this.Icon = App.Properties.Resources.autoStudent;
             this.DoubleBuffered = true;
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             this.runBackground = new RunBackground(this, this.components);
@@ -448,9 +452,16 @@ namespace App
 
         protected void UpdateStatusStrip(string actionDoing)
         {
-            if (!String.IsNullOrEmpty(actionDoing))
+            try
             {
-                StatusDoing.Text = actionDoing;
+                if (actionDoing != "")
+                {
+                    StatusDoing.Text = actionDoing;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Lỗi cập nhật thanh trạng thái.");
             }
         }
 

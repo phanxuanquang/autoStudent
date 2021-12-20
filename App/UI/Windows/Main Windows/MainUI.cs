@@ -20,6 +20,7 @@ namespace App
         {
             InitializeComponent();
             Guna.UI.Lib.GraphicsHelper.ShadowForm(this);
+            this.Icon = App.Properties.Resources.autoStudent;
             this.SetStyle(ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint | ControlStyles.SupportsTransparentBackColor, true);
             
             for(int i = 0; i < this.Controls.Count; i++)

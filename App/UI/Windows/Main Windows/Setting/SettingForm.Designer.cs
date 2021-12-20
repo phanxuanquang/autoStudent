@@ -454,7 +454,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SettingForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SettingForm";
+            this.Text = "autoStudent - Thiết lập";
             this.ResumeLayout(false);
             this.PerformLayout();
 
