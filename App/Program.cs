@@ -18,7 +18,7 @@ namespace App
         [DllImport("user32.dll")]
         public static extern bool SetForegroundWindow(IntPtr hWnd);
         [STAThread]
-        
+         
         static void Main()
         {
             Application.EnableVisualStyles();
