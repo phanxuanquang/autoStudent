@@ -347,6 +347,9 @@
   <ItemGroup>
     <None Include="Resources\autoStudent.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Detail 2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets" Condition="Exists('..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

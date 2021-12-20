@@ -277,9 +277,9 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label3.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label3.ForeColor = System.Drawing.Color.Cyan;
-            this.label3.Location = new System.Drawing.Point(105, 27);
+            this.label3.Location = new System.Drawing.Point(97, 41);
             this.label3.Margin = new System.Windows.Forms.Padding(0, 8, 0, 8);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(777, 51);

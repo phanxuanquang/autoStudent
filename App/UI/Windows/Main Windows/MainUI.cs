@@ -20,6 +20,7 @@ namespace App
         {
             InitializeComponent();
             Guna.UI.Lib.GraphicsHelper.ShadowForm(this);
+            this.Icon = App.Properties.Resources.autoStudent;
             this.SetStyle(ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint | ControlStyles.SupportsTransparentBackColor, true);
             
             for(int i = 0; i < this.Controls.Count; i++)
@@ -154,6 +155,7 @@ namespace App
                 MessageBox.Show("Dọn dẹp hoàn tất.");
             }
         }
+
         private void updateButton_Click(object sender, EventArgs e)
         {
             if (!isInternetAvailable())
@@ -295,16 +297,28 @@ namespace App
             }
             if (!String.IsNullOrEmpty(textMessageBox))
             {
-                systemShutdown = false;
                 switch (MessageBox.Show(textMessageBox, "autoStudent", MessageBoxButtons.YesNoCancel))
                 {
                     case DialogResult.Yes:
                         e.Cancel = false;
                         Program.SetStartup = Program.ExitRunBackground.Startup;
+                        this.FormClosing -= MainUI_FormClosing;
+                        if (systemShutdown)
+                        {
+                            Program.setting.afterAction = Setting.AfterAction.Shutdown;
+                            Program.CurrentDomain_ProcessExit(null, null);
+                            Program.setting.RunAfterAction();
+                        }
                         break;
                     case DialogResult.No:
                         e.Cancel = false;
                         Program.SetStartup = Program.ExitRunBackground.None;
+                        this.FormClosing -= MainUI_FormClosing;
+                        if (systemShutdown)
+                        {
+                            Program.setting.afterAction = Setting.AfterAction.Shutdown;
+                            Program.setting.RunAfterAction();
+                        }
                         break;
                     case DialogResult.Cancel:
                         e.Cancel = true;

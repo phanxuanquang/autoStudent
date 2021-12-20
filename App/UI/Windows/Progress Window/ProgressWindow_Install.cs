@@ -91,8 +91,9 @@ namespace App
                     UpdateStatusProcess(index, StatusDataGridView.Downloading);
                     while (!download.isCompleted)
                     {
-                        UpdatePercentProcess(index, download.GetPercentDownload);
-                        UpdateCompletedAmount(countCompletedAmount, download.GetPercentDownload);
+                        UpdatePercentProcess(index, download.GetPercentDownload * 0.9f);
+                        UpdateCompletedAmount(countCompletedAmount, download.GetPercentDownload * 0.9f);
+                        UpdateStatusStrip(String.Format("Đang tải: {0} ({1}%)", App.InstallUninstall.GetPath.GetURL(base.listSoftware[index]), download.GetPercentDownload));
                         Thread.Sleep(250);
                     }
                     if (blackList[index] == ActionProcess.Canceled)
@@ -111,6 +112,7 @@ namespace App
                     UpdateStatusProcess(index, StatusDataGridView.Installing);
                     PopExportData(listSoftware[index].Name);
                     install.RunProcess(index);
+                    UpdateStatusStrip(String.Format("Đang cài đặt: {0}", App.InstallUninstall.GetPath.GetFileName(base.listSoftware[index])));
                     while (!install.isCompleted)
                     {
                         Thread.Sleep(1000);
@@ -120,6 +122,7 @@ namespace App
                     UpdateCompletedAmount(++countCompletedAmount, 0);
                     blackList[index] = ActionProcess.Done;
                 }
+                UpdateStatusStrip("Hoàn thành");
                 HasExitTodoTask = true;
             });
         }

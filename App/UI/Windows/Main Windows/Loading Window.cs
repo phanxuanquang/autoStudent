@@ -27,6 +27,7 @@ namespace App
         {
             InitializeComponent();
             Guna.UI.Lib.GraphicsHelper.ShadowForm(this);
+            this.Icon = App.Properties.Resources.autoStudent;
 
             Program.software_Database = new List<Package>();
             Program.software_System = new List<Package>();

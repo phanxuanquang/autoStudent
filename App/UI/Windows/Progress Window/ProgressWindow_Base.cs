@@ -30,10 +30,16 @@ namespace App
             set
             {
                 _HasExitTodoTask = value;
-                if (_HasExitTodoTask && !isOverlap)
+                try
                 {
-                    ActionCompleted();
+                    if (_HasExitTodoTask
+                    && !isOverlap
+                    && completedAmountLabel.Text != String.Format("{0}/{1}", listSoftware.Count, listSoftware.Count))
+                    {
+                        ActionCompleted();
+                    }
                 }
+                catch (Exception) { }
             }
         }
         public bool isOverlap = false;
@@ -76,12 +82,14 @@ namespace App
         {
             InitializeComponent();
             Guna.UI.Lib.GraphicsHelper.ShadowForm(this);
-            Guna.UI.Lib.GraphicsHelper.ShadowForm(this);
+            this.Icon = App.Properties.Resources.autoStudent;
             this.DoubleBuffered = true;
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             this.runBackground = new RunBackground(this, this.components);
-            Program.SetDoubleBuffered(processContainPanel);
-            Program.SetDoubleBuffered(this);
+            foreach(Control control in this.Controls)
+            {
+                Program.SetDoubleBuffered(control);
+            }
             if (Program.mainUI != null)
             {
                 Program.mainUI.Hide();
@@ -118,14 +126,8 @@ namespace App
                 }
                 if (PressedActionAll)
                 {
-                    if (this is ProgressWindow_Install)
-                    {
-                        if (Program.installName != null) Program.installName.Clear();
-                    }
-                    if (this is ProgressWindow_Uninstall)
-                    {
-                        if (Program.uninstallName != null) Program.uninstallName.Clear();
-                    }
+                    if (Program.installName != null) Program.installName.Clear();
+                    if (Program.uninstallName != null) Program.uninstallName.Clear();
                 }
                 this.Close();
             }
@@ -218,6 +220,7 @@ namespace App
                 }
             }
         }
+
         protected void UpdateStatusProcess(int index, StatusDataGridView status)
         {
             UpdateActionButton(index, status);
@@ -240,6 +243,7 @@ namespace App
                 }
             }
         }
+
         protected void UpdateActionButton(int index, StatusDataGridView status)
         {
             if (status == StatusDataGridView.Uninstalling || status == StatusDataGridView.Installing)
@@ -276,6 +280,7 @@ namespace App
                 ActionButton_TextChanged(e.RowIndex, e.ColumnIndex, blackList[e.RowIndex] == ActionProcess.None ? ActionProcess.Canceled : ActionProcess.None);
             }
         }
+
         protected void ActionButton_TextChanged(int row, int column, ActionProcess action)
         {
             if (column == softwareGridView.Columns.Count - 1 && row > -1 && row < listSoftware.Count)
@@ -404,12 +409,18 @@ namespace App
             if (softwareGridView.Visible)
             {
                 this.ClientSize = new System.Drawing.Size(819, 195);
+                detail_Button.Image = App.Properties.Resources.Detail_2;
             }
-            else this.ClientSize = new System.Drawing.Size(819, 492);
+            else
+            {
+                this.ClientSize = new System.Drawing.Size(819, 492);
+                detail_Button.Image = App.Properties.Resources.Detail;
+            }
             softwareGridView.Visible = !softwareGridView.Visible;
             Application.DoEvents();
             this.processContainPanel.ResumeLayout(true);
             this.ResumeLayout(true);
+            
         }
 
         private void ActionAll_Button_Click(object sender, EventArgs e)
@@ -436,6 +447,43 @@ namespace App
             }
         }
         #endregion
+
+        #region StatusStrip
+
+        protected void UpdateStatusStrip(string actionDoing)
+        {
+            try
+            {
+                if (actionDoing != "")
+                {
+                    StatusDoing.Text = actionDoing;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Lỗi cập nhật thanh trạng thái.");
+            }
+        }
+
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Program.mainUI.Close();
+        }
+
+        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            App.Main_Windows.AboutForm.AboutForm aboutForm = new Main_Windows.AboutForm.AboutForm();
+            aboutForm.ShowDialog();
+        }
+
+        private void SettingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            App.SettingForm settingForm = new SettingForm();
+            settingForm.ShowDialog();
+        }
+
+        #endregion
+
     }
 
     #region Other Classes

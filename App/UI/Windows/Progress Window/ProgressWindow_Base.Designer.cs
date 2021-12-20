@@ -49,10 +49,17 @@
             this.roundEdge = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.minimizeButton = new Guna.UI2.WinForms.Guna2Button();
             this.DragControl = new Guna.UI2.WinForms.Guna2DragControl(this.components);
-            this.ActionButton = new App.DataGridViewDisableButtonColumn();
             this.Shadow = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
+            this.StatusStrip = new System.Windows.Forms.StatusStrip();
+            this.ButtonToolStripDropDown = new System.Windows.Forms.ToolStripDropDownButton();
+            this.SettingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.StatusDoing = new System.Windows.Forms.ToolStripStatusLabel();
+            this.ActionButton = new App.DataGridViewDisableButtonColumn();
             this.processContainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.softwareGridView)).BeginInit();
+            this.StatusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // progressBar
@@ -209,7 +216,7 @@
             this.detail_Button.ForeColor = System.Drawing.Color.Cyan;
             this.detail_Button.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(57)))), ((int)(((byte)(125)))));
             this.detail_Button.HoverState.Parent = this.detail_Button;
-            this.detail_Button.Image = global::App.Properties.Resources.Detail;
+            this.detail_Button.Image = global::App.Properties.Resources.Detail_2;
             this.detail_Button.ImageSize = new System.Drawing.Size(18, 18);
             this.detail_Button.Location = new System.Drawing.Point(125, 45);
             this.detail_Button.Margin = new System.Windows.Forms.Padding(125, 4, 61, 0);
@@ -269,7 +276,7 @@
             this.softwareGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.softwareGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.softwareGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.softwareGridView.Size = new System.Drawing.Size(699, 273);
+            this.softwareGridView.Size = new System.Drawing.Size(699, 290);
             this.softwareGridView.TabIndex = 44;
             this.softwareGridView.Tag = "unclicked";
             this.softwareGridView.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
@@ -358,6 +365,73 @@
             // 
             this.DragControl.TargetControl = this;
             // 
+            // StatusStrip
+            // 
+            this.StatusStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
+            this.StatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ButtonToolStripDropDown,
+            this.StatusDoing});
+            this.StatusStrip.Location = new System.Drawing.Point(0, 170);
+            this.StatusStrip.Name = "StatusStrip";
+            this.StatusStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.StatusStrip.Size = new System.Drawing.Size(819, 25);
+            this.StatusStrip.SizingGrip = false;
+            this.StatusStrip.TabIndex = 46;
+            // 
+            // ButtonToolStripDropDown
+            // 
+            this.ButtonToolStripDropDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
+            this.ButtonToolStripDropDown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ButtonToolStripDropDown.DropDownDirection = System.Windows.Forms.ToolStripDropDownDirection.AboveLeft;
+            this.ButtonToolStripDropDown.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SettingToolStripMenuItem,
+            this.AboutToolStripMenuItem,
+            this.ExitToolStripMenuItem});
+            this.ButtonToolStripDropDown.Image = global::App.Properties.Resources.Wizard;
+            this.ButtonToolStripDropDown.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ButtonToolStripDropDown.Margin = new System.Windows.Forms.Padding(5, 0, 10, 5);
+            this.ButtonToolStripDropDown.Name = "ButtonToolStripDropDown";
+            this.ButtonToolStripDropDown.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.ButtonToolStripDropDown.ShowDropDownArrow = false;
+            this.ButtonToolStripDropDown.Size = new System.Drawing.Size(20, 20);
+            this.ButtonToolStripDropDown.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
+            this.ButtonToolStripDropDown.ToolTipText = "Mở rộng";
+            // 
+            // SettingToolStripMenuItem
+            // 
+            this.SettingToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
+            this.SettingToolStripMenuItem.Name = "SettingToolStripMenuItem";
+            this.SettingToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.SettingToolStripMenuItem.Text = "Bảng thiết lập";
+            this.SettingToolStripMenuItem.Click += new System.EventHandler(this.SettingToolStripMenuItem_Click);
+            // 
+            // AboutToolStripMenuItem
+            // 
+            this.AboutToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
+            this.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem";
+            this.AboutToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.AboutToolStripMenuItem.Text = "Về chúng tôi";
+            this.AboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
+            // 
+            // ExitToolStripMenuItem
+            // 
+            this.ExitToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
+            this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.ExitToolStripMenuItem.Text = "Thoát";
+            this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            // 
+            // StatusDoing
+            // 
+            this.StatusDoing.AutoSize = false;
+            this.StatusDoing.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StatusDoing.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.StatusDoing.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.StatusDoing.Name = "StatusDoing";
+            this.StatusDoing.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.StatusDoing.Size = new System.Drawing.Size(775, 20);
+            this.StatusDoing.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // ActionButton
             // 
             this.ActionButton.FillWeight = 40F;
@@ -372,11 +446,13 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(819, 195);
+            this.Controls.Add(this.StatusStrip);
             this.Controls.Add(this.minimizeButton);
             this.Controls.Add(this.softwareGridView);
             this.Controls.Add(this.processContainPanel);
             this.Controls.Add(this.exitButton);
             this.DoubleBuffered = true;
+            this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(87)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ProgressWindow_Base";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -384,7 +460,10 @@
             this.Shown += new System.EventHandler(this.ProgressWindow_Base_Shown);
             this.processContainPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.softwareGridView)).EndInit();
+            this.StatusStrip.ResumeLayout(false);
+            this.StatusStrip.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -406,5 +485,11 @@
         private Guna.UI2.WinForms.Guna2Button minimizeButton;
         private Guna.UI2.WinForms.Guna2DragControl DragControl;
         private Guna.UI2.WinForms.Guna2ShadowForm Shadow;
+        private System.Windows.Forms.StatusStrip StatusStrip;
+        private System.Windows.Forms.ToolStripDropDownButton ButtonToolStripDropDown;
+        private System.Windows.Forms.ToolStripMenuItem SettingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripStatusLabel StatusDoing;
     }
 }

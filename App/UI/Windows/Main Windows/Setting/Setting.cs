@@ -382,10 +382,7 @@ namespace App
                     {
                         string data = reader.ReadToEnd();
                         Setting info = JsonConvert.DeserializeObject<Setting>(Cryptography.Decrypt(data, DataAccess.Instance.GetPassCry()));
-                        this._timeSetter = info.timeSetter;
-                        this._afterAction = info.afterAction;
                         this._cleanAfter = info.cleanAfter;
-                        this._isSetTime = info.isSetTime;
                         this._dataExport = info.dataExport;
                         this._saveDownloadPath = info.saveDownloadPath;
                         this._exportPath = info.exportPath;
