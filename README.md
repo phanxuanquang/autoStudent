@@ -18,7 +18,7 @@ Trong thực tế đời sống và công việc, chúng ta thường sẽ gặp
 - *Trường đại học muốn tự thiết lập hệ thống các phần mềm cần thiết trong máy tính Windows của các sinh viên.*
 - *Sinh viên không hiểu biết nhiều về công nghệ thông tin hoặc sinh viên năm nhất cần xây dựng tập hợp phần mềm cần thiết cho chương trình học một cách tiện lợi nhất.*
 - *Người dùng muốn cài một tập hợp nhiều phần mềm một cách nhanh nhất.*
-- *Một tổ chức muốn tiết kiệm thời gian và nhân lực cho việc thiết lập hệ thống phần mềm trong máy tính Windows của toàn bộ nhân viên.*
+- *Một tổ chức muốn tiết kiệm thời gian và nhân lực cho việc thiết lập hệ thống phần mềm trong máy tính Windows của toàn bộ nhân viên hoặc chỉ đơn giản là muốn cài thêm một số lượng phần mềm cho máy tính của các nhân viên mà không muốn phải ghost Windows hay để nhân viên tự cài đặt.*
 - . . .
 
 **1.2. Ý tưởng xây dựng phần mềm.**
