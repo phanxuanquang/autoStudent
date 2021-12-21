@@ -1,6 +1,6 @@
 # # IT008.M11 - VISUAL PROGRAMMING 
-###© 2021 University of Information Technology / autoStudent Project
-
+**© 2021 University of Information Technology / autoStudent Project**
+------------
 ## DANH SÁCH THÀNH VIÊN
 | No. | Student ID | Full name | Class | Role |
 | --- | --- | --- | --- | --- |
@@ -11,7 +11,7 @@
 
 ###  **CHƯƠNG 1. TỔNG QUAN**
 
-##### **1.1 Bài toán thực tế.**
+**1.1. Bài toán thực tế.**
 
 Trong thực tế đời sống và công việc, chúng ta thường sẽ gặp các tình huống sau:
 
@@ -21,7 +21,7 @@ Trong thực tế đời sống và công việc, chúng ta thường sẽ gặp
 - *Một tổ chức muốn tiết kiệm thời gian và nhân lực cho việc thiết lập hệ thống phần mềm trong máy tính Windows của toàn bộ nhân viên.*
 - . . .
 
-##### **1.2. Ý tưởng xây dựng phần mềm.**
+**1.2. Ý tưởng xây dựng phần mềm.**
 
 Từ các tình huống thực tế nêu trên, nhóm chúng tôi xây dựng phần mềm **autoStudent** nhằm tự động hóa hoàn toàn quá trình cài đặt và gỡ cài đặt chương trình cho máy tính Windows với hơn 150 phần mềm phổ biến được hỗ trợ. Với autoStudent, người dùng có thể tiết kiệm được thời gian tìm kiếm, cài đặt phần mềm và gỡ cài đặt số lượng lớn phần mềm một cách nhanh chóng mà hạn chế được lỗi vặt.
 
@@ -35,7 +35,7 @@ Ví dụ (đối với các phần mềm được **autoStudent** hỗ trợ):
 
 ### **CHƯƠNG 2. HƯỚNG DẪN CÀI ĐẶT AUTOSTUDENT**
 
-##### 2.1. Yêu cầu hệ thống.
+**2.1. Yêu cầu hệ thống.**
 | No. |  | Tối thiểu | Khuyến nghị |
 | --- | --- | --- | --- |
 | 1 | Hệ điều hành | Windows 7 32-bit | Windows 10 64-bit trở lên |
@@ -43,25 +43,26 @@ Ví dụ (đối với các phần mềm được **autoStudent** hỗ trợ):
 | 3 | Dung lượng trống trong ổ cứng | 100MB dành cho tác vụ cài đặt | 100MB dành cho tác vụ cài đặt | 
 | 4 | Kết nối mạng | Chỉ cần cho tác vụ cài đặt | Chỉ cần cho tác vụ cài đặt |
 
-##### 2.2. Hướng dẫn cài đặt phần mềm.
 
-##### 2.3. Lưu ý.
+**2.2. Hướng dẫn cài đặt phần mềm.**
 
-### **CHƯƠNG 3. CÁC CHỨC NĂNG VÀ CÁC SỬ DỤNG**
+**2.3. Lưu ý.**
 
-#####**3.1. Cài đặt chương trình hàng loạt:**
+### **CHƯƠNG 3. CÁC CHỨC NĂNG VÀ CÁCH SỬ DỤNG**
 
-#####**3.2. Gỡ cài đặt chương trình hàng loạt:**
+**3.1. Cài đặt chương trình hàng loạt.**
 
-#####**3.3. Thiết lập hành động:**
+**3.2. Gỡ cài đặt chương trình hàng loạt.**
+
+**3.3. Thiết lập hành động.**
 
 - Xuất danh sách phần mềm được chọn sau khi cài đặt hoặc gỡ cài đặt. 
 - Nhập danh sách phần mềm muốn cài đặt hoặc gỡ cài đặt.
 - Hẹn giờ khởi chạy trình cài đặt hoặc gỡ cài đặt.
 - Thiết lập hành động sau khi hoàn tất quá trình cài đặt hoặc gỡ cài đặt.
 
-#####**3.4. Phản hồi:**
+**3.4. Phản hồi.**
 
-#####**3.5. Cập nhật bằng một lần nhấp chuột:**
+**3.5. Cập nhật bằng một lần nhấp chuột.**
 
-#####**3.6. Lưu ý.**
+**3.6. Lưu ý.**
