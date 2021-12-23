@@ -320,13 +320,13 @@ namespace App
         {
             if (action != null)
             {
-                if((Program.setting.isSetTime && DateTime.Now.Subtract(Program.setting.timeSetter).TotalSeconds >= 0) || !Program.setting.isSetTime)
+                if ((Program.setting.isSetTime && DateTime.Now.Subtract(Program.setting.timeSetter).TotalSeconds >= 0) || !Program.setting.isSetTime)
                 {
                     action.Show();
                 }
                 else
                 {
-                    action.backgroundRunning_Button_Click(true, null);
+                    action.SetRunBackground(true, true);
                     Task.Factory.StartNew(() =>
                     {
                         while (Program.setting.isSetTime && DateTime.Now.Subtract(Program.setting.timeSetter).TotalSeconds <= 0)
@@ -350,7 +350,7 @@ namespace App
                                 }
                                 catch { }
                             }
-                            action.backgroundRunning_Button_Click(null, null);
+                            action.SetRunBackground(true, false);
                         }
                     });
                 }

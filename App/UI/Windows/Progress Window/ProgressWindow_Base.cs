@@ -334,17 +334,15 @@ namespace App
 
         public void backgroundRunning_Button_Click(object sender, EventArgs e)
         {
+            SetRunBackground(true, false);
+        }
+
+        public void SetRunBackground(bool showToolTip, bool overTipText)
+        {
             if (runBackground != null)
             {
                 wasRunBackground = runBackground.Visible;
-                try
-                {
-                    runBackground.EnableRunBackground((bool)sender);
-                }
-                catch
-                {
-                    runBackground.EnableRunBackground(false);
-                }
+                runBackground.EnableRunBackground(showToolTip, overTipText);
             }
             else MessageBox.Show("Không thể chạy ngầm!");
         }

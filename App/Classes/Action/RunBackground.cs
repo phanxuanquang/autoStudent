@@ -41,21 +41,20 @@ namespace App
         /// Ẩn form hiện tại đi và để nó xuất hiện ở taskbar.
         /// </summary>
         /// <param name="startProcess">Nếu là hẹn giờ thì đưa vào thời gian còn lại đến khi bắt đầu, không có thì thôi.</param>
-        public void EnableRunBackground(bool showBalloonTip)
+        public void EnableRunBackground(bool showBalloonTip, bool overTipText)
         {
             if (mainForm != null)
             {
                 SetNotify(mainForm, components);
-                SetTime();
+                SetTime(overTipText);
                 SetVisibleMainForm(false);
                 if (notifyIcon != null)
                 {
-                    notifyIcon.Visible = true;
-                    if (!showBalloonTip)
+                    if (showBalloonTip)
                     {
-                        notifyIcon.BalloonTipText = "autoStudent đang chạy ngầm";
+                        notifyIcon.Visible = true;
+                        notifyIcon.ShowBalloonTip(5000);
                     }
-                    notifyIcon.ShowBalloonTip(5000);
                 }
             }
         }
@@ -178,14 +177,21 @@ namespace App
             Program.mainUI.Close();
         }
 
-        private void SetTime()
+        private void SetTime(bool overTipText)
         {
             if (notifyIcon != null)
             {
-                TimeSpan timeout = TimeSpan.Zero;
-                if (Program.setting.isSetTime && (timeout = DateTime.Now.Subtract(Program.setting.timeSetter)).TotalSeconds <= 0)
+                if (overTipText)
                 {
-                    notifyIcon.BalloonTipText = "Việc cài đặt sẽ được bắt đầu sau " + timeout.ToString(@"dd\.hh\:mm\:ss");
+                    TimeSpan timeout = TimeSpan.Zero;
+                    if (Program.setting.isSetTime && (timeout = DateTime.Now.Subtract(Program.setting.timeSetter)).TotalSeconds <= 0)
+                    {
+                        notifyIcon.BalloonTipText = "Việc cài đặt sẽ được bắt đầu sau " + timeout.ToString(@"dd\.hh\:mm\:ss");
+                    }
+                }
+                else
+                {
+                    notifyIcon.BalloonTipText = "autoStudent đang chạy ngầm";
                 }
             }
         }
