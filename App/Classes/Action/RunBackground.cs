@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -41,7 +41,7 @@ namespace App
         /// Ẩn form hiện tại đi và để nó xuất hiện ở taskbar.
         /// </summary>
         /// <param name="startProcess">Nếu là hẹn giờ thì đưa vào thời gian còn lại đến khi bắt đầu, không có thì thôi.</param>
-        public void EnableRunBackground()
+        public void EnableRunBackground(bool showBalloonTip)
         {
             if (mainForm != null)
             {
@@ -50,8 +50,12 @@ namespace App
                 SetVisibleMainForm(false);
                 if (notifyIcon != null)
                 {
-                    notifyIcon.ShowBalloonTip(5000);
                     notifyIcon.Visible = true;
+                    if (!showBalloonTip)
+                    {
+                        notifyIcon.BalloonTipText = "autoStudent đang chạy ngầm";
+                    }
+                    notifyIcon.ShowBalloonTip(5000);
                 }
             }
         }
@@ -152,15 +156,7 @@ namespace App
         {
             if (e.Button == MouseButtons.Left)
             {
-                if (mainForm != null)
-                {
-                    SetVisibleMainForm(true);
-                    if (mainForm is ProgressWindow_Base)
-                    {
-                        ((ProgressWindow_Base)mainForm).SetRefresh();
-                    }
-                }
-                notifyIcon.Visible = false;
+                NotifyIcon1_BalloonTipClicked(null, null);
             }
         }
 
@@ -169,6 +165,10 @@ namespace App
             if (mainForm != null)
             {
                 SetVisibleMainForm(true);
+                if (mainForm is ProgressWindow_Base)
+                {
+                    ((ProgressWindow_Base)mainForm).SetRefresh();
+                }
             }
             notifyIcon.Visible = false;
         }

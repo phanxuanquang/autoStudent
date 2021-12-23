@@ -286,31 +286,34 @@ namespace App
 
         public void cleanComputer()
         {
-            void deleteFileIn(string path)
+            if (Directory.Exists(saveDownloadPath))
             {
-                DirectoryInfo di = new DirectoryInfo(path);
-                foreach (FileInfo file in di.EnumerateFiles())
+                void deleteFileIn(string path)
                 {
-                    file.Delete();
+                    DirectoryInfo di = new DirectoryInfo(path);
+                    foreach (FileInfo file in di.EnumerateFiles())
+                    {
+                        file.Delete();
+                    }
+                    foreach (DirectoryInfo dir in di.EnumerateDirectories())
+                    {
+                        dir.Delete(true);
+                    }
                 }
-                foreach (DirectoryInfo dir in di.EnumerateDirectories())
+                try
                 {
-                    dir.Delete(true);
+                    deleteFileIn(Program.setting.saveDownloadPath);
                 }
+                catch (UnauthorizedAccessException)
+                {
+                    MessageBox.Show("Không có quyền xóa thư mục tạm thời.");
+                }
+                catch (IOException)
+                {
+                    MessageBox.Show("Lỗi xóa thư mục tạm thời.");
+                }
+                catch { }
             }
-            try
-            {
-                deleteFileIn(Program.setting.saveDownloadPath);
-            }
-            catch (UnauthorizedAccessException)
-            {
-                MessageBox.Show("Không có quyền xóa thư mục tạm thời.");
-            }
-            catch (IOException)
-            {
-                MessageBox.Show("Lỗi xóa thư mục tạm thời.");
-            }
-            catch { }
         }
 
         public void CheckTimeOut(ProgressWindow_Base action)
@@ -323,7 +326,7 @@ namespace App
                 }
                 else
                 {
-                    action.backgroundRunning_Button_Click(null, null);
+                    action.backgroundRunning_Button_Click(true, null);
                     Task.Factory.StartNew(() =>
                     {
                         while (Program.setting.isSetTime && DateTime.Now.Subtract(Program.setting.timeSetter).TotalSeconds <= 0)

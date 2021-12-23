@@ -55,7 +55,7 @@ namespace App
             {
                 if (runBackground != null && isOverlap)
                 {
-                    runBackground.EnableRunBackground();
+                    runBackground.EnableRunBackground(false);
                 }
             }
             isOverlap = false;

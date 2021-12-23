@@ -337,7 +337,14 @@ namespace App
             if (runBackground != null)
             {
                 wasRunBackground = runBackground.Visible;
-                runBackground.EnableRunBackground();
+                try
+                {
+                    runBackground.EnableRunBackground((bool)sender);
+                }
+                catch
+                {
+                    runBackground.EnableRunBackground(false);
+                }
             }
             else MessageBox.Show("Không thể chạy ngầm!");
         }
@@ -420,7 +427,6 @@ namespace App
             Application.DoEvents();
             this.processContainPanel.ResumeLayout(true);
             this.ResumeLayout(true);
-            
         }
 
         private void ActionAll_Button_Click(object sender, EventArgs e)
