@@ -96,6 +96,14 @@ Trong thực tế đời sống và công việc, chúng ta thường sẽ gặp
 
 </details>
 
+<details>
+  <summary>Tải trình cài đặt</summary>
+
+- Trích xuất cơ sở dữ liệu, lấy link để tải tập tin cài đặt.
+- Kiểm tra tính chính xác của tập tin tải về.
+
+</details>
+
 ### **4. SƠ ĐỒ KHỐI**
 
 <details>
