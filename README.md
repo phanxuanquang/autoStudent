@@ -35,7 +35,7 @@ Phần mềm **autoStudent** phát huy hiệu quả tốt nhất đối với m�
 | 3 | Số lượng thao tác| Nhiều hơn | Ít hơn |
 | 4 | Thời gian thực hiện | Không khác biệt nhiều | Không khác biệt nhiều |
 | 4 | Tương thích phần cứng | Đảm bảo | Không đảm bảo |
-| 4 | Khả năng nhiễm virus | Chỉ cần cho tác vụ cài đặt | Không |
+| 4 | Khả năng nhiễm virus | Có | Không |
 
 ### **CHƯƠNG 2. YÊU CẦU HỆ THỐNG**
 
