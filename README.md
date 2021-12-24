@@ -23,46 +23,40 @@ Trong thực tế đời sống và công việc, chúng ta thường sẽ gặp
 
 **1.2. Ý tưởng xây dựng phần mềm.**
 
-Từ các tình huống thực tế nêu trên, nhóm chúng tôi xây dựng phần mềm **autoStudent** nhằm tự động hóa hoàn toàn quá trình cài đặt và gỡ cài đặt chương trình cho máy tính Windows với hơn 150 phần mềm phổ biến được hỗ trợ. Với autoStudent, người dùng có thể tiết kiệm được thời gian tìm kiếm, cài đặt phần mềm và gỡ cài đặt số lượng lớn phần mềm một cách nhanh chóng mà hạn chế được lỗi vặt.
+Từ các tình huống thực tế nêu trên, nhóm chúng tôi xây dựng phần mềm autoStudent nhằm tự động hóa hoàn toàn quá trình cài đặt và gỡ cài đặt phần mềm cho máy tính Windows với hơn 150 phần mềm phổ biến được hỗ trợ. Với autoStudent, người dùng có thể tiết kiệm được thời gian tìm kiếm, cài đặt phần mềm và gỡ cài đặt số lượng lớn phần mềm một cách nhanh chóng, đảm bảo được tính chính xác trong quy trình cũng như tính nhất quán khi thực hiện trên nhiều máy tính, ngoài ra còn giúp người dùng tận dụng tốt thời gian để làm các công việc khác.
 
 Phần mềm **autoStudent** phát huy hiệu quả tốt nhất đối với một hệ thống nhiều máy tính muốn cài đặt chung một tổ hợp gồm rất nhiều phần mềm được **autoStudent** hỗ trợ.
 
-Ví dụ (đối với các phần mềm được **autoStudent** hỗ trợ): 
+**1.3. So sánh với phương pháp Ghost Windows.**
 
-- *Người dùng tải và cài đặt 1 phần mềm cho 1 máy tính Windows trung bình mất 5 phút, vậy đối với 20 phần mềm sẽ tốn trung bình 100 phút. Tuy nhiên, khi sử dụng autoStudent, người dùng chỉ mất 5 phút để thiết lập quá trình tự động cài đặt toàn bộ phần mềm cho một máy tính, trong 100 phút, người dùng có thể xây dựng hệ thống phần mềm cho 20 máy tính. Như vậy, autoStudent có thể giúp người dùng tiết kiệm thời gian đến 20 lần đối với công việc nêu trên.*
-- *Người dùng khi muốn gỡ một lúc nhiều phần mềm thì phải thực hiện thủ công để gỡ từng phần mềm khỏi máy tính. Tuy nhiên, autoStudent có thể giúp người dùng tự động gỡ cài đặt hàng loạt phần mềm, từ đó người dùng có thể tận dụng thời gian làm công việc khác.*
-- . . .
+| No. |  | Phương pháp Ghost Windows | Sử dụng autoStudent |
+| --- | --- | --- | --- |
+| 1 | Mất dữ liệu hiện hành | Có | Không | 
+| 3 | Số lượng thao tác| Nhiều hơn | Ít hơn |
+| 4 | Thời gian thực hiện | Không khác biệt nhiều | Không khác biệt nhiều |
+| 4 | Tương thích phần cứng | Đảm bảo | Không đảm bảo |
+| 4 | Khả năng nhiễm virus | Chỉ cần cho tác vụ cài đặt | Không |
 
-### **CHƯƠNG 2. HƯỚNG DẪN CÀI ĐẶT AUTOSTUDENT**
+### **CHƯƠNG 2. YÊU CẦU HỆ THỐNG**
 
-**2.1. Yêu cầu hệ thống.**
 | No. |  | Tối thiểu | Khuyến nghị |
 | --- | --- | --- | --- |
 | 1 | Hệ điều hành | Windows 7 32-bit | Windows 10 64-bit trở lên |
 | 2 | RAM | 2 GB | 4 GB trở lên |
-| 3 | Dung lượng trống trong ổ cứng | 100MB dành cho tác vụ cài đặt | 100MB dành cho tác vụ cài đặt | 
-| 4 | Kết nối mạng | Chỉ cần cho tác vụ cài đặt | Chỉ cần cho tác vụ cài đặt |
+| 3 | Dung lượng trống trong ổ cứng | 1GB trên mỗi 10 phần mềm được chọn | 2GB trên mỗi 10 phần mềm được chọn | 
+| 5 | Kết nối mạng | Chỉ cần cho tác vụ cài đặt | Chỉ cần cho tác vụ cài đặt |
 
+### **CHƯƠNG 3. CÁC CHỨC NĂNG CHÍNH**
 
-**2.2. Hướng dẫn cài đặt phần mềm.**
+**3.1. Tự động cài đặt phần mềm hàng loạt.**
 
-**2.3. Lưu ý.**
+**3.2. Tự động GỠ cài đặt phần mềm hàng loạt.**
 
-### **CHƯƠNG 3. CÁC CHỨC NĂNG VÀ CÁCH SỬ DỤNG**
+**3.3. Dọn dẹp và cập nhật nhanh chóng.**
 
-**3.1. Cài đặt chương trình hàng loạt.**
-
-**3.2. Gỡ cài đặt chương trình hàng loạt.**
-
-**3.3. Thiết lập hành động.**
-
-- Xuất danh sách phần mềm được chọn sau khi cài đặt hoặc gỡ cài đặt. 
+**3.4. Thiết lập hành động.**
+- Xuất danh sách phần mềm được chọn sau khi cài đặt hoặc gỡ cài đặt hoàn tất. 
 - Nhập danh sách phần mềm muốn cài đặt hoặc gỡ cài đặt.
 - Hẹn giờ khởi chạy trình cài đặt hoặc gỡ cài đặt.
 - Thiết lập hành động sau khi hoàn tất quá trình cài đặt hoặc gỡ cài đặt.
-
-**3.4. Phản hồi.**
-
-**3.5. Cập nhật bằng một lần nhấp chuột.**
-
-**3.6. Lưu ý.**
+- Chạy ngầm và khởi động cùng hệ điều hành.
