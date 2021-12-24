@@ -89,6 +89,13 @@ Trong thực tế đời sống và công việc, chúng ta thường sẽ gặp
 
 </details>
 
+<details>
+  <summary>Mã hóa dữ liệu</summary>
+
+- Sử dụng AES-256bit mã hóa cơ sở dữ liệu, tập tin nhập xuất, lịch sử thiết lập, .v.v
+
+</details>
+
 ### **4. SƠ ĐỒ KHỐI**
 
 <details>
